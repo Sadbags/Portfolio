@@ -1,51 +1,77 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
+    <!-- Metadatos del documento -->
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres a UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Asegura que la página se vea bien en todos los dispositivos -->
+    <title>QUICKR-Login</title> <!-- Título de la página -->
     <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
 </head>
 <body>
+       <!-- Encabezado de la página -->
+       <header>
+        <!-- Navegación principal -->
+        <nav>
+            <!-- Lista de enlaces de navegación -->
+            <ul>
+                <li><a href="services.html">Services</a></li> <!-- Enlace a la página de servicios -->
+                <li><a href="contact.html">Contact</a></li> <!-- Enlace a la página de contacto -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenedor principal del formulario de inicio de sesión -->
     <div class="login-container">
-        <h2>Inicio de Sesión</h2>
+        <h2>Login</h2> <!-- Encabezado del formulario -->
 
         <!-- Mensaje de error -->
         <div class="error-message">
-            <!-- Este mensaje se mostraría dinámicamente con un script de servidor si hay un error -->
-            <!-- Ejemplo: "Usuario o contraseña incorrectos" -->
+            <!-- Este mensaje se mostraría dinámicamente por un script del servidor si hay un error -->
+            <!-- Ejemplo: "Incorrect username or password" -->
         </div>
 
+        <!-- Formulario de inicio de sesión -->
         <form action="/login" method="POST">
+            <!-- Grupo de formulario para el nombre de usuario o correo electrónico -->
             <div class="form-group">
-                <label for="username">Usuario o Email</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username">Username or Email</label> <!-- Etiqueta para el campo de nombre de usuario o correo electrónico -->
+                <input type="text" id="username" name="username" required> <!-- Campo de entrada para el nombre de usuario o correo electrónico -->
             </div>
+            <!-- Grupo de formulario para la contraseña -->
             <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label> <!-- Etiqueta para el campo de contraseña -->
+                <input type="password" id="password" name="password" required> <!-- Campo de entrada para la contraseña -->
             </div>
+            <!-- Grupo de formulario para la opción de recordar -->
             <div class="form-group">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Recordarme</label>
+                <input type="checkbox" id="remember" name="remember"> <!-- Campo de entrada para la opción de recordar -->
+                <label for="remember">Remember me</label> <!-- Etiqueta para la opción de recordar -->
             </div>
+            <!-- Grupo de formulario para el botón de inicio de sesión -->
             <div class="form-group">
-                <button type="submit">Iniciar Sesión</button>
+                <button type="submit">Log In</button> <!-- Botón de inicio de sesión -->
             </div>
+            <!-- Enlaces adicionales -->
             <div class="links">
-                <a href="/forgot-password">¿Olvidaste tu contraseña?</a><br>
-                <a href="/register">Registrarse</a>
+                <a href="/forgot-password">Forgot your password?</a><br> <!-- Enlace para recuperar la contraseña -->
+                <a href="/register">Register</a> <!-- Enlace para registrarse -->
             </div>
         </form>
         
         <!-- Botones de inicio de sesión social -->
         <div class="form-group">
-            <button class="social-btn google">Iniciar sesión con Google</button>
-            <button class="social-btn facebook">Iniciar sesión con Facebook</button>
+            <button class="social-btn google">Log in with Google</button> <!-- Botón para iniciar sesión con Google -->
+            <button class="social-btn facebook">Log in with Facebook</button> <!-- Botón para iniciar sesión con Facebook -->
         </div>
         
         <!-- Captcha -->
-        <!-- Aquí se incluiría un captcha si es necesario -->
+        <!-- Un captcha se incluiría aquí si es necesario -->
     </div>
+
+     <!-- Pie de página -->
+     <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p> <!-- Derechos de autor -->
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p> <!-- Enlaces a la política de privacidad y términos de servicio -->
+    </footer>
 </body>
 </html>

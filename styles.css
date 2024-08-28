@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
+/*cuerpos de paginas*/
 body {
     font-family: Urbanist, sans-serif;
     background-color: #39c2b6b0;
@@ -12,129 +13,150 @@ body {
     padding: 0;
 }
 
+/*encabezados de paginas*/
 header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+    background-color: #29b8b6; /* Establece el color de fondo del encabezado a un tono de azul verdoso */
+    color: white; /* Establece el color del texto del encabezado a blanco */
+    padding: 1px 0; /* Añade un relleno de 10 píxeles en la parte superior e inferior del encabezado */
+    text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
+    position: fixed; /* Fija el encabezado en la parte superior de la ventana, incluso cuando se desplaza */
+    top: 0; /* Asegura que el encabezado esté en la parte superior de la ventana */
+    width: 100%; /* Asegura que el encabezado ocupe todo el ancho de la ventana */
+    z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos en la página */
 }
 
+/*listas no ordenadas*/
 nav ul {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: none; /* Elimina los puntos de la lista para que los elementos de la lista no tengan viñetas */
+    padding: 0; /* Elimina el relleno predeterminado del elemento <ul> para que no haya espacio adicional alrededor de la lista */
+}
+
+/*estilos de navegacion*/
+    /* Listas no ordenadas */
+nav ul {
+    list-style-type: none; /* Elimina los puntos de la lista para que los elementos de la lista no tengan viñetas */
+    padding: 0; /* Elimina el relleno predeterminado del elemento <ul> para que no haya espacio adicional alrededor de la lista */
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: inline; /* Hace que los elementos de la lista se muestren en línea, uno al lado del otro */
+    margin: 0 15px; /* Añade un margen de 15 píxeles a la izquierda y derecha de cada elemento de la lista */
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
+    color: white; /* Establece el color del texto de los enlaces a blanco */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
 }
 
+/*pie de paginas*/
 footer {
-    background-color: #333;
+    background-color: #29b8b6;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    position: absolute;
+    padding: 1px 0;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
 
+/*Estilos del Contenedor de Inicio de Sesión*/
 .login-container {
-    background-color: #ffffff;
-    padding: 80px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Establece el color de fondo del contenedor de inicio de sesión a blanco */
+    padding: 80px; /* Añade un relleno de 80 píxeles alrededor del contenedor */
+    border-radius: 5px; /* Redondea las esquinas del contenedor */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una sombra alrededor del contenedor */
 }
 
 .login-container h2 {
-    margin-bottom: 60px;
-    text-align: center;
+    margin-bottom: 60px; /* Añade un margen inferior de 60 píxeles al encabezado */
+    text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
 }
 
+/*Estilos de los Grupos de Formularios*/
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Añade un margen inferior de 15 píxeles al grupo de formularios */
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
+    display: block; /* Hace que las etiquetas se comporten como elementos de bloque */
+    margin-bottom: 5px; /* Añade un margen inferior de 5 píxeles a las etiquetas */
 }
 
 .form-group input[type="text"],
 .form-group input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 100%; /* Establece el ancho de los campos de texto y contraseña al 100% del contenedor */
+    padding: 10px; /* Añade un relleno de 10 píxeles a los campos */
+    border: 1px solid #000000; /* Establece un borde de 1 píxel de color gris claro a los campos */
+    border-radius: 5px; /* Redondea las esquinas de los campos */
 }
 
 .form-group input[type="checkbox"] {
-    margin-right: 5px;
+    margin-right: 5px; /* Añade un margen derecho de 5 píxeles a los campos de tipo checkbox */
 }
 
+    /*COLOR BOTONES*/
 .form-group button {
-    width: 100%;
-    padding: 10px;
-    background-color: #21d3c4;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+    width: 100%; /* Establece el ancho del botón al 100% del contenedor */
+    padding: 10px; /* Añade un relleno de 10 píxeles al botón */
+    background-color: #29b8b6; /* Establece el color de fondo del botón a un tono de verde azulado */
+    border: none; /* Elimina el borde del botón */
+    border-radius: 5px; /* Redondea las esquinas del botón */
+    color: white; /* Establece el color del texto del botón a blanco */
+    font-size: 16px; /* Establece el tamaño de la fuente del texto del botón a 16 píxeles */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
 }
-
+    /*COLOR SOMBRA BOTONES (AL PONER MOUSE)*/
 .form-group button:hover {
-    background-color: #4cae4c;
+    background-color: #11978e; /* Cambia el color de fondo del botón cuando se pasa el ratón por encima */
+}
 }
 
+/*estilos de enlaces*/
 .links {
-    text-align: center;
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 40px; /* Ajusta este valor según necesites */
+    text-align: center; /* Centra el texto horizontalmente dentro del contenedor de enlaces */
+    margin-top: 15px; /* Añade un margen superior de 15 píxeles al contenedor de enlaces */
+    display: flex; /* Utiliza el modelo de caja flexible para el contenedor de enlaces */
+    justify-content: center; /* Centra el contenido horizontalmente dentro del contenedor de enlaces */
+    gap: 40px; /* Añade un espacio de 40 píxeles entre los enlaces */
 }
 
 .links a {
-    font-family: "Edu VIC WA NT Beginner", cursive;
-    color: #0d668a;
-    text-decoration: none;
+    font-family: "Edu VIC WA NT Beginner", cursive; /* Establece la fuente de los enlaces a "Edu VIC WA NT Beginner" */
+    color: #000000; /* Establece el color del texto de los enlaces a un tono de azul oscuro */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
 }
 
 .links a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Añade un subrayado a los enlaces cuando se pasa el ratón por encima */
 }
 
+/*Estilos de msj de error*/
 .error-message {
-    color: red;
-    text-align: center;
-    margin-bottom: 15px;
+    color: red; /* Establece el color del texto del mensaje de error a rojo */
+    text-align: center; /* Centra el texto horizontalmente dentro del mensaje de error */
+    margin-bottom: 15px; /* Añade un margen inferior de 15 píxeles al mensaje de error */
 }
 
+/*Botones sociales*/
 .social-btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 10px;
+    width: 100%; /* Establece el ancho del botón social al 100% del contenedor */
+    padding: 10px; /* Añade un relleno de 10 píxeles al botón social */
+    border: none; /* Elimina el borde del botón social */
+    border-radius: 5px; /* Redondea las esquinas del botón social */
+    color: white; /* Establece el color del texto del botón social a blanco */
+    font-size: 16px; /* Establece el tamaño de la fuente del texto del botón social a 16 píxeles */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón social */
+    margin-bottom: 10px; /* Añade un margen inferior de 10 píxeles al botón social */
 }
 
 .google {
-    background-color: #db4437;
+    background-color: #db4437; /* Establece el color de fondo del botón de Google a rojo */
 }
 
 .facebook {
-    background-color: #3b5998;
+    background-color: #3b5998; /* Establece el color de fondo del botón de Facebook a azul */
 }
 
 .social-btn:hover {
-    opacity: 0.9;
+    opacity: 0.9; /* Reduce la opacidad del botón social cuando se pasa el ratón por encima */
 }
