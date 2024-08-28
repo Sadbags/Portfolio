@@ -19,7 +19,7 @@ header {
     color: white; /* Establece el color del texto del encabezado a blanco */
     padding: 1px 0; /* Añade un relleno de 10 píxeles en la parte superior e inferior del encabezado */
     text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
-    position: fixed; /* Fija el encabezado en la parte superior de la ventana, incluso cuando se desplaza */
+    position: absolute; /* Fija el encabezado en la parte superior de la ventana, incluso cuando se desplaza */
     top: 0; /* Asegura que el encabezado esté en la parte superior de la ventana */
     width: 100%; /* Asegura que el encabezado ocupe todo el ancho de la ventana */
     z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos en la página */
@@ -108,7 +108,6 @@ footer {
     /*COLOR SOMBRA BOTONES (AL PONER MOUSE)*/
 .form-group button:hover {
     background-color: #11978e; /* Cambia el color de fondo del botón cuando se pasa el ratón por encima */
-}
 }
 
 /*estilos de enlaces*/
