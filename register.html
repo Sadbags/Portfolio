@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+    <!-- Contenedor principal del formulario de registro -->
+    <div class="register-container">
+        <h2>Register</h2> <!-- Encabezado del formulario -->
+
+        <!-- Mensaje de error -->
+        <div class="error-message">
+            <!-- Este mensaje se mostraría dinámicamente por un script del servidor si hay un error -->
+            <!-- Ejemplo: "Username already taken" -->
+        </div>
+
+        <!-- Formulario de registro -->
+        <form action="/register" method="POST">
+            <!-- Grupo de formulario para el nombre de usuario -->
+            <div class="form-group">
+                <label for="username">Username</label> <!-- Etiqueta para el campo de nombre de usuario -->
+                <input type="text" id="username" name="username" required> <!-- Campo de entrada para el nombre de usuario -->
+            </div>
+            <!-- Grupo de formulario para el correo electrónico -->
+            <div class="form-group">
+                <label for="email">Email</label> <!-- Etiqueta para el campo de correo electrónico -->
+                <input type="email" id="email" name="email" required> <!-- Campo de entrada para el correo electrónico -->
+            </div>
+            <!-- Grupo de formulario para la contraseña -->
+            <div class="form-group">
+                <label for="password">Password</label> <!-- Etiqueta para el campo de contraseña -->
+                <input type="password" id="password" name="password" required> <!-- Campo de entrada para la contraseña -->
+            </div>
+            <!-- Grupo de formulario para la confirmación de la contraseña -->
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label> <!-- Etiqueta para el campo de confirmación de la contraseña -->
+                <input type="password" id="confirm-password" name="confirm-password" required> <!-- Campo de entrada para la confirmación de la contraseña -->
+            </div>
+            <!-- Grupo de formulario para el botón de registro -->
+            <div class="form-group">
+                <button type="submit">Register</button> <!-- Botón de registro -->
+            </div>
+            <!-- Enlaces adicionales -->
+            <div class="links">
+                <a href="login.html">Already have an account? Log in</a><br> <!-- Enlace a la página de inicio de sesión -->
+                <a href="forgot.html">Forgot your password?</a> <!-- Enlace a la página de recuperación de contraseña -->
+            </div>
+        </form>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p> <!-- Derechos de autor -->
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p> <!-- Enlaces a la política de privacidad y términos de servicio -->
+    </footer>
+</body>
+</html>

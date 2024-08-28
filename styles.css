@@ -61,10 +61,13 @@ footer {
 
 /*Estilos del Contenedor de Inicio de Sesión*/
 .login-container {
-    background-color: #ffffff; /* Establece el color de fondo del contenedor de inicio de sesión a blanco */
-    padding: 80px; /* Añade un relleno de 80 píxeles alrededor del contenedor */
-    border-radius: 5px; /* Redondea las esquinas del contenedor */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una sombra alrededor del contenedor */
+    background-color: #ffffff; /* Color de fondo del contenedor */
+    padding: 40px; /* Relleno interno del contenedor */
+    margin: 50px auto; /* Margen superior e inferior de 50 píxeles, centrado horizontalmente */
+    border-radius: 10px; /* Bordes redondeados del contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del contenedor */
+    max-width: 400px; /* Ancho máximo del contenedor */
+    text-align: center; /* Centra el texto dentro del contenedor */
 }
 
 .login-container h2 {
@@ -75,6 +78,8 @@ footer {
 /*Estilos de los Grupos de Formularios*/
 .form-group {
     margin-bottom: 15px; /* Añade un margen inferior de 15 píxeles al grupo de formularios */
+    display: absolute; /* Utiliza flexbox para alinear los elementos dentro del grupo de formulario */
+    align-items: center; /* Alinea verticalmente los elementos al centro */
 }
 
 .form-group label {
@@ -94,7 +99,6 @@ footer {
     margin-right: 5px; /* Añade un margen derecho de 5 píxeles a los campos de tipo checkbox */
 }
 
-    /*COLOR BOTONES*/
 .form-group button {
     width: 100%; /* Establece el ancho del botón al 100% del contenedor */
     padding: 10px; /* Añade un relleno de 10 píxeles al botón */
@@ -108,6 +112,17 @@ footer {
     /*COLOR SOMBRA BOTONES (AL PONER MOUSE)*/
 .form-group button:hover {
     background-color: #11978e; /* Cambia el color de fondo del botón cuando se pasa el ratón por encima */
+}
+
+/* Estilos para el contenedor de "Forgot Password" */
+.forgot-password-container {
+    background-color: #ffffff; /* Color de fondo del contenedor */
+    padding: 40px; /* Relleno interno del contenedor */
+    margin: 50px auto; /* Margen superior e inferior de 50 píxeles, centrado horizontalmente */
+    border-radius: 10px; /* Bordes redondeados del contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del contenedor */
+    max-width: 400px; /* Ancho máximo del contenedor */
+    text-align: center; /* Centra el texto dentro del contenedor */
 }
 
 /*estilos de enlaces*/
