@@ -13,13 +13,24 @@ body {
     padding: 0;
 }
 
+/* Estilos para el cuadro centrado */
+.centered-box {
+    background-color: #ffffff; /* Color de fondo del cuadro */
+    padding: 40px; /* Relleno interno del cuadro */
+    border: 2px solid #ffffff; /* Borde de 2 píxeles de color negro */
+    border-radius: 10px; /* Bordes redondeados del cuadro */
+    box-shadow: 10px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del cuadro */
+    max-width: 400px; /* Ancho máximo del cuadro */
+    width: 100%; /* Ancho al 100% del contenedor padre */
+}
+
 /*encabezados de paginas*/
 header {
     background-color: #29b8b6; /* Establece el color de fondo del encabezado a un tono de azul verdoso */
     color: white; /* Establece el color del texto del encabezado a blanco */
     padding: 1px 0; /* Añade un relleno de 10 píxeles en la parte superior e inferior del encabezado */
     text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
-    position: absolute; /* Fija el encabezado en la parte superior de la ventana, incluso cuando se desplaza */
+    position: fixed; /* Fija el encabezado en la parte superior de la ventana, incluso cuando se desplaza */
     top: 0; /* Asegura que el encabezado esté en la parte superior de la ventana */
     width: 100%; /* Asegura que el encabezado ocupe todo el ancho de la ventana */
     z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos en la página */
@@ -60,16 +71,6 @@ footer {
 }
 
 /*Estilos del Contenedor de Inicio de Sesión*/
-.login-container {
-    background-color: #ffffff; /* Color de fondo del contenedor */
-    padding: 40px; /* Relleno interno del contenedor */
-    margin: 50px auto; /* Margen superior e inferior de 50 píxeles, centrado horizontalmente */
-    border-radius: 10px; /* Bordes redondeados del contenedor */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del contenedor */
-    max-width: 400px; /* Ancho máximo del contenedor */
-    text-align: center; /* Centra el texto dentro del contenedor */
-}
-
 .login-container h2 {
     margin-bottom: 60px; /* Añade un margen inferior de 60 píxeles al encabezado */
     text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
@@ -109,7 +110,101 @@ footer {
     font-size: 16px; /* Establece el tamaño de la fuente del texto del botón a 16 píxeles */
     cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
 }
-    /*COLOR SOMBRA BOTONES (AL PONER MOUSE)*/
+
+/* SERVICES - Estilos del contenedor de búsqueda */
+.search-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 10px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.search-container h1 {
+    margin-bottom: 20px;
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+#search-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #29b8b6;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search-form button:hover {
+    background-color: #11978e;
+}
+
+/* Estilos del contenedor de resultados */
+#results-container {
+    text-align: left;
+}
+
+.result-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    transition: background-color 0.3s ease; /* Añadir transición */
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+/*CONTACT US - Estilos del contenedor de contacto */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contact-form label {
+    margin: 10px 0 5px;
+    width: 100%;
+    text-align: left;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+#contact-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #29b8b6;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #11978e;
+    transform: scale(1.05);
+}
+
+/*COLOR SOMBRA BOTONES (AL PONER MOUSE)*/
 .form-group button:hover {
     background-color: #11978e; /* Cambia el color de fondo del botón cuando se pasa el ratón por encima */
 }
