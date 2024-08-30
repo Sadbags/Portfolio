@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+
+
+.hero {
+    background-color: #5cb85c;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.hero .btn {
+    background-color: white;
+    color: #5cb85c;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
