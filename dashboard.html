@@ -1,27 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="calendar.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="shortcut icon" href="img/LB.png" type="logo">
 </head>
 <body>
-	<div>
-        <h1 id="mes-año"></h1> <!-- Aquí se actualizará el mes y el año -->
-        <ol id="dias-semana">
-            <li class="day-name">Mon</li>
-            <li class="day-name">Tue</li>
-            <li class="day-name">Wed</li>
-            <li class="day-name">Thu</li>
-            <li class="day-name">Fri</li>
-            <li class="day-name">Sat</li>
-            <li class="day-name">Sun</li>
-        </ol>
-        <ol id="dias-del-mes">
-            <!-- Aquí se cargarán los días del mes usando JavaScript -->
-        </ol>
-    </div>
-	<script src="script.js"></script> <!-- Enlaza con el archivo JavaScript -->
+	<nav class="navbar">
+		<div class="navbar__container">
+			<a href="home.html" id="navbar__logo"><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a>
+			<div class="navbar__toggle" id="mobile-menu">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</div>
+			<ul class="navbar__menu">
+				<li class="navbar__item">
+					<a href="dashboard.html" class="navbar__links">Dashboard</a>
+				</li>
+				<li class="navbar__item">
+					<a href="home.html" class="navbar__links">Home</a>
+				</li>
+				<li class="navbar__item">
+					<a href="/" class="navbar__links">About Us</a>
+				</li>
+				<li class="navbar__btn">
+					<a href="login.html" class="button">Login</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="calendar__container">
+		<div class="calendar">
+			<div class="calendar__header">
+				<div class="month"></div>
+				<div class="calendar__btns">
+					<div class="btn today-btn">
+						<i class="fas fa-calendar-day"></i>
+					</div>
+					<div class="btn prev-btn">
+						<i class="fas fa-chevron-left"></i>
+					</div>
+					<div class="btn next-btn">
+						<i class="fas fa-chevron-right"></i>
+					</div>
+				</div>
+			</div>
+			<div class="weekdays">
+				<div class="day">Sun</div>
+				<div class="day">Mon</div>
+				<div class="day">Tue</div>
+				<div class="day">Wed</div>
+				<div class="day">Thu</div>
+				<div class="day">Fri</div>
+				<div class="day">Sat</div>
+			</div>
+			<div class="days">
+				<!-- Add days using js -->
+
+			</div>
+		</div>
+	</div>
+
+		<script src="script.js"></script>
 </body>
+
 </html>
