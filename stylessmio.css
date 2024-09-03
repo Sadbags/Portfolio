@@ -1,5 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.gstatic.com');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet')
+
+/* Estilos del logo */
+.logo {
+    height: 50px; /* Ajusta la altura del logo según sea necesario */
+    width: auto; /* Mantiene la proporción del logo */
+}
+
+/*encabezados de paginas*/
+header {
+    background-color: #29b8b6; /* Establece el color de fondo del encabezado a un tono de azul verdoso */
+    color: rgb(173, 2, 2); /* Establece el color del texto del encabezado a blanco */
+    padding: 0% 0; /* Añade un relleno de 10 píxeles en la parte superior e inferior del encabezado */
+    text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
+    position: fixed; /* Fija el encabezado en la parte superior de la ventana, incluso cuando se desplaza */
+    top: 0; /* Asegura que el encabezado esté en la parte superior de la ventana */
+    width: 100%; /* Asegura que el encabezado ocupe todo el ancho de la ventana */
+    z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos en la página */
+}
 
 /*cuerpos de paginas*/
 body {
@@ -7,11 +26,13 @@ body {
     background-color: #39c2b6b0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+    margin: 0; /* Eliminar márgenes predeterminados */
+    padding: 20px; /* Añadir padding para asegurar espacio alrededor del contenido */
+    box-sizing: border-box; /* Asegurar que el padding no afecte el ancho total */
+    align-items: center; /* Centrar verticalmente */
+
 }
+
 
 /* Estilos para el cuadro centrado */
 .centered-box {
@@ -22,19 +43,8 @@ body {
     box-shadow: 10px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del cuadro */
     max-width: 400px; /* Ancho máximo del cuadro */
     width: 100%; /* Ancho al 100% del contenedor padre */
-}
-
-/*encabezados de paginas*/
-header {
-    background-color: #29b8b6; /* Establece el color de fondo del encabezado a un tono de azul verdoso */
-    color: white; /* Establece el color del texto del encabezado a blanco */
-    padding: 1px 0; /* Añade un relleno de 10 píxeles en la parte superior e inferior del encabezado */
-    text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
-    position: fixed; /* Fija el encabezado en la parte superior de la ventana, incluso cuando se desplaza */
-    top: 0; /* Asegura que el encabezado esté en la parte superior de la ventana */
-    width: 100%; /* Asegura que el encabezado ocupe todo el ancho de la ventana */
-    z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos en la página */
-}
+    margin-top: 20px;
+}   
 
 /*listas no ordenadas*/
 nav ul {
@@ -64,10 +74,31 @@ footer {
     background-color: #29b8b6;
     color: white;
     text-align: center;
-    padding: 1px 0;
-    position: fixed;
-    bottom: 0;
+    padding: 0px 0; /* Ajustar el padding para mayor visibilidad */
+    position: fixed; /* Cambiar a fixed para que se mantenga en la parte inferior */
+    bottom: 0; /* Asegurar que esté en la parte inferior */
     width: 100%;
+    
+}
+
+
+/* LOG IN - page */
+/* Estilos del botón de Log in */
+.login-btn {
+    padding: 10px 20px;
+    background-color: #29b8b6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 2px solid #29b8b6; /* Añade un borde */
+    display: inline-block; /* Asegura que se comporte como un botón */
+}
+
+.login-btn:hover {
+    background-color: #11978e;
+    transform: scale(1.05);
+    border-color: #11978e; /* Cambia el color del borde al pasar el ratón */
 }
 
 /*Estilos del Contenedor de Inicio de Sesión*/
@@ -269,3 +300,16 @@ footer {
 .social-btn:hover {
     opacity: 0.9; /* Reduce la opacidad del botón social cuando se pasa el ratón por encima */
 }
+
+#home-box {
+    background-color: #ffffff; /* Color de fondo del cuadro */
+    padding: 40px; /* Relleno interno del cuadro */
+    border: 2px solid #ffffff; /* Borde de 2 píxeles de color negro */
+    border-radius: 10px; /* Bordes redondeados del cuadro */
+    box-shadow: 10px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del cuadro */
+    max-width: 400px; /* Ancho máximo del cuadro */
+    width: 100%; /* Ancho al 100% del contenedor padre */    
+    justify-content: center;
+}
+
+/*HOME - PAGE*/
