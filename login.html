@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
+<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
@@ -20,55 +21,146 @@
 				<span class="bar"></span>
 				<span class="bar"></span>
 			</div>
-				<ul class="navbar__menu">
-					<li class="navbar__item">
-						<a href="dashboard.html" class="navbar__links">Dashboard</a>
-					</li>
-					<li class="navbar__item">
-						<a href="home.html" class="navbar__links">Home</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+			<ul class="navbar__menu">
+				<li class="navbar__item">
+					<a href="dashboard.html" class="navbar__links">Dashboard</a>
+				</li>
+				<li class="navbar__item">
+					<a href="index.html" class="navbar__links">Home</a>
+				</li>
+			</ul>
+		</div>
+
+	</nav>
+
+=======
+    <!-- Metadatos del documento -->
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres a UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Asegura que la página se vea bien en todos los dispositivos -->
+    <title>QUICKR-Login</title> <!-- Título de la página -->
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <!-- Navegación principal -->
+        <nav class="navbar">
+            <div class="navbar__container">
+                <a href="home.html" id="navbar__logo"><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a>
+                <div class="navbar__toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item">
+                        <a href="home.html" class="navbar__links">Home</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="dashboard.html" class="navbar__links">Dashboard</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="services.html" class="navbar__links">Search Services</a>
+                    </li>
+                    <li class="navbar__btn">
+                        <a href="login.html" class="button">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="centered-box">
+    <!-- Contenedor principal del formulario de inicio de sesión -->
+>>>>>>> Alex
     <div class="login-container">
-        <h2>Inicio de Sesión</h2>
+        <h2>Login</h2> <!-- Encabezado del formulario -->
 
         <!-- Mensaje de error -->
         <div class="error-message">
-            <!-- Este mensaje se mostraría dinámicamente con un script de servidor si hay un error -->
-            <!-- Ejemplo: "Usuario o contraseña incorrectos" -->
+            <!-- Este mensaje se mostraría dinámicamente por un script del servidor si hay un error -->
+            <!-- Ejemplo: "Incorrect username or password" -->
         </div>
 
+        <!-- Formulario de inicio de sesión -->
         <form action="/login" method="POST">
+            <!-- Grupo de formulario para el nombre de usuario o correo electrónico -->
             <div class="form-group">
-                <label for="username">Username or Email</label>
-                <input type="text" id="username" name="username" required>
+                <label for="Email">Email</label> <!-- Etiqueta para el campo de nombre de usuario o correo electrónico -->
+                <input type="text" id="email" name="Email" required> <!-- Campo de entrada para el nombre de usuario o correo electrónico -->
             </div>
+            <!-- Grupo de formulario para la contraseña -->
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label> <!-- Etiqueta para el campo de contraseña -->
+                <input type="password" id="password" name="password" required> <!-- Campo de entrada para la contraseña -->
             </div>
+            <!-- Grupo de formulario para la opción de recordar -->
             <div class="form-group">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remenber me</label>
+                <input type="checkbox" id="remember" name="remember"> <!-- Campo de entrada para la opción de recordar -->
+                <label for="remember">Remember me</label> <!-- Etiqueta para la opción de recordar -->
             </div>
+            <!-- Grupo de formulario para el botón de inicio de sesión -->
             <div class="form-group">
-                <button type="submit">Iniciar Sesión</button>
+                <button type="submit">Log In</button> <!-- Botón de inicio de sesión -->
             </div>
+            <!-- Enlaces adicionales -->
             <div class="links">
-                <a href="/forgot-password">Forgot your password?</a><br>
-                <a href="/register">Register</a>
+                <a href="register.html">Create account</a> <!-- Enlace para registrarse -->
+                <a href="forgot.html">Forgot Password?</a> <!-- Enlace para recuperar la contraseña -->
             </div>
         </form>
 
         <!-- Botones de inicio de sesión social -->
         <div class="form-group">
-            <button class="social-btn google">Iniciar sesión con Google</button>
-            <button class="social-btn facebook">Iniciar sesión con Facebook</button>
+            <button class="social-btn google">Log in with Google</button> <!-- Botón para iniciar sesión con Google -->
+            <button class="social-btn facebook">Log in with Facebook</button> <!-- Botón para iniciar sesión con Facebook -->
         </div>
 
         <!-- Captcha -->
-        <!-- Aquí se incluiría un captcha si es necesario -->
+        <!-- Un captcha se incluiría aquí si es necesario -->
     </div>
+    </div>
+
+<!-- Footer Section -->
+<div class="footer__container">
+    <div class="footer__links">
+        <div class="footer__link--wrapper">
+            <div class="footer__link--items">
+            </div>
+            <div class="footer__link--items">
+                <h2>Contact Us</h2>
+                <a href="support.html">Costumer Support</a>
+                <a href="/">FAQ</a>
+            </div>
+            <div class="footer__link--items">
+                <h2>Social Media</h2>
+                <a href="/">Facebook</a>
+                <a href="/">Instagram</a>
+                <a href="/">Twitter</a>
+            </div>
+        </div>
+    </div>
+    <div class="social__media">
+        <div class="social__media--wrap">
+            <div class="footer__logo">
+                <a href="/" id="footer__logo"><i class="fa-solid fa-bolt"></i></i> Quickr</a>
+            </div>
+            <p class="website__rights"> ©️ Quickr 2024. All Rights reserved.</p>
+            <p><a href="terms.html">Terms</a> | <a href="privacypolicy.html">Privacy Policy</a>
+            <div class="social__icons">
+                <a href="https://www.facebook.com" class="social__icon--link" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com" class="social__icon--link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.twitter.com" class="social__icon--link" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
