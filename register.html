@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account QUICKR</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+<header>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="home.html" id="navbar__logo"><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+				<li class="navbar__item">
+					<a href="home.html" class="navbar__links">Home</a>
+				</li>
+				<li class="navbar__item">
+					<a href="dashboard.html" class="navbar__links">Dashboard</a>
+				</li>
+				<li class="navbar__item">
+					<a href="services.html" class="navbar__links">Search Services</a>
+				</li>
+				<li class="navbar__btn">
+					<a href="login.html" class="button">Login</a>
+				</li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="centered-box">
+    <!-- Contenedor principal del formulario de registro -->
+    <div class="register-container">
+        <h2>Create Account</h2> <!-- Encabezado del formulario -->
+
+        <!-- Mensaje de error -->
+        <div class="error-message">
+            <!-- Este mensaje se mostraría dinámicamente por un script del servidor si hay un error -->
+            <!-- Ejemplo: "Username already taken" -->
+        </div>
+
+        <!-- Formulario de registro -->
+        <form action="/register" method="POST">
+            <!-- Grupo de formulario para el nombre de usuario -->
+            <div class="form-group">
+                <label for="username">Username</label> <!-- Etiqueta para el campo de nombre de usuario -->
+                <input type="text" id="username" name="username" required> <!-- Campo de entrada para el nombre de usuario -->
+            </div>
+            <!-- Grupo de formulario para el correo electrónico -->
+            <div class="form-group">
+                <label for="email">Email</label> <!-- Etiqueta para el campo de correo electrónico -->
+                <input type="email" id="email" name="email" required> <!-- Campo de entrada para el correo electrónico -->
+            </div>
+            <!-- Grupo de formulario para la contraseña -->
+            <div class="form-group">
+                <label for="password">Password</label> <!-- Etiqueta para el campo de contraseña -->
+                <input type="password" id="password" name="password" required> <!-- Campo de entrada para la contraseña -->
+            </div>
+            <!-- Grupo de formulario para la confirmación de la contraseña -->
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label> <!-- Etiqueta para el campo de confirmación de la contraseña -->
+                <input type="password" id="confirm-password" name="confirm-password" required> <!-- Campo de entrada para la confirmación de la contraseña -->
+            </div>
+            <!-- Grupo de formulario para el botón de registro -->
+            <div class="form-group">
+                <button type="submit">Register</button> <!-- Botón de registro -->
+            </div>
+            <!-- Enlaces adicionales -->
+            <div class="links">
+                <a href="login.html">Already have an account? Log in</a><br> <!-- Enlace a la página de inicio de sesión -->
+                <a href="forgot.html">Forgot your password?</a> <!-- Enlace a la página de recuperación de contraseña -->
+            </div>
+        </form>
+    </div>
+
+    <footer>
+<!-- Footer Section -->
+<div class="footer__container">
+    <div class="footer__links">
+        <div class="footer__link--wrapper">
+            <div class="footer__link--items">
+            </div>
+            <div class="footer__link--items">
+                <h2>Contact Us</h2>
+                <a href="support.html">Costumer Support</a>
+                <a href="/">FAQ</a>
+            </div>
+            <div class="footer__link--items">
+                <h2>Social Media</h2>
+                <a href="/">Facebook</a>
+                <a href="/">Instagram</a>
+                <a href="/">Twitter</a>
+            </div>
+        </div>
+    </div>
+    <div class="social__media">
+        <div class="social__media--wrap">
+            <div class="footer__logo">
+                <a href="/" id="footer__logo"><i class="fa-solid fa-bolt"></i></i> Quickr</a>
+            </div>
+            <p class="website__rights"> ©️ Quickr 2024. All Rights reserved.</p>
+            <p><a href="terms.html">Terms</a> | <a href="privacypolicy.html">Privacy Policy</a>
+            <div class="social__icons">
+                <a href="https://www.facebook.com" class="social__icon--link" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com" class="social__icon--link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.twitter.com" class="social__icon--link" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.gstatic.com');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet')
+
+/* Estilos del logo */
+.logo {
+    height: 50px; /* Ajusta la altura del logo según sea necesario */
+    width: auto; /* Mantiene la proporción del logo */
+}
+
+/*encabezados de paginas*/
+header {
+    background-color: #29b8b6; /* Establece el color de fondo del encabezado a un tono de azul verdoso */
+    color: rgb(173, 2, 2); /* Establece el color del texto del encabezado a blanco */
+    padding: 0% 0; /* Añade un relleno de 10 píxeles en la parte superior e inferior del encabezado */
+    text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
+    position: fixed; /* Fija el encabezado en la parte superior de la ventana, incluso cuando se desplaza */
+    top: 0; /* Asegura que el encabezado esté en la parte superior de la ventana */
+    width: 100%; /* Asegura que el encabezado ocupe todo el ancho de la ventana */
+    z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos en la página */
+}
+
+/*cuerpos de paginas*/
+body {
+    font-family: Urbanist, sans-serif;
+    background-color: #39c2b6b0;
+    display: flex;
+    justify-content: center;
+    margin: 0; /* Eliminar márgenes predeterminados */
+    padding: 20px; /* Añadir padding para asegurar espacio alrededor del contenido */
+    box-sizing: border-box; /* Asegurar que el padding no afecte el ancho total */
+    align-items: center; /* Centrar verticalmente */
+
+}
+
+
+/* Estilos para el cuadro centrado */
+.centered-box {
+    background-color: #ffffff; /* Color de fondo del cuadro */
+    padding: 40px; /* Relleno interno del cuadro */
+    border: 2px solid #ffffff; /* Borde de 2 píxeles de color negro */
+    border-radius: 10px; /* Bordes redondeados del cuadro */
+    box-shadow: 10px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del cuadro */
+    max-width: 400px; /* Ancho máximo del cuadro */
+    width: 100%; /* Ancho al 100% del contenedor padre */
+    margin-top: 20px;
+}   
+
+/*listas no ordenadas*/
+nav ul {
+    list-style-type: none; /* Elimina los puntos de la lista para que los elementos de la lista no tengan viñetas */
+    padding: 0; /* Elimina el relleno predeterminado del elemento <ul> para que no haya espacio adicional alrededor de la lista */
+}
+
+/*estilos de navegacion*/
+    /* Listas no ordenadas */
+nav ul {
+    list-style-type: none; /* Elimina los puntos de la lista para que los elementos de la lista no tengan viñetas */
+    padding: 0; /* Elimina el relleno predeterminado del elemento <ul> para que no haya espacio adicional alrededor de la lista */
+}
+
+nav ul li {
+    display: inline; /* Hace que los elementos de la lista se muestren en línea, uno al lado del otro */
+    margin: 0 15px; /* Añade un margen de 15 píxeles a la izquierda y derecha de cada elemento de la lista */
+}
+
+nav ul li a {
+    color: white; /* Establece el color del texto de los enlaces a blanco */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+/*pie de paginas*/
+footer {
+    background-color: #29b8b6;
+    color: white;
+    text-align: center;
+    padding: 0px 0; /* Ajustar el padding para mayor visibilidad */
+    position: fixed; /* Cambiar a fixed para que se mantenga en la parte inferior */
+    bottom: 0; /* Asegurar que esté en la parte inferior */
+    width: 100%;
+    
+}
+
+
+/* LOG IN - page */
+/* Estilos del botón de Log in */
+.login-btn {
+    padding: 10px 20px;
+    background-color: #29b8b6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 2px solid #29b8b6; /* Añade un borde */
+    display: inline-block; /* Asegura que se comporte como un botón */
+}
+
+.login-btn:hover {
+    background-color: #11978e;
+    transform: scale(1.05);
+    border-color: #11978e; /* Cambia el color del borde al pasar el ratón */
+}
+
+/*Estilos del Contenedor de Inicio de Sesión*/
+.login-container h2 {
+    margin-bottom: 60px; /* Añade un margen inferior de 60 píxeles al encabezado */
+    text-align: center; /* Centra el texto horizontalmente dentro del encabezado */
+}
+
+/*Estilos de los Grupos de Formularios*/
+.form-group {
+    margin-bottom: 15px; /* Añade un margen inferior de 15 píxeles al grupo de formularios */
+    display: absolute; /* Utiliza flexbox para alinear los elementos dentro del grupo de formulario */
+    align-items: center; /* Alinea verticalmente los elementos al centro */
+}
+
+.form-group label {
+    display: block; /* Hace que las etiquetas se comporten como elementos de bloque */
+    margin-bottom: 5px; /* Añade un margen inferior de 5 píxeles a las etiquetas */
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%; /* Establece el ancho de los campos de texto y contraseña al 100% del contenedor */
+    padding: 10px; /* Añade un relleno de 10 píxeles a los campos */
+    border: 1px solid #000000; /* Establece un borde de 1 píxel de color gris claro a los campos */
+    border-radius: 5px; /* Redondea las esquinas de los campos */
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 5px; /* Añade un margen derecho de 5 píxeles a los campos de tipo checkbox */
+}
+
+.form-group button {
+    width: 100%; /* Establece el ancho del botón al 100% del contenedor */
+    padding: 10px; /* Añade un relleno de 10 píxeles al botón */
+    background-color: #29b8b6; /* Establece el color de fondo del botón a un tono de verde azulado */
+    border: none; /* Elimina el borde del botón */
+    border-radius: 5px; /* Redondea las esquinas del botón */
+    color: white; /* Establece el color del texto del botón a blanco */
+    font-size: 16px; /* Establece el tamaño de la fuente del texto del botón a 16 píxeles */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+}
+
+/* SERVICES - Estilos del contenedor de búsqueda */
+.search-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 10px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.search-container h1 {
+    margin-bottom: 20px;
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+#search-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #29b8b6;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search-form button:hover {
+    background-color: #11978e;
+}
+
+/* Estilos del contenedor de resultados */
+#results-container {
+    text-align: left;
+}
+
+.result-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    transition: background-color 0.3s ease; /* Añadir transición */
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+/*CONTACT US - Estilos del contenedor de contacto */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contact-form label {
+    margin: 10px 0 5px;
+    width: 100%;
+    text-align: left;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+#contact-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #29b8b6;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #11978e;
+    transform: scale(1.05);
+}
+
+/*COLOR SOMBRA BOTONES (AL PONER MOUSE)*/
+.form-group button:hover {
+    background-color: #11978e; /* Cambia el color de fondo del botón cuando se pasa el ratón por encima */
+}
+
+/* Estilos para el contenedor de "Forgot Password" */
+.forgot-password-container {
+    background-color: #ffffff; /* Color de fondo del contenedor */
+    padding: 40px; /* Relleno interno del contenedor */
+    margin: 50px auto; /* Margen superior e inferior de 50 píxeles, centrado horizontalmente */
+    border-radius: 10px; /* Bordes redondeados del contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del contenedor */
+    max-width: 400px; /* Ancho máximo del contenedor */
+    text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+/*estilos de enlaces*/
+.links {
+    text-align: center; /* Centra el texto horizontalmente dentro del contenedor de enlaces */
+    margin-top: 15px; /* Añade un margen superior de 15 píxeles al contenedor de enlaces */
+    display: flex; /* Utiliza el modelo de caja flexible para el contenedor de enlaces */
+    justify-content: center; /* Centra el contenido horizontalmente dentro del contenedor de enlaces */
+    gap: 40px; /* Añade un espacio de 40 píxeles entre los enlaces */
+}
+
+.links a {
+    font-family: "Edu VIC WA NT Beginner", cursive; /* Establece la fuente de los enlaces a "Edu VIC WA NT Beginner" */
+    color: #000000; /* Establece el color del texto de los enlaces a un tono de azul oscuro */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+.links a:hover {
+    text-decoration: underline; /* Añade un subrayado a los enlaces cuando se pasa el ratón por encima */
+}
+
+/*Estilos de msj de error*/
+.error-message {
+    color: red; /* Establece el color del texto del mensaje de error a rojo */
+    text-align: center; /* Centra el texto horizontalmente dentro del mensaje de error */
+    margin-bottom: 15px; /* Añade un margen inferior de 15 píxeles al mensaje de error */
+}
+
+/*Botones sociales*/
+.social-btn {
+    width: 100%; /* Establece el ancho del botón social al 100% del contenedor */
+    padding: 10px; /* Añade un relleno de 10 píxeles al botón social */
+    border: none; /* Elimina el borde del botón social */
+    border-radius: 5px; /* Redondea las esquinas del botón social */
+    color: white; /* Establece el color del texto del botón social a blanco */
+    font-size: 16px; /* Establece el tamaño de la fuente del texto del botón social a 16 píxeles */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón social */
+    margin-bottom: 10px; /* Añade un margen inferior de 10 píxeles al botón social */
+}
+
+.google {
+    background-color: #db4437; /* Establece el color de fondo del botón de Google a rojo */
+}
+
+.facebook {
+    background-color: #3b5998; /* Establece el color de fondo del botón de Facebook a azul */
+}
+
+.social-btn:hover {
+    opacity: 0.9; /* Reduce la opacidad del botón social cuando se pasa el ratón por encima */
+}
+
+#home-box {
+    background-color: #ffffff; /* Color de fondo del cuadro */
+    padding: 40px; /* Relleno interno del cuadro */
+    border: 2px solid #ffffff; /* Borde de 2 píxeles de color negro */
+    border-radius: 10px; /* Bordes redondeados del cuadro */
+    box-shadow: 10px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del cuadro */
+    max-width: 400px; /* Ancho máximo del cuadro */
+    width: 100%; /* Ancho al 100% del contenedor padre */    
+    justify-content: center;
+}
+
+/*HOME - PAGE*/
