@@ -4,36 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Services</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="shortcut icon" href="../img/LB.png" type="logo"> <!-- Enlace al logo de la página -->
 </head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="navbar__container">
-                <a href="home.html" id="navbar__logo"><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a>
-                <div class="navbar__toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-                <ul class="navbar__menu">
-                    <li class="navbar__item">
-                        <a href="home.html" class="navbar__links">Home</a>
-                    </li>
-                    <li class="navbar__item">
-                        <a href="dashboard.html" class="navbar__links">Dashboard</a>
-                    </li>
-                    <li class="navbar__item">
-                        <a href="services.html" class="navbar__links">Search Services</a>
-                    </li>
-                    <li class="navbar__btn">
-                        <a href="login.html" class="button">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
 
+<!-- Header Section -->
+<header>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="home.html" id="navbar__logo"><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="home.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="dashboard.html" class="navbar__links">Dashboard</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="services.html" class="navbar__links">Search Services</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="login.html" class="button">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- Body Section -->
+<body>
     <div class="search-container">
         <h1>Search for Services</h1>
         <form id="search-form">
@@ -51,9 +54,10 @@
         </form>
         <div id="results-container"></div>
     </div>
+</body>
 
+<!-- Footer Section -->
     <footer>
-        <!-- Footer Section -->
 	<div class="footer__container">
 		<div class="footer__links">
 			<div class="footer__link--wrapper">
@@ -93,10 +97,6 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="script.js"></script>
     </footer>
-
-    <script src="script.js"></script>
-</body>
+<script src="../JS/script.js"></script>
 </html>

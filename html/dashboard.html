@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="shortcut icon" href="img/LB.png" type="logo">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+	<link rel="shortcut icon" href="../img/LB.png" type="logo">
 </head>
-<body>
+
+<!-- Header Section -->
+<header>
 	<nav class="navbar">
 		<div class="navbar__container">
 			<a href="home.html" id="navbar__logo"><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a>
@@ -19,13 +20,13 @@
 			</div>
 			<ul class="navbar__menu">
 				<li class="navbar__item">
-					<a href="dashboard.html" class="navbar__links">Dashboard</a>
+					<a href="dashboard.html" class="navbar__links">Home</a>
 				</li>
 				<li class="navbar__item">
-					<a href="home.html" class="navbar__links">Home</a>
+					<a href="home.html" class="navbar__links">Dashboard</a>
 				</li>
 				<li class="navbar__item">
-					<a href="/" class="navbar__links">About Us</a>
+					<a href="/" class="navbar__links">Support</a>
 				</li>
 				<li class="navbar__btn">
 					<a href="login.html" class="button">Login</a>
@@ -33,7 +34,10 @@
 			</ul>
 		</div>
 	</nav>
+</header>
 
+<!-- Body Section -->
+<body>
 	<div class="calendar__container">
 		<div class="calendar">
 			<div class="calendar__header">
@@ -61,12 +65,52 @@
 			</div>
 			<div class="days">
 				<!-- Add days using js -->
-
 			</div>
 		</div>
 	</div>
-
-		<script src="script.js"></script>
 </body>
+
+<!-- Footer Section -->
+<footer>
+	<div class="footer__container">
+		<div class="footer__links">
+			<div class="footer__link--wrapper">
+				<div class="footer__link--items"></div>
+				<div class="footer__link--items">
+					<h2>Contact Us</h2>
+					<a href="support.html">Costumer Support</a>
+					<a href="/">FAQ</a>
+				</div>
+				<div class="footer__link--items">
+					<h2>Social Media</h2>
+					<a href="/">Facebook</a>
+					<a href="/">Instagram</a>
+					<a href="/">Twitter</a>
+				</div>
+			</div>
+		</div>
+		<div class="social__media">
+			<div class="social__media--wrap">
+				<div class="footer__logo">
+					<a href="home.html" id="footer__logo"><i class="fa-solid fa-bolt"></i></i> Quickr</a>
+				</div>
+				<p class="website__rights"> ©️ Quickr 2024. All Rights reserved.</p>
+				<p><a href="terms.html">Terms</a> | <a href="privacypolicy.html">Privacy Policy</a></p>
+				<div class="social__icons">
+					<a href="https://www.facebook.com" class="social__icon--link" target="_blank">
+						<i class="fab fa-facebook"></i>
+					</a>
+					<a href="https://www.instagram.com" class="social__icon--link" target="_blank">
+						<i class="fab fa-instagram"></i>
+					</a>
+					<a href="https://www.twitter.com" class="social__icon--link" target="_blank">
+						<i class="fab fa-twitter"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../JS/script.js"></script>
+</footer>
 
 </html>
