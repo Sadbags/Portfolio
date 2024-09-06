@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home - Quickr
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/home.css') }}">
+{% endblock %}
+
+<body> <!-- Body Section -->
+{% block content %}
+<main>
+<div>
+<div class="main"> <!-- Main Section -->
+	<div class="main__container">
+		<div class="main__content">
+			<h1>Menu Showcase</h1>
+			<h2>Our Specialty</h2>
+			<p>See our specialty plates</p>
+			<button class="main__btn"><a href="/html"></a>Get Started</button>
+		</div>
+	</div>
+</div>
+<!-- Services section -->
+<div class="About">
+	<h1>Nuestros servicios</h1>
+	<div class="About__container">
+		<div class="About__card">
+			<h2>Nuestro</h2>
+			<p>Una sabrosa experiencia</p>
+			<button>Get Started</button>
+		</div>
+		<div class="About__card">
+			<h2>Una delisiosa aventura</h2>
+			<p>Una sabrosa experiencia</p>
+			<button>Get Started</button>
+		</div>
+	</div>
+</div>
+</main>
+{% endblock %}
+</body>
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='JS/home.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login - Quickr
+{% endblock %}
+
+<body> <!-- Body Section -->
+<main> <!-- Main Section -->
+    {% block content %}
+        <div class="centered-box">
+    <!-- Contenedor principal del formulario de inicio de sesión -->
+
+        <div class="login-container">
+            <h2>Login</h2> <!-- Encabezado del formulario -->
+
+            <!-- Mensaje de error -->
+            <div class="error-message">
+                <!-- Este mensaje se mostraría dinámicamente por un script del servidor si hay un error -->
+                <!-- Ejemplo: "Incorrect username or password" -->
+            </div>
+
+            <!-- Formulario de inicio de sesión -->
+            <form action="/login" method="POST">
+                <!-- Grupo de formulario para el nombre de usuario o correo electrónico -->
+                <div class="form-group">
+                    <label for="Email">Email</label> <!-- Etiqueta para el campo de nombre de usuario o correo electrónico -->
+                    <input type="text" id="email" name="Email" required> <!-- Campo de entrada para el nombre de usuario o correo electrónico -->
+                </div>
+                <!-- Grupo de formulario para la contraseña -->
+                <div class="form-group">
+                    <label for="password">Password</label> <!-- Etiqueta para el campo de contraseña -->
+                    <input type="password" id="password" name="password" required> <!-- Campo de entrada para la contraseña -->
+                </div>
+                <!-- Grupo de formulario para la opción de recordar -->
+                <div class="form-group">
+                    <input type="checkbox" id="remember" name="remember"> <!-- Campo de entrada para la opción de recordar -->
+                    <label for="remember">Remember me</label> <!-- Etiqueta para la opción de recordar -->
+                </div>
+                <!-- Grupo de formulario para el botón de inicio de sesión -->
+                <div class="form-group">
+                    <button type="submit">Log In</button> <!-- Botón de inicio de sesión -->
+                </div>
+                <!-- Enlaces adicionales -->
+                <div class="links">
+                    <a href="register.html">Create account</a> <!-- Enlace para registrarse -->
+                    <a href="forgot.html">Forgot Password?</a> <!-- Enlace para recuperar la contraseña -->
+                </div>
+            </form>
+
+            <!-- Botones de inicio de sesión social -->
+            <div class="form-group">
+                <button class="social-btn google">Log in with Google</button> <!-- Botón para iniciar sesión con Google -->
+                <button class="social-btn facebook">Log in with Facebook</button> <!-- Botón para iniciar sesión con Facebook -->
+            </div>
+
+            <!-- Captcha -->
+            <!-- Un captcha se incluiría aquí si es necesario -->
+        </div>
+        </div>
+    {% endblock %}
+</main>
+
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='JS/home.js') }}"></script>
+{% endblock %}
+
