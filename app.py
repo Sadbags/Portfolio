@@ -34,13 +34,25 @@ db.init_app(app)
 def home():
     return render_template('home.html')
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
+@app.route('/home')
+def home1():
+    return render_template('home.html')
 
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+
+@app.route('/forgot')
+def forgot():
+    return render_template('forgot.html')
+
+@app.route('/login') 
+def login():
+    return render_template('login.html')
+
+@app.route('/privacypolicy')
+def privacypolicy():
+    return render_template('privacypolicy.html')
 
 @app.route('/register')
 def register():
@@ -50,6 +62,17 @@ def register():
 def services():
     return render_template('services.html')
 
+@app.route('/support')
+def support():
+    return render_template('support.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+@app.route('/FAQ')
+def FAQ():
+    return render_template('FAQ.html')
 
 app.register_blueprint(user_blueprint)
 app.register_blueprint(review_blueprint)

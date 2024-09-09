@@ -43,8 +43,8 @@ Dashboard - Quickr
         </div>
         <!-- Enlaces adicionales -->
         <div class="links">
-            <a href="login.html">Already have an account? Log in</a><br> <!-- Enlace a la página de inicio de sesión -->
-            <a href="forgot.html">Forgot your password?</a> <!-- Enlace a la página de recuperación de contraseña -->
+            <a href="{{ url_for('login') }}">Already have an account? Log in</a><br> <!-- Enlace a la página de inicio de sesión -->
+            <a href="{{ url_for('forgot') }}">Forgot your password?</a> <!-- Enlace a la página de recuperación de contraseña -->
         </div>
     </form>
 </div>

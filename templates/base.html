@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Quickr{% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='LB.png') }}" type="image/png"> <!-- favicon -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- hoja de estilos común -->
 </head>
 <body>
     <header> <!-- contenido de encabezado común -->
@@ -49,34 +48,34 @@
                     <div class="footer__link--items"></div>
                     <div class="footer__link--items">
                         <h2>Contact Us</h2>
-                        <a href="support.html">Customer Support</a>
-                        <a href="/">FAQ</a>
+                        <a href="{{ url_for('support') }}">Customer Support</a>
+                        <a href="{{ url_for('FAQ') }}">FAQ</a>
                     </div>
                     <div class="footer__link--items">
                         <h2>Social Media</h2>
-                        <a href="/">Facebook</a>
-                        <a href="/">Instagram</a>
-                        <a href="/">Twitter</a>
+                        <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                        <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                        <a href="https://www.twitter.com" target="_blank">Twitter</a>
                     </div>
                 </div>
             </div>
             <div class="social__media">
                 <div class="social__media--wrap">
                     <div class="footer__logo">
-                        <a href="home.html" id="footer__logo"><i class="fa-solid fa-bolt"></i> Quickr</a>
+                        <a href="{{ url_for('home') }}" id="footer__logo"><i class="fa-solid fa-bolt"></i> Quickr</a>
                     </div>
                     <p class="website__rights"> ©️ Quickr 2024. All Rights reserved.</p>
-				    <p><a href="terms.html">Terms</a> | <a href="privacypolicy.html">Privacy Policy</a></p>
-				    <div class="social__icons">
-					    <a href="https://www.facebook.com" class="social__icon--link" target="_blank">
-						    <i class="fab fa-facebook"></i>
-					    </a>
+                    <p><a href="{{ url_for('terms') }}">Terms</a> | <a href="{{ url_for('privacypolicy') }}">Privacy Policy</a></p>
+                    <div class="social__icons">
+                        <a href="https://www.facebook.com" class="social__icon--link" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
                         <a href="https://www.instagram.com" class="social__icon--link" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="https://www.twitter.com" class="social__icon--link" target="_blank">
                             <i class="fab fa-twitter"></i>
-					    </a>
+                        </a>
                     </div>
                 </div>
             </div>
