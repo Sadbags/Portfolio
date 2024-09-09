@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime
-from database import db
+from backend.database import db
 
 class BaseModel(db.Model):
     __abstract__ = True

@@ -1,7 +1,7 @@
 from flask import request, jsonify, abort, Blueprint
-from models.review import Review
-from Data.DataManager import DataManager
-from database import db
+from backend.models.review import Review
+from backend.Data.DataManager import DataManager
+from backend.database import db
 
 review_blueprint = Blueprint('review_blueprint', __name__)
 data_manager = DataManager()

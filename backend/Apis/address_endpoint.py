@@ -1,7 +1,7 @@
 from flask import request, jsonify, abort, Blueprint
-from database import db
-from models.address import Address
-from models.user import User
+from backend.database import db
+from backend.models.address import Address
+from backend.models.user import User
 
 
 address_blueprint = Blueprint('address_blueprint', __name__)

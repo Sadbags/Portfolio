@@ -1,5 +1,5 @@
-from database import db
-from models.basemodel import BaseModel
+from backend.database import db
+from backend.models.basemodel import BaseModel
 import uuid
 
 class Service(BaseModel):

@@ -1,5 +1,5 @@
-from models.basemodel import BaseModel
-from database import db
+from backend.models.basemodel import BaseModel
+from backend.database import db
 
 class Review(BaseModel):
     service_id = db.Column(db.String(128), nullable=False)

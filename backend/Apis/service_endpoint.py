@@ -1,6 +1,6 @@
 from flask import request, jsonify, abort, Blueprint
-from models.service import Service
-from database import db
+from backend.models.service import Service
+from backend.database import db
 
 
 service_blueprint = Blueprint('service_blueprint', __name__)
