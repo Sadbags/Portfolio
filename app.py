@@ -29,20 +29,26 @@ app.config.from_object(environment_config)
 
 db.init_app(app)
 
-# Define a route for the home page
+# Define the route for the default URL, which is the home page
 @app.route('/')
 def home():
-	return render_template('home.html')
+    return render_template('home.html')
 
-# Define a route for the login page
 @app.route('/login')
 def login():
     return render_template('login.html')
 
-# Define a route for the Dashboard page
 @app.route('/dashboard')
 def dashboard():
-	return render_template('dashboard.html')
+    return render_template('dashboard.html')
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+@app.route('/services')
+def services():
+    return render_template('services.html')
 
 
 app.register_blueprint(user_blueprint)

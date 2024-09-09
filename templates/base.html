@@ -1,93 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <!-- contenido de encabezado común -->
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Quickr{% endblock %}</title>
-	<link rel="shortcut icon" href="../img/LB.png" type="logo"> <!-- favicon -->
-    {% block styles %}
-    <link rel="stylesheet" href="{{ (filename='styles.css') }}">
-    {% endblock %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='LB.png') }}" type="image/png"> <!-- favicon -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% block stylesheets %}{% endblock %}
 </head>
-
 <body>
-<header> <!-- contenido de encabezado común -->
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="home.html" id="navbar__logo"><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <header> <!-- contenido de encabezado común -->
+        <nav class="navbar">
+            <div class="navbar__container">
+                <a href="{{ url_for('home') }}" id="navbar__logo"><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a>
+                <div class="navbar__toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item">
+                        <a href="{{ url_for('home') }}" class="navbar__links">Home</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="{{ url_for('dashboard') }}" class="navbar__links">Dashboard</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="{{ url_for('services') }}" class="navbar__links">Contact Us</a>
+                    </li>
+                    <li class="navbar__btn">
+                        <a href="{{ url_for('login') }}" class="button">Login</a>
+                    </li>
+                </ul>
             </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="home.html" class="navbar__links">Home</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="dashboard.html" class="navbar__links">Dashboard</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="support.html" class="navbar__links">Contact Us</a>
-                </li>
-                <li class="navbar__btn">
-                    <a href="login" class="button">Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-
+        </nav>
+    </header>
+    
     <main>
         {% block content %}
         <!-- Contenido específico de cada página irá aquí -->
         {% endblock %}
     </main>
     
-<footer> <!-- contenido de pie de página común -->
-    <div class="footer__container">
-        <div class="footer__links">
-            <div class="footer__link--wrapper">
-                <div class="footer__link--items"></div>
-                <div class="footer__link--items">
-                    <h2>Contact Us</h2>
-                    <a href="support.html">Customer Support</a>
-                    <a href="/">FAQ</a>
+    <footer> <!-- contenido de pie de página común -->
+        <div class="footer__container">
+            <div class="footer__links">
+                <div class="footer__link--wrapper">
+                    <div class="footer__link--items"></div>
+                    <div class="footer__link--items">
+                        <h2>Contact Us</h2>
+                        <a href="support.html">Customer Support</a>
+                        <a href="/">FAQ</a>
+                    </div>
+                    <div class="footer__link--items">
+                        <h2>Social Media</h2>
+                        <a href="/">Facebook</a>
+                        <a href="/">Instagram</a>
+                        <a href="/">Twitter</a>
+                    </div>
                 </div>
-                <div class="footer__link--items">
-                    <h2>Social Media</h2>
-                    <a href="/">Facebook</a>
-                    <a href="/">Instagram</a>
-                    <a href="/">Twitter</a>
+            </div>
+            <div class="social__media">
+                <div class="social__media--wrap">
+                    <div class="footer__logo">
+                        <a href="home.html" id="footer__logo"><i class="fa-solid fa-bolt"></i> Quickr</a>
+                    </div>
+                    <p class="website__rights"> ©️ Quickr 2024. All Rights reserved.</p>
+				    <p><a href="terms.html">Terms</a> | <a href="privacypolicy.html">Privacy Policy</a></p>
+				    <div class="social__icons">
+					    <a href="https://www.facebook.com" class="social__icon--link" target="_blank">
+						    <i class="fab fa-facebook"></i>
+					    </a>
+                        <a href="https://www.instagram.com" class="social__icon--link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.twitter.com" class="social__icon--link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+					    </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="social__media">
-            <div class="social__media--wrap">
-                <div class="footer__logo">
-                    <a href="home.html" id="footer__logo"><i class="fa-solid fa-bolt"></i> Quickr</a>
-                </div>
-                <p class="website__rights"> ©️ Quickr 2024. All Rights reserved.</p>
-                <p><a href="terms.html">Terms</a> | <a href="privacypolicy.html">Privacy Policy</a></p>
-                <div class="social__icons">
-                    <a href="https://www.facebook.com" class="social__icon--link" target="_blank">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://www.instagram.com" class="social__icon--link" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.twitter.com" class="social__icon--link" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- contenido de scripts común -->
-{% block scripts %}
-<script src="{{ url_for(filename='JS/script.js') }}"></script>
-{% endblock %}
+    {% block scripts %} <!-- scripts específicos de cada página irán aquí -->
+    <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
+    {% endblock %}
 </body>
 </html>

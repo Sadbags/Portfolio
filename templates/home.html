@@ -1,50 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Quickr</title>
-	<link rel="stylesheet" href="../styles.css">
-	<link rel="shortcut icon" href="../img/LB.png" type="logo"> <!-- favicon -->
-</head>
+{% extends 'base.html' %}
 
-<!-- Header Section -->
-<header>
-<nav class="navbar">
-	<div class="navbar__container">
-		<a href="home.html" id="navbar__logo"><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a>
-		<div class="navbar__toggle" id="mobile-menu">
-			<span class="bar"></span>
-			<span class="bar"></span>
-			<span class="bar"></span>
-		</div>
-		<ul class="navbar__menu">
-			<li class="navbar__item">
-				<a href="home.html" class="navbar__links">Home</a>
-			</li>
-			<li class="navbar__item">
-				<a href="dashboard.html" class="navbar__links">Dashboard</a>
-			</li>
-			<li class="navbar__item">
-				<a href="services.html" class="navbar__links">Search Services</a>
-			</li>
-			<div class="input-container">
-				<input type="text" name="text" class="input" placeholder="search...">
-                <span class="icon">
-					<svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                </span>
-            </div>
-			<li class="navbar__btn">
-				<a href="login.html" class="button">Login</a>
-			</li>
-		</ul>
-	</div>
-</nav>
-<header>
+{% block title %}Home - Quickr{% endblock %}
 
-<!-- Body Section -->
-<body>
-<!-- Main Section -->
+{% block content %}
+<main> <!-- Main Section -->
 <div class="main">
 	<div class="main__container">
 		<div class="main__content">
@@ -70,49 +29,5 @@
 			<button>Get Started</button>
 		</div>
 	</div>
-</div>
-</body>
-
-<!-- Footer Section -->
-<footer>
-	<div class="footer__container">
-		<div class="footer__links">
-			<div class="footer__link--wrapper">
-				<div class="footer__link--items"></div>
-				<div class="footer__link--items">
-					<h2>Contact Us</h2>
-					<a href="support.html">Costumer Support</a>
-					<a href="/">FAQ</a>
-				</div>
-				<div class="footer__link--items">
-					<h2>Social Media</h2>
-					<a href="/">Facebook</a>
-					<a href="/">Instagram</a>
-					<a href="/">Twitter</a>
-				</div>
-			</div>
-		</div>
-		<div class="social__media">
-			<div class="social__media--wrap">
-				<div class="footer__logo">
-					<a href="home.html" id="footer__logo"><i class="fa-solid fa-bolt"></i></i> Quickr</a>
-				</div>
-				<p class="website__rights"> ©️ Quickr 2024. All Rights reserved.</p>
-				<p><a href="terms.html">Terms</a> | <a href="privacypolicy.html">Privacy Policy</a></p>
-				<div class="social__icons">
-					<a href="https://www.facebook.com" class="social__icon--link" target="_blank">
-						<i class="fab fa-facebook"></i>
-					</a>
-					<a href="https://www.instagram.com" class="social__icon--link" target="_blank">
-						<i class="fab fa-instagram"></i>
-					</a>
-					<a href="https://www.twitter.com" class="social__icon--link" target="_blank">
-						<i class="fab fa-twitter"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="../JS/script.js"></script>
-</footer>
-</html>
+</main>
+{% endblock %}
