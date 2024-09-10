@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Quickr{% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='LB.png') }}" type="image/png"> <!-- favicon -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- hoja de estilos común -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}"> <!-- hoja de estilos común -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/fontawesome-free-5.15.4-web/css/all.css') }}"> <!-- hoja de estilos de flechas y rayito -->
+    {% block stylesheets %} <!-- hojas de estilos específicas de cada página irán aquí --> 
+    {% endblock %}
 </head>
 <body>
     <header> <!-- contenido de encabezado común -->

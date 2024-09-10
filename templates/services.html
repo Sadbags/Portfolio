@@ -2,6 +2,10 @@
 
 {% block title %}Services - Quickr{% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+{% endblock %}
+
 {% block Content %}
     <div class="search-container">
         <h1>Search for Services</h1>

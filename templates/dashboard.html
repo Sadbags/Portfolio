@@ -4,6 +4,10 @@
 Dashboard - Quickr
 {% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='calendar.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="calendar__container">
 	<div class="calendar">

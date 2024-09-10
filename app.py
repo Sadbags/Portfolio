@@ -74,6 +74,7 @@ def terms():
 def FAQ():
     return render_template('FAQ.html')
 
+
 app.register_blueprint(user_blueprint)
 app.register_blueprint(review_blueprint)
 app.register_blueprint(appointments_blueprint)
