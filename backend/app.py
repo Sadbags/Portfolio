@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
 import os
 from database import db
 from Apis.user_endpoint import user_blueprint
@@ -31,6 +32,7 @@ environment_config = DevelopmentConfig if os.environ.get(
 app.config.from_object(environment_config)
 
 db.init_app(app)
+jwt = JWTManager(app)
 
 # Define a route for the home page
 @app.route('/')
