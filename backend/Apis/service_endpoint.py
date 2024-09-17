@@ -1,43 +1,45 @@
 from flask import request, jsonify, abort, Blueprint
-from flask_jwt_extended import jwt_required, get_jwt_identity
-from models.service import Service
-from database import db
+from backend.models.service import Service
+from backend.database import db
 
 
 service_blueprint = Blueprint('service_blueprint', __name__)
 
 
 @service_blueprint.route('/services', methods=['POST'])
-@jwt_required()
 def create_service():
-    current_user_id = get_jwt_identity()  # Obtenemos el user_id del token JWT
+    def create_service():
+        if not request.json:
+            abort(400, description="Request body must be JSON")
 
-    if not request.json or not 'name' in request.json or not 'aprox_price' in request.json or not 'category' in request.json:
-        abort(400, description="Missing parameters")
+    # Extract fields from JSON data
+    name = request.json.get('name')
+    description = request.json.get('description')
+    aprox_price = request.json.get('aprox_price')
+    category = request.json.get('category')
+    fee = request.json.get('fee')
+    img_url = request.json.get('img_url')
 
-    # Recogemos los datos del JSON
-    name = request.json['name']
-    description = request.json.get('description', '')  # Opcional
-    aprox_price = request.json['aprox_price']
-    category = request.json['category']
-    fee = request.json['fee']
-    img_url = request.json.get('img_url', '')  # Opcional
+    # Validate required fields
+    if not name or not aprox_price or not category or not fee:
+        abort(400, description="Missing required fields")
 
-    # Crear el servicio
-    new_service = Service(
+    # Create a new Service instance
+    service = Service(
         name=name,
         description=description,
         aprox_price=aprox_price,
         category=category,
         fee=fee,
-        img_url=img_url,
-        user_id=current_user_id  # Relacionamos el servicio con el usuario autenticado
+        img_url=img_url
     )
-    db.session.add(new_service)
+
+    # Add the service to the database
+    db.session.add(service)
     db.session.commit()
 
-    return jsonify(new_service.to_dict()), 201
-
+    # Return the created service as JSON
+    return jsonify(service.to_dict()), 201
 
 
 

@@ -1,6 +1,6 @@
 import uuid
-from database import db
-from models.basemodel import BaseModel
+from backend.database import db
+from backend.models.basemodel import BaseModel
 from flask_bcrypt import Bcrypt
 
 
@@ -19,7 +19,6 @@ class User(BaseModel):
 
     addresses = db.relationship('Address', backref='user', lazy=True)
     appointments = db.relationship('Appointment', back_populates='user', lazy=True)  # esto es lo nuevo
-    services = db.relationship('Service', back_populates='user', lazy=True) # esto es lo nuevo
 
 
     def __init__(self, email, password, is_admin, first_name="", last_name="", **kwargs):
@@ -28,7 +27,7 @@ class User(BaseModel):
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
-        self.is_admin = is_admin
+        self.is_admin = self.is_admin
         self.set_password(password)
 
     def check_password(self, password):
@@ -51,7 +50,6 @@ class User(BaseModel):
             'password_hash': self.password_hash,
             'addresses': [address.to_dict() for address in self.addresses],
             'appointments': [appointment.to_dict() for appointment in self.appointments], # esto es lo nuevo
-            'services': [service.to_dict() for service in self.services], # esto es lo nuevo
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat()
 		}
