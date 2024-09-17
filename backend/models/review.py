@@ -5,8 +5,8 @@ from database import db
 class Review(BaseModel):
     __tablename__ ='reviews'
 
-    service_id = db.Column(db.String(128), nullable=false)
-    user_id = db.Column(db.String(128), nullable=false)
+    service_id = db.Column(db.String(128), nullable=False)
+    user_id = db.Column(db.String(128), nullable=False)
     comment = db.Column(db.String(1024), nullable=True)
     rating = db.Column(db.Integer, nullable=False)
 
