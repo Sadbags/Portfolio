@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard - Quickr
+{% endblock %}
+
+{% block content %}
+<div class="calendar__container">
+	<div class="calendar">
+		<div class="calendar__header">
+			<div class="month"></div>
+			<div class="calendar__btns">
+				<div class="btn today-btn">
+					<i class="fas fa-calendar-day"></i>
+				</div>
+				<div class="btn prev-btn">
+					<i class="fas fa-chevron-left"></i>
+				</div>
+				<div class="btn next-btn">
+					<i class="fas fa-chevron-right"></i>
+				</div>
+			</div>
+		</div>
+		<div class="weekdays">
+			<div class="day">Sun</div>
+			<div class="day">Mon</div>
+			<div class="day">Tue</div>
+			<div class="day">Wed</div>
+			<div class="day">Thu</div>
+			<div class="day">Fri</div>
+			<div class="day">Sat</div>
+		</div>
+		<div class="days">
+			<!-- Add days using js -->
+		</div>
+	</div>
+</div>
+{% endblock %}
