@@ -38,7 +38,7 @@ def home():
 def home1():
     return render_template('home.html')
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     return render_template('dashboard.html')
 
@@ -46,18 +46,72 @@ def dashboard():
 def forgot():
     return render_template('forgot.html')
 
-@app.route('/login') 
+# html login form 
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        # Obtener datos del formulario de inicio de sesión
+        email = request.form['email']
+        password = request.form['password']
+
+        # Aquí puedes agregar la lógica para autenticar al usuario
+
+        # Redirigir al dashboard después de un inicio de sesión exitoso
+        return redirect(url_for('dashboard'))
+    
     return render_template('login.html')
 
 @app.route('/privacypolicy')
 def privacypolicy():
     return render_template('privacypolicy.html')
 
-@app.route('/register')
+
+# html register form
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == 'POST':
+        # Obtener datos del formulario
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        email = request.form['email']
+        password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        user_type = request.form['user_type']
+
+        # Aquí puedes agregar la lógica para guardar el usuario en la base de datos
+        # y cualquier otra lógica de validación que necesites
+
+        # Redirigir según el tipo de usuario
+        if user_type == 'provider':
+            return redirect(url_for('docs'))
+        elif user_type == 'client':
+            return redirect(url_for('dashboard'))
+    
     return render_template('register.html')
 
+@app.route('/docs')
+def docs():
+    return render_template('docs.html')
+
+@app.route('/submit_address', methods=['POST'])
+def submit_address():
+    try:
+        # Obtener datos del formulario
+        address = request.form['address']
+        user_type = request.form['user_type']
+
+        # Aquí puedes agregar la lógica para guardar la dirección en la base de datos
+        # y cualquier otra lógica de validación que necesites
+
+        # Redirigir según el tipo de usuario
+        if user_type == 'provider':
+            return redirect(url_for('docs'))
+        elif user_type == 'client':
+            return redirect(url_for('dashboard'))
+    except KeyError as e:
+        # Manejo de errores para depuración
+        return f"Missing form field: {e}", 400
+    
 @app.route('/services')
 def services():
     return render_template('services.html')
@@ -73,6 +127,8 @@ def terms():
 @app.route('/FAQ')
 def FAQ():
     return render_template('FAQ.html')
+
+
 
 
 app.register_blueprint(user_blueprint)
