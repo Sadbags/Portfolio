@@ -7,8 +7,6 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='LB.png') }}" type="image/png"> <!-- favicon -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- hoja de estilos común -->
     <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-5.15.4-web/css/all.css') }}"> <!-- hoja de estilos de flechas y rayito -->
-    {% block stylesheets %} <!-- hojas de estilos específicas de cada página irán aquí -->
-    {% endblock %}
 </head>
 <body>
     <header> <!-- contenido de encabezado común -->
@@ -28,7 +26,7 @@
                         <a href="{{ url_for('dashboard') }}" class="navbar__links">Dashboard</a>
                     </li>
                     <li class="navbar__item">
-                        <a href="{{ url_for('services') }}" class="navbar__links">Services</a>
+                        <a href="{{ url_for('services') }}" class="navbar__links">Contact Us</a>
                     </li>
                     <li class="navbar__btn">
                         <a href="{{ url_for('login') }}" class="button">Login</a>
@@ -85,8 +83,9 @@
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
     {% block scripts %} <!-- scripts específicos de cada página irán aquí -->
+    <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
     {% endblock %}
 </body>
 </html>
