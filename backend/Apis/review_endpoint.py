@@ -1,5 +1,5 @@
 from flask import request, jsonify, abort, Blueprint
-from models.review import Review
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from Data.DataManager import DataManager
 from database import db
 
@@ -8,12 +8,15 @@ data_manager = DataManager()
 
 
 @review_blueprint.route('/reviews', methods=['POST'])
+@jwt_required()
 def create_review():
-    if not request.json or not 'service_id' in request.json or not 'user_id' in request.json or not 'rating' in request.json:
-        abort(400, description="Missing required fields")
+    current_user_id = get_jwt_identity()
+
+    if not request.json or not 'service_id' in request.json or not 'rating' in request.json or not 'comment' in request.json:
+        abort(400, description="Missing parameters")
 
     service_id = request.json['service_id']
-    user_id = request.json['user_id']
+    comment = request.json['comment']
     rating = request.json['rating']
 
     if not isinstance(rating, int) or rating < 1 or rating > 5:
@@ -21,14 +24,15 @@ def create_review():
 
     review = Review(
         service_id=service_id,
-        user_id=user_id,
-        comment=request.json.get('comment', ''),
+        user_id=current_user_id,  # El user_id viene del token JWT
+        comment=comment,
         rating=rating
     )
     db.session.add(review)
     db.session.commit()
 
     return jsonify(review.to_dict()), 201
+
 
 
 @review_blueprint.route('/reviews', methods=['GET'])
