@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Account/Address - Quickr{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='address.css') }}">
+{% endblock %}
+
+{% content block %}
+    <div class="address_container">
+        <h1>Address Form</h1>
+        <form action="/submit_address" method="post">
+            <div class="form-group">
+                <label for="street">Street:</label>
+                <input type="text" id="street" name="street" required>
+            </div>
+            <div class="form-group">
+                <label for="home_number">Home Number:</label>
+                <input type="text" id="home_number" name="home_number" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+            <div class="form-group">
+                <label for="zip_code">Zip Code:</label>
+                <input type="text" id="zip_code" name="zip_code" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% end content %}

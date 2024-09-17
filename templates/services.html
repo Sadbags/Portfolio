@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Services - Quickr{% endblock %}
+
+{% block Content %}
+    <div class="search-container">
+        <h1>Search for Services</h1>
+        <form id="search-form">
+            <input type="text" id="search-input" list="services-list" placeholder="Enter service name..." required>
+            <datalist id="services-list">
+                <option value="Web Development">
+                <option value="Graphic Design">
+                <option value="SEO Optimization">
+                <option value="Digital Marketing">
+                <option value="Content Writing">
+                <option value="App Development">
+                <option value="Social Media Management">
+            </datalist>
+            <button type="submit">Search</button>
+        </form>
+        <div id="results-container"></div>
+    </div>
+{% endblock %}
