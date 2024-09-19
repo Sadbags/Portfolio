@@ -1,4 +1,5 @@
 from flask import request, jsonify, abort, Blueprint
+from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity, get_jwt
 from backend.models.appointment import Appointment
 from backend.database import db
 from datetime import datetime
@@ -7,8 +8,10 @@ from backend.models.user import User
 appointments_blueprint = Blueprint('appointments_blueprint', __name__)
 
 @appointments_blueprint.route('/appointments', methods=['POST'])
+@jwt_required()
 def create_appointment():
-    # Verificar que todos los campos requeridos están en la solicitud
+    current_user_id = get_jwt_identity()
+
     if not request.json or not 'user_id' in request.json or not 'service_id' in request.json or not 'Appointment_date' in request.json or not 'Appointment_time' in request.json or not 'status' in request.json or not 'payment_status' in request.json:
         abort(400, description="Missing required fields")
 
@@ -25,6 +28,10 @@ def create_appointment():
         Appointment_date = datetime.strptime(appointment_date_str, '%Y-%m-%dT%H:%M:%S')
     except ValueError:
         abort(400, description="Invalid date format. Use YYYY-MM-DDTHH:MM:SS")
+
+    if current_user_id != user_id:
+        abort(403, description="You do not have permission to create appointments for this user")
+
 
     # Crear la instancia de Appointment
     appointment = Appointment(
@@ -45,22 +52,32 @@ def create_appointment():
 
 
 @appointments_blueprint.route('/appointments', methods=['GET'])
+@jwt_required()
 def get_appointments():
+    current_user_id = get_jwt_identity()
+    claims = get_jwt()
+
+    if not claims.get('is_admin', False):
+        abort(403, description="Admin rights required to view all appointments")
+
     # Obtener todas las citas de la base de datos
     appointments = Appointment.query.all()
-
-    # Retornar las citas en formato JSON
     return jsonify([appointment.to_dict() for appointment in appointments]), 200
 
 
 @appointments_blueprint.route('/users/<user_id>/appointments', methods=['GET'])
+@jwt_required()
 def get_user_appointments(user_id):
-    user = User.query.get(user_id)
-    if not user:
-        abort(404, description="User not found")
+    current_user_id = get_jwt_identity()
+
+    if current_user_id != current_user_id:
+        claims = get_jwt()
+        if not claims.get('is_admin', False):
+            abort(403, description="You do not have permission to view these appointments")
 
     appointments = Appointment.query.filter_by(user_id=user_id).all()
     return jsonify([appointment.to_dict() for appointment in appointments]), 200
+
 
 
 @appointments_blueprint.route('/appointments/<appointment_id>', methods=['GET'])
@@ -75,12 +92,26 @@ def get_appointment(appointment_id):
 
 
 @appointments_blueprint.route('/appointments/<appointment_id>', methods=['PUT'])
+@jwt_required()
 def update_appointment(appointment_id):
-    # Verificar que el cuerpo de la solicitud tiene los campos requeridos
+    current_user_id = get_jwt_identity()  # Get the current user ID from the JWT
+
+    # Verify that the request body contains required fields
     if not request.json:
         abort(400, description="Missing request body")
 
-    # Obtener los datos de la solicitud
+    # Retrieve the appointment from the database
+    appointment = Appointment.query.get(appointment_id)
+    if not appointment:
+        abort(404, description="Appointment not found")
+
+    # Check if the current user is allowed to update this appointment
+    if appointment.user_id != current_user_id:
+        claims = get_jwt()
+        if not claims.get('is_admin', False):
+            abort(403, description="You do not have permission to update this appointment")
+
+    # Get the request data
     user_id = request.json.get('user_id')
     service_id = request.json.get('service_id')
     appointment_date_str = request.json.get('Appointment_date')
@@ -88,18 +119,13 @@ def update_appointment(appointment_id):
     status = request.json.get('status')
     payment_status = request.json.get('payment_status')
 
-    # Convertir la cadena de Appointment_date a objeto datetime
+    # Convert the appointment_date string to a datetime object
     try:
         Appointment_date = datetime.strptime(appointment_date_str, '%Y-%m-%dT%H:%M:%S') if appointment_date_str else None
     except ValueError:
         abort(400, description="Invalid date format. Use YYYY-MM-DDTHH:MM:SS")
 
-    # Buscar la cita existente por su ID
-    appointment = Appointment.query.get(appointment_id)
-    if not appointment:
-        abort(404, description="Appointment not found")
-
-    # Actualizar los campos de la cita
+    # Update the appointment fields
     if user_id:
         appointment.user_id = user_id
     if service_id:
@@ -113,19 +139,26 @@ def update_appointment(appointment_id):
     if payment_status:
         appointment.payment_status = payment_status
 
-    # Hacer commit en la base de datos
+    # Commit the changes to the database
     db.session.commit()
 
-    # Retornar la cita actualizada en formato JSON
+    # Return the updated appointment in JSON format
     return jsonify(appointment.to_dict()), 200
 
 
 @appointments_blueprint.route('/appointments/<appointment_id>', methods=['DELETE'])
+@jwt_required()
 def delete_appointment(appointment_id):
+    current_user_id = get_jwt_identity()
     # Buscar la cita existente por su ID
     appointment = Appointment.query.get(appointment_id)
     if not appointment:
         abort(404, description="Appointment not found")
+
+    if appointment.user_id != current_user_id:
+        claims = get_jwt()
+        if not claims.get('is_admin', False):
+            abort(403, description="You do not have permission to delete this appointment")
 
     # Eliminar la cita de la base de datos y hacer commit
     db.session.delete(appointment)
