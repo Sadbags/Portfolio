@@ -1,5 +1,5 @@
-from Data.IPersistenceManager import IPersistenceManager
-from database import db
+from backend.Data.IPersistenceManager import IPersistenceManager
+from backend.database import db
 
 class DataManager(IPersistenceManager):
     def save(self, entity):

@@ -1,9 +1,9 @@
 from flask import request, jsonify, abort, Blueprint
 from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity, get_jwt
-from models.appointment import Appointment
-from database import db
+from backend.models.appointment import Appointment
+from backend.database import db
 from datetime import datetime
-from models.user import User
+from backend.models.user import User
 
 appointments_blueprint = Blueprint('appointments_blueprint', __name__)
 

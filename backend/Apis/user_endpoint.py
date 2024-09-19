@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify, abort
 from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity, get_jwt
 from werkzeug.security import generate_password_hash
-from models.user import User
-from models.address import Address
-from database import db
+from backend.models.user import User
+from backend.models.address import Address
+from backend.database import db
 
 
 user_blueprint = Blueprint('user_blueprint', __name__)

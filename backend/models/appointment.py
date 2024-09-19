@@ -1,6 +1,6 @@
-from models.basemodel import BaseModel
-from database import db
-from models.user import User
+from backend.models.basemodel import BaseModel
+from backend.database import db
+from backend.models.user import User
 
 #CODIGO VIEJO 2:34AM
 
