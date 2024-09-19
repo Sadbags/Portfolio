@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
-from database import db
-from models.basemodel import BaseModel
+from backend.database import db
+from backend.models.basemodel import BaseModel
 
 #esta tabla esta terminada funciona con users api
 

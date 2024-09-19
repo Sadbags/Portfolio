@@ -1,8 +1,8 @@
 from flask import request, jsonify, abort, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
-from database import db
-from models.address import Address
-from models.user import User
+from backend.database import db
+from backend.models.address import Address
+from backend.models.user import User
 
 
 address_blueprint = Blueprint('address_blueprint', __name__)

@@ -1,7 +1,7 @@
 from flask import request, jsonify, abort, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models.service import Service
-from database import db
+from backend.models.service import Service
+from backend.database import db
 
 
 service_blueprint = Blueprint('service_blueprint', __name__)

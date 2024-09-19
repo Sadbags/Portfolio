@@ -1,7 +1,7 @@
 from flask import request, jsonify, abort, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from Data.DataManager import DataManager
-from database import db
+from backend.Data.DataManager import DataManager
+from backend.database import db
 
 review_blueprint = Blueprint('review_blueprint', __name__)
 data_manager = DataManager()
