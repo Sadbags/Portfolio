@@ -9,19 +9,23 @@ class Address(BaseModel):
     __tablename__ = 'addresses'
 
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    address = db.Column(db.String(128), nullable=True)
     street = db.Column(db.String(128), nullable=False)
     city = db.Column(db.String(128), nullable=False)
+    phone = db.Column(db.String(128), nullable=False)
     state = db.Column(db.String(128), nullable=False)
     zip_code = db.Column(db.String(10), nullable=False)
     user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=False)
-    users = db.relationship('User', back_populates="addresses")
+    user = db.relationship('User', back_populates="addresses")
 
-    def __init__(self, street, city, state, zip_code, user_id, **kwargs):
+    def __init__(self, street, city, state, zip_code, phone, user_id, address, **kwargs):
         super().__init__(**kwargs)
+        self.address = address
         self.street = street
         self.city = city
         self.state = state
         self.zip_code = zip_code
+        self.phone = phone
         self.user_id = user_id
 
     def __str__(self):
@@ -30,10 +34,12 @@ class Address(BaseModel):
     def to_dict(self):
         return {
             'id': self.id,
+            'address': self.address,
             'street': self.street,
             'city': self.city,
             'state': self.state,
             'zip_code': self.zip_code,
+            'phone': self.phone,
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat()
         }

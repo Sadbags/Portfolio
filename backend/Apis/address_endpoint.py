@@ -18,7 +18,7 @@ def create_address(user_id):
         abort(403, description="Not authorized to create address for this user")
 
     # Verificar que todos los campos requeridos están en la solicitud
-    if not request.json or not all(k in request.json for k in ('street', 'city', 'state', 'zip_code')):
+    if not request.json or not all(k in request.json for k in ('address', 'street', 'city', 'state', 'phone', 'zip_code')):
         abort(400, description="Missing required fields")
 
     # Obtener el usuario de la base de datos
@@ -28,9 +28,11 @@ def create_address(user_id):
 
     # Crear la nueva dirección
     address = Address(
+        address=request.json['address'],
         street=request.json['street'],
         city=request.json['city'],
         state=request.json['state'],
+        phone=request.json['phone'],
         zip_code=request.json['zip_code'],
         user_id=user_id
     )
@@ -82,6 +84,7 @@ def update_address(address_id):
     address.city = data.get('city', address.city)
     address.state = data.get('state', address.state)
     address.zip_code = data.get('zip_code', address.zip_code)
+    address.phone = data.get('phone', address.phone)
 
     db.session.commit()
 
