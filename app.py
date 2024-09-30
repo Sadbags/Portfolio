@@ -34,6 +34,7 @@ db.init_app(app)
 def home():
     return render_template('home.html')
 
+# Define the route for the dashboard
 @app.route('/home')
 def home1():
     return render_template('home.html')
@@ -127,6 +128,17 @@ def terms():
 @app.route('/FAQ')
 def FAQ():
     return render_template('FAQ.html')
+
+# Profile route
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+# Edit Profile route
+@app.route('/edit_profile')
+def edit_profile():
+    return render_template('editprofile.html')
+
 
 
 

@@ -1,0 +1,59 @@
+{% extends 'base.html' %} <!-- Extiende de la plantilla base.html -->
+
+<title>{% block title %} Profile {% endblock %}<title> <!-- Título de la página -->
+
+    <!-- Hojas de estilos de la página -->
+{% block stylesheets %}<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">{% endblock %}
+
+{% block content %} <!-- Contenido de la página -->
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="{{ url_for('static', filename='images/profile-pic.jpg') }}" alt="Profile Picture" class="profile-pic">
+            <h1 class="profile-name">Alex Guadalupe</h1>
+                <a href="{{ url_for('editprofile') }}" class="edit-profile-btn" id="edit-profile-btn">Edit Profile</a>
+            <button class="share-profile-btn">Share Profile</button>
+        </div>
+        <div class="profile-content">
+            <div class="reviews-section">
+                <h2>Reviews</h2>
+                <p>No reviews yet.</p>
+            </div>
+            <div class="contact-section">
+                <h2>Contact</h2>
+                <p>Email: test@example.com</p>
+                <p>Phone: +1234567890</p>
+            </div>
+            <div class="direct-message-section">
+                <h2>Direct Message</h2>
+                <form id="message-form">
+                    <textarea id="message-input" placeholder="Write a message..." required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            <div class="photo-feed-section">
+                <h2>Services</h2>
+                <div class="cards-container">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='images/service1.jpg') }}" alt="Service 1">
+                        <div class="card-content">
+                            <h3>Service 1</h3>
+                            <p>Description of Service 1.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='images/service2.jpg') }}" alt="Service 2">
+                        <div class="card-content">
+                            <h3>Service 2</h3>
+                            <p>Description of Service 2.</p>
+                        </div>
+                    </div>
+                    <!-- Add more cards as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %} <!-- Scripts de la página -->
+    <script src="{{ url_for('static', filename='JS/profile.js') }}"></script>
+{% endblock %}
