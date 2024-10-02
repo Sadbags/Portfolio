@@ -1,7 +1,7 @@
 from flask import Blueprint, request, abort, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from backend.database import db
-from backend.models.files import Files  # Asegúrate de que la ruta sea correcta
+from backend.models.files import Files
 from backend.models.docs import Docs
 
 files_blueprint = Blueprint('files_blueprint', __name__)

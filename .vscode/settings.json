@@ -38,9 +38,11 @@
 		"Selecciona",
 		"Sesión",
 		"Usuario",
+		"Validar",
 		"Verificar",
 		"adicionales",
 		"aprox",
+		"archivo",
 		"asociada",
 		"autenticar",
 		"botón",
@@ -64,6 +66,7 @@
 		"desde",
 		"dinámicamente",
 		"dirección",
+		"documento",
 		"documentos",
 		"electrónico",
 		"encontrado",
@@ -71,6 +74,7 @@
 		"enviorment",
 		"errores",
 		"están",
+		"exista",
 		"existe",
 		"exitoso",
 		"expirado",
@@ -112,5 +116,13 @@
 		"todos",
 		"validación",
 		"éxito"
+	],
+	"cSpell.words": [
+		"autenticado",
+		"Obtenemos",
+		"Opcional",
+		"Recogemos",
+		"Relacionamos",
+		"servicio"
 	]
 }

@@ -1,6 +1,7 @@
 from backend.database import db
 from backend.models.basemodel import BaseModel
 import uuid
+import base64
 
 class Service(BaseModel):
     __tablename__ ='services'
@@ -11,7 +12,7 @@ class Service(BaseModel):
     aprox_price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(128), nullable=False)
     fee = db.Column(db.Float, nullable=False)
-    img_url = db.Column(db.String(1028), nullable=True)
+    img_url = db.Column(db.String(256), nullable=True)
 
     user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=False)
     user = db.relationship('User', back_populates='services')  # esto es lo nuevo
@@ -30,7 +31,10 @@ class Service(BaseModel):
     def __str__(self):
         return f"[Service] ({self.id}) {self.to_dict()}"
 
+
+
     def to_dict(self):
+        img_base64 = base64.b64encode(self.img_url).decode('utf-8') if self.img_url else None
         return {
             'id': self.id,
             'name': self.name,
@@ -38,8 +42,13 @@ class Service(BaseModel):
             'aprox_price': self.aprox_price,
             'category': self.category,
             'fee': self.fee,
-            'img_url': self.img_url,
+            'img_url': img_base64,
             'user_id': self.user_id,
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat()
         }
+
+def encode_image(image_path):
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+        return encoded_string

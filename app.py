@@ -3,6 +3,7 @@ from flask_jwt_extended import JWTManager, create_access_token
 from werkzeug.security import generate_password_hash
 from flask_cors import CORS
 from flask_migrate import Migrate
+from werkzeug.utils import secure_filename
 import os
 
 # Blueprint imports
@@ -19,6 +20,7 @@ from backend.Apis.files_endpoint import files_blueprint
 # model imports
 from backend.models.user import User
 from backend.models.address import Address
+from backend.models.service import Service
 
 
 # Initialize the Flask application
@@ -26,6 +28,14 @@ app = Flask(__name__)
 CORS(app)
 migrate = Migrate(app, db)
 app.secret_key = 'Quicker-app'
+
+
+app.config['UPLOAD_FOLDER'] = 'uploads'    # new
+app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'} #new
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB  #new
+
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
 
 class Config(object):
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/bags/Portfolio/instance/Quickr.db'
@@ -179,9 +189,12 @@ def docs():
     return render_template('docs.html')
 
 
-@app.route('/services')
-def services():
-    return render_template('services.html')
+@app.route('/services', methods=['GET'])
+def get_services():
+    services = Service.query.all()
+    return render_template('services.html', services=services)
+
+
 
 @app.route('/support')
 def support():

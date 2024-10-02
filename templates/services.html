@@ -2,39 +2,52 @@
 
 {% block title %}Services - Quickr{% endblock %}
 
-{% block Content %}
-    <div class="search-container">
+{% block content %}
+    <div class="container">
         <h1>Services</h1>
-        <form id="search-form">
-            <input type="text" id="search-input" list="services-list" placeholder="Enter service name..." required>
-            <datalist id="services-list">
-                <!-- Este bloque se llena dinámicamente con los nombres de los servicios -->
-                {% for service in services %}
-                    <option value="{{ service.name }}">
-                {% endfor %}
-            </datalist>
-            <button type="submit">Search</button>
-        </form>
-        <div id="results-container"></div>
-    </div>
-
-    <div class="services-container">
-        <!-- Bucle para iterar sobre los servicios -->
-        {% for service in services %}
-            <div class="service-card">
-                <h2>{{ service.name }}</h2>
-                <p>{{ service.description }}</p>
-                <p>Precio aproximado: ${{ service.aprox_price }}</p>
-                <p>Categoría: {{ service.category }}</p>
-                <p>Tarifa: ${{ service.fee }}</p>
-                <img src="{{ service.img_url }}" alt="Imagen del servicio" class="service-img">
-            </div>
-        {% else %}
-            <p>No hay servicios disponibles en este momento.</p>
-        {% endfor %}
+        <div class="search-container">
+            <form id="search-form" method="GET" action="{{ url_for('get_services') }}">
+                <input type="text" id="search-input" list="services-list" placeholder="Search for services..." required>
+                <datalist id="services-list">
+                    <option value="Web Development">
+                    <option value="Graphic Design">
+                    <option value="SEO Optimization">
+                    <option value="Digital Marketing">
+                    <option value="Content Writing">
+                    <option value="App Development">
+                    <option value="Social Media Management">
+                    <option value="Plumber">
+                    <option value="Electrician">
+                    <option value="Mechanic">
+                    <option value="Car Wash">
+                    <option value="Housekeeping">
+                    <option value="Landscaping">
+                    <option value="Pest Control">
+                    <option value="Handyman">
+                    <option value="Painter">
+                    <option value="Babysitter">
+                    <option value="Elder care">
+                </datalist>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="cards-container">
+            {% for service in services %}
+                <div class="card">
+                    <img src="data:image/jpeg;base64, {{ service.img_url }}" alt="{{ service.name }}">
+                    <div class="card-content">
+                        <h2>{{ service.name }}</h2>
+                        <p>{{ service.description }}</p>
+                        <p>Category: {{ service.category }}</p>
+                        <p>Approx. Price: {{ service.aprox_price }}</p>
+                        <p>Fee: {{ service.fee }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
 
-{% block scripts %}
+{% block script %}
     <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
 {% endblock %}
