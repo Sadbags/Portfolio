@@ -28,7 +28,7 @@
                         <a href="{{ url_for('dashboard') }}" class="navbar__links">Dashboard</a>
                     </li>
                     <li class="navbar__item">
-                        <a href="{{ url_for('services') }}" class="navbar__links">Services</a>
+                        <a href="{{ url_for('get_services') }}" class="navbar__links">Services</a>
                     </li>
                     <li class="navbar__btn">
                         <a href="{{ url_for('login') }}" class="button">Login</a>
@@ -37,13 +37,13 @@
             </div>
         </nav>
     </header>
-    
+
     <main>
         {% block content %}
         <!-- Contenido específico de cada página irá aquí -->
         {% endblock %}
     </main>
-    
+
     <footer> <!-- contenido de pie de página común -->
         <div class="footer__container">
             <div class="footer__links">

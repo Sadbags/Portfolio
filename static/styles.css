@@ -670,7 +670,7 @@ body {
 }
 
 
-/* Google - login */ 
+/* Google - login */
   .google-button {
     max-width: 320px;
     display: flex;
@@ -753,7 +753,7 @@ body {
 /* termina FB - login */
 
 /* REMEMBER ME Checkbox - login page */
-/* From Uiverse.io by KhaledMatalkah */ 
+/* From Uiverse.io by KhaledMatalkah */
   .rememberme-checkbox {
     display: inline-flex;
     align-items: center;
@@ -996,7 +996,7 @@ body {
   border-radius: 4px;
   font-size: 14px;
 }
-  /* PROVIDER BUTTON register.html */ 
+  /* PROVIDER BUTTON register.html */
 .animated-button {
   position: relative;
   display: flex;
@@ -1006,7 +1006,7 @@ body {
   border: 4px solid;
   border-color: transparent;
   font-size: 16px;
-  background-color: ;
+  background-color: white;
   border-radius: 100px;
   font-weight: 600;
   color: #1f387e;
@@ -1083,4 +1083,115 @@ body {
   width: 220px;
   height: 220px;
   opacity: 1;
+}
+
+
+/* services css */
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#search-form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+    border-color: #007bff;
+}
+
+button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Cards Container */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Individual Card */
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex: 1 1 calc(30% - 20px); /* Three cards per row with space */
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    color: #007bff;
+}
+
+.card-content p {
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column; /* Stack cards on small screens */
+    }
+
+    .card {
+        flex: 1 1 100%; /* Full width on small screens */
+    }
 }

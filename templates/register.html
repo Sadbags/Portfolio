@@ -5,64 +5,51 @@ Register - Quickr
 {% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ url_for('static', filename='address.css') }}">
+
 {% endblock %}
 
 {% block content %}
 <div class="register-container">
-    <h2>Create Account</h2> <!-- Encabezado del formulario -->
+    <h2>Create Account</h2>
+    <div class="error-message"></div>
 
-    <div class="error-message"> <!-- Mensaje de error -->
-        <!-- Este mensaje se mostraría dinámicamente por un script del servidor si hay un error -->
-        <!-- Ejemplo: "Username already taken" -->
-    </div>
+    <!-- Formulario combinado -->
+    <form id="register-form" action="{{ url_for('register_user') }}" method="POST">
+        <!-- Campos de usuario -->
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" required>
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm-password" required>
+        </div>
 
-    <!-- Formulario de registro -->
-    <form action="/register" method="POST">
-        <!-- Grupo de formulario para el nombre de usuario -->
-        <div class="form-group">
-            <label for="First Name">First Name</label> <!-- Etiqueta para el campo de nombre de usuario -->
-            <input type="text" id="First Name" name="First Name" required> <!-- Campo de entrada para el nombre de usuario -->
-        </div>
-        <div class="form-group">
-            <label for="Last Name">Last Name</label> <!-- Etiqueta para el campo de nombre de usuario -->
-            <input type="text" id="Last Name" name="Last Name" required> <!-- Campo de entrada para el nombre de usuario -->
-        </div>
-        <!-- Grupo de formulario para el correo electrónico -->
-        <div class="form-group">
-            <label for="email">Email</label> <!-- Etiqueta para el campo de correo electrónico -->
-            <input type="email" id="email" name="email" required> <!-- Campo de entrada para el correo electrónico -->
-        </div>
-        <!-- Grupo de formulario para la contraseña -->
-        <div class="form-group">
-            <label for="password">Password</label> <!-- Etiqueta para el campo de contraseña -->
-            <input type="password" id="password" name="password" required> <!-- Campo de entrada para la contraseña -->
-        </div>
-        <!-- Grupo de formulario para la confirmación de la contraseña -->
-        <div class="form-group">
-            <label for="confirm-password">Confirm Password</label> <!-- Etiqueta para el campo de confirmación de la contraseña -->
-            <input type="password" id="confirm-password" name="confirm-password" required> <!-- Campo de entrada para la confirmación de la contraseña -->
-        </div>
-    </form>    
-</div>
-
-<!-- Formulario de dirección -->
-<div class="address_container">
-    <h1>Address</h1>
-    <form action="/submit_address" method="POST">
-        <!-- Campos del formulario de dirección -->
+        <!-- Campos de dirección -->
+        <h1>Address</h1>
         <div class="form-group">
             <label for="address">Address</label>
             <input type="text" id="address" name="address" required>
         </div>
-        
         <div class="form-group">
             <label for="street">Street:</label>
             <input type="text" id="street" name="street" required>
         </div>
         <div class="form-group">
-            <label for="home_number">Home Number:</label>
-            <input type="text" id="home_number" name="home_number" required>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
         </div>
         <div class="form-group">
             <label for="city">City:</label>
@@ -80,34 +67,21 @@ Register - Quickr
             <label for="country">Country:</label>
             <input type="text" id="country" name="country" required>
         </div>
-       
-       <!-- Botones para seleccionar el tipo de usuario -->
-    <button type="submit" name="user_type" value="provider" class="animated-button">
-        <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-        </svg>
-        <span class="text">P R O V I D E R</span>
-        <span class="circle"></span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-        </svg>
-    </button>
-    <button type="submit" name="user_type" value="client" class="animated-button">
-        <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-        </svg>
-        <span class="text">C L I E N T</span>
-        <span class="circle"></span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-        </svg>
-    </button>
-</form>
+
+        <!-- Botones para seleccionar el tipo de usuario -->
+        <button type="submit" name="user_type" value="provider" class="animated-button">
+            <span class="text">P R O V I D E R</span>
+        </button>
+        <button type="submit" name="user_type" value="client" class="animated-button">
+            <span class="text">C L I E N T</span>
+        </button>
+    </form>
 </div>
 
 <!-- Enlaces adicionales -->
 <div class="links">
-    <a href="{{ url_for('login') }}">Already have an account? Log in</a><br> <!-- Enlace a la página de inicio de sesión -->
-    <a href="{{ url_for('forgot') }}">Forgot your password?</a> <!-- Enlace a la página de recuperación de contraseña -->
+    <a href="{{ url_for('login') }}">Already have an account? Log in</a><br>
+    <a href="{{ url_for('forgot') }}">Forgot your password?</a>
 </div>
+<script src="{{ url_for('static', filename='JS/create_user_address.js') }}"></script>
 {% endblock %}

@@ -37,8 +37,8 @@ def create_appointment():
     appointment = Appointment(
         user_id=user_id,
         service_id=service_id,
-        Appointment_date=Appointment_date,
-        Appointment_time=appointment_time,
+        appointment_date=appointment_date,
+        appointment_time=appointment_time,
         status=status,
         payment_status=payment_status
     )

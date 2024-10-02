@@ -1,37 +1,22 @@
-// script.js
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("search-input");
+    const servicesList = document.getElementById("results-container");
 
-document.getElementById('search-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita que el formulario se envíe
+    // Filtrar servicios según el texto de búsqueda
+    searchInput.addEventListener("input", function() {
+        const query = searchInput.value.toLowerCase();
 
-    const query = document.getElementById('search-input').value.toLowerCase();
-    const resultsContainer = document.getElementById('results-container');
+        // Obtener todos los servicios
+        const services = servicesList.getElementsByClassName("service");
 
-    // Simula una lista de servicios
-    const services = [
-        'Web Development',
-        'Graphic Design',
-        'SEO Optimization',
-        'Digital Marketing',
-        'Content Writing',
-        'App Development',
-        'Social Media Management'
-    ];
-
-    // Filtra los servicios que coinciden con la consulta
-    const filteredServices = services.filter(service => service.toLowerCase().includes(query));
-
-    // Limpia los resultados anteriores
-    resultsContainer.innerHTML = '';
-
-    // Muestra los resultados filtrados
-    if (filteredServices.length > 0) {
-        filteredServices.forEach(service => {
-            const div = document.createElement('div');
-            div.className = 'result-item';
-            div.textContent = service;
-            resultsContainer.appendChild(div);
+        // Mostrar/ocultar servicios basados en la búsqueda
+        Array.from(services).forEach(function(service) {
+            const serviceName = service.querySelector("h2").textContent.toLowerCase();
+            if (serviceName.includes(query)) {
+                service.style.display = "";
+            } else {
+                service.style.display = "none";
+            }
         });
-    } else {
-        resultsContainer.textContent = 'No services found.';
-    }
+    });
 });

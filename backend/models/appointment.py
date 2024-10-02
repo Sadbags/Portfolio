@@ -10,8 +10,8 @@ class Appointment(BaseModel):
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=False)
     service_id = db.Column(db.String(128), nullable=False)
-    Appointment_date = db.Column(db.DateTime, nullable=False)
-    Appointment_time = db.Column(db.String(128), nullable=False)
+    appointment_date = db.Column(db.DateTime, nullable=False)
+    appointment_time = db.Column(db.String(128), nullable=False)
     status = db.Column(db.String(128), nullable=False)
     payment_status = db.Column(db.String(128), nullable=False)
 
@@ -21,8 +21,8 @@ class Appointment(BaseModel):
         super().__init__(**kwargs)
         self.user_id = user_id
         self.service_id = service_id
-        self.Appointment_date = Appointment_date
-        self.Appointment_time = Appointment_time
+        self.appointment_date = appointment_date
+        self.appointment_time = appointment_time
         self.status = status
         self.payment_status = payment_status
 
@@ -35,8 +35,8 @@ class Appointment(BaseModel):
 			'id': self.id,
 			'user_id': self.user_id,
 			'service_id': self.service_id,
-			'Appointment_date': self.Appointment_date,
-			'Appointment_time': self.Appointment_time,
+			'appointment_date': self.appointment_date,
+			'appointment_time': self.appointment_time,
 			'status': self.status,
 			'payment_status': self.payment_status,
 			'created_at': self.created_at.isoformat(),
