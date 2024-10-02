@@ -31,6 +31,9 @@
                         <a href="{{ url_for('get_services') }}" class="navbar__links">Services</a>
                     </li>
                     <li class="navbar__btn">
+                        <a href="{{ url_for('profile') }}" class="button">Profile</a> 
+                    </li>
+                    <li class="navbar__btn">
                         <a href="{{ url_for('login') }}" class="button">Login</a>
                     </li>
                 </ul>
@@ -85,8 +88,9 @@
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
-    {% block scripts %} <!-- scripts específicos de cada página irán aquí -->
-    {% endblock %}
+{% block scripts %} 
+    <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
+{% endblock %}
+    <!-- scripts específicos de cada página irán aquí -->
 </body>
 </html>

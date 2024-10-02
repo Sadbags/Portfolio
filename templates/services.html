@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Extiende de la plantilla base.html -->
 
-{% block title %}Services - Quickr{% endblock %}
+<title>{% block title %}Services{% endblock %}</title>
 
 {% block content %}
     <div class="container">
@@ -49,5 +49,7 @@
 {% endblock %}
 
 {% block script %}
+{% block script %}
     <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
 {% endblock %}
+
