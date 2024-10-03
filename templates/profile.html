@@ -1,6 +1,6 @@
 {% extends 'base.html' %} <!-- Extiende de la plantilla base.html -->
 
-<title>{% block title %} Profile {% endblock %}<title> <!-- Título de la página -->
+<title>{% block title %} Profile {% endblock %}</title> <!-- Título de la página -->
 
     <!-- Hojas de estilos de la página -->
 {% block stylesheets %}<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">{% endblock %}
@@ -55,5 +55,5 @@
 {% endblock %}
 
 {% block script %} <!-- Scripts de la página -->
-    <script src="{{ url_for('static', filename='JS/profile.js') }}"></script>
+    <scripts src="{{ url_for('static', filename='JS/profile.js') }}"></scripts>
 {% endblock %}
