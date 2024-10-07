@@ -1,0 +1,140 @@
+/* Estilo general */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3, h4 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Estilo para la sección de detalles del servicio */
+.service-detail {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.service-detail p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.service-detail strong {
+    color: #2980b9;
+}
+
+/* Sección de reseñas */
+.reviews-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.review {
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #16a085;
+}
+
+.review p {
+    margin: 5px 0;
+}
+
+/* Estilo para el formulario de reseñas */
+.review-form-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-form-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: #34495e;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.form-group input[type="number"]:focus,
+.form-group textarea:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #1a669d;
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    .service-detail p, .review p, .review-form-section form {
+        font-size: 16px;
+    }
+}
