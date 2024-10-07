@@ -2,54 +2,45 @@
 
 <title>{% block title %}Services{% endblock %}</title>
 
+
 {% block content %}
-    <div class="container">
-        <h1>Services</h1>
-        <div class="search-container">
-            <form id="search-form" method="GET" action="{{ url_for('get_services') }}">
-                <input type="text" id="search-input" list="services-list" placeholder="Search for services..." required>
-                <datalist id="services-list">
-                    <option value="Web Development">
-                    <option value="Graphic Design">
-                    <option value="SEO Optimization">
-                    <option value="Digital Marketing">
-                    <option value="Content Writing">
-                    <option value="App Development">
-                    <option value="Social Media Management">
-                    <option value="Plumber">
-                    <option value="Electrician">
-                    <option value="Mechanic">
-                    <option value="Car Wash">
-                    <option value="Housekeeping">
-                    <option value="Landscaping">
-                    <option value="Pest Control">
-                    <option value="Handyman">
-                    <option value="Painter">
-                    <option value="Babysitter">
-                    <option value="Elder care">
-                </datalist>
-                <button type="submit">Search</button>
-            </form>
-        </div>
-        <div class="cards-container">
-            {% for service in services %}
-                <div class="card">
-                    <img src="data:image/jpeg;base64, {{ service.img_url }}" alt="{{ service.name }}">
-                    <div class="card-content">
-                        <h2>{{ service.name }}</h2>
-                        <p>{{ service.description }}</p>
-                        <p>Category: {{ service.category }}</p>
-                        <p>Approx. Price: {{ service.aprox_price }}</p>
-                        <p>Fee: {{ service.fee }}</p>
-                    </div>
+<div class="cards-container">
+    {% for service in services %}
+        <div class="card">
+            <img src="data:image/jpeg;base64,{{ service.img_url }}" alt="{{ service.name }}">
+            <div class="card-content">
+                <h2>{{ service.name }}</h2>
+                <p>Description: {{ service.description }}</p>
+                <p>Category: {{ service.category }}</p>
+                <p>Approx. Price: {{ service.aprox_price }}</p>
+                <p>Fee: {{ service.fee }}</p>
+                <button onclick="window.location.href='{{ url_for('review_page', service_id=service.id) }}'">View Service</button>
+
+                <!-- Mostrar las reseñas aquí -->
+				{% for review in reviews %}
+					<div class="review">
+						<h3>Review by {{ review.user.first_name }} {{ review.user.last_name }}</h3>
+						<p>Rating: {{ review.rating }}</p>
+						<p>Comment: {{ review.comment }}</p>
+					</div>
+				{% endfor %}
+
+                <!-- Formulario para el review -->
+                <div id="review-form-{{ service.id }}" style="display:none; margin-top: 10px;">
+                    <textarea id="comment-{{ service.id }}" placeholder="Leave a comment" required></textarea>
+                    <input type="number" id="rating-{{ service.id }}" min="1" max="5" placeholder="Rating (1-5)" required>
+                    <button onclick="submitReview('{{ service.id }}')">Submit Review</button>
+                    <div id="response-{{ service.id }}" style="color: green; margin-top: 5px;"></div>
                 </div>
-            {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endfor %}
+</div>
 {% endblock %}
 
-{% block script %}
+
 {% block script %}
     <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
+	<script src="{{ url_for('static', filename='JS/review.js') }}"></script>
 {% endblock %}
 

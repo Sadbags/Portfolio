@@ -1195,3 +1195,52 @@ button:hover {
         flex: 1 1 100%; /* Full width on small screens */
     }
 }
+
+
+/* reviews */
+
+.review-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+.review-card {
+	border: 1px solid #ccc;
+	padding: 15px;
+	margin-bottom: 20px;
+	border-radius: 8px;
+	background-color: #f9f9f9;
+}
+.review-header {
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+}
+.review-rating .star {
+	font-size: 20px;
+	color: gold;
+}
+.review-rating .star.filled {
+	color: gold;
+}
+.review-rating .star {
+	color: lightgray;
+}
+.review-form {
+	margin-top: 40px;
+	border-top: 2px solid #ddd;
+	padding-top: 20px;
+}
+.form-group {
+	margin-bottom: 15px;
+}
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+}
+.form-group textarea, .form-group select {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}

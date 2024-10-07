@@ -2,6 +2,8 @@ from flask import request, jsonify, abort, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from backend.Data.DataManager import DataManager
 from backend.database import db
+from backend.models.review import Review
+from backend.models.service import Service
 
 review_blueprint = Blueprint('review_blueprint', __name__)
 data_manager = DataManager()
@@ -18,6 +20,13 @@ def create_review():
     service_id = request.json['service_id']
     comment = request.json['comment']
     rating = request.json['rating']
+
+    service = Service.query.get(service_id)
+    if not service:
+        abort(404, description="Service not found")
+
+    if len(comment) > 1024:
+        abort(400, description="Comment is too long")
 
     if not isinstance(rating, int) or rating < 1 or rating > 5:
         abort(400, description="Invalid rating value")

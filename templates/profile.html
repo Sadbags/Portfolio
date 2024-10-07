@@ -2,27 +2,40 @@
 
 <title>{% block title %} Profile {% endblock %}</title> <!-- Título de la página -->
 
-    <!-- Hojas de estilos de la página -->
-{% block stylesheets %}<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+{% endblock %}
 
-{% block content %} <!-- Contenido de la página -->
+{% block content %}
     <div class="profile-container">
         <div class="profile-header">
-            <img src="{{ url_for('static', filename='images/profile-pic.jpg') }}" alt="Profile Picture" class="profile-pic">
-            <h1 class="profile-name">Alex Guadalupe</h1>
-                <a href="{{ url_for('editprofile') }}" class="edit-profile-btn" id="edit-profile-btn">Edit Profile</a>
+            <!-- Imagen de perfil dinámica: Usa la imagen del usuario o una imagen por defecto -->
+            <img src="{{ current_user.profile_pic_url or url_for('static', filename='images/default-pic.jpg') }}"
+                 alt="Profile Picture" class="profile-pic">
+
+            <!-- Nombre del usuario dinámico -->
+            <h1 class="profile-name">{{ current_user.first_name }} {{ current_user.last_name }}</h1>
+
+            <!-- Botón para editar el perfil -->
+            <a href="{{ url_for('edit_profile') }}" class="button">Edit Profile</a>
             <button class="share-profile-btn">Share Profile</button>
         </div>
+
         <div class="profile-content">
+            <!-- Sección de reseñas (pendiente de conectar con la lógica backend) -->
             <div class="reviews-section">
                 <h2>Reviews</h2>
-                <p>No reviews yet.</p>
+                <p></p>
             </div>
+
+            <!-- Sección de contacto dinámica -->
             <div class="contact-section">
                 <h2>Contact</h2>
-                <p>Email: test@example.com</p>
-                <p>Phone: +1234567890</p>
+                <p>Email: {{ current_user.email }}</p>
+                <p>Phone: {{ current_user.phone or 'No phone available' }}</p>
             </div>
+
+            <!-- Sección de mensajes directos -->
             <div class="direct-message-section">
                 <h2>Direct Message</h2>
                 <form id="message-form">
@@ -30,30 +43,26 @@
                     <button type="submit">Send</button>
                 </form>
             </div>
+
+            <!-- Sección de servicios dinámicos -->
             <div class="photo-feed-section">
                 <h2>Services</h2>
                 <div class="cards-container">
+                    {% for service in current_user.services %}
                     <div class="card">
-                        <img src="{{ url_for('static', filename='images/service1.jpg') }}" alt="Service 1">
+                        <!-- Imagen del servicio dinámica -->
+                        <img src="{{ service.img_url }}" alt="{{ service.name }}">
                         <div class="card-content">
-                            <h3>Service 1</h3>
-                            <p>Description of Service 1.</p>
+                            <h3>{{ service.name }}</h3>
+                            <p>{{ service.description or 'No description available' }}</p>
                         </div>
                     </div>
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='images/service2.jpg') }}" alt="Service 2">
-                        <div class="card-content">
-                            <h3>Service 2</h3>
-                            <p>Description of Service 2.</p>
-                        </div>
-                    </div>
-                    <!-- Add more cards as needed -->
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
-
 {% block script %} <!-- Scripts de la página -->
     <scripts src="{{ url_for('static', filename='JS/profile.js') }}"></scripts>
 {% endblock %}

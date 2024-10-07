@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash
 from flask_cors import CORS
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
+from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 import os
 
 # Blueprint imports
@@ -21,13 +22,18 @@ from backend.Apis.files_endpoint import files_blueprint
 from backend.models.user import User
 from backend.models.address import Address
 from backend.models.service import Service
+from backend.models.review import Review
 
 
 # Initialize the Flask application
 app = Flask(__name__)
 CORS(app)
 migrate = Migrate(app, db)
+login_manager = LoginManager()
+login_manager.init_app(app)
 app.secret_key = 'Quicker-app'
+
+login_manager.login_view = 'login'
 
 
 app.config['UPLOAD_FOLDER'] = 'uploads'    # new
@@ -78,33 +84,49 @@ def forgot():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Obtener datos del formulario de inicio de sesión desde JSON
-        data = request.json
+        data = request.get_json()
         email = data.get('email')
         password = data.get('password')
 
-        # Aquí puedes agregar la lógica para autenticar al usuario
         user = User.query.filter_by(email=email).first()
 
         if user is None:
-            abort(401, description='User not found')
+            return jsonify({"msg": "User not found"}), 401
 
         if not user.check_password(password):
-            abort(401, description='Incorrect password')
+            return jsonify({"msg": "Incorrect password"}), 401
 
-        additional_claims = {"is_admin": user.is_admin}
-        access_token = create_access_token(identity=user.id, additional_claims=additional_claims)
-        return jsonify(access_token=access_token), 200
+        # Aquí llamamos a login_user para iniciar sesión
+        login_user(user)
+
+        # Devolvemos un JSON con la URL de redirección en vez de usar 'redirect'
+        return jsonify({"msg": "Login successful", "redirect_url": url_for('profile')}), 200
 
     return render_template('login.html')
 
+@login_manager.user_loader
+def load_user(user_id):
+    return db.session.get(User, user_id)
+
+@app.route('/profile')
+@login_required
+def profile():
+    print(current_user.is_authenticated)  # Esto debería imprimir True
+    return render_template('profile.html', current_user=current_user)
+
+
+# Edit Profile route
+@app.route('/edit_profile')
+def edit_profile():
+    return render_template('editprofile.html')
+
+
+
 
 # register a user and address
-
 @app.route('/show_register', methods=['GET'])
 def show_register():
     return render_template('register.html')
-
 
 @app.route('/register', methods=['POST'])
 def register_user():
@@ -161,8 +183,6 @@ def register_user():
         db.session.add(address)
         db.session.commit()
 
-
-
         # Redirigir según el tipo de usuario
         if user_type == 'provider':
             return redirect(url_for('docs'))
@@ -179,9 +199,7 @@ def register_user():
 
 
 
-@app.route('/privacypolicy')
-def privacypolicy():
-    return render_template('privacypolicy.html')
+
 
 
 
@@ -190,10 +208,80 @@ def docs():
     return render_template('docs.html')
 
 
+
+
 @app.route('/services', methods=['GET'])
 def get_services():
     services = Service.query.all()
     return render_template('services.html', services=services)
+
+
+@app.route('/services')
+def services_page():
+    services = get_services()  # Esta función debe devolver una lista de servicios
+    return render_template('services.html', services=services)
+
+
+@app.route('/services/<service_id>', methods=['GET', 'POST'])
+def review_page(service_id):
+    # Obtener el servicio desde la base de datos
+    service = Service.query.get(service_id)
+
+    if service is None:
+        # Si no se encuentra el servicio, devolver un error 404
+        return jsonify({"error": "Service not found"}), 404
+
+    # Obtener las reseñas asociadas a este servicio
+    reviews = Review.query.filter_by(service_id=service_id).all()
+
+    # Pasar el servicio y las reseñas al contexto para renderizar la plantilla
+    return render_template('reviews.html', service=service, reviews=reviews)
+
+
+
+@app.route('/services/<service_id>/reviews', methods=['GET'])
+def get_reviews(service_id):
+    reviews = Review.query.filter_by(service_id=service_id).all()
+    return render_template('reviews.html', reviews=reviews)
+
+
+
+
+
+@app.route('/submit_review', methods=['POST'])
+@login_required  # Esto asegura que solo los usuarios autenticados puedan dejar reseñas
+def submit_review():
+    if request.is_json:
+        # Si los datos vienen como JSON, los obtenemos con request.get_json()
+        data = request.get_json()
+        service_id = data.get('service_id')
+        comment = data.get('comment')
+        rating = data.get('rating')
+    else:
+        # Si los datos vienen de un formulario, los obtenemos con request.form
+        service_id = request.form.get('service_id')
+        comment = request.form.get('comment')
+        rating = request.form.get('rating')
+
+    # Obtener el usuario actual
+    user_id = current_user.id  # current_user viene de flask_login
+
+    # Crear la nueva reseña (instancia del modelo Review)
+    new_review = Review(service_id=service_id, user_id=user_id, comment=comment, rating=rating)
+
+    # Guardar la reseña en la base de datos
+    try:
+        db.session.add(new_review)
+        db.session.commit()
+        return jsonify({"message": "Review submitted successfully"}), 201
+    except Exception as e:
+        db.session.rollback()  # Hacemos rollback en caso de error
+        return jsonify({"message": "An error occurred while saving the review", "error": str(e)}), 500
+
+
+
+
+
 
 
 
@@ -209,15 +297,18 @@ def terms():
 def FAQ():
     return render_template('FAQ.html')
 
-# Profile route
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
 
-# Edit Profile route
-@app.route('/edit_profile')
-def edit_profile():
-    return render_template('editprofile.html')
+@app.route('/privacypolicy')
+def privacypolicy():
+    return render_template('privacypolicy.html')
+
+
+
+
+
+
+
+
 
 
 

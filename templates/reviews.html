@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Service Detail - Quickr{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='service.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="service-detail">
+    <h1>{{ service.name }}</h1>
+    <p><strong>Description:</strong> {{ service.description }}</p>
+    <p><strong>Approx Price:</strong> ${{ service.aprox_price }}</p>
+    <p><strong>Category:</strong> {{ service.category }}</p>
+</div>
+
+<div class="reviews-section">
+    <h2>Reviews</h2>
+    {% if reviews %}
+        {% for review in reviews %}
+            <div class="review">
+                <h4>Review by {{ review.user.first_name }} {{ review.user.last_name }}</h4>
+                <p><strong>Rating:</strong> {{ review.rating }}/5</p>
+                <p><strong>Comment:</strong> {{ review.comment }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No reviews yet. Be the first to leave a review!</p>
+    {% endif %}
+</div>
+
+<div class="review-form-section">
+    <h2>Leave a Review</h2>
+    <form id="reviewForm">
+        <div class="form-group">
+            <label for="rating">Rating (1-5):</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required>
+        </div>
+        <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" required></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn-submit" type="submit">Submit Review</button>
+        </div>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='JS/review.js') }}"></script>
+{% endblock %}
