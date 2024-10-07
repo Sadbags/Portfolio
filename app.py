@@ -43,8 +43,8 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB  #new
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
-class Config(object):  # 'sqlite:////Users/bags/Portfolio/instance/Quickr.db'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/bgarc/VsCode/Portfolio/instance/Quickr.db'
+class Config(object):
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/bags/Portfolio/instance/Quickr.db'
     app.config['JWT_SECRET_KEY'] = 'super-secret'
 
 
