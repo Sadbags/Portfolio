@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash
 from flask_cors import CORS
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
+from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 import os
 
 # Blueprint imports
@@ -27,7 +28,11 @@ from backend.models.service import Service
 app = Flask(__name__)
 CORS(app)
 migrate = Migrate(app, db)
+login_manager = LoginManager()
+login_manager.init_app(app)
 app.secret_key = 'Quicker-app'
+
+login_manager.login_view = 'login'
 
 
 app.config['UPLOAD_FOLDER'] = 'uploads'    # new
@@ -78,25 +83,33 @@ def forgot():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Obtener datos del formulario de inicio de sesión desde JSON
-        data = request.json
+        data = request.get_json()
         email = data.get('email')
         password = data.get('password')
 
-        # Aquí puedes agregar la lógica para autenticar al usuario
         user = User.query.filter_by(email=email).first()
 
         if user is None:
-            abort(401, description='User not found')
+            return jsonify({"msg": "User not found"}), 401
 
         if not user.check_password(password):
-            abort(401, description='Incorrect password')
+            return jsonify({"msg": "Incorrect password"}), 401
 
-        additional_claims = {"is_admin": user.is_admin}
-        access_token = create_access_token(identity=user.id, additional_claims=additional_claims)
-        return jsonify(access_token=access_token), 200
+        # Aquí llamamos a login_user para iniciar sesión
+        login_user(user)
+
+        # Devolvemos un JSON con la URL de redirección en vez de usar 'redirect'
+        return jsonify({"msg": "Login successful", "redirect_url": url_for('profile')}), 200
 
     return render_template('login.html')
+
+
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return db.session.get(User, user_id)
+
 
 
 # register a user and address
@@ -161,8 +174,6 @@ def register_user():
         db.session.add(address)
         db.session.commit()
 
-
-
         # Redirigir según el tipo de usuario
         if user_type == 'provider':
             return redirect(url_for('docs'))
@@ -209,10 +220,18 @@ def terms():
 def FAQ():
     return render_template('FAQ.html')
 
-# Profile route
+
+
+
+
 @app.route('/profile')
+@login_required
 def profile():
-    return render_template('profile.html')
+    print(current_user.is_authenticated)  # Esto debería imprimir True
+    return render_template('profile.html', current_user=current_user)
+
+
+
 
 # Edit Profile route
 @app.route('/edit_profile')

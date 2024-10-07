@@ -33,22 +33,21 @@
         </div>
         <div class="cards-container">
             {% for service in services %}
-                <div class="card">
-                    <img src="data:image/jpeg;base64, {{ service.img_url }}" alt="{{ service.name }}">
-                    <div class="card-content">
-                        <h2>{{ service.name }}</h2>
-                        <p>{{ service.description }}</p>
-                        <p>Category: {{ service.category }}</p>
-                        <p>Approx. Price: {{ service.aprox_price }}</p>
-                        <p>Fee: {{ service.fee }}</p>
-                    </div>
-                </div>
+			<div class="card">
+				<img src="data:image/jpeg;base64,{{ service.img_data }}" alt="{{ service.name }}">  <-- pendiente cambio -->
+				<div class="card-content">
+					<h2>{{ service.name }}</h2>
+					<p>{{ service.description }}</p>
+					<p>Category: {{ service.category }}</p>
+					<p>Approx. Price: {{ service.aprox_price }}</p>
+					<p>Fee: {{ service.fee }}</p>
+				</div>
+			</div>
             {% endfor %}
         </div>
     </div>
 {% endblock %}
 
-{% block script %}
 {% block script %}
     <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
 {% endblock %}

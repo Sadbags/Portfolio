@@ -18,11 +18,11 @@ document.getElementById('login-form').addEventListener('submit', async function(
 
         if (response.ok) {
             const data = await response.json();
-            localStorage.setItem('token', data.access_token);
-            window.location.href = '/dashboard';  // Redirigir después del login
+            localStorage.setItem('token', data.access_token);  // Si estás utilizando tokens, esto es válido
+            window.location.href = data.redirect_url;  // Redirige a la URL proporcionada por el backend
         } else {
             const error = await response.json();
-            alert('Login failed: ' + error.description);
+            alert('Login failed: ' + error.msg);
         }
     } catch (error) {
         console.error('Error de conexión', error);

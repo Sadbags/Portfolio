@@ -1,6 +1,6 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% block title %} Edit - Profile {% endblock %} 
+{% block title %} Edit - Profile {% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ url_for('static', filename='editprofile.css') }}">
@@ -16,29 +16,29 @@
             <img src="{{ url_for('static', filename='images/profile-pic.jpg') }}" alt="Profile Picture" class="profile-pic">
             <label for="profile-pic-input">Profile Picture</label>
             <input type="file" id="profile-pic-input" accept="image/*">
-            
+
             <label for="profile-name-input">Name</label>
-            <input type="text" id="profile-name-input" value="Alex Guadalupe">
-            
+            <input type="text" id="profile-name-input" value="">
+
             <label for="profile-email-input">Email</label>
-            <input type="email" id="profile-email-input" value="test@example.com">
-            
+            <input type="email" id="profile-email-input" value="">
+
             <label for="profile-phone-input">Phone</label>
-            <input type="tel" id="profile-phone-input" value="+1234567890">
-            
+            <input type="tel" id="profile-phone-input" value="">
+
             <label for="profile-reviews-input">Reviews</label>
-            <textarea id="profile-reviews-input">No reviews yet.</textarea>
-            
+            <textarea id="profile-reviews-input"></textarea>
+
             <label for="profile-services-input">Services</label>
             <textarea id="profile-services-input">Service 1: Description of Service 1.\nService 2: Description of Service 2.</textarea>
-            
+
             <button type="submit">Save Changes</button>
         </form>
     </div>
 </div>
 {% endblock %}
 
-<!-- 
+
 {% block script %}
     <script src="{{ url_for('static', filename='JS/profile.js') }}"></script>
-{% endblock %} -->
+{% endblock %}
