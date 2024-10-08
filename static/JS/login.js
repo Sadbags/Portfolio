@@ -4,9 +4,6 @@ document.getElementById('login-form').addEventListener('submit', async function(
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    console.log("Email:", email);  // Agrega esto para depurar
-    console.log("Password:", password);  // Agrega esto para depurar
-
     try {
         const response = await fetch('/login', {
             method: 'POST',
@@ -16,16 +13,21 @@ document.getElementById('login-form').addEventListener('submit', async function(
             body: JSON.stringify({ email, password })
         });
 
+        // Si la solicitud es exitosa
         if (response.ok) {
             const data = await response.json();
-            localStorage.setItem('token', data.access_token);  // Si estás utilizando tokens, esto es válido
-            window.location.href = data.redirect_url;  // Redirige a la URL proporcionada por el backend
+
+            // Guarda el token JWT en localStorage
+            localStorage.setItem('token', data.access_token);
+
+            // Redirige a la página de perfil o alguna otra URL si está disponible
+            window.location.href = '/profile';  // Cambia la URL según lo que desees
         } else {
             const error = await response.json();
-            alert('Login failed: ' + error.msg);
+            alert('Error de inicio de sesión: ' + error.description);
         }
     } catch (error) {
-        console.error('Error de conexión', error);
-        alert('Error de conexión. Intenta nuevamente.');
+        console.error('Error de conexión:', error);
+        alert('Error al conectar con el servidor. Por favor, intenta nuevamente.');
     }
 });

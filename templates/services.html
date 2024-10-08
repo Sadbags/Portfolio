@@ -27,11 +27,11 @@
 
                 <!-- Formulario para el review -->
                 <div id="review-form-{{ service.id }}" style="display:none; margin-top: 10px;">
-                    <textarea id="comment-{{ service.id }}" placeholder="Leave a comment" required></textarea>
-                    <input type="number" id="rating-{{ service.id }}" min="1" max="5" placeholder="Rating (1-5)" required>
-                    <button onclick="submitReview('{{ service.id }}')">Submit Review</button>
-                    <div id="response-{{ service.id }}" style="color: green; margin-top: 5px;"></div>
-                </div>
+					<textarea id="comment-{{ service.id }}" placeholder="Leave a comment" required></textarea>
+					<input type="number" id="rating-{{ service.id }}" min="1" max="5" placeholder="Rating (1-5)" required>
+					<button class="btn-submit-review" data-service-id="{{ service.id }}">Submit Review</button>
+					<div id="response-{{ service.id }}" style="color: green; margin-top: 5px;"></div>
+				</div>
             </div>
         </div>
     {% endfor %}
@@ -41,6 +41,6 @@
 
 {% block script %}
     <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
-	<script src="{{ url_for('static', filename='JS/review.js') }}"></script>
+	<script src="{{ url_for('static', filename='JS/reviews.js') }}"></script>
 {% endblock %}
 
