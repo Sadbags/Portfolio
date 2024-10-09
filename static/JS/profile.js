@@ -62,3 +62,4 @@ document.getElementById('edit-profile-form').addEventListener('submit', function
     // Cierra el modal
     document.getElementById('edit-profile-modal').style.display = 'none';
 });
+

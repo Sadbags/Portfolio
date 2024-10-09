@@ -142,3 +142,20 @@ function hideTodayBtn() {
     todayBtn.style.display= "flex";
   }
 }
+
+document.querySelectorAll('.sidebar-nav a').forEach(link => {
+	link.addEventListener('click', function(event) {
+		event.preventDefault();
+
+		// Remover la clase 'active' de todos los enlaces
+		document.querySelectorAll('.sidebar-nav a').forEach(nav => nav.classList.remove('active'));
+
+		// Añadir la clase 'active' al enlace clickeado
+		this.classList.add('active');
+
+		// Mostrar la sección correspondiente
+		const targetSection = this.getAttribute('href').substring(1);
+		document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+		document.getElementById(targetSection).classList.add('active');
+	});
+});

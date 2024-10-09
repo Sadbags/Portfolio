@@ -18,11 +18,16 @@
 
             <!-- Botón para editar el perfil -->
             <a href="{{ url_for('edit_profile') }}" class="button">Edit Profile</a>
+
+            <!-- Botón para compartir perfil -->
             <button class="share-profile-btn">Share Profile</button>
+
+            <!-- Botón de Logout -->
+            <a href="{{ url_for('logout') }}" class="button-logout">Log Out</a>
         </div>
 
         <div class="profile-content">
-            <!-- Sección de reseñas (pendiente de conectar con la lógica backend) -->
+            <!-- Sección de reseñas -->
             <div class="reviews-section">
                 <h2>Reviews</h2>
                 <p></p>
@@ -62,7 +67,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-{% block script %} <!-- Scripts de la página -->
-    <script src="{{ url_for('static', filename='JS/profile.js') }}"></script>
 {% endblock %}

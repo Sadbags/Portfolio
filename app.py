@@ -74,7 +74,7 @@ def home1():
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', current_user=current_user)
 
 @app.route('/forgot')
 def forgot():
@@ -98,6 +98,8 @@ def login():
         if not user.check_password(password):
             return jsonify({"msg": "Incorrect password"}), 401
 
+        login_user(user)
+
         # Generar el token JWT
         additional_claims = {"is_admin": user.is_admin}  # Si deseas agregar información extra
         access_token = create_access_token(identity=user.id, additional_claims=additional_claims)
@@ -111,9 +113,13 @@ def login():
 
     return render_template('login.html')
 
+
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
+
 
 @app.route('/profile')
 @login_required
@@ -122,15 +128,43 @@ def profile():
     return render_template('profile.html', current_user=current_user)
 
 
+@app.route('/logout', methods=['GET'])
+@login_required
+def logout():
+    logout_user()  # Cierra la sesión del usuario
+    flash('You have been logged out successfully!', 'success')
+    return redirect(url_for('login'))  # Redirige al login
+
+
+
+
 # Edit Profile route
 @app.route('/edit_profile')
 def edit_profile():
-    return render_template('editprofile.html')
+    return render_template('edit_profile.html')
+
+# Edit service dashboard route
+@app.route('/edit_service')
+def edit_service_dashboard():
+    return render_template('edit_service.html')
+
+@app.route('/edit_service', methods=['GET', 'POST'])
+def edit_service(service_id):
+    # Lógica para editar el servicio
+    service = next((s for s in services if s['id'] == service_id), None)
+    if request.method == 'POST':
+        # Actualiza el servicio según la entrada del formulario
+        ...
+        return redirect(url_for('dashboard'))
+    return render_template('edit_service.html', service=service)
+
+
 
 # register a user and address
 @app.route('/show_register', methods=['GET'])
 def show_register():
     return render_template('register.html')
+
 
 @app.route('/register', methods=['POST'])
 def register_user():
@@ -204,9 +238,8 @@ def register_user():
 
 
 
-@app.route('/docs')
-def docs():
-    return render_template('docs.html')
+
+
 
 
 
@@ -246,12 +279,32 @@ def get_reviews(service_id):
     return render_template('reviews.html', reviews=reviews)
 
 
+@app.route('/services/<service_id>/reviews', methods=['POST'])
+@login_required  # Asegúrate de que el usuario esté autenticado
+def create_review(service_id):
+    data = request.get_json()
+    comment = data.get('comment')
+    rating = data.get('rating')
+
+    # Aquí puedes agregar la lógica para crear la reseña
+    review = Review(
+        service_id=service_id,
+        user_id=current_user.id,  # Usa el ID del usuario actualmente autenticado
+        comment=comment,
+        rating=rating
+    )
+
+    db.session.add(review)
+    db.session.commit()
+
+    return jsonify({"msg": "Review submitted successfully!"}), 201
 
 
 
 
 
 
+# paginas regulares
 
 @app.route('/support')
 def support():
@@ -265,12 +318,13 @@ def terms():
 def FAQ():
     return render_template('FAQ.html')
 
-
 @app.route('/privacypolicy')
 def privacypolicy():
     return render_template('privacypolicy.html')
 
-
+@app.route('/docs')
+def docs():
+    return render_template('docs.html')
 
 
 

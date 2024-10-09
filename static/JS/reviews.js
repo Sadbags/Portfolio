@@ -1,49 +1,32 @@
 async function submitReview(serviceId) {
-    const comment = document.getElementById(`comment-${serviceId}`).value;
-    const rating = parseInt(document.getElementById(`rating-${serviceId}`).value);
-
-    // Depuración: Muestra los valores en la consola
-    console.log('Comentario:', comment);
-    console.log('Calificación:', rating);
-
-    if (!comment || !rating || rating < 1 || rating > 5) {
-        alert("Por favor, ingresa un comentario válido y una calificación entre 1 y 5.");
-        return;
-    }
-
     const token = localStorage.getItem('token');
+
     if (!token) {
-        alert("Debes estar logueado para enviar una reseña.");
+        alert('Debes iniciar sesión para dejar una reseña.');
+        window.location.href = '/login';  // Redirige al login si no hay token
         return;
     }
+
+    const comment = document.getElementById(`comment-${serviceId}`).value;
+    const rating = document.getElementById(`rating-${serviceId}`).value;
 
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/reviews', {
+        const response = await fetch(`/services/${serviceId}/reviews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`  // Asegúrate de enviar el token JWT
             },
-            body: JSON.stringify({
-                service_id: serviceId,
-                rating: rating,
-                comment: comment
-            })
+            body: JSON.stringify({ comment, rating })
         });
 
-        console.log("Response status:", response.status);
-
         if (response.ok) {
-            const data = await response.json();
-            alert("Reseña enviada con éxito.");
-            console.log("Respuesta del servidor:", data);
+            alert('¡Reseña enviada con éxito!');
         } else {
-            const errorResponse = await response.json();
-            alert(`Error al enviar la reseña: ${errorResponse.description || "Error desconocido."}`);
-            console.error("Error de respuesta del servidor:", errorResponse);
+            const error = await response.json();
+            alert('Error al enviar la reseña: ' + error.msg);
         }
     } catch (error) {
-        console.error('Error en la solicitud:', error);
-        alert("Error al enviar la reseña. Por favor, inténtalo de nuevo más tarde.");
+        console.error('Error al enviar la reseña:', error);
     }
 }
