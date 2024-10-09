@@ -1,29 +1,32 @@
-document.getElementById('reviewForm').addEventListener('submit', function(event) {
-	event.preventDefault(); // Evita el comportamiento predeterminado del formulario
+async function submitReview(serviceId) {
+    const token = localStorage.getItem('token');
 
-	// Obtener los datos del formulario
-	const serviceId = "{{ service.id }}"; // Obtener el ID del servicio
-	const rating = document.getElementById('rating').value;
-	const comment = document.getElementById('comment').value;
+    if (!token) {
+        alert('Debes iniciar sesión para dejar una reseña.');
+        window.location.href = '/login';  // Redirige al login si no hay token
+        return;
+    }
 
-	// Enviar los datos en formato JSON
-	fetch('{{ url_for("submit_review") }}', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			service_id: serviceId,
-			rating: rating,
-			comment: comment
-		})
-	})
-	.then(response => response.json())
-	.then(data => {
-		console.log('Review submitted:', data);
-		// Mostrar un mensaje de éxito o actualizar la página
-	})
-	.catch((error) => {
-		console.error('Error:', error);
-	});
-});
+    const comment = document.getElementById(`comment-${serviceId}`).value;
+    const rating = document.getElementById(`rating-${serviceId}`).value;
+
+    try {
+        const response = await fetch(`/services/${serviceId}/reviews`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`  // Asegúrate de enviar el token JWT
+            },
+            body: JSON.stringify({ comment, rating })
+        });
+
+        if (response.ok) {
+            alert('¡Reseña enviada con éxito!');
+        } else {
+            const error = await response.json();
+            alert('Error al enviar la reseña: ' + error.msg);
+        }
+    } catch (error) {
+        console.error('Error al enviar la reseña:', error);
+    }
+}

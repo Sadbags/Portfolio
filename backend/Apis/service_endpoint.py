@@ -16,12 +16,17 @@ service_blueprint = Blueprint('service_blueprint', __name__)
 def create_service():
     data = request.json
 
+    # Extraer los datos del servicio
     name = data.get('name')
     description = data.get('description')
     aprox_price = data.get('aprox_price')
     fee = data.get('fee')
     category = data.get('category')
     img_url = data.get('img_url')  # Este debe ser el base64
+
+    # Validaciones básicas
+    if not name or not description or not aprox_price or not fee or not category:
+        return jsonify({"error": "Faltan datos obligatorios para crear el servicio"}), 400
 
     if not img_url:
         return jsonify({"error": "No image URL or file provided"}), 400
@@ -32,22 +37,28 @@ def create_service():
     else:
         img_data = img_url  # Suponiendo que ya es base64
 
+    # Crea la instancia del servicio
     service = Service(
         name=name,
         description=description,
         aprox_price=aprox_price,
         fee=fee,
         category=category,
-        img_data=img_data
+        img_url=img_data  # Guarda la imagen en base64
     )
-    service = Service(name="Servicio 1", img_url=encode_image("ruta_a_la_imagen.jpg"))
+
+    # Agrega el servicio a la base de datos
     db.session.add(service)
     db.session.commit()
 
-    return jsonify({"message": "Service created successfully"}), 201
+    return jsonify({"message": "Servicio creado exitosamente", "service_id": service.id}), 201
 
 def convert_image_to_base64(url):
     response = requests.get(url)
+
+    if response.status_code != 200:
+        return jsonify({"error": "No se pudo obtener la imagen desde la URL proporcionada"}), 400
+
     img = Image.open(BytesIO(response.content))
     buffered = BytesIO()
     img.save(buffered, format="PNG")  # Cambia el formato si es necesario

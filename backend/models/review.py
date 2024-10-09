@@ -9,7 +9,7 @@ class Review(BaseModel):
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     service_id = db.Column(db.String(36), db.ForeignKey('services.id') , nullable=False)
     user_id = db.Column(db.String(36), db.ForeignKey('users.id') , nullable=False)
-    comment = db.Column(db.Text, nullable=True)
+    comment = db.Column(db.String(1024), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
 
     user = db.relationship('User', back_populates='reviews')  # esto es lo nuevo

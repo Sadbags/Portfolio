@@ -1,0 +1,89 @@
+/* Estilo general para el cuerpo de la página */
+
+
+/* Estilo para los detalles del servicio */
+.service-detail {
+    background-color: #ffffff; /* Fondo blanco para el detalle */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espaciado abajo */
+}
+
+/* Estilo para los títulos */
+h1, h2, h3 {
+    color: #333; /* Color oscuro para los títulos */
+}
+
+#review-form- h3 {
+    color: #333; /* Color oscuro */
+    margin-bottom: 10px; /* Espaciado debajo del título */
+}
+
+
+/* Estilo para los párrafos */
+p {
+    color: #555; /* Color gris para el texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+}
+
+/* Estilo para la sección de reseñas */
+.reviews-section {
+    background-color: #ffffff; /* Fondo blanco para las reseñas */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilo para cada reseña */
+.review {
+    border-bottom: 1px solid #eee; /* Línea separadora entre reseñas */
+    padding: 10px 0; /* Espaciado interno */
+}
+
+.review:last-child {
+    border-bottom: none; /* Quitar línea del último elemento */
+}
+
+/* Estilo para el formulario de reseñas */
+#review-form- {
+    margin-top: 20px; /* Espacio arriba */
+    background-color: #f9f9f9; /* Fondo ligeramente gris */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+}
+
+/* Estilo para el área de texto */
+textarea {
+    width: 100%; /* Ancho completo */
+    height: 100px; /* Altura fija */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    resize: vertical; /* Permite cambiar el tamaño verticalmente */
+}
+
+/* Estilo para el campo de entrada */
+input[type="number"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 10px; /* Espacio arriba */
+}
+
+/* Estilo para el botón */
+button {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Color del texto */
+    padding: 10px 15px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    margin-top: 10px; /* Espacio arriba */
+}
+
+/* Cambiar el color del botón al pasar el mouse */
+button:hover {
+    background-color: #45a049; /* Un verde más oscuro */
+}

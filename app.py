@@ -1,5 +1,5 @@
 from flask import Flask, flash, render_template, request, redirect, url_for, jsonify
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 from werkzeug.security import generate_password_hash
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -74,7 +74,7 @@ def home1():
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', current_user=current_user)
 
 @app.route('/forgot')
 def forgot():
@@ -88,25 +88,38 @@ def login():
         email = data.get('email')
         password = data.get('password')
 
+        # Buscar al usuario en la base de datos
         user = User.query.filter_by(email=email).first()
 
         if user is None:
             return jsonify({"msg": "User not found"}), 401
 
+        # Verificar contraseña
         if not user.check_password(password):
             return jsonify({"msg": "Incorrect password"}), 401
 
-        # Aquí llamamos a login_user para iniciar sesión
         login_user(user)
 
-        # Devolvemos un JSON con la URL de redirección en vez de usar 'redirect'
-        return jsonify({"msg": "Login successful", "redirect_url": url_for('profile')}), 200
+        # Generar el token JWT
+        additional_claims = {"is_admin": user.is_admin}  # Si deseas agregar información extra
+        access_token = create_access_token(identity=user.id, additional_claims=additional_claims)
+
+        # Devolver el token en la respuesta JSON
+        return jsonify({
+            "msg": "Login successful",
+            "access_token": access_token,
+            "redirect_url": url_for('profile')  # Puedes personalizar la redirección
+        }), 200
 
     return render_template('login.html')
+
+
+
 
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
+
 
 @app.route('/profile')
 @login_required
@@ -115,11 +128,35 @@ def profile():
     return render_template('profile.html', current_user=current_user)
 
 
+@app.route('/logout', methods=['GET'])
+@login_required
+def logout():
+    logout_user()  # Cierra la sesión del usuario
+    flash('You have been logged out successfully!', 'success')
+    return redirect(url_for('login'))  # Redirige al login
+
+
+
+
 # Edit Profile route
 @app.route('/edit_profile')
 def edit_profile():
-    return render_template('editprofile.html')
+    return render_template('edit_profile.html')
 
+# Edit service dashboard route
+@app.route('/edit_service')
+def edit_service_dashboard():
+    return render_template('edit_service.html')
+
+@app.route('/edit_service', methods=['GET', 'POST'])
+def edit_service(service_id):
+    # Lógica para editar el servicio
+    service = next((s for s in services if s['id'] == service_id), None)
+    if request.method == 'POST':
+        # Actualiza el servicio según la entrada del formulario
+        ...
+        return redirect(url_for('dashboard'))
+    return render_template('edit_service.html', service=service)
 
 
 
@@ -127,6 +164,7 @@ def edit_profile():
 @app.route('/show_register', methods=['GET'])
 def show_register():
     return render_template('register.html')
+
 
 @app.route('/register', methods=['POST'])
 def register_user():
@@ -203,10 +241,6 @@ def register_user():
 
 
 
-@app.route('/docs')
-def docs():
-    return render_template('docs.html')
-
 
 
 
@@ -245,45 +279,32 @@ def get_reviews(service_id):
     return render_template('reviews.html', reviews=reviews)
 
 
+@app.route('/services/<service_id>/reviews', methods=['POST'])
+@login_required  # Asegúrate de que el usuario esté autenticado
+def create_review(service_id):
+    data = request.get_json()
+    comment = data.get('comment')
+    rating = data.get('rating')
 
+    # Aquí puedes agregar la lógica para crear la reseña
+    review = Review(
+        service_id=service_id,
+        user_id=current_user.id,  # Usa el ID del usuario actualmente autenticado
+        comment=comment,
+        rating=rating
+    )
 
+    db.session.add(review)
+    db.session.commit()
 
-@app.route('/submit_review', methods=['POST'])
-@login_required  # Esto asegura que solo los usuarios autenticados puedan dejar reseñas
-def submit_review():
-    if request.is_json:
-        # Si los datos vienen como JSON, los obtenemos con request.get_json()
-        data = request.get_json()
-        service_id = data.get('service_id')
-        comment = data.get('comment')
-        rating = data.get('rating')
-    else:
-        # Si los datos vienen de un formulario, los obtenemos con request.form
-        service_id = request.form.get('service_id')
-        comment = request.form.get('comment')
-        rating = request.form.get('rating')
-
-    # Obtener el usuario actual
-    user_id = current_user.id  # current_user viene de flask_login
-
-    # Crear la nueva reseña (instancia del modelo Review)
-    new_review = Review(service_id=service_id, user_id=user_id, comment=comment, rating=rating)
-
-    # Guardar la reseña en la base de datos
-    try:
-        db.session.add(new_review)
-        db.session.commit()
-        return jsonify({"message": "Review submitted successfully"}), 201
-    except Exception as e:
-        db.session.rollback()  # Hacemos rollback en caso de error
-        return jsonify({"message": "An error occurred while saving the review", "error": str(e)}), 500
+    return jsonify({"msg": "Review submitted successfully!"}), 201
 
 
 
 
 
 
-
+# paginas regulares
 
 @app.route('/support')
 def support():
@@ -297,12 +318,13 @@ def terms():
 def FAQ():
     return render_template('FAQ.html')
 
-
 @app.route('/privacypolicy')
 def privacypolicy():
     return render_template('privacypolicy.html')
 
-
+@app.route('/docs')
+def docs():
+    return render_template('docs.html')
 
 
 
