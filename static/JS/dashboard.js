@@ -1,23 +1,32 @@
-// Función para acceder al dashboard
-function accessDashboard() {
-    const token = localStorage.getItem('jwt_token'); // Asegúrate de que estás guardando el token después de iniciar sesión
 
-    fetch('/dashboard', {
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + token
+
+fetch('/dashboard', {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    }
+})
+.then(response => {
+    if (!response.ok) {
+        console.error('Error:', response);
+        if (response.status === 401) {
+            window.location.href = '/login';
         }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Access denied: ' + response.statusText);
-        }
-        return response.text(); // o response.json() si esperas un JSON
-    })
-    .then(data => {
-        document.getElementById('dashboardContainer').innerHTML = data; // Muestra el contenido del dashboard
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
+        return;
+    }
+    return response.text();
+})
+.then(data => {
+    // Reemplazar solo el contenido del dashboard sin sobrescribir todo el body
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+        mainContent.innerHTML = data;
+    } else {
+        console.error('No se encontró el contenedor .main-content');
+    }
+})
+.catch(error => {
+    console.error('Error:', error);
+});

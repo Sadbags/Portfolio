@@ -2,21 +2,20 @@ from flask import request, jsonify, abort, Blueprint
 from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity, get_jwt
 from backend.models.appointment import Appointment
 from backend.database import db
-from datetime import datetime
+from datetime import datetime, time
 from backend.models.user import User
 
 appointments_blueprint = Blueprint('appointments_blueprint', __name__)
 
-@appointments_blueprint.route('/appointments', methods=['POST'])
+@appointments_blueprint.route('/create_appointments', methods=['POST'])
 @jwt_required()
 def create_appointment():
     current_user_id = get_jwt_identity()
 
-    if not request.json or not 'user_id' in request.json or not 'service_id' in request.json or not 'Appointment_date' in request.json or not 'Appointment_time' in request.json or not 'status' in request.json or not 'payment_status' in request.json:
+    if not request.json or not 'service_id' in request.json or not 'Appointment_date' in request.json or not 'Appointment_time' in request.json or not 'status' in request.json or not 'payment_status' in request.json:
         abort(400, description="Missing required fields")
 
     # Obtener datos de la solicitud
-    user_id = request.json['user_id']
     service_id = request.json['service_id']
     appointment_date_str = request.json['Appointment_date']
     appointment_time = request.json['Appointment_time']
@@ -25,20 +24,16 @@ def create_appointment():
 
     # Convertir la cadena de Appointment_date a objeto datetime
     try:
-        Appointment_date = datetime.strptime(appointment_date_str, '%Y-%m-%dT%H:%M:%S')
+        appointment_date = datetime.strptime(appointment_date_str, '%Y-%m-%d')  #arregle a este formato
     except ValueError:
-        abort(400, description="Invalid date format. Use YYYY-MM-DDTHH:MM:SS")
+        abort(400, description="Invalid date format. Use YYYY-MM-DD") # arregle a este formato falta hacer el script
 
-    if current_user_id != user_id:
-        abort(403, description="You do not have permission to create appointments for this user")
-
-
-    # Crear la instancia de Appointment
+    # Crear la instancia de Appointment con el user_id del token
     appointment = Appointment(
-        user_id=user_id,
+        user_id=current_user_id,  # Usar el user_id del JWT
         service_id=service_id,
-        appointment_date=appointment_date,
-        appointment_time=appointment_time,
+        Appointment_date=appointment_date,
+        Appointment_time=appointment_time,
         status=status,
         payment_status=payment_status
     )
@@ -51,7 +46,11 @@ def create_appointment():
     return jsonify(appointment.to_dict()), 201
 
 
-@appointments_blueprint.route('/appointments', methods=['GET'])
+
+
+
+
+@appointments_blueprint.route('/api/appointments', methods=['GET'])
 @jwt_required()
 def get_appointments():
     current_user_id = get_jwt_identity()
