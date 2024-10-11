@@ -1,5 +1,5 @@
 from flask import Flask, flash, render_template, request, redirect, url_for, jsonify
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_current_user, get_jwt_identity
 from werkzeug.security import generate_password_hash
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -23,6 +23,7 @@ from backend.models.user import User
 from backend.models.address import Address
 from backend.models.service import Service
 from backend.models.review import Review
+from backend.models.appointment import Appointment
 
 
 # Initialize the Flask application
@@ -45,7 +46,7 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 
 class Config(object):
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/bags/Portfolio/instance/Quickr.db'
-    app.config['JWT_SECRET_KEY'] = 'super-secret'
+    app.config['JWT_SECRET_KEY'] = 'Quickr-app'
 
 
 class DevelopmentConfig(Config):
@@ -76,10 +77,15 @@ def home1():
 def dashboard():
     return render_template('dashboard.html', current_user=current_user)
 
+
 @app.route('/forgot')
 def forgot():
     return render_template('forgot.html')
 
+
+
+
+# Login
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -115,7 +121,6 @@ def login():
 
 
 
-
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
@@ -141,7 +146,7 @@ def logout():
 # Edit Profile route
 @app.route('/edit_profile')
 def edit_profile():
-    return render_template('edit_profile.html')
+    return render_template('editprofile.html')
 
 # Edit service dashboard route
 @app.route('/edit_service')
@@ -160,7 +165,10 @@ def edit_service(service_id):
 
 
 
+
+
 # register a user and address
+
 @app.route('/show_register', methods=['GET'])
 def show_register():
     return render_template('register.html')
@@ -236,13 +244,7 @@ def register_user():
 
 
 
-
-
-
-
-
-
-
+# SERVICES
 
 @app.route('/services', methods=['GET'])
 def get_services():
@@ -261,22 +263,23 @@ def review_page(service_id):
     # Obtener el servicio desde la base de datos
     service = Service.query.get(service_id)
 
-    if service is None:
+    if not service:
         # Si no se encuentra el servicio, devolver un error 404
-        return jsonify({"error": "Service not found"}), 404
+        abort(404, description="Service not found")
 
     # Obtener las reseñas asociadas a este servicio
     reviews = Review.query.filter_by(service_id=service_id).all()
 
+
     # Pasar el servicio y las reseñas al contexto para renderizar la plantilla
-    return render_template('reviews.html', service=service, reviews=reviews)
+    return render_template('serviceDetails.html', service=service, reviews=reviews)
 
 
 
 @app.route('/services/<service_id>/reviews', methods=['GET'])
 def get_reviews(service_id):
     reviews = Review.query.filter_by(service_id=service_id).all()
-    return render_template('reviews.html', reviews=reviews)
+    return render_template('serviceDetails.html', reviews=reviews)
 
 
 @app.route('/services/<service_id>/reviews', methods=['POST'])
@@ -300,6 +303,23 @@ def create_review(service_id):
     return jsonify({"msg": "Review submitted successfully!"}), 201
 
 
+
+# APPOINTMENTS
+
+@app.route('/api/appointments', methods=['GET'])
+@jwt_required()
+def view_appointments():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    appointments = user.appointments  # Obtener todas las citas del usuario
+
+    return render_template('serviceDetails.html', appointments=appointments)
+
+
+@app.route('/users/<user_id>/appointments', methods=['GET'])
+def get_appointments():
+    appointments = Appointment.query.all()  # Obtener todos los appointments
+    return jsonify([appointment.to_dict() for appointment in appointments]), 200
 
 
 

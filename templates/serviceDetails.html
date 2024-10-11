@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Service Detail{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/reviews.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="service-detail">
+    <h1>{{ service.name }}</h1>
+    <p><strong>Description:</strong> {{ service.description }}</p>
+    <p><strong>Approx Price:</strong> ${{ service.aprox_price }}</p>
+    <p><strong>Category:</strong> {{ service.category }}</p>
+</div>
+
+<!-- Formulario para crear una nueva cita -->
+<div class="container">
+    <h1>Create Appointment</h1>
+    <form id="create-appointment-form">
+        <div class="form-group">
+            <label for="service_id">Service Name</label>
+            <!-- Cambiado a hidden para enviar el service_id, no el name -->
+            <input type="hidden" id="service_id" name="service_id" value="{{ service.id }}">
+            <input type="text" value="{{ service.name }}" readonly> <!-- Mostrar solo el nombre al usuario -->
+        </div>
+        <div class="form-group">
+            <label for="appointment_date">Appointment Date</label>
+            <input type="date" id="appointment_date" name="Appointment_date" required>
+        </div>
+        <div class="form-group">
+            <label for="appointment_time">Appointment Time</label>
+            <input type="time" id="appointment_time" name="Appointment_time" required>
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="canceled">Canceled</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="payment_status">Payment Status</label>
+            <select id="payment_status" name="payment_status" required>
+                <option value="unpaid">Unpaid</option>
+                <option value="paid">Paid</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Appointment</button>
+    </form>
+</div>
+
+
+<!-- Sección de reviews -->
+<div class="reviews-section">
+    <h2>Reviews</h2>
+    {% if reviews %}
+        {% for review in reviews %}
+            <div class="review">
+                <h4>Review by {{ review.user.first_name }} {{ review.user.last_name }}</h4>
+                <p><strong>Rating:</strong> {{ review.rating }}</p>
+                <p><strong>Comment:</strong> {{ review.comment }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No reviews yet. Be the first to leave a review!</p>
+    {% endif %}
+</div>
+
+<!-- Formulario para dejar una reseña -->
+<div class="leave-reviews">
+    <h2>Leave a Review</h2>
+        <textarea id="comment-{{ service.id }}" placeholder="Leave a comment" required></textarea>
+        <div class="rating-input">
+            <input type="number" id="rating-{{ service.id }}" min="1" max="5" placeholder="Rating" required>
+            <span class="rating-info"></span>
+        </div>
+        <button class="submit-review" onclick="submitReview('{{ service.id }}')">Submit Review</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='JS/reviews.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/login.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/appointments.js') }}"></script>
+{% endblock %}

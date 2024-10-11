@@ -1,0 +1,232 @@
+/* Estilo general para el cuerpo de la página */
+
+
+/* Estilo para los detalles del servicio */
+.service-detail {
+    background-color: #ffffff; /* Fondo blanco para el detalle */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px auto; /* Centrado automático */
+    max-width: 600px; /* Ancho máximo */
+}
+
+/* Estilo para los títulos en detalles del servicio */
+.service-detail h1 {
+    color: #333; /* Color oscuro para el título */
+    margin-bottom: 15px; /* Espaciado debajo del título */
+}
+
+/* Estilo para los párrafos en detalles del servicio */
+.service-detail p {
+    color: #555; /* Color gris para el texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+}
+
+/* Estilo para el contenedor del formulario */
+.container {
+    background-color: #ffffff; /* Fondo blanco para el formulario */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px auto; /* Centrado automático */
+    max-width: 600px; /* Ancho máximo */
+}
+
+/* Estilo para el título del formulario */
+.container h1 {
+    color: #333; /* Color oscuro para el título del formulario */
+    text-align: center; /* Centrado */
+    margin-bottom: 20px; /* Espaciado debajo del título */
+}
+
+/* Estilo para las etiquetas */
+.form-group label {
+    display: block; /* Etiquetas en bloque */
+    color: #555; /* Color gris oscuro */
+    margin-bottom: 5px; /* Espaciado debajo de las etiquetas */
+    font-weight: bold; /* Negrita */
+}
+
+/* Estilo para los campos de entrada */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 15px; /* Espaciado debajo de cada campo */
+    transition: border-color 0.3s; /* Transición para el borde */
+}
+
+/* Efecto al hacer foco en los campos */
+input:focus,
+select:focus {
+    border-color: #80bdff; /* Color azul al enfocar */
+    outline: none; /* Sin contorno */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Sombra azul suave */
+}
+
+/* Estilo para el botón del formulario */
+button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    padding: 10px 15px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    margin-top: 10px; /* Espacio arriba */
+    width: 100%; /* Ancho completo */
+    transition: background-color 0.3s; /* Transición de color */
+}
+
+/* Cambiar el color del botón al pasar el mouse */
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+/* Estilo para la sección de reseñas */
+.reviews-section {
+    background-color: #ffffff; /* Fondo blanco para las reseñas */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px auto; /* Centrado automático */
+    max-width: 600px; /* Ancho máximo */
+}
+
+/* Estilo para los títulos de la sección de reseñas */
+.reviews-section h2 {
+    color: #333; /* Color oscuro para el título de reseñas */
+    margin-bottom: 15px; /* Espaciado debajo del título */
+}
+
+/* Estilo para cada reseña */
+.review {
+    border-bottom: 1px solid #eee; /* Línea separadora entre reseñas */
+    padding: 10px 0; /* Espaciado interno */
+}
+
+.review:last-child {
+    border-bottom: none; /* Quitar línea del último elemento */
+}
+
+/* Estilo para el área de texto del formulario de reseñas */
+textarea {
+    width: 100%; /* Ancho completo */
+    height: 100px; /* Altura fija */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    resize: vertical; /* Permite cambiar el tamaño verticalmente */
+    margin-bottom: 15px; /* Espaciado debajo del área de texto */
+}
+
+/* Estilo para el campo de entrada de calificación */
+input[type="number"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 15px; /* Espaciado debajo del campo */
+}
+
+/* Estilo para el botón de enviar reseña */
+#review-form- button {
+    background-color: #28a745; /* Color de fondo verde */
+}
+
+/* Cambiar el color del botón de enviar reseña al pasar el mouse */
+#review-form-button:hover {
+    background-color: #218838; /* Verde más oscuro */
+}
+
+/* Estilo para la sección de dejar reseñas */
+.leave-reviews {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px auto; /* Centrado automático */
+    max-width: 600px; /* Ancho máximo */
+}
+
+/* Estilo para el título de dejar reseñas */
+.leave-reviews h2 {
+    color: #333; /* Color oscuro para el título */
+    margin-bottom: 15px; /* Espaciado debajo del título */
+    text-align: center; /* Centrado del título */
+}
+
+/* Estilo para el formulario de reseñas */
+.review-form {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+}
+
+/* Estilo para el área de texto del comentario */
+.review-form textarea {
+    width: 100%; /* Ancho completo */
+    height: 100px; /* Altura fija */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    resize: vertical; /* Permite cambiar el tamaño verticalmente */
+    margin-bottom: 15px; /* Espaciado debajo del área de texto */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Estilo para la entrada de calificación */
+.rating-input {
+    display: flex; /* Flexbox para alinear elementos */
+    align-items: center; /* Centra verticalmente */
+    margin-bottom: 15px; /* Espaciado debajo del grupo de calificación */
+}
+
+.rating-input input[type="number"] {
+    width: 100px; /* Ancho fijo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-right: 5px; /* Espaciado a la derecha */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Estilo para la información de calificación */
+.rating-info {
+    font-size: 16px; /* Tamaño de fuente */
+    color: #555; /* Color gris */
+}
+
+/* Estilo para el botón de enviar reseña */
+.submit-review {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    padding: 10px 15px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    width: 100%; /* Ancho completo */
+    transition: background-color 0.3s; /* Transición de color */
+}
+
+/* Cambiar el color del botón al pasar el mouse */
+.submit-review:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+/* Efecto al hacer foco en el área de texto */
+.review-form textarea:focus {
+    border-color: #80bdff; /* Color azul al enfocar */
+    outline: none; /* Sin contorno */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Sombra azul suave */
+}
+
+/* Efecto al hacer foco en el campo de calificación */
+.rating-input input[type="number"]:focus {
+    border-color: #80bdff; /* Color azul al enfocar */
+    outline: none; /* Sin contorno */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Sombra azul suave */
+}

@@ -24,7 +24,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
             localStorage.setItem('token', data.access_token);
 
             // Redirige al usuario a la página de perfil u otra página de éxito
-            window.location.href = '/profile';  // Redirige al perfil del usuario
+            window.location.href = '/dashboard';  // Redirige al perfil del usuario
         } else {
             // Si hay un error en la autenticación (por ejemplo, credenciales incorrectas)
             const error = await response.json();

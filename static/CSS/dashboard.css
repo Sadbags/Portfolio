@@ -8,6 +8,11 @@ body {
     background-color: #f4f4f4;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+
 /* Contenedor del dashboard */
 .dashboard-container {
     display: flex;

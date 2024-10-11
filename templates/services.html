@@ -2,7 +2,6 @@
 
 <title>{% block title %}Services{% endblock %}</title>
 
-
 {% block content %}
 <div class="cards-container">
     {% for service in services %}
@@ -36,11 +35,11 @@
         </div>
     {% endfor %}
 </div>
-{% endblock %}
 
+
+{% endblock %}
 
 {% block script %}
     <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
 	<script src="{{ url_for('static', filename='JS/reviews.js') }}"></script>
 {% endblock %}
-

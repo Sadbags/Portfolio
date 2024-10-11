@@ -3,30 +3,30 @@
 {% block title %}Dashboard - Quickr{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/dashboard.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="dashboard-container">
     <!-- Sidebar de navegación -->
-    <nav class="sidebar">
-        <div class="sidebar-header">
-            <h2>Quickr</h2>
-        </div>
-        <ul class="sidebar-nav">
-            <li><a href="#profile" class="active">Profile</a></li>
-            <li><a href="#services">My Services</a></li>
-            <li><a href="#create-service">Create Service</a></li>
-            <li><a href="#calendar">Calendar</a></li> <!-- Añadido enlace al calendario -->
-            <li><a href="#settings">settings</a></li>
-            <li><a href="{{ url_for('logout') }}">Logout</a></li>
-        </ul>
-    </nav>
+	<nav class="sidebar">
+		<div class="sidebar-header">
+			<h2>Quickr</h2>
+		</div>
+		<ul class="sidebar-nav">
+			<li><a href="#profile" class="active">Profile</a></li>
+			<li><a href="#services">My Services</a></li>
+			<li><a href="#create-service">Create Service</a></li>
+			<li><a href="#calendar">Calendar</a></li> <!-- Añadido enlace al calendario -->
+			<li><a href="#settings">Settings</a></li>
+			<li><a href="{{ url_for('logout') }}">Logout</a></li>
+		</ul>
+	</nav>
 
     <!-- Contenedor principal -->
     <div class="main-content">
         <header>
-            <h1>Welcome to your Dashboard {{ current_user.name }}</h1>
+            <h1>Welcome to your Dashboard, {{ current_user.name }}</h1>
         </header>
 
         <!-- Sección de Perfil -->
@@ -85,6 +85,27 @@
 				<button type="submit" class="btn btn-primary">Crear Servicio</button>
 			</form>
         </section>
+
+		<!-- Sección de Mis Citas (Appointments) -->
+<section id="appointments" class="section">
+    <h2>My Appointments</h2>
+    <!-- Lista de citas del usuario -->
+    <ul class="appointment-list">
+        {% for appointment in current_user.appointments %}
+            <li>
+                <h3>{{ appointment.service_name }}</h3>
+                <p>{{ appointment.appointment_date }} at {{ appointment.appointment_time }}</p>
+                <p><strong>Status:</strong> {{ appointment.status }}</p>
+            </li>
+        {% else %}
+            <p>No appointments scheduled yet.</p>
+        {% endfor %}
+    </ul>
+    <!-- Botón para crear una nueva cita -->
+    <a href="{{ url_for('view_appointments') }}" class="btn btn-primary">Create New Appointment</a>
+</section>
+
+
 
         <!-- Sección de Calendario -->
         <section id="calendar" class="section">
