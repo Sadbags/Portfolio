@@ -20,7 +20,6 @@
     <form id="create-appointment-form">
         <div class="form-group">
             <label for="service_id">Service Name</label>
-            <!-- Cambiado a hidden para enviar el service_id, no el name -->
             <input type="hidden" id="service_id" name="service_id" value="{{ service.id }}">
             <input type="text" value="{{ service.name }}" readonly> <!-- Mostrar solo el nombre al usuario -->
         </div>
@@ -50,6 +49,8 @@
         <button type="submit" class="btn btn-primary">Create Appointment</button>
     </form>
 </div>
+
+
 
 
 <!-- Sección de reviews -->

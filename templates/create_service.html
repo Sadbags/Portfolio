@@ -3,65 +3,35 @@
 {% block title %}Create Service - Quickr{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Create Service</h1>
-        <form id="create-service-form">
-            <label for="name">Service Name:</label>
+<div class="container">
+    <h1>Create Service</h1>
+    <form id="create-service-form">
+        <div class="form-group">
+            <label for="name">Service Name</label>
             <input type="text" id="name" name="name" required>
-
-            <label for="description">Description:</label>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
             <textarea id="description" name="description" required></textarea>
-
-            <label for="aprox_price">Approx. Price:</label>
+        </div>
+        <div class="form-group">
+            <label for="aprox_price">Approximate Price</label>
             <input type="number" id="aprox_price" name="aprox_price" required>
-
-            <label for="fee">Fee:</label>
-            <input type="number" id="fee" name="fee" required>
-
-            <label for="category">Category:</label>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
             <input type="text" id="category" name="category" required>
+        </div>
+        <div class="form-group">
+            <label for="fee">Fee</label>
+            <input type="number" id="fee" name="fee" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Service</button>
+    </form>
+</div>
 
-            <label for="img_url">Image URL (or Base64):</label>
-            <input type="text" id="img_url" name="img_url" required>
+{% endblock %}
 
-            <button type="submit">Create Service</button>
-        </form>
-    </div>
-
-    <script>
-        document.getElementById('create-service-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent the form from submitting the default way
-
-            const formData = new FormData(this);
-            const serviceData = {};
-            formData.forEach((value, key) => {
-                serviceData[key] = value;
-            });
-
-            try {
-                const response = await fetch('/api/services', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}` // Assumes you're storing your JWT token in local storage
-                    },
-                    body: JSON.stringify(serviceData)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Something went wrong');
-                }
-
-                const data = await response.json();
-                alert(data.message);
-                // Redirect or clear the form, as needed
-                // window.location.href = '/services'; // Uncomment to redirect to services page
-
-            } catch (error) {
-                console.error('Error:', error);
-                alert(error.message);
-            }
-        });
-    </script>
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/create_service.js') }}"></script>
 {% endblock %}

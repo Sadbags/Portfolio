@@ -4,6 +4,7 @@ from backend.models.appointment import Appointment
 from backend.database import db
 from datetime import datetime, time
 from backend.models.user import User
+from backend.models.service import Service
 
 appointments_blueprint = Blueprint('appointments_blueprint', __name__)
 
@@ -11,39 +12,44 @@ appointments_blueprint = Blueprint('appointments_blueprint', __name__)
 @jwt_required()
 def create_appointment():
     current_user_id = get_jwt_identity()
+    print("Received JSON:", request.json)
 
-    if not request.json or not 'service_id' in request.json or not 'Appointment_date' in request.json or not 'Appointment_time' in request.json or not 'status' in request.json or not 'payment_status' in request.json:
+    if not request.json or not all(field in request.json for field in ['service_id', 'Appointment_date', 'Appointment_time', 'status', 'payment_status']):
         abort(400, description="Missing required fields")
 
-    # Obtener datos de la solicitud
     service_id = request.json['service_id']
     appointment_date_str = request.json['Appointment_date']
-    appointment_time = request.json['Appointment_time']
+    appointment_time_str = request.json['Appointment_time']
     status = request.json['status']
     payment_status = request.json['payment_status']
 
-    # Convertir la cadena de Appointment_date a objeto datetime
+    # Validar formato de fecha
     try:
-        appointment_date = datetime.strptime(appointment_date_str, '%Y-%m-%d')  #arregle a este formato
+        appointment_date = datetime.strptime(appointment_date_str, '%Y-%m-%d')  # Formato de fecha: Año-Mes-Día
     except ValueError:
-        abort(400, description="Invalid date format. Use YYYY-MM-DD") # arregle a este formato falta hacer el script
+        abort(400, description="Invalid date format. Use YYYY-MM-DD")
 
-    # Crear la instancia de Appointment con el user_id del token
+    # Validar formato de hora
+    try:
+        appointment_time = datetime.strptime(appointment_time_str, '%H:%M').time()
+    except ValueError:
+        abort(400, description="Invalid time format. Use HH:MM")
+
+    # Crear la cita
     appointment = Appointment(
-        user_id=current_user_id,  # Usar el user_id del JWT
+        user_id=current_user_id,
         service_id=service_id,
         Appointment_date=appointment_date,
-        Appointment_time=appointment_time,
+        Appointment_time=appointment_time_str,
         status=status,
         payment_status=payment_status
     )
 
-    # Agregar la cita a la sesión de la base de datos y hacer commit
     db.session.add(appointment)
     db.session.commit()
 
-    # Retornar la cita creada en formato JSON
     return jsonify(appointment.to_dict()), 201
+
 
 
 
@@ -53,15 +59,20 @@ def create_appointment():
 @appointments_blueprint.route('/api/appointments', methods=['GET'])
 @jwt_required()
 def get_appointments():
+    # Obtener el ID del usuario autenticado desde el token JWT
     current_user_id = get_jwt_identity()
-    claims = get_jwt()
 
-    if not claims.get('is_admin', False):
-        abort(403, description="Admin rights required to view all appointments")
+    # Filtrar citas por user_id si se proporciona en los parámetros de consulta
+    user_id = request.args.get('user_id', default=current_user_id, type=str)  # Usar el user_id actual como predeterminado
 
-    # Obtener todas las citas de la base de datos
-    appointments = Appointment.query.all()
-    return jsonify([appointment.to_dict() for appointment in appointments]), 200
+    # Consultar las citas en la base de datos
+    appointments_query = Appointment.query.filter_by(user_id=user_id).all()
+
+    # Convertir las citas a formato dict
+    appointments_list = [appointment.to_dict() for appointment in appointments_query]
+
+    # Retornar la lista de citas en formato JSON
+    return jsonify(appointments_list), 200
 
 
 @appointments_blueprint.route('/users/<user_id>/appointments', methods=['GET'])
@@ -88,6 +99,26 @@ def get_appointment(appointment_id):
 
     # Retornar la cita en formato JSON
     return jsonify(appointment.to_dict())
+
+@appointments_blueprint.route('/services/<service_id>/appointments', methods=['GET'])
+@jwt_required()  # Requiere autenticación JWT
+def get_appointments_by_service(service_id):
+    # Obtener el ID del usuario autenticado (opcional si solo los usuarios autenticados pueden ver las citas)
+    current_user_id = get_jwt_identity()
+
+    # Obtener todas las citas que corresponden al service_id dado
+    appointments = Appointment.query.filter_by(service_id=service_id).all()
+
+    # Si no se encuentran citas, devolver un error 404
+    if not appointments:
+        abort(404, description="No appointments found for the given service")
+
+    # Convertir las citas a un formato de lista de diccionarios
+    appointments_list = [appointment.to_dict() for appointment in appointments]
+
+    # Retornar la lista de citas en formato JSON
+    return jsonify(appointments_list), 200
+
 
 
 @appointments_blueprint.route('/appointments/<appointment_id>', methods=['PUT'])

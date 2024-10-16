@@ -1,32 +1,25 @@
-
+const token = localStorage.getItem('jwt'); // Recupera el token de localStorage
+console.log('Token enviado:', token); // Verifica que el token se esté obteniendo correctamente
 
 fetch('/dashboard', {
     method: 'GET',
     headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Authorization': `Bearer ${token}`  // Asegúrate de que este encabezado esté presente
     }
 })
 .then(response => {
     if (!response.ok) {
         console.error('Error:', response);
         if (response.status === 401) {
-            window.location.href = '/login';
+            window.location.href = '/login'; // Redirige al login si no está autorizado
         }
         return;
     }
     return response.text();
 })
 .then(data => {
-    // Reemplazar solo el contenido del dashboard sin sobrescribir todo el body
-    const mainContent = document.querySelector('.main-content');
-    if (mainContent) {
-        mainContent.innerHTML = data;
-    } else {
-        console.error('No se encontró el contenedor .main-content');
-    }
+    console.log(data);  // Procesa los datos del dashboard aquí
 })
 .catch(error => {
-    console.error('Error:', error);
+    console.error('There was a problem with your fetch operation:', error);
 });
