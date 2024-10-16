@@ -14,60 +14,36 @@ service_blueprint = Blueprint('service_blueprint', __name__)
 @service_blueprint.route('/api/services', methods=['POST'])
 @jwt_required()  # Este decorador asegura que solo los usuarios autenticados pueden acceder a este endpoint
 def create_service():
-    data = request.json
+    # Obtener el ID del usuario desde el token JWT
+    current_user_id = get_jwt_identity()
 
-    # Extraer los datos del servicio
-    name = data.get('name')
-    description = data.get('description')
-    aprox_price = data.get('aprox_price')
-    fee = data.get('fee')
-    category = data.get('category')
-    img_url = data.get('img_url')  # Este debe ser el base64
+    # Validar que el cuerpo de la solicitud JSON tenga todos los campos requeridos
+    if not request.json or not all(key in request.json for key in ['name', 'description', 'aprox_price', 'category', 'fee']):
+        abort(400, description="Missing required fields")
 
-    # Validaciones básicas
-    if not name or not description or not aprox_price or not fee or not category:
-        return jsonify({"error": "Faltan datos obligatorios para crear el servicio"}), 400
+    # Obtener datos de la solicitud
+    name = request.json['name']
+    description = request.json['description']
+    aprox_price = request.json['aprox_price']
+    category = request.json['category']
+    fee = request.json['fee']
 
-    if not img_url:
-        return jsonify({"error": "No image URL or file provided"}), 400
-
-    # Si img_url es una URL, conviértelo a base64
-    if img_url.startswith('http'):
-        img_data = convert_image_to_base64(img_url)
-    else:
-        img_data = img_url  # Suponiendo que ya es base64
-
-    # Crea la instancia del servicio
+    # Crear la instancia de Service
     service = Service(
         name=name,
         description=description,
         aprox_price=aprox_price,
-        fee=fee,
         category=category,
-        img_url=img_data  # Guarda la imagen en base64
+        fee=fee,
+        user_id=current_user_id  # Asociar el servicio al usuario actual
     )
 
-    # Agrega el servicio a la base de datos
+    # Agregar el servicio a la sesión de la base de datos y hacer commit
     db.session.add(service)
     db.session.commit()
 
-    return jsonify({"message": "Servicio creado exitosamente", "service_id": service.id}), 201
-
-def convert_image_to_base64(url):
-    response = requests.get(url)
-
-    if response.status_code != 200:
-        return jsonify({"error": "No se pudo obtener la imagen desde la URL proporcionada"}), 400
-
-    img = Image.open(BytesIO(response.content))
-    buffered = BytesIO()
-    img.save(buffered, format="PNG")  # Cambia el formato si es necesario
-    img_str = base64.b64encode(buffered.getvalue()).decode()  # Convertir a base64
-
-    # Imprimir para verificar el formato
-    print(f"Base64 Image Data: {img_str[:50]}...")  # Imprime los primeros 50 caracteres para verificar
-
-    return f"data:image/png;base64,{img_str}"
+    # Retornar el servicio creado en formato JSON
+    return jsonify(service.to_dict()), 201
 
 
 
@@ -81,7 +57,7 @@ def get_services():
 	return jsonify([service.to_dict() for service in services]), 200
 
 
-@service_blueprint.route('/services/<service_id>', methods=['GET'])
+@service_blueprint.route('/api/services/<service_id>', methods=['GET'])
 def get_service(service_id):
 	service = Service.query.get(service_id)
 
@@ -89,6 +65,28 @@ def get_service(service_id):
 		abort(404, description="Service not found")
 
 	return jsonify(service.to_dict()), 200
+
+@service_blueprint.route('/services/<service_id>/appointments', methods=['GET'])
+@jwt_required()
+def get_appointments_by_service(service_id):
+    # Obtener el ID del usuario autenticado desde el token JWT (opcional si solo quieres mostrar citas para usuarios autenticados)
+    current_user_id = get_jwt_identity()
+
+    # Obtener todas las citas para el servicio dado
+    appointments_query = Appointment.query.filter_by(service_id=service_id).all()
+
+    # Si no se encuentran citas para ese servicio, devolver un error 404
+    if not appointments_query:
+        abort(404, description="No appointments found for the given service")
+
+    # Convertir las citas a formato dict
+    appointments_list = [appointment.to_dict() for appointment in appointments_query]
+
+    # Retornar la lista de citas en formato JSON
+    return jsonify(appointments_list), 200
+
+
+
 
 
 @service_blueprint.route('/services/<service_id>', methods=['PUT'])

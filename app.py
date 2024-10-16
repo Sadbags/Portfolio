@@ -1,5 +1,5 @@
 from flask import Flask, flash, render_template, request, redirect, url_for, jsonify
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_current_user, get_jwt_identity
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_current_user, get_jwt_identity, verify_jwt_in_request
 from werkzeug.security import generate_password_hash
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -141,32 +141,6 @@ def logout():
     return redirect(url_for('login'))  # Redirige al login
 
 
-
-
-# Edit Profile route
-@app.route('/edit_profile')
-def edit_profile():
-    return render_template('editprofile.html')
-
-# Edit service dashboard route
-@app.route('/edit_service')
-def edit_service_dashboard():
-    return render_template('edit_service.html')
-
-@app.route('/edit_service', methods=['GET', 'POST'])
-def edit_service(service_id):
-    # Lógica para editar el servicio
-    service = next((s for s in services if s['id'] == service_id), None)
-    if request.method == 'POST':
-        # Actualiza el servicio según la entrada del formulario
-        ...
-        return redirect(url_for('dashboard'))
-    return render_template('edit_service.html', service=service)
-
-
-
-
-
 # register a user and address
 
 @app.route('/show_register', methods=['GET'])
@@ -246,20 +220,39 @@ def register_user():
 
 # SERVICES
 
-@app.route('/services', methods=['GET'])
+@app.route('/edit_service/<service_id>', methods=['GET', 'PUT'])
+def edit_service(service_id):
+    service = Service.query.get_or_404(service_id)
+
+    if request.method == 'GET':
+        # Renderiza el formulario con los datos del servicio
+        return render_template('edit_service.html', service=service)
+
+    if request.method == 'PUT':
+        # Aquí manejas la actualización del servicio
+        data = request.get_json()  # Si envías la solicitud como JSON
+        service.name = data.get('name', service.name)
+        service.description = data.get('description', service.description)
+        service.aprox_price = data.get('aprox_price', service.aprox_price)
+        service.category = data.get('category', service.category)
+        service.fee = data.get('fee', service.fee)
+
+        db.session.commit()
+        return jsonify(message='Servicio actualizado con éxito'), 200
+
+
+
+
+# este es para ver todos los servicios en el tab de services.
+@app.route('/services/service_id', methods=['GET'])
 def get_services():
     services = Service.query.all()
     return render_template('services.html', services=services)
 
 
-@app.route('/services')
-def services_page():
-    services = get_services()  # Esta función debe devolver una lista de servicios
-    return render_template('services.html', services=services)
-
-
+# Este es para cuadno le das al service entre a la pagina del servicio.
 @app.route('/services/<service_id>', methods=['GET', 'POST'])
-def review_page(service_id):
+def review_page(service_id): # service page
     # Obtener el servicio desde la base de datos
     service = Service.query.get(service_id)
 
@@ -276,12 +269,13 @@ def review_page(service_id):
 
 
 
-@app.route('/services/<service_id>/reviews', methods=['GET'])
-def get_reviews(service_id):
-    reviews = Review.query.filter_by(service_id=service_id).all()
-    return render_template('serviceDetails.html', reviews=reviews)
+#@app.route('/services/<service_id>/reviews', methods=['GET'])
+#def get_reviews(service_id):
+#    reviews = Review.query.filter_by(service_id=service_id).all()
+#    return render_template('serviceDetails.html', reviews=reviews)
 
 
+# esto es para crear reviews en la pagina del servicio. (si esta logged in)
 @app.route('/services/<service_id>/reviews', methods=['POST'])
 @login_required  # Asegúrate de que el usuario esté autenticado
 def create_review(service_id):
@@ -301,25 +295,6 @@ def create_review(service_id):
     db.session.commit()
 
     return jsonify({"msg": "Review submitted successfully!"}), 201
-
-
-
-# APPOINTMENTS
-
-@app.route('/api/appointments', methods=['GET'])
-@jwt_required()
-def view_appointments():
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    appointments = user.appointments  # Obtener todas las citas del usuario
-
-    return render_template('serviceDetails.html', appointments=appointments)
-
-
-@app.route('/users/<user_id>/appointments', methods=['GET'])
-def get_appointments():
-    appointments = Appointment.query.all()  # Obtener todos los appointments
-    return jsonify([appointment.to_dict() for appointment in appointments]), 200
 
 
 

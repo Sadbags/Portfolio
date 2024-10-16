@@ -12,7 +12,7 @@ class Service(BaseModel):
     aprox_price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(128), nullable=False)
     fee = db.Column(db.Float, nullable=False)
-    img_url = db.Column(db.LargeBinary, nullable=True)
+
 
     user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=False)
     user = db.relationship('User', back_populates='services')
@@ -21,14 +21,13 @@ class Service(BaseModel):
 
 
 
-    def __init__(self, name, description, aprox_price, category, fee, img_url, user_id=None, **kwargs):
+    def __init__(self, name, description, aprox_price, category, fee, user_id=None, **kwargs):
         super().__init__(**kwargs)
         self.name = name
         self.description = description
         self.aprox_price = aprox_price
         self.category = category
         self.fee = fee
-        self.img_url = img_url
         self.user_id = user_id
 
     def __str__(self):
@@ -44,13 +43,9 @@ class Service(BaseModel):
             'aprox_price': self.aprox_price,
             'category': self.category,
             'fee': self.fee,
-            'img_url': self.img_url,
             'user_id': self.user_id,
+            'appointments': [appointment.to_dict() for appointment in self.appointments],
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat()
         }
 
-def encode_image(image_path):
-    with open(image_path, "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
-        return encoded_string

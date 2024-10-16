@@ -34,58 +34,50 @@
             <h2>My profile</h2>
             <p><strong>Name:</strong> {{ current_user.name }}</p>
             <p><strong>Email:</strong> {{ current_user.email }}</p>
-            <a href="{{ url_for('edit_service') }}" class="btn btn-primary">Edit profile</a>
+            <a href="{{ url_for('profile') }}" class="btn btn-primary">Edit profile</a>
         </section>
 
         <!-- Sección de Mis Servicios -->
         <section id="services" class="section">
-            <h2>My Services</h2>
-            <ul class="service-list">
-                {% for service in current_user.services %}
-                <li>
-                    <h3>{{ service.name }}</h3>
-                    <p>{{ service.description }}</p>
-                    <p><strong>Price:</strong> ${{ service.price }}</p>
-                    <a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Editar</a>
-                </li>
-                {% else %}
-                <p>No has creado ningún servicio aún.</p>
-                {% endfor %}
-            </ul>
-        </section>
+			<h2>My Services</h2>
+			<ul class="service-list">
+				{% for service in current_user.services %}
+				<li>
+					<h3>{{ service.name }}</h3>
+					<p>{{ service.description }}</p>
+					<p><strong>Price:</strong> ${{ service.price }}</p>
+					<a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Editar</a>
+				</li>
+				{% else %}
+				<p>No has creado ningún servicio aún.</p>
+				{% endfor %}
+			</ul>
+		</section>
 
         <!-- Sección para Crear Servicio -->
-        <section id="create-service" class="section">
-            <h2>Create Service</h2>
-			<form action="{{ url_for('service_blueprint.create_service') }}" method="POST">
-				<div class="form-group">
-					<label for="name">Service name</label>
-					<input type="text" id="name" name="name" required>
-				</div>
-				<div class="form-group">
-					<label for="description">Description</label>
-					<textarea id="description" name="description" required></textarea>
-				</div>
-				<div class="form-group">
-					<label for="aprox_price">Aproximate price</label>
-					<input type="number" id="aprox_price" name="aprox_price" required>
-				</div>
-				<div class="form-group">
-					<label for="fee">Cuota</label>
-					<input type="number" id="fee" name="fee" required>
-				</div>
-				<div class="form-group">
-					<label for="category">Category</label>
-					<input type="text" id="category" name="category" required>
-				</div>
-				<div class="form-group">
-					<label for="img_url">Imagen URL</label>
-					<input type="text" id="img_url" name="img_url" required>
-				</div>
-				<button type="submit" class="btn btn-primary">Crear Servicio</button>
-			</form>
-        </section>
-
+        <form id="create-service-form">
+    <div class="form-group">
+        <label for="service_name">Service Name</label>
+        <input type="text" id="service_name" name="name" required class="form-control" placeholder="Enter service name">
+    </div>
+    <div class="form-group">
+        <label for="service_description">Description</label>
+        <textarea id="service_description" name="description" required class="form-control" placeholder="Enter service description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="service_price">Approximate Price</label>
+        <input type="number" id="service_price" name="aprox_price" required class="form-control" placeholder="Enter approximate price">
+    </div>
+    <div class="form-group">
+        <label for="service_category">Category</label>
+        <input type="text" id="service_category" name="category" required class="form-control" placeholder="Enter category">
+    </div>
+    <div class="form-group">
+        <label for="service_fee">Fee</label>
+        <input type="number" id="service_fee" name="fee" required class="form-control" placeholder="Enter fee">
+    </div>
+    <button type="submit" class="btn btn-primary">Create Service</button>
+</form>
 		<!-- Sección de Mis Citas (Appointments) -->
 <section id="appointments" class="section">
     <h2>My Appointments</h2>
@@ -94,7 +86,7 @@
         {% for appointment in current_user.appointments %}
             <li>
                 <h3>{{ appointment.service_name }}</h3>
-                <p>{{ appointment.appointment_date }} at {{ appointment.appointment_time }}</p>
+                <p>{{ appointment.appointment_date }} {{ appointment.appointment_time }}</p>
                 <p><strong>Status:</strong> {{ appointment.status }}</p>
             </li>
         {% else %}
@@ -102,7 +94,7 @@
         {% endfor %}
     </ul>
     <!-- Botón para crear una nueva cita -->
-    <a href="{{ url_for('view_appointments') }}" class="btn btn-primary">Create New Appointment</a>
+    <a href="{{ url_for('appointments_blueprint.get_appointments') }}" class="btn btn-primary">Create New Appointment</a>
 </section>
 
 
@@ -154,4 +146,5 @@
 {% block scripts %}
 <script src="{{ url_for('static', filename='JS/calendar.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/create_service.js') }}"></script>
 {% endblock %}

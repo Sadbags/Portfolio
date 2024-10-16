@@ -1,31 +1,26 @@
 /* dashboard.css */
 
-/* Estilos generales */
+/* General styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-
-/* Contenedor del dashboard */
+/* Dashboard container */
 .dashboard-container {
     display: flex;
-    height: 100vh; /* Altura completa de la ventana */
 }
 
-/* Sidebar */
+/* Sidebar styles */
 .sidebar {
     width: 250px;
     background-color: #343a40;
-    color: white;
+    color: #fff;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    position: fixed;
 }
 
 .sidebar-header {
@@ -34,7 +29,7 @@ html {
 }
 
 .sidebar-nav {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
 
@@ -43,163 +38,185 @@ html {
 }
 
 .sidebar-nav a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    font-size: 16px;
 }
 
+.sidebar-nav a.active,
 .sidebar-nav a:hover {
-    background-color: #495057;
+    color: #007bff;
 }
 
-.sidebar-nav a.active {
-    background-color: #007bff;
-}
-
-/* Contenedor principal */
+/* Main content styles */
 .main-content {
-    flex: 1;
+    margin-left: 260px; /* Leave space for the sidebar */
     padding: 20px;
-    overflow-y: auto; /* Permitir desplazamiento si es necesario */
-    background-color: #fff;
+    flex-grow: 1;
 }
 
-header {
-    margin-bottom: 20px;
+h1, h2 {
+    color: #333;
 }
 
-h1 {
-    font-size: 24px;
-}
-
-/* Secciones */
+/* Section styles */
 .section {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     padding: 20px;
-    background-color: #e9ecef;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.section h2 {
-    margin-top: 0;
+.section.active {
+    display: block;
 }
 
-/* Lista de servicios */
-.service-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.service-list li {
+/* Form styles */
+.form-group {
     margin-bottom: 15px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo de botones */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button styles */
 .btn {
     display: inline-block;
     padding: 10px 15px;
-    color: white;
-    background-color: #007bff;
+    font-size: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.btn:hover {
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
     background-color: #0056b3;
 }
 
 .btn-secondary {
     background-color: #6c757d;
+    color: #fff;
 }
 
 .btn-secondary:hover {
     background-color: #5a6268;
 }
 
-/* Estilos para formularios */
+/* Appointment list styles */
+.appointment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.appointment-list li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+/* Calendar styles */
+.calendar__container {
+    margin-top: 20px;
+}
+
+.calendar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar__btns .btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.calendar__btns .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Adjustments for responsive design */
+@media (max-width: 768px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* Crear Servicio Form Styles */
+#create-service-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Formulario de entrada */
 .form-group {
     margin-bottom: 15px;
 }
 
-label {
+.form-group label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
 }
 
-input[type="text"],
-input[type="number"],
-textarea {
+.form-control {
     width: 100%;
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 4px;
-    box-sizing: border-box; /* Incluir padding y border en el ancho total */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus,
-textarea:focus {
+.form-control:focus {
     border-color: #007bff;
-    outline: none; /* Eliminar el contorno predeterminado */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-/* Estilos para el calendario */
-.calendar {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-}
-
-.calendar__header {
+/* Botón de Crear Servicio */
+#submit-service-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
     background-color: #007bff;
-    color: white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.calendar__btns .btn {
-    background: transparent;
-    color: white;
+    color: #fff;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.weekdays {
-    display: flex;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #ced4da;
-}
-
-.weekdays .day {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Estilo para los días */
-.days {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.day {
-    flex: 1 0 14.28%; /* 7 días en una semana */
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    box-sizing: border-box;
+#submit-service-btn:hover {
+    background-color: #0056b3;
 }
