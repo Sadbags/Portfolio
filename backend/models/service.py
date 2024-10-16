@@ -12,13 +12,16 @@ class Service(BaseModel):
     aprox_price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(128), nullable=False)
     fee = db.Column(db.Float, nullable=False)
-    img_url = db.Column(db.String(256), nullable=True)
+    img_url = db.Column(db.LargeBinary, nullable=True)
 
     user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=False)
-    user = db.relationship('User', back_populates='services')  # esto es lo nuevo
+    user = db.relationship('User', back_populates='services')
+    reviews = db.relationship('Review', back_populates='service')  # esto es lo nuevo
+    appointments = db.relationship('Appointment', back_populates='services', lazy=True)  # esto es lo nuevo
 
 
-    def __init__(self, name, description, aprox_price, category, fee, img_url=None, user_id=None, **kwargs):
+
+    def __init__(self, name, description, aprox_price, category, fee, img_url, user_id=None, **kwargs):
         super().__init__(**kwargs)
         self.name = name
         self.description = description
@@ -34,7 +37,6 @@ class Service(BaseModel):
 
 
     def to_dict(self):
-        img_base64 = base64.b64encode(self.img_url).decode('utf-8') if self.img_url else None
         return {
             'id': self.id,
             'name': self.name,
@@ -42,7 +44,7 @@ class Service(BaseModel):
             'aprox_price': self.aprox_price,
             'category': self.category,
             'fee': self.fee,
-            'img_url': img_base64,
+            'img_url': self.img_url,
             'user_id': self.user_id,
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat()

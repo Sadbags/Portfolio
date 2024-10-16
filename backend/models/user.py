@@ -20,8 +20,10 @@ class User(BaseModel):
     addresses = db.relationship('Address', back_populates='user', lazy=True)
     appointments = db.relationship('Appointment', back_populates='user', lazy=True)  # esto es lo nuevo
     services = db.relationship('Service', back_populates='user', lazy=True) # esto es lo nuevo
+    reviews = db.relationship('Review', back_populates='user', lazy=True)  # esto es lo nuevo
     docs = db.relationship('Docs', back_populates='user', lazy=True)
     files = db.relationship('Files', back_populates='user', lazy=True)
+
 
 
     def __init__(self, email, password, is_admin, first_name="", last_name="", **kwargs):
@@ -38,6 +40,21 @@ class User(BaseModel):
 
     def set_password(self, password):
         self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
 
     def __str__(self):
         return f"[User] ({self.id}) {self.to_dict()}"

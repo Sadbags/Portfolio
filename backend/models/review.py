@@ -1,16 +1,18 @@
-from models.basemodel import BaseModel
-from database import db
+from backend.models.basemodel import BaseModel
+from backend.database import db
+import uuid
 
 
 class Review(BaseModel):
     __tablename__ ='reviews'
 
-    service_id = db.Column(db.String(128), nullable=False)
-    user_id = db.Column(db.String(128), nullable=False)
-    comment = db.Column(db.String(1024), nullable=True)
+    id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    service_id = db.Column(db.String(36), db.ForeignKey('services.id') , nullable=False)
+    user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=False)
+    comment = db.Column(db.String(1024), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
 
-    user = db.relationship('User', back_populates='reviews')  # esto es lo nuevo
+    user = db.relationship('User', back_populates='reviews')
     service = db.relationship('Service', back_populates='reviews')  # esto es lo nuevo
 
     def __init__(self, service_id, user_id, comment, rating, **kwargs):

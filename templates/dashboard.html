@@ -1,42 +1,157 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block title %}
-Dashboard - Quickr
+{% block title %}Dashboard - Quickr{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/dashboard.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="calendar__container">
-	<div class="calendar">
-		<div class="calendar__header">
-			<div class="month"></div>
-			<div class="calendar__btns">
-				<div class="btn today-btn">
-					<i class="fas fa-calendar-day"></i>
-				</div>
-				<div class="btn prev-btn">
-					<i class="fas fa-chevron-left"></i>
-				</div>
-				<div class="btn next-btn">
-					<i class="fas fa-chevron-right"></i>
-				</div>
-			</div>
+<div class="dashboard-container">
+    <!-- Sidebar de navegación -->
+	<nav class="sidebar">
+		<div class="sidebar-header">
+			<h2>Quickr</h2>
 		</div>
-		<div class="weekdays">
-			<div class="day">Sun</div>
-			<div class="day">Mon</div>
-			<div class="day">Tue</div>
-			<div class="day">Wed</div>
-			<div class="day">Thu</div>
-			<div class="day">Fri</div>
-			<div class="day">Sat</div>
-		</div>
-		<div class="days">
-			<!-- Add days using js -->
-		</div>
-	</div>
+		<ul class="sidebar-nav">
+			<li><a href="#profile" class="active">Profile</a></li>
+			<li><a href="#services">My Services</a></li>
+			<li><a href="#create-service">Create Service</a></li>
+			<li><a href="#calendar">Calendar</a></li> <!-- Añadido enlace al calendario -->
+			<li><a href="#settings">Settings</a></li>
+			<li><a href="{{ url_for('logout') }}">Logout</a></li>
+		</ul>
+	</nav>
+
+    <!-- Contenedor principal -->
+    <div class="main-content">
+        <header>
+            <h1>Welcome to your Dashboard, {{ current_user.name }}</h1>
+        </header>
+
+        <!-- Sección de Perfil -->
+        <section id="profile" class="section active">
+            <h2>My profile</h2>
+            <p><strong>Name:</strong> {{ current_user.name }}</p>
+            <p><strong>Email:</strong> {{ current_user.email }}</p>
+            <a href="{{ url_for('edit_service') }}" class="btn btn-primary">Edit profile</a>
+        </section>
+
+        <!-- Sección de Mis Servicios -->
+        <section id="services" class="section">
+            <h2>My Services</h2>
+            <ul class="service-list">
+                {% for service in current_user.services %}
+                <li>
+                    <h3>{{ service.name }}</h3>
+                    <p>{{ service.description }}</p>
+                    <p><strong>Price:</strong> ${{ service.price }}</p>
+                    <a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Editar</a>
+                </li>
+                {% else %}
+                <p>No has creado ningún servicio aún.</p>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Sección para Crear Servicio -->
+        <section id="create-service" class="section">
+            <h2>Create Service</h2>
+			<form action="{{ url_for('service_blueprint.create_service') }}" method="POST">
+				<div class="form-group">
+					<label for="name">Service name</label>
+					<input type="text" id="name" name="name" required>
+				</div>
+				<div class="form-group">
+					<label for="description">Description</label>
+					<textarea id="description" name="description" required></textarea>
+				</div>
+				<div class="form-group">
+					<label for="aprox_price">Aproximate price</label>
+					<input type="number" id="aprox_price" name="aprox_price" required>
+				</div>
+				<div class="form-group">
+					<label for="fee">Cuota</label>
+					<input type="number" id="fee" name="fee" required>
+				</div>
+				<div class="form-group">
+					<label for="category">Category</label>
+					<input type="text" id="category" name="category" required>
+				</div>
+				<div class="form-group">
+					<label for="img_url">Imagen URL</label>
+					<input type="text" id="img_url" name="img_url" required>
+				</div>
+				<button type="submit" class="btn btn-primary">Crear Servicio</button>
+			</form>
+        </section>
+
+		<!-- Sección de Mis Citas (Appointments) -->
+<section id="appointments" class="section">
+    <h2>My Appointments</h2>
+    <!-- Lista de citas del usuario -->
+    <ul class="appointment-list">
+        {% for appointment in current_user.appointments %}
+            <li>
+                <h3>{{ appointment.service_name }}</h3>
+                <p>{{ appointment.appointment_date }} at {{ appointment.appointment_time }}</p>
+                <p><strong>Status:</strong> {{ appointment.status }}</p>
+            </li>
+        {% else %}
+            <p>No appointments scheduled yet.</p>
+        {% endfor %}
+    </ul>
+    <!-- Botón para crear una nueva cita -->
+    <a href="{{ url_for('view_appointments') }}" class="btn btn-primary">Create New Appointment</a>
+</section>
+
+
+
+        <!-- Sección de Calendario -->
+        <section id="calendar" class="section">
+            <h2>Calendario</h2>
+            <div class="calendar__container">
+                <div class="calendar">
+                    <div class="calendar__header">
+                        <div class="month"></div>
+                        <div class="calendar__btns">
+                            <div class="btn today-btn">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="btn prev-btn">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="btn next-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weekdays">
+                        <div class="day">Sun</div>
+                        <div class="day">Mon</div>
+                        <div class="day">Tue</div>
+                        <div class="day">Wed</div>
+                        <div class="day">Thu</div>
+                        <div class="day">Fri</div>
+                        <div class="day">Sat</div>
+                    </div>
+                    <div class="days">
+                        <!-- Los días se agregarán usando JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Ajustes -->
+        <section id="settings" class="section">
+            <h2>Ajustes</h2>
+            <p>Aquí puedes gestionar tus preferencias y configuraciones de cuenta.</p>
+        </section>
+    </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script src="{{ url_for('static', filename='JS/calendar.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/dashboard.js') }}"></script>
 {% endblock %}
