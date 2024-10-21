@@ -1,0 +1,74 @@
+/* Importa la URL de Google Fonts / Imports the URL from Google Fonts */
+@import url("https://fonts.googleapis.com");
+
+/* Importa la URL de Google Fonts Static / Imports the URL from Google Fonts Static */
+@import url("https://fonts.gstatic.com");
+
+/* Importa la fuente 'Kumbh Sans' con diferentes pesos / Imports the 'Kumbh Sans' font with different weights */
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
+
+/* Importa la fuente 'Kumbh Sans' con diferentes pesos (duplicado) / Imports the 'Kumbh Sans' font with different weights (duplicate) */
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
+
+/* Importa los iconos de Font Awesome / Imports Font Awesome icons */
+/* logos fb,tw,ig,blot fav */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+
+/*ESTILOS GLOBALES / GLOBAL STYLES*/
+* {
+    /* Aplica estilos globales a todos los elementos / Applies global styles to all elements */
+    /* Define el modelo de caja como border-box / Sets the box model to border-box */
+    box-sizing: border-box;
+    /* Elimina el margen por defecto / Removes default margin */
+    margin: 0;
+    /* Elimina el padding por defecto / Removes default padding */
+    padding: 0;
+    /* Establece la fuente por defecto como 'Kumbh Sans' / Sets the default font to 'Kumbh Sans' */
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.navbar {
+    /* espacio de la BARRA DE NAVEGACIÓN / NAVBAR */
+    background: #29d3c4;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar__container {
+    /* Contenedor de la barra de navegación / Navbar container */
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#navbar__logo {
+    /* Logo de la barra de navegación / Navbar logo */
+    background-color: #fff;
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.fa-solid {
+    /* Iconos de Font Awesome / Font Awesome icons */
+    margin-right: .8rem;
+    /* Separa el bolt del navbar del nombre de la barra de navegación / Separates the bolt from the navbar name */
+}
