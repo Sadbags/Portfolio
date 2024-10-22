@@ -2,10 +2,11 @@ const token = localStorage.getItem('jwt'); // Recupera el token de localStorage
 console.log('Token enviado:', token); // Verifica que el token se esté obteniendo correctamente
 
 fetch('/dashboard', {
-    method: 'GET',
-    headers: {
-        'Authorization': `Bearer ${token}`  // Asegúrate de que este encabezado esté presente
-    }
+	method: 'GET',
+	headers: {
+		'Authorization': `Bearer ${token}`,  // Add a comma after this line
+		'Content-Type': 'application/json'  // Especifica que los datos son JSON para la solicitud POST al dashboard
+	}
 })
 .then(response => {
     if (!response.ok) {

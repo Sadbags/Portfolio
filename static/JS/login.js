@@ -1,42 +1,40 @@
-// Escucha el evento 'submit' del formulario de inicio de sesión
 document.getElementById('login-form').addEventListener('submit', async function(event) {
     event.preventDefault();  // Evita que el formulario recargue la página por defecto
+    console.log("Formulario enviado");  // Confirma que el evento se dispara
 
-    // Obtén los valores de los campos de email y password
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
+    console.log("Datos enviados:", { email, password }); // Verifica los datos que se envían
+
     try {
-        // Realiza una solicitud POST al endpoint de login en el servidor
         const response = await fetch('/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',  // Define que el cuerpo es JSON
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password })  // Envía los datos como un objeto JSON
+            body: JSON.stringify({ email, password })
         });
 
-        // Verifica si la respuesta es exitosa (status 200-299)
+        console.log('Estado de la respuesta:', response.status); // Verifica el estado de la respuesta
+
         if (response.ok) {
-            const data = await response.json();  // Parsear la respuesta JSON
-
-            // Guarda el token JWT en localStorage para futuras solicitudes autenticadas
-            localStorage.setItem('token', data.access_token);
-
-            // Redirige al usuario a la página de perfil u otra página de éxito
-            window.location.href = '/dashboard';  // Redirige al perfil del usuario
+            const data = await response.json();
+            console.log('Datos de respuesta:', data);
+            if (data.access_token) {
+                console.log('Token recibido:', data.access_token);
+                localStorage.setItem('token', data.access_token);
+                window.location.href = data.redirect_url;
+            } else {
+                console.error('Token no encontrado en la respuesta:', data);
+            }
         } else {
-            // Si hay un error en la autenticación (por ejemplo, credenciales incorrectas)
-            const error = await response.json();
-            alert('Error de inicio de sesión: ' + error.description);  // Muestra un mensaje de error
+            const errorData = await response.json();
+            console.error('Error en la autenticación:', errorData);
+            alert('Error de inicio de sesión: ' + errorData.msg);
         }
     } catch (error) {
-        // Si ocurre un error de conexión (como cuando el servidor está caído)
         console.error('Error de conexión:', error);
-        alert('Error al conectar con el servidor. Por favor, intenta nuevamente.');
+        alert('Error al conectar con el servidor.');
     }
 });
-
-
-// este codigo es el q brega
-// el q viene ahora es el q tiene al dash

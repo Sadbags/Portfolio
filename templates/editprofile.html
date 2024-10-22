@@ -3,42 +3,53 @@
 {% block title %} Edit - Profile {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='editprofile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/editprofile.css') }}">
 {% endblock %}
 
 {% block content %}
 <!-- Formulario de edición de perfil -->
 <div class="edit-profile-modal" id="edit-profile-modal">
-    <div class="edit-profile-content">
-        <span class="close-btn" id="close-btn">&times;</span>
-        <h2>Edit Profile</h2>
-        <form id="edit-profile-form">
-            <img src="{{ url_for('static', filename='images/profile-pic.jpg') }}" alt="Profile Picture" class="profile-pic">
-            <label for="profile-pic-input">Profile Picture</label>
-            <input type="file" id="profile-pic-input" accept="image/*">
+	<div class="edit-profile-modal" id="edit-profile-modal">
+		<div class="edit-profile-content">
+			<span class="close-btn" id="close-btn">&times;</span>
+			<h2>Edit Profile</h2>
 
-            <label for="profile-name-input">Name</label>
-            <input type="text" id="profile-name-input" value="">
+			<!-- Formulario para editar el perfil -->
+			<form id="edit-profile-form" method="POST" enctype="multipart/form-data" action="{{ url_for('edit_profile') }}">
+				<!-- Truco para usar PUT con formularios HTML -->
+				<input type="hidden" name="_method" value="PUT">
 
-            <label for="profile-email-input">Email</label>
-            <input type="email" id="profile-email-input" value="">
+				<!-- Imagen de perfil dinámica -->
+				<img src="{{ current_user.profile_pic_url or url_for('static', filename='images/default-pic.jpg') }}"
+					 alt="Profile Picture" class="profile-pic">
+				<label for="profile-pic-input">Profile Picture</label>
+				<input type="file" id="profile-pic-input" name="profile_pic" accept="image/*">
 
-            <label for="profile-phone-input">Phone</label>
-            <input type="tel" id="profile-phone-input" value="">
+				<!-- Campo para nombre -->
+				<label for="profile-name-input">First Name</label>
+				<input type="text" id="profile-name-input" name="first_name" value="{{ current_user.first_name }}">
 
-            <label for="profile-reviews-input">Reviews</label>
-            <textarea id="profile-reviews-input"></textarea>
+				<!-- Campo para apellido -->
+				<label for="profile-lastname-input">Last Name</label>
+				<input type="text" id="profile-lastname-input" name="last_name" value="{{ current_user.last_name }}">
 
-            <label for="profile-services-input">Services</label>
-            <textarea id="profile-services-input">Service 1: Description of Service 1.\nService 2: Description of Service 2.</textarea>
+				<!-- Campo para correo electrónico -->
+				<label for="profile-email-input">Email</label>
+				<input type="email" id="profile-email-input" name="email" value="{{ current_user.email }}">
 
-            <button type="submit">Save Changes</button>
-        </form>
-    </div>
+				<!-- Campo para teléfono -->
+				<label for="profile-phone-input">Phone</label>
+				<input type="tel" id="profile-phone-input" name="phone" value="{{ current_user.phone or '' }}">
+
+				<!-- Botón para guardar cambios -->
+				<button type="submit">Save Changes</button>
+			</form>
+		</div>
+	</div>
 </div>
 {% endblock %}
 
 
 {% block script %}
-    <script src="{{ url_for('static', filename='JS/profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/edit_profile.js') }}"></script>
 {% endblock %}

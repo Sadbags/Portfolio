@@ -14,6 +14,7 @@ class Service(BaseModel):
     fee = db.Column(db.Float, nullable=False)
 
 
+
     user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=False)
     user = db.relationship('User', back_populates='services')
     reviews = db.relationship('Review', back_populates='service')  # esto es lo nuevo

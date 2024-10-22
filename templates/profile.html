@@ -11,13 +11,13 @@
         <div class="profile-header">
             <!-- Imagen de perfil dinámica: Usa la imagen del usuario o una imagen por defecto -->
             <img src="{{ current_user.profile_pic_url or url_for('static', filename='images/default-pic.jpg') }}"
-                 alt="Profile Picture" class="profile-pic">
+                alt="Profile Picture" class="profile-pic">
 
             <!-- Nombre del usuario dinámico -->
             <h1 class="profile-name">{{ current_user.first_name }} {{ current_user.last_name }}</h1>
 
             <!-- Botón para editar el perfil -->
-            <a href="{{ url_for('profile') }}" class="button">Edit Profile</a>
+            <a href="{{ url_for('edit_profile') }}" class="button">Edit Profile</a>
 
             <!-- Botón para compartir perfil -->
             <button class="share-profile-btn">Share Profile</button>
@@ -26,12 +26,21 @@
             <a href="{{ url_for('logout') }}" class="button-logout">Log Out</a>
         </div>
 
-        <div class="profile-content">
-            <!-- Sección de reseñas -->
-            <div class="reviews-section">
-                <h2>Reviews</h2>
-                <p></p>
-            </div>
+        <div class="reviews-section">
+			<h2>Reviews</h2>
+			{% if reviews %}
+				{% for review in reviews %}
+					<div class="review">
+						<h4>Review by {{ review.user.first_name }} {{ review.user.last_name }}</h4>
+						<p><strong> Service Name:</strong> {{ review.name }} </p>
+						<p><strong>Rating:</strong> {{ review.rating }}</p>
+						<p><strong>Comment:</strong> {{ review.comment }}</p>
+					</div>
+				{% endfor %}
+			{% else %}
+				<p>No reviews yet. Be the first to leave a review!</p>
+			{% endif %}
+		</div>
 
             <!-- Sección de contacto dinámica -->
             <div class="contact-section">
@@ -39,16 +48,6 @@
                 <p>Email: {{ current_user.email }}</p>
                 <p>Phone: {{ current_user.phone or 'No phone available' }}</p>
             </div>
-
-            <!-- Sección de mensajes directos -->
-            <div class="direct-message-section">
-                <h2>Direct Message</h2>
-                <form id="message-form">
-                    <textarea id="message-input" placeholder="Write a message..." required></textarea>
-                    <button type="submit">Send</button>
-                </form>
-            </div>
-
             <!-- Sección de servicios dinámicos -->
             <div class="photo-feed-section">
                 <h2>Services</h2>
@@ -59,7 +58,11 @@
                         <img src="{{ service.img_url }}" alt="{{ service.name }}">
                         <div class="card-content">
                             <h3>{{ service.name }}</h3>
-                            <p>{{ service.description or 'No description available' }}</p>
+                            <p><strong>Descreiption:</strong> {{ service.description or 'No description available' }}</p>
+							<p><strong>Price:</strong> ${{ service.aprox_price }}</p>
+							<p><strong>Fee:</strong> {{ service.fee }}%</p>
+							<p><strong>Category:</strong> {{ service.category }}</p>
+							<a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Edit</a>
                         </div>
                     </div>
                     {% endfor %}

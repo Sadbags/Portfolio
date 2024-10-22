@@ -26,15 +26,17 @@
     <!-- Contenedor principal -->
     <div class="main-content">
         <header>
-            <h1>Welcome to your Dashboard, {{ current_user.name }}</h1>
+            <h1>Welcome to your Dashboard, {{ current_user.first_name }}</h1>
         </header>
 
         <!-- Sección de Perfil -->
         <section id="profile" class="section active">
             <h2>My profile</h2>
-            <p><strong>Name:</strong> {{ current_user.name }}</p>
+            <p><strong>Name:</strong> {{ current_user.first_name }} {{ current_user.last_name }}</p>
             <p><strong>Email:</strong> {{ current_user.email }}</p>
-            <a href="{{ url_for('profile') }}" class="btn btn-primary">Edit profile</a>
+			<p><strong>Phone:</strong> {{ addresses.phone }}</p>
+			<p><strong>Address:</strong> {{ addresses.address or 'No address available' }}</p>
+            <a href="{{ url_for('profile') }}" class="btn btn-primary">View Profile</a>
         </section>
 
         <!-- Sección de Mis Servicios -->
@@ -43,18 +45,21 @@
 			<ul class="service-list">
 				{% for service in current_user.services %}
 				<li>
-					<h3>{{ service.name }}</h3>
-					<p>{{ service.description }}</p>
-					<p><strong>Price:</strong> ${{ service.price }}</p>
+					<p><strong>Name:</strong> {{ service.name }}</p
+					<p><strong>Description:</strong> {{ service.description }}</p>
+					<p><strong>Price:</strong> ${{ service.aprox_price }}</p>
+					<p><strong>Fee:</strong> {{ service.fee }}%</p>
 					<a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Editar</a>
 				</li>
 				{% else %}
-				<p>No has creado ningún servicio aún.</p>
+				<p>No service has been created</p>
 				{% endfor %}
 			</ul>
 		</section>
 
+
         <!-- Sección para Crear Servicio -->
+		<h2>Create a new service</h2>
         <form id="create-service-form">
     <div class="form-group">
         <label for="service_name">Service Name</label>
@@ -147,4 +152,5 @@
 <script src="{{ url_for('static', filename='JS/calendar.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/dashboard.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/create_service.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/address.js') }}"></script>
 {% endblock %}

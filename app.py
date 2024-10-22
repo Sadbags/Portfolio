@@ -73,9 +73,37 @@ def home():
 def home1():
     return render_template('home.html')
 
-@app.route('/dashboard', methods=['GET'])
+@app.route('/dashboard')
+@login_required
 def dashboard():
-    return render_template('dashboard.html', current_user=current_user)
+    # Obtener el ID del usuario actual
+    user_id = current_user.id
+
+    # Obtener las direcciones del usuario
+    addresses = Address.query.filter_by(user_id=user_id).all()
+
+    # Formatear las direcciones para pasarlas a la plantilla
+    addresses_data = []
+
+    for address in addresses:
+        addresses_data.append({
+            'id': address.id,
+            'street': address.street,
+            'city': address.city,
+            'state': address.state,
+            'zip_code': address.zip_code,  # Asegúrate de usar el nombre correcto
+            'phone': address.phone,          # Incluye el teléfono también
+            'address': address.address        # Incluye el campo 'address'
+        })
+
+    # Pasar las direcciones a la plantilla
+    return render_template('dashboard.html', current_user=current_user, addresses=addresses_data)
+
+
+@app.route('/dashboard/address', methods=['GET'])
+@jwt_required()
+def dashboard_info():
+	return render_template('dashboard.html', address=address)
 
 
 @app.route('/forgot')
@@ -83,9 +111,64 @@ def forgot():
     return render_template('forgot.html')
 
 
+# Profile
+
+@app.route('/profile')
+@login_required
+def profile():
+    # Aquí obtienes el ID del usuario actual
+    user_id = current_user.id
+
+    # Obtener las reseñas del usuario
+    reviews = Review.query.filter_by(user_id=user_id).all()
+
+    # Formatear las reseñas para pasarlas a la plantilla
+    reviews_data = []
+    for review in reviews:
+        reviews_data.append({
+            'id': review.id,
+            'service_id': review.service_id,
+            'comment': review.comment,
+            'rating': review.rating,
+            'user': {
+                'first_name': review.user.first_name,
+                'last_name': review.user.last_name
+            }
+        })
+
+    # Pasar las reseñas a la plantilla
+    return render_template('profile.html', current_user=current_user, reviews=reviews_data)
+
+# edit profile
+@app.route('/profile/user_id', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    # Si se está simulando un método PUT
+    if request.form.get('_method') == 'PUT':
+        # Actualizar los datos del usuario
+        current_user.first_name = request.form['first_name']
+        current_user.last_name = request.form['last_name']
+        current_user.email = request.form['email']
+        current_user.phone = request.form.get('phone')
+
+        # Manejar la subida de la imagen de perfil
+        if 'profile_pic' in request.files:
+            profile_pic = request.files['profile_pic']
+            # Aquí va la lógica para guardar la imagen (ej: en el sistema de archivos o en un servicio de nube)
+            # Luego actualiza current_user.profile_pic_url con la URL de la imagen
+
+        # Guardar cambios en la base de datos
+        db.session.commit()
+
+        flash('Profile updated successfully!', 'success')
+        return redirect(url_for('profile'))
+
+    # Si es un GET, renderiza el formulario de edición
+    return render_template('editprofile.html', current_user=current_user)
 
 
-# Login
+
+# Login and
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -107,8 +190,11 @@ def login():
         login_user(user)
 
         # Generar el token JWT
-        additional_claims = {"is_admin": user.is_admin}  # Si deseas agregar información extra
-        access_token = create_access_token(identity=user.id, additional_claims=additional_claims)
+        additional_claims = {"is_admin": user.is_admin}
+        access_token = create_access_token(identity=user.id, additional_claims=additional_claims)  # Asegúrate de que esto sea un diccionario
+
+        print("Token JWT generado:", access_token)
+
 
         # Devolver el token en la respuesta JSON
         return jsonify({
@@ -117,20 +203,13 @@ def login():
             "redirect_url": url_for('profile')  # Puedes personalizar la redirección
         }), 200
 
-    return render_template('login.html')
 
+    return render_template('login.html')
 
 
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
-
-
-@app.route('/profile')
-@login_required
-def profile():
-    print(current_user.is_authenticated)  # Esto debería imprimir True
-    return render_template('profile.html', current_user=current_user)
 
 
 @app.route('/logout', methods=['GET'])
@@ -141,8 +220,8 @@ def logout():
     return redirect(url_for('login'))  # Redirige al login
 
 
-# register a user and address
 
+# register a user and address
 @app.route('/show_register', methods=['GET'])
 def show_register():
     return render_template('register.html')
@@ -203,6 +282,8 @@ def register_user():
         db.session.add(address)
         db.session.commit()
 
+        login_user(user)
+
         # Redirigir según el tipo de usuario
         if user_type == 'provider':
             return redirect(url_for('docs'))
@@ -214,12 +295,40 @@ def register_user():
     return render_template('register.html')
 
 
+#address
+
+@app.route('/addresses/<address_id>', methods=['GET'])
+@jwt_required()
+def get_address(address_id):
+    # Obtener el ID del usuario actual
+    current_user = get_jwt_identity()
+
+    # Filtrar por ID de usuario y ID de dirección
+    address = Address.query.filter_by(user_id=current_user['id'], id=address_id).first()
+
+    if address:
+        address_data = {
+            'id': address.id,
+            'street': address.street,
+            'city': address.city,
+            'state': address.state,
+            'zip_code': address.zip_code,
+            'phone': address.phone
+        }
+        return jsonify(address_data), 200
+    else:
+        return jsonify({'message': 'Address not found'}), 404
+
+
+
+
 
 
 
 
 # SERVICES
 
+# edit service
 @app.route('/edit_service/<service_id>', methods=['GET', 'PUT'])
 def edit_service(service_id):
     service = Service.query.get_or_404(service_id)
@@ -296,6 +405,32 @@ def create_review(service_id):
 
     return jsonify({"msg": "Review submitted successfully!"}), 201
 
+
+
+@app.route('/users/<user_id>/reviews', methods=['GET'])
+@jwt_required()
+def get_user_reviews(user_id):
+    current_user = get_jwt_identity()
+    if current_user['id'] != user_id:  # Asegúrate de que el usuario está autenticado para ver sus reseñas
+        return jsonify({"msg": "Unauthorized"}), 403
+
+    reviews = Review.query.filter_by(user_id=user_id).all()
+
+    # Formatear las reseñas para la respuesta
+    reviews_data = []
+    for review in reviews:
+        reviews_data.append({
+            'id': review.id,
+            'service_id': review.service_id,
+            'comment': review.comment,
+            'rating': review.rating,
+            'user': {
+                'first_name': review.user.first_name,  # Asegúrate de que el modelo de usuario tiene estos campos
+                'last_name': review.user.last_name
+            }
+        })
+
+    return jsonify(reviews_data), 200
 
 
 
