@@ -19,8 +19,9 @@ body {
     background-color: #343a40;
     color: #fff;
     padding: 20px;
-    height: 100vh;
-    position: fixed;
+    height: 100vh; /* 100% de la altura de la ventana */
+    position: fixed; /* Mantiene el sidebar fijo al desplazarse */
+    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es largo */
 }
 
 .sidebar-header {
@@ -41,21 +42,24 @@ body {
     color: #fff;
     text-decoration: none;
     font-size: 16px;
+    display: block; /* Hace que el área clicable sea más grande */
+    padding: 10px; /* Añadir espacio alrededor del texto */
 }
 
 .sidebar-nav a.active,
 .sidebar-nav a:hover {
-    color: #007bff;
+    color: #007bff; /* Color del enlace activo o en hover */
+    background-color: rgba(0, 123, 255, 0.1); /* Fondo en hover */
 }
 
 /* Main content styles */
 .main-content {
-    margin-left: 260px; /* Leave space for the sidebar */
+    margin-left: 260px; /* Deja espacio para el sidebar */
     padding: 20px;
-    flex-grow: 1;
+    flex-grow: 1; /* Permite que el contenido principal ocupe el resto del espacio */
 }
 
-h1, h2 {
+h1, h2, h3, h4 {
     color: #333;
 }
 
@@ -68,13 +72,16 @@ h1, h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.section.active {
-    display: block;
-}
-
 /* Form styles */
 .form-group {
     margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
 }
 
 .form-control {
@@ -83,11 +90,11 @@ h1, h2 {
     border: 1px solid #ced4da;
     border-radius: 4px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-control:focus {
-    border-color: #007bff;
-    outline: none;
+    border-color: #007bff; /* Color del borde en foco */
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
@@ -112,7 +119,7 @@ h1, h2 {
 }
 
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: #007bff;
     color: #fff;
 }
 
@@ -155,7 +162,7 @@ h1, h2 {
     background-color: #0056b3;
 }
 
-/* Adjustments for responsive design */
+/* Responsive styles */
 @media (max-width: 768px) {
     .sidebar {
         position: relative;
@@ -168,55 +175,13 @@ h1, h2 {
     }
 }
 
-/* Crear Servicio Form Styles */
+/* Create Service Form Styles */
 #create-service-form {
     margin-top: 20px;
+	margin-bottom: 20px;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
+	border: 50px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-}
-
-/* Formulario de entrada */
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-/* Botón de Crear Servicio */
-#submit-service-btn {
-    margin-top: 10px;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#submit-service-btn:hover {
-    background-color: #0056b3;
 }

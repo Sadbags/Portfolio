@@ -43,11 +43,20 @@
 		</div>
 
             <!-- Sección de contacto dinámica -->
-            <div class="contact-section">
-                <h2>Contact</h2>
-                <p>Email: {{ current_user.email }}</p>
-                <p>Phone: {{ current_user.phone or 'No phone available' }}</p>
-            </div>
+			<div class="contact-section">
+				<h2>Contact</h2>
+				<p>Email: {{ current_user.email }}</p>
+
+				{% if addresses %}
+					{% for address in addresses %}
+						<p><strong>Phone:</strong> {{ address.phone or 'No phone available' }}</p>
+						<p><strong>Address:</strong> {{ address.street }}, {{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
+						<hr>
+					{% endfor %}
+				{% else %}
+					<p>No addresses available</p>
+				{% endif %}
+			</div>
             <!-- Sección de servicios dinámicos -->
             <div class="photo-feed-section">
                 <h2>Services</h2>

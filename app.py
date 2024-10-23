@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash
 from flask_cors import CORS
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
+from datetime import datetime
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 import os
 
@@ -73,6 +74,7 @@ def home():
 def home1():
     return render_template('home.html')
 
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
@@ -81,29 +83,40 @@ def dashboard():
 
     # Obtener las direcciones del usuario
     addresses = Address.query.filter_by(user_id=user_id).all()
+    appointments = Appointment.query.filter_by(user_id=user_id).all()
 
     # Formatear las direcciones para pasarlas a la plantilla
     addresses_data = []
-
     for address in addresses:
         addresses_data.append({
             'id': address.id,
             'street': address.street,
             'city': address.city,
             'state': address.state,
-            'zip_code': address.zip_code,  # Asegúrate de usar el nombre correcto
-            'phone': address.phone,          # Incluye el teléfono también
-            'address': address.address        # Incluye el campo 'address'
+            'zip_code': address.zip_code,
+            'phone': address.phone  # Incluye el teléfono también
         })
 
-    # Pasar las direcciones a la plantilla
-    return render_template('dashboard.html', current_user=current_user, addresses=addresses_data)
+    # Formatear las citas para pasarlas a la plantilla
+    appointments_data = []
+    for appointment in appointments:
+        # Suponiendo que appointment_time es un string que representa la hora
+        if isinstance(appointment.Appointment_time, str):  # Asegúrate de que es un string
+            appointment_time_str = appointment.Appointment_time
+            appointment_time = datetime.strptime(appointment_time_str, '%H:%M')  # Convierte a datetime
+        else:
+            appointment_time = appointment.Appointment_time  # Asumir que ya es un objeto datetime
 
+        appointments_data.append({
+            'service_name': appointment.service.name if appointment.service else 'Unknown Service',
+            'appointment_date': appointment.Appointment_date.strftime('%B %d, %Y'),  # Formato de fecha
+            'appointment_time': appointment_time.strftime('%I:%M %p'),  # Formato de hora AM/PM
+            'status': appointment.status
+        })
 
-@app.route('/dashboard/address', methods=['GET'])
-@jwt_required()
-def dashboard_info():
-	return render_template('dashboard.html', address=address)
+    # Pasar las direcciones y citas formateadas al renderizado de la plantilla
+    return render_template('dashboard.html', current_user=current_user, addresses=addresses_data, appointments=appointments_data)
+
 
 
 @app.route('/forgot')
@@ -116,11 +129,13 @@ def forgot():
 @app.route('/profile')
 @login_required
 def profile():
-    # Aquí obtienes el ID del usuario actual
     user_id = current_user.id
 
     # Obtener las reseñas del usuario
     reviews = Review.query.filter_by(user_id=user_id).all()
+
+    # Obtener las direcciones del usuario
+    addresses = Address.query.filter_by(user_id=user_id).all()
 
     # Formatear las reseñas para pasarlas a la plantilla
     reviews_data = []
@@ -136,8 +151,10 @@ def profile():
             }
         })
 
-    # Pasar las reseñas a la plantilla
-    return render_template('profile.html', current_user=current_user, reviews=reviews_data)
+    # Pasar las direcciones y reseñas a la plantilla
+    return render_template('profile.html', current_user=current_user, reviews=reviews_data, addresses=addresses)
+
+
 
 # edit profile
 @app.route('/profile/user_id', methods=['GET', 'POST'])
@@ -193,16 +210,11 @@ def login():
         additional_claims = {"is_admin": user.is_admin}
         access_token = create_access_token(identity=user.id, additional_claims=additional_claims)  # Asegúrate de que esto sea un diccionario
 
-        print("Token JWT generado:", access_token)
+        print("Generated JWT Token:", access_token)
 
 
         # Devolver el token en la respuesta JSON
-        return jsonify({
-            "msg": "Login successful",
-            "access_token": access_token,
-            "redirect_url": url_for('profile')  # Puedes personalizar la redirección
-        }), 200
-
+        return jsonify(access_token=access_token, is_admin=user.is_admin), 200
 
     return render_template('login.html')
 
