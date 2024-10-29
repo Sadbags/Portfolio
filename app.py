@@ -38,7 +38,7 @@ app.secret_key = 'Quicker-app'
 login_manager.login_view = 'login'
 
 
-app.config['UPLOAD_FOLDER'] = 'uploads'    # new
+app.config['UPLOAD_FOLDER'] = 'static/images'    # new
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'} #new
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB  #new
 
@@ -467,11 +467,6 @@ def privacypolicy():
 @app.route('/docs')
 def docs():
     return render_template('docs.html')
-
-
-
-
-
 
 
 

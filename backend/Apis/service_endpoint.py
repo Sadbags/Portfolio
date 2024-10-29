@@ -27,6 +27,7 @@ def create_service():
     aprox_price = request.json['aprox_price']
     category = request.json['category']
     fee = request.json['fee']
+    picture_path = request.json.get('picture')  # Obtener la imagen del servicio
 
     # Crear la instancia de Service
     service = Service(
@@ -37,6 +38,9 @@ def create_service():
         fee=fee,
         user_id=current_user_id  # Asociar el servicio al usuario actual
     )
+
+    if picture_path:  # Ensure there's a valid path before setting the image
+        service.set_image(picture_path)
 
     # Agregar el servicio a la sesión de la base de datos y hacer commit
     db.session.add(service)
