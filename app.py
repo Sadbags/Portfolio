@@ -46,7 +46,7 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
 class Config(object):
-    app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite://///Users/alexguadalupe/Documents/GitHub/Portfolio/instance/Quickr.db'   #sqlite:////Users/bags/Portfolio/instance/Quickr.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:////Users/bags/Portfolio/instance/Quickr.db'
     app.config['JWT_SECRET_KEY'] = 'Quickr-app'
 
 
