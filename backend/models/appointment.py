@@ -16,7 +16,7 @@ class Appointment(BaseModel):
     payment_status = db.Column(db.String(128), nullable=False)
 
     user = db.relationship('User', back_populates='appointments')
-    services = db.relationship('Service', back_populates='appointments')  # esto es lo nuevo
+    service = db.relationship('Service', back_populates='appointments')  # esto es lo nuevo
 
     def __init__(self, user_id, service_id, Appointment_date, Appointment_time, status, payment_status, **kwargs):
         super().__init__(**kwargs)
