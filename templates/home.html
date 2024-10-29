@@ -1,33 +1,41 @@
 {% extends 'base.html' %}
-
-{% block title %}Home - Quickr{% endblock %}
+{% block title %} Home - Quickr {% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/home.css') }}" /> {% endblock %}
 
 {% block content %}
 <main> <!-- Main Section -->
-<div class="main">
-	<div class="main__container">
-		<div class="main__content">
-			<h1>Menu Showcase</h1>
-			<h2>Our Specialty</h2>
-			<p>See our specialty plates</p>
-            <a href="{{ url_for('get_services') }}" class="getstarted__btn">Get Started</a>
+	<div class="main">
+		<div class="main__container">
+			<div class="main__content">
+				<h1>QUICKR</h1>
+				<h2>Everithing you're going to NEED</h2>
+				<p>All professional services in one place</p> 
+				<a href="{{ url_for('get_services') }}" class="button">Get Started</a> <!-- pasa a services.html -->
+			</div>
 		</div>
 	</div>
-</div>
-<!-- Services section -->
-<div class="About">
-	<h1>Nuestros servicios</h1>
-	<div class="About__container">
-		<div class="About__card">
-			<h2>Nuestro</h2>
-			<p>Una sabrosa experiencia</p>
-			<button>Get Started</button>
+
+	<!-- Services section -->
+	<div class="About">
+		<div class="wrapper"> <!-- ESTO ES UN logo QUICKR SVG -->
+			<svg>
+				<text x="50%" y="50%" dy=".35em" text-anchor="middle">
+					QUICKR
+				</text>
+			</svg>
 		</div>
-		<div class="About__card">
-			<h2>Una delisiosa aventura</h2>
-			<p>Una sabrosa experiencia</p>
-			<button>Get Started</button>
+		<div class="About__container">
+			<div class="About__card">
+				<h2>What's Quickr?</h2>
+				<p> <!-- opcional rellenar --> </p>
+				<button>Learn more</button>
+			</div>
+			<div class="About__card">
+				<h2>Services</h2>
+				<p> <!-- opcional rellenar --> </p>
+				<button>Learn more</button>
+			</div>
 		</div>
-	</div>
 </main>
 {% endblock %}

@@ -19,56 +19,725 @@
     /* Aplica estilos globales a todos los elementos / Applies global styles to all elements */
     /* Define el modelo de caja como border-box / Sets the box model to border-box */
     box-sizing: border-box;
-    /* Elimina el margen por defecto / Removes default margin */
+    /* Elimina el margen por defecto (borde del html) / Removes default margin */
     margin: 0;
     /* Elimina el padding por defecto / Removes default padding */
-    padding: 0;
+    padding: 0rem;
     /* Establece la fuente por defecto como 'Kumbh Sans' / Sets the default font to 'Kumbh Sans' */
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+/* ESTILO de la BARRA DE NAVEGACIÓN / NAVBAR */
 .navbar {
-    /* espacio de la BARRA DE NAVEGACIÓN / NAVBAR */
-    background: #29d3c4;
+    /* Establece el color de fondo de la barra de navegación / Sets the background color of the navbar */
+    background: rgb(0, 0, 0);
+
+    /* Establece la altura de la barra de navegación a 80 píxeles / Sets the height of the navbar to 80 pixels */
     height: 80px;
+
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
     display: flex;
+
+    /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
     justify-content: center;
+
+    /* Alinea los elementos hijos verticalmente (falta valor) / Aligns child elements vertically (missing value) */
     align-items: center;
+    /* Se agregó 'center' para alinear verticalmente */
+
+    /* Establece el tamaño de la fuente a 1.2 rem / Sets the font size to 1.2 rem */
     font-size: 1.2rem;
+
+    /* Hace que la barra de navegación sea fija en la parte superior al hacer scroll / Makes the navbar sticky at the top when scrolling */
     position: sticky;
+
+    /* Posiciona la barra de navegación en la parte superior de la página / Positions the navbar at the top of the page */
     top: 0;
+
+    /* Establece un índice z alto para asegurar que la barra de navegación esté en el frente / Sets a high z-index to ensure the navbar is in the front */
     z-index: 999;
 }
 
+/* Contenedor de la barra de navegación / Navbar container */
 .navbar__container {
-    /* Contenedor de la barra de navegación / Navbar container */
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
     display: flex;
+
+    /* Distribuye el espacio entre los elementos hijos de manera equitativa / Distributes space between child elements evenly */
     justify-content: space-between;
+
+    /* Establece la altura del contenedor a 80 píxeles / Sets the container height to 80 pixels */
     height: 80px;
+
+    /* Establece el índice z para asegurar que el contenedor esté en el frente / Sets the z-index to ensure the container is in the front */
     z-index: 1;
+
+    /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
     width: 100%;
+
+    /* Establece el ancho máximo del contenedor a 1300 píxeles / Sets the maximum width of the container to 1300 pixels */
     max-width: 1300px;
+
+    /* Centra el contenedor horizontalmente / Centers the container horizontally */
     margin: 0 auto;
+
+    /* Elimina el padding del contenedor / Removes padding from the container */
     padding: 0;
 }
 
+/* Logo de la barra de navegación / Navbar logo */
 #navbar__logo {
-    /* Logo de la barra de navegación / Navbar logo */
-    background-color: #fff;
+    /* Establece el color de fondo del logo como blanco / Sets the background color of the logo to white */
+    background-color: #ffffff;
+
+    /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
     background-size: 100%;
+
+    /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
     -webkit-background-clip: text;
+
+    /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
     -moz-background-clip: text;
+
+    /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
     -webkit-text-fill-color: transparent;
+
+    /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
     -moz-text-fill-color: transparent;
+
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
     display: flex;
+
+    /* Alinea los elementos hijos en el centro verticalmente / Aligns child elements vertically in the center */
     align-items: center;
+
+    /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
     cursor: pointer;
+
+    /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
     text-decoration: none;
+
+    /* Establece el tamaño del logo y el bolte / Sets the font size to logo and bolte */
+    font-size: 3rem;
+}
+
+/* Iconos de Font Awesome / Font Awesome icons */
+.fa-solid {
+    /* Separa el bolt del navbar del nombre de la barra de navegación / Separates the bolt from the navbar name */
+    margin-right: .8rem;
+}
+
+/* Menú de la barra de navegación / Navbar menu */
+.navbar__menu {
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    align-items: center;
+
+    /* Elimina los estilos de lista por defecto / Removes default list styles */
+    list-style: none;
+
+    /* Centra el texto dentro de los elementos de la lista / Centers text within list items */
+    text-align: center;
+
+    /* Alinea los elementos hijos al final del contenedor / Aligns child elements to the end of the container */
+    justify-content: flex-end;
+}
+
+/* Elemento de la barra de navegación / Navbar item */
+.navbar__item {
+    /* Establece la altura del elemento a 80 píxeles / Sets the height of the item to 80 pixels */
+    height: 80px;
+}
+
+/* Enlaces de la barra de navegación / Navbar links */
+.navbar__links {
+    /* Establece el color del texto a blanco / Sets the text color to white */
+    color: #fff;
+
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    align-items: center;
+
+    /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
+    justify-content: center;
+
+    /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+    text-decoration: none;
+
+    /* Añade padding horizontal de 1 rem / Adds horizontal padding of 1 rem */
+    padding: 0 1rem;
+
+    /* Establece la altura del enlace al 100% del contenedor padre / Sets the link height to 100% of the parent container */
+    height: 100%;
+}
+
+/* Botón de la barra de navegación / Navbar button */
+.navbar__btn {
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    align-items: center;
+
+    /* Alinea los elementos hijos al final del contenedor / Aligns child elements to the end of the container */
+    justify-content: flex-end;
+
+    /* Añade padding horizontal de 1 rem / Adds horizontal padding of 1 rem */
+    padding: 0 1rem;
+
+    /* Establece el ancho del botón al 20% del contenedor padre / Sets the button width to 20% of the parent container */
+    width: 20%;
+}
+
+/* Estilo del enlace de la barra de navegación al pasar el ratón / Navbar link hover style */
+.navbar__links:hover {
+    /* Cambia el color del texto del enlace al pasar el ratón / Changes the link text color on hover */
+    color: #521a8a;
+
+    /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */
+    transition: all 0.3s ease;
+}
+
+/* Estilos responsivos para pantallas con un ancho máximo de 960 píxeles / Responsive styles for screens with a maximum width of 960 pixels */
+@media screen and (max-width: 960px) {
+
+    /* Contenedor de la barra de navegación / Navbar container */
+    .navbar__container {
+        /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        display: flex;
+
+        /* Distribuye el espacio entre los elementos hijos de manera equitativa / Distributes space between child elements evenly */
+        justify-content: space-between;
+
+        /* Establece la altura del contenedor a 80 píxeles / Sets the container height to 80 pixels */
+        height: 80px;
+
+        /* Establece el índice z para asegurar que el contenedor esté en el frente / Sets the z-index to ensure the container is in the front */
+        z-index: 1;
+
+        /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+        width: 100%;
+
+        /* Establece el ancho máximo del contenedor a 1300 píxeles / Sets the maximum width of the container to 1300 pixels */
+        max-width: 1300px;
+
+        /* Elimina el padding del contenedor / Removes padding from the container */
+        padding: 0;
+    }
+
+    /* Menú de la barra de navegación / Navbar menu */
+    .navbar__menu {
+        /* Utiliza un diseño de cuadrícula para el contenedor / Uses a grid layout for the container */
+        display: grid;
+
+        /* Define una sola columna en la cuadrícula / Defines a single column in the grid */
+        grid-template-columns: auto;
+
+        /* Elimina el margen del contenedor / Removes margin from the container */
+        margin: 0;
+
+        /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+        width: 100%;
+
+        /* Posiciona el contenedor de manera absoluta / Positions the container absolutely */
+        position: absolute;
+
+        /* Posiciona el contenedor fuera de la vista inicialmente / Positions the container out of view initially */
+        top: -1000px;
+
+        /* Establece la opacidad del contenedor a 0 inicialmente / Sets the container opacity to 0 initially */
+        opacity: 0;
+
+        /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */
+        transition: all 0.5s ease;
+
+        /* Establece la altura del contenedor a 50% de la altura de la ventana / Sets the container height to 50% of the viewport height */
+        height: 50vh;
+
+        /* Establece el índice z para asegurar que el contenedor esté detrás de otros elementos / Sets the z-index to ensure the container is behind other elements */
+        z-index: -1;
+
+        /* Establece el color de fondo del contenedor a blanco / Sets the container background color to white */
+        background: #fff;
+    }
+
+    /* Estilo del menú de la barra de navegación cuando está activo / Navbar menu active style */
+    .navbar__menu.active {
+        /* Cambia el color de fondo del contenedor a negro / Changes the container background color to black */
+        background: #131313;
+
+        /* Posiciona el contenedor en la parte superior de la vista / Positions the container at the top of the view */
+        top: 100%;
+
+        /* Establece la opacidad del contenedor a 1 / Sets the container opacity to 1 */
+        opacity: 1;
+
+        /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */
+        transition: all 0.5s ease;
+
+        /* Establece el índice z para asegurar que el contenedor esté en el frente / Sets the z-index to ensure the container is in the front */
+        z-index: 99;
+
+        /* Establece la altura del contenedor a 50% de la altura de la ventana / Sets the container height to 50% of the viewport height */
+        height: 50vh;
+
+        /* Aumenta el tamaño de la fuente a 1.6 rem / Increases the font size to 1.6 rem */
+        font-size: 1.6rem;
+    }
+
+    /* Estilo del logo de la barra de navegación en pantallas pequeñas / Navbar logo style on small screens */
+    #navbar__logo {
+        /* Añade padding a la izquierda del logo / Adds left padding to the logo */
+        padding-left: 25px;
+    }
+
+    /* Barra del botón de alternancia de la barra de navegación / Navbar toggle button bar */
+    .navbar__toggle .bar {
+        /* Establece el ancho de la barra a 25 píxeles / Sets the bar width to 25 pixels */
+        width: 25px;
+
+        /* Establece la altura de la barra a 3 píxeles / Sets the bar height to 3 pixels */
+        height: 3px;
+
+        /* Añade un margen de 5 píxeles auto / Adds a margin of 5 pixels auto */
+        margin: 5px auto;
+
+        /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */
+        transition: all 0.3s ease-in-out;
+
+        /* Establece el color de fondo de la barra a blanco / Sets the bar background color to white */
+        background: #fff;
+    }
+
+    /* Elemento de la barra de navegación / Navbar item */
+    .navbar__item {
+        /* Establece el ancho del elemento al 100% del contenedor padre / Sets the item width to 100% of the parent container */
+        width: 100%;
+    }
+
+    /* Enlaces de la barra de navegación / Navbar links */
+    .navbar__links {
+        /* Centra el texto dentro del enlace / Centers the text within the link */
+        text-align: center;
+
+        /* Añade padding de 2 rem / Adds padding of 2 rem */
+        padding: 2rem;
+
+        /* Establece el ancho del enlace al 100% del contenedor padre / Sets the link width to 100% of the parent container */
+        width: 100%;
+
+        /* Utiliza el modelo de tabla para el diseño del contenedor / Uses table layout model for the container */
+        display: table;
+    }
+
+    /* Menú móvil / Mobile menu */
+    #mobile-menu {
+        /* Posiciona el menú de manera absoluta / Positions the menu absolutely */
+        position: absolute;
+
+        /* Establece la posición superior del menú a 20 píxeles / Sets the top position of the menu to 20 pixels */
+        top: 20px;
+
+        /* Establece la posición derecha del menú al 5% del contenedor padre / Sets the right position of the menu to 5% of the parent container */
+        right: 5%;
+
+        /* Transforma el menú para moverlo 5% a la derecha y 20% hacia abajo / Transforms the menu to move it 5% to the right and 20% down */
+        transform: translate(5%, 20%);
+    }
+
+    /* Botón de la barra de navegación / Navbar button */
+    .navbar__btn {
+        /* Añade padding en la parte inferior (falta valor) / Adds padding to the bottom (missing value) */
+        padding-bottom: 1rem;
+        /* Se agregó '1rem' para completar el valor */
+    }
+
+    /* Estilo del botón / Button style */
+    .button {
+        /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        display: flex;
+
+        /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
+        justify-content: center;
+
+        /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+        align-items: center;
+
+        /* Establece el ancho del botón al 80% del contenedor padre / Sets the button width to 80% of the parent container */
+        width: 80%;
+
+        /* Establece la altura del botón a 80 píxeles / Sets the button height to 80 pixels */
+        height: 80px;
+
+        /* Elimina el margen del botón / Removes the button margin */
+        margin: 0;
+    }
+
+    /* Barra del botón de alternancia de la barra de navegación / Navbar toggle button bar */
+    .navbar__toggle .bar {
+        /* Muestra la barra como un bloque / Displays the bar as a block */
+        display: block;
+
+        /* Cambia el cursor a un puntero cuando se pasa sobre la barra / Changes the cursor to a pointer when hovering over the bar */
+        cursor: pointer;
+    }
+
+    /* Estilo de la barra del menú móvil cuando está activo / Mobile menu bar active style */
+    #mobile-menu.is-active .bar:nth-child(2) {
+        /* Establece la opacidad de la segunda barra a 0 / Sets the opacity of the second bar to 0 */
+        opacity: 0;
+    }
+}
+
+/*FOOTER CSS*/
+/* Estilos del pie de página / Footer css */
+.footer__container {
+    /* Establece el color de fondo del contenedor del pie de página / Sets the background color of the footer container */
+    background-color: #000000;
+    /* Añade padding vertical de 1 rem / Adds vertical padding of 1 rem */
+    padding: 1rem 0;
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+    /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
+    flex-direction: column;
+    /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
+    align-items: center;
+    /* Centra los elementos hijos verticalmente / Centers child elements vertically */
+    justify-content: center;
+}
+
+#footer__logo {
+    /* Establece el color del texto a blanco / Sets the text color to white */
+    color: #fff;
+
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    align-items: center;
+
+    /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
+    cursor: pointer;
+
+    /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+    text-decoration: none;
+
+    /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
     font-size: 2rem;
 }
 
-.fa-solid {
-    /* Iconos de Font Awesome / Font Awesome icons */
-    margin-right: .8rem;
-    /* Separa el bolt del navbar del nombre de la barra de navegación / Separates the bolt from the navbar name */
+.footer__links {
+    /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+    width: 100%;
+
+    /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
+    max-width: 1000px;
+
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
+    justify-content: center;
 }
+
+.footer__link--wrapper {
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Establece la dirección del eje principal a fila / Sets the main axis direction to row */
+    flex-direction: row;
+    /* Cambia esto de column a row */
+
+    /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
+    justify-content: space-between;
+    /* Esto distribuirá los elementos a lo largo de la línea */
+}
+
+/* Elementos de enlace del pie de página / Footer link items */
+.footer__link--items {
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
+    flex-direction: column;
+
+    /* Alinea los elementos hijos al inicio del contenedor / Aligns child elements to the start of the container */
+    align-items: flex-start;
+
+    /* Añade un margen de 16 píxeles alrededor del contenedor / Adds a margin of 16 pixels around the container */
+    margin: 16px;
+
+    /* Alinea el texto a la izquierda / Aligns text to the left */
+    text-align: left;
+
+    /* Establece el ancho del contenedor a 160 píxeles / Sets the container width to 160 pixels */
+    width: 160px;
+
+    /* Utiliza el modelo de caja border-box / Uses the border-box box model */
+    box-sizing: border-box;
+}
+
+/* Encabezado h2 dentro de los elementos de enlace del pie de página / h2 header within the footer link items */
+.footer__link--items h2 {
+    /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
+    margin-bottom: 16px;
+}
+
+/* Color del encabezado h2 dentro de los elementos de enlace del pie de página / Color of the h2 header within the footer link items */
+.footer__link--items>h2 {
+    /* Establece el color del texto a blanco / Sets the text color to white */
+    color: #fff;
+}
+
+/* Enlaces dentro de los elementos de enlace del pie de página / Links within the footer link items */
+.footer__link--items a {
+    /* Establece el color del texto a blanco / Sets the text color to white */
+    color: #fff;
+
+    /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+    text-decoration: none;
+
+    /* Añade un margen inferior de 0.5 rem / Adds a bottom margin of 0.5 rem */
+    margin-bottom: 0.5rem;
+}
+
+/* Estilo de los enlaces al pasar el ratón / Link hover style */
+.footer__link--items a:hover {
+    /* Cambia el color del texto al pasar el ratón / Changes the text color on hover */
+    color: #e9e9e9;
+
+    /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */
+    transition: 0.3s ease-out;
+    /* Corrige el valor de la transición */
+}
+
+/* Iconos sociales / Social icons */
+.social__icon--link {
+    /* Establece el color del texto a blanco / Sets the text color to white */
+    color: #fff;
+
+    /* Establece el tamaño de la fuente a 24 píxeles / Sets the font size to 24 pixels */
+    font-size: 24px;
+}
+
+/* Contenedor de medios sociales / Social media container */
+.social__media {
+    /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
+    max-width: 1000px;
+
+    /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+    width: 100%;
+}
+
+/* Envoltura de medios sociales / Social media wrap */
+.social__media--wrap {
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
+    justify-content: space-between;
+
+    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    align-items: center;
+
+    /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+    width: 100%;
+
+    /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
+    max-width: 1000px;
+
+    /* Añade un margen superior de 40 píxeles y centra el contenedor horizontalmente / Adds a top margin of 40 pixels and centers the container horizontally */
+    margin: 40px auto 0 auto;
+}
+
+/* Iconos sociales / Social icons */
+.social__icons {
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
+    justify-content: space-between;
+
+    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    align-items: center;
+
+    /* Establece el ancho del contenedor a 240 píxeles / Sets the container width to 240 pixels */
+    width: 240px;
+}
+
+/* Logo de redes sociales / Social logo */
+.social__logo {
+    /* Establece el color del texto a blanco / Sets the text color to white */
+    color: #fff;
+
+    /* Alinea el logo al inicio del contenedor flex / Aligns the logo to the start of the flex container */
+    justify-self: flex-start;
+
+    /* Añade un margen izquierdo de 20 píxeles / Adds a left margin of 20 pixels */
+    margin-left: 20px;
+
+    /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
+    cursor: pointer;
+
+    /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+    text-decoration: none;
+
+    /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
+    font-size: 2rem;
+
+    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    display: flex;
+
+    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    align-items: center;
+
+    /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
+    margin-bottom: 16px;
+}
+
+/* Derechos del sitio web / Website rights */
+.website__rights {
+    /* Establece el color del texto a blanco / Sets the text color to white */
+    color: #fff;
+}
+
+/* Estilos responsivos para pantallas con un ancho máximo de 820 píxeles / Responsive styles for screens with a maximum width of 820 pixels */
+@media screen and (max-width: 820px) {
+    .footer__links {
+        /* Añade padding superior de 2 rem / Adds top padding of 2 rem */
+        padding-top: 2rem;
+    }
+
+    #footer__logo {
+        /* Añade un margen inferior de 2 rem / Adds a bottom margin of 2 rem */
+        margin-bottom: 2rem;
+    }
+
+    .website__rights {
+        /* Añade un margen inferior de 2 rem / Adds a bottom margin of 2 rem */
+        margin-bottom: 2rem;
+    }
+
+    .footer__link--wrapper {
+        /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
+        flex-direction: column;
+    }
+
+    .social__media--wrap {
+        /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
+        flex-direction: column;
+    }
+}
+
+/* Estilos responsivos para pantallas con un ancho máximo de 480 píxeles / Responsive styles for screens with a maximum width of 480 pixels */
+@media screen and (max-width: 480px) {
+    .footer__link--items {
+        /* Elimina el margen del contenedor / Removes the container margin */
+        margin: 0;
+
+        /* Añade padding de 10 píxeles alrededor del contenedor / Adds 10 pixels padding around the container */
+        padding: 10px;
+
+        /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+        width: 100%;
+    }
+}
+
+/* CHECKBOXES CSS */
+.checkbox-container input {
+    display: none;
+  }
+  
+  .checkbox-container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 30px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.3em;
+    transition: all 0.25s;
+    --spread: 50px;
+  }
+  
+  .checkbox-container input:checked ~ .checkmark {
+    background-color: #000000;
+    box-shadow: -10px -10px var(--spread) 0px rgb(17, 0, 248),
+      0 -10px var(--spread) 0px rgb(243, 11, 243),
+      10px -10px var(--spread) 0px rgb(253, 228, 0),
+      10px 0 var(--spread) 0px rgb(107, 255, 21),
+      10px 10px var(--spread) 0px rgb(76, 0, 255),
+      0 10px var(--spread) 0px rgb(255, 196, 0),
+      -10px 10px var(--spread) 0px rgb(90, 105, 240);
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    transform: rotate(0deg);
+    border: 0.1em solid rgba(0, 0, 0, 0.863);
+    left: 0;
+    top: 0;
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 0.25em;
+    transition: all 0.25s, border-width 0.1s;
+  }
+  
+  /* Show the checkmark when checked */
+  .checkbox-container input:checked ~ .checkmark:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border-color: rgba(238, 238, 238, 0) white white #fff0;
+    border-width: 0 0.15em 0.15em 0;
+    border-radius: 0em;
+    transform: rotate(45deg);
+  }
+/* FIN checkbox CSS */
+
+/* Botones css */
+.button {
+    padding: 17px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+}
+
+.button:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+.button:active {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+/* FIN - Botones css */
