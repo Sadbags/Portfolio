@@ -1,0 +1,95 @@
+/* Global styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F9FAFB; /* bg-gray-50 */
+}
+
+/* Main container */
+.main-container {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Inner container */
+.login-container {
+    max-width: 28rem; /* max-w-md */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Card */
+.login-card {
+    background-color: white;
+    padding: 2rem; /* p-8 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+}
+
+/* Heading */
+.card h2 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+/* Form labels */
+.form-label {
+    display: block;
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+/* Input fields */
+.input-field {
+    width: 100%; /* w-full */
+    padding: 0.5rem; /* p-2 */
+    border: 1px solid #D1D5DB; /* border-gray-300 */
+    border-radius: 0.25rem; /* rounded */
+}
+
+/* Checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 0.5rem; /* mr-2 */
+}
+
+/* Button */
+/*.submit-button {
+    width: 100%; /* w-full */
+    background-color: #3B82F6; /* bg-blue-500 */
+    /*color: white;
+    padding: 0.5rem 0; /* py-2 */
+    /*border-radius: 0.25rem; /* rounded */
+    /*text-align: center;
+    /*transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #2563EB; /* hover:bg-blue-600 */
+}
+
+/* Links */
+.link {
+    color: #ffffff; /* text-blue-500 */
+    text-decoration: underline;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Flex utilities */
+.flex {
+    display: flex;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+    margin-top: 1.5rem; /* mt-6 */
+}

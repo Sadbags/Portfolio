@@ -1,60 +1,47 @@
 {% extends 'base.html' %}
 
-{% block title %}Login - Quickr{% endblock %}
-
-{% block stylesheets %}
-<link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
+{% block title %} Login - Quickr {% endblock %}
+{% block stylesheets %} <!-- Bloque para incluir hojas de estilos específicas de cada página / Block to include specific stylesheets for each page -->
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/login.css') }}" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 {% endblock %}
+
 {% block content %}
-<main>
-    <div class="centered-box">
-        <div class="login-container">
+<main class="main-container">
+    <div class="login-container">
+        <div class="login-card">
             <h2>Login</h2>
             <div class="error-message"></div> <!-- Aquí se mostrarán los errores -->
             <form id="login-form" method="POST">
-                <div class="form-group">
-                    <label for="Email">Email</label>
-                    <input type="text" id="email" name="email" required>
+                <div class="mb-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" id="email" name="email" required class="input-field">
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                <div class="mb-6">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" required class="input-field">
                 </div>
-                <label class="rememberme-checkbox">
-                    <input name="dummy" type="checkbox">
-                    <span class="checkmark"></span>
-                    Remember me
-                </label>
-                <div class="form-group">
-                    <button type="submit">Log In</button>
+                <div class="checkbox-container">
+                    <!-- Checkbox con etiqueta asociada / Checkbox with associated label -->
+                    <input type="checkbox" id="rememberme">
+                    <label for="rememberme">Remember me</label>
+                    
+                    <!-- Checkbox adicional con estilo personalizado / Additional checkbox with custom styling -->
+                    <label class="checkbox-container">
+                        <input checked="checked" type="checkbox" />
+                        <div class="checkmark"></div>
+                    </label>
                 </div>
-                <div class="links">
-                    <button class="create" onclick="window.location.href='{{ url_for('show_register') }}'">
-                        Create Account
-                        <div class="arrow-wrapper">
-                            <div class="arrow"></div>
-                        </div>
-                    </button>
-                    <a href="{{ url_for('forgot') }}">Forgot Password?</a>
+                <button type="submit" class="submit-button">Log In</button>
+ 
+                <div class="flex flex-space-between">
+                    <a href="{{ url_for('show_register') }}" class="link">Create Account</a>
+                    <a href="{{ url_for('forgot') }}" class="link">Forgot Password?</a>
                 </div>
             </form>
-
-            <div class="form-group">
-                <button class="google-button">
-                    <!-- Icono de Google -->
-                    Continue with Google
-                </button>
-                <button class="facebook-button">
-                    <!-- Icono de Facebook -->
-                    <span>Facebook</span>
-                </button>
-            </div>
         </div>
     </div>
-</main>
-
-<!-- Aquí va el bloque del script -->
-
-
-<script src="{{ url_for('static', filename='JS/login.js') }}"></script>
+ </main>
 {% endblock %}
+
+{% block scripts %} <script src="{{ url_for('static', filename='JS/login.js') }}"></script> {% endblock %}
