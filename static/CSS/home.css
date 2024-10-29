@@ -107,7 +107,6 @@
     color: #ffffff;
 }
 
-
 /*ESTILOS RESPONSIVOS PARA DIFERENTES TAMANOS DE PAGINA*/
 /* Estilos responsivos para pantallas con un ancho máximo de 768 píxeles / Responsive styles for screens with a maximum width of 768 pixels */
 @media screen and (max-width: 768px) {
@@ -367,6 +366,21 @@ svg text {
 
     /* Establece el tamaño de la fuente a 1 rem / Sets the font size to 1 rem */
     font-size: 1rem;
+
+    /* Cambia el cursor a un puntero cuando se pasa sobre el botón / Changes the cursor to a pointer when hovering over the button */
+    cursor: pointer;
+}
+
+/* Estilo del botón al pasar el ratón / Button hover style */
+.About__card button:hover {
+    /* Escala el botón al 107.5% de su tamaño original al pasar el ratón / Scales the button to 107.5% of its original size on hover */
+    transform: scale(1.075);
+
+    /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */
+    transition: 0.2s ease-in;
+
+    /* Cambia el color de fondo del botón a un tono azul al pasar el ratón / Changes the button background color to a blue tone on hover */
+    background: #0f12cf;
 
     /* Cambia el cursor a un puntero cuando se pasa sobre el botón / Changes the cursor to a pointer when hovering over the button */
     cursor: pointer;
