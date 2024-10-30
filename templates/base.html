@@ -8,10 +8,7 @@
     
     <!-- Incluye un favicon para la página / Includes a favicon for the page -->
     <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='LB.png') }}"
-      type="image/png"
-    />
+      rel="shortcut icon" href="{{ url_for('static', filename='LB.png') }}" type="image/png"/>
     
     <!-- Incluye una hoja de estilos común / Includes a common stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}"/>
@@ -49,11 +46,11 @@
               <!-- Enlace a los servicios / Link to the services -->
               <a href="{{ url_for('get_services') }}" class="navbar__links">Services</a>
             </li>
-            <li class="navbar__btn">
+            <li class="navbar__item">
               <!-- Enlace al perfil / Link to the profile -->
               <a href="{{ url_for('profile') }}" class="navbar__links">Profile</a>
             </li>
-            <li class="navbar__btn">
+            <li class="navbar__item">
               <!-- Enlace para iniciar sesión / Link to login -->
               <a href="{{ url_for('login') }}" class="navbar__links">Login</a>
             </li>
@@ -73,7 +70,6 @@
       <div class="footer__container">
         <div class="footer__links">
           <div class="footer__link--wrapper">
-            <div class="footer__link--items"></div>
             <div class="footer__link--items">
               <h2>Contact Us</h2>
               <!-- Enlaces a soporte al cliente y FAQ / Links to customer support and FAQ -->
