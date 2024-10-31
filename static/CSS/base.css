@@ -7,13 +7,14 @@
 /*ESTILOS GLOBALES / GLOBAL STYLES*/
 * { /* Aplica estilos globales a todos los elementos / Applies global styles to all elements */
     box-sizing: border-box; /* Define el modelo de caja como border-box / Sets the box model to border-box */
-    margin: 0; /* Elimina el margen por defecto (borde del html) / Removes default margin */
+    /*margin: 0; /* Elimina el margen por defecto (borde del html) / Removes default margin */
     padding: 0rem; /* Elimina el padding por defecto / Removes default padding */
+    font-family: 'Kumbh Sans', sans-serif; /* Establece la fuente por defecto como 'Kumbh Sans' / Sets the default font to 'Kumbh Sans' */
 }
 
 body {
     background-color: #000000; /* Establece el color de fondo del cuerpo / Sets the background color of the body */
-    font-family: 'Kumbh Sans', sans-serif; /* Establece la fuente por defecto como 'Kumbh Sans' / Sets the default font to 'Kumbh Sans' */
+    /*font-family: 'Kumbh Sans', sans-serif; /* Establece la fuente por defecto como 'Kumbh Sans' / Sets the default font to 'Kumbh Sans' */
     /*font-size: 3rem; /* Establece el tamaño de la fuente a 1 rem / Sets the font size to 1 rem */
 }
 
@@ -23,7 +24,7 @@ body {
     display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
     justify-content: center; /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
     align-items: center; /* Alinea los elementos hijos verticalmente (falta valor) / Aligns child elements vertically (missing value) *//* Se agregó 'center' para alinear verticalmente */
-    font-size: 1.2rem; /* Establece el tamaño de la fuente a 1.2 rem / Sets the font size to 1.2 rem */
+    font-size: 1.5rem; /* Establece el tamaño de la fuente a 1.2 rem / Sets the font size to 1.2 rem */
     position: sticky; /* Hace que la barra de navegación sea fija en la parte superior al hacer scroll / Makes the navbar sticky at the top when scrolling */
     top: 0; /* Posiciona la barra de navegación en la parte superior de la página / Positions the navbar at the top of the page */
     z-index: 999; /* Establece un índice z alto para asegurar que la barra de navegación esté en el frente / Sets a high z-index to ensure the navbar is in the front */
@@ -66,7 +67,7 @@ body {
     align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
     list-style: none; /* Elimina los estilos de lista por defecto / Removes default list styles */
     text-align: center; /* Centra el texto dentro de los elementos de la lista / Centers text within list items */
-    justify-content: flex-end; /* Alinea los elementos hijos al final del contenedor / Aligns child elements to the end of the container */
+    justify-content: flex-center; /* Alinea los elementos hijos al centro del contenedor / Centers child elements in the container */
 }
 
 .navbar__item { /* Elemento de la barra de navegación / Navbar item */
@@ -92,7 +93,7 @@ body {
 }
 
 .navbar__links:hover { /* Estilo del enlace de la barra de navegación al pasar el ratón / Navbar link hover style */
-    color: #521a8a; /* Cambia el color del texto del enlace al pasar el ratón / Changes the link text color on hover */
+    color: #5d18dc; /* Cambia el color del texto del enlace al pasar el ratón / Changes the link text color on hover */
     transition: all 0.3s ease; /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */
 }
 
@@ -288,215 +289,106 @@ body {
 }
 
 /*FOOTER CSS*/
-/* Estilos del pie de página / Footer css */
-.footer__container {
-    /* Establece el color de fondo del contenedor del pie de página / Sets the background color of the footer container */
-    background-color: #000000;
-    /* Añade padding vertical de 1 rem / Adds vertical padding of 1 rem */
-    padding: 1rem 0;
-    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    display: flex;
-    /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
-    flex-direction: column;
-    /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
-    align-items: center;
-    /* Centra los elementos hijos verticalmente / Centers child elements vertically */
-    justify-content: center;
+.footer__container { /* Estilos del pie de página / Footer css */
+    padding: 1rem 0; /* Añade padding vertical de 1 rem / Adds vertical padding of 1 rem */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
+    align-items: center; /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
+    justify-content: center; /* Centra los elementos hijos verticalmente / Centers child elements vertically */
 }
 
 #footer__logo {
-    /* Establece el color del texto a blanco / Sets the text color to white */
-    color: #fff;
-
-    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    display: flex;
-
-    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    align-items: center;
-
-    /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
-    cursor: pointer;
-
-    /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
-    text-decoration: none;
-
-    /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-    font-size: 2rem;
+    color: #fff; /* Establece el color / Sets the text color */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
+    text-decoration: none; /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+    /*font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
 }
 
 .footer__links {
-    /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
-    width: 100%;
-
-    /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
-    max-width: 1000px;
-
-    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    display: flex;
-
-    /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
-    justify-content: center;
+    width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+    max-width: 1000px; /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    justify-content: center; /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
 }
 
 .footer__link--wrapper {
-    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    display: flex;
-
-    /* Establece la dirección del eje principal a fila / Sets the main axis direction to row */
-    flex-direction: row;
-    /* Cambia esto de column a row */
-
-    /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
-    justify-content: space-between;
-    /* Esto distribuirá los elementos a lo largo de la línea */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    flex-direction: row; /* Establece la dirección del eje principal a fila / Sets the main axis direction to row */
+    justify-content: space-between; /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
 }
 
 /* Elementos de enlace del pie de página / Footer link items */
 .footer__link--items {
-    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    display: flex;
-
-    /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
-    flex-direction: column;
-
-    /* Alinea los elementos hijos al inicio del contenedor / Aligns child elements to the start of the container */
-    align-items: flex-start;
-
-    /* Añade un margen de 16 píxeles alrededor del contenedor / Adds a margin of 16 pixels around the container */
-    margin: 16px;
-
-    /* Alinea el texto a la izquierda / Aligns text to the left */
-    text-align: left;
-
-    /* Establece el ancho del contenedor a 160 píxeles / Sets the container width to 160 pixels */
-    width: 160px;
-
-    /* Utiliza el modelo de caja border-box / Uses the border-box box model */
-    box-sizing: border-box;
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor / Aligns child elements to the start of the container */
+    margin: 16px; /* Añade un margen de 16 píxeles alrededor del contenedor / Adds a margin of 16 pixels around the container */
+    text-align: left; /* Alinea el texto a la izquierda / Aligns text to the left */
+    width: 160px; /* Establece el ancho del contenedor a 160 píxeles / Sets the container width to 160 pixels */
+    box-sizing: border-box; /* Utiliza el modelo de caja border-box / Uses the border-box box model */
 }
 
-/* Encabezado h2 dentro de los elementos de enlace del pie de página / h2 header within the footer link items */
-.footer__link--items h2 {
-    /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
-    margin-bottom: 16px;
+.footer__link--items h2 { /* Encabezado h2 dentro de los elementos de enlace del pie de página / h2 header within the footer link items */
+    margin-bottom: 16px; /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
 }
 
-/* Color del encabezado h2 dentro de los elementos de enlace del pie de página / Color of the h2 header within the footer link items */
-.footer__link--items>h2 {
-    /* Establece el color del texto a blanco / Sets the text color to white */
-    color: #fff;
+.footer__link--items>h2 { /* Color del encabezado h2 dentro de los elementos de enlace del pie de página / Color of the h2 header within the footer link items */
+    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
 }
 
-/* Enlaces dentro de los elementos de enlace del pie de página / Links within the footer link items */
-.footer__link--items a {
-    /* Establece el color del texto a blanco / Sets the text color to white */
-    color: #fff;
-
-    /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
-    text-decoration: none;
-
-    /* Añade un margen inferior de 0.5 rem / Adds a bottom margin of 0.5 rem */
-    margin-bottom: 0.5rem;
+.footer__link--items a { /* Enlaces dentro de los elementos de enlace del pie de página / Links within the footer link items */
+    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
+    text-decoration: none; /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+    margin-bottom: 0.5rem; /* Añade un margen inferior de 0.5 rem / Adds a bottom margin of 0.5 rem */
 }
 
-/* Estilo de los enlaces al pasar el ratón / Link hover style */
-.footer__link--items a:hover {
-    /* Cambia el color del texto al pasar el ratón / Changes the text color on hover */
-    color: #e9e9e9;
-
-    /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */
-    transition: 0.3s ease-out;
-    /* Corrige el valor de la transición */
+.footer__link--items a:hover { /* Estilo de los enlaces al pasar el ratón / Link hover style */
+    color: #e9e9e9; /* Cambia el color del texto al pasar el ratón / Changes the text color on hover */
+    transition: 0.3s ease-out; /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */ /* Corrige el valor de la transición */
 }
 
-/* Iconos sociales / Social icons */
-.social__icon--link {
-    /* Establece el color del texto a blanco / Sets the text color to white */
-    color: #fff;
-
-    /* Establece el tamaño de la fuente a 24 píxeles / Sets the font size to 24 pixels */
-    font-size: 24px;
+.social__icon--link { /* Iconos sociales / Social icons */
+    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
+    font-size: 24px; /* Establece el tamaño de la fuente a 24 píxeles / Sets the font size to 24 pixels */
 }
 
-/* Contenedor de medios sociales / Social media container */
-.social__media {
-    /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
-    max-width: 1000px;
-
-    /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
-    width: 100%;
+.social__media { /* Contenedor de medios sociales / Social media container */
+    max-width: 1000px; /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
+    width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
 }
 
-/* Envoltura de medios sociales / Social media wrap */
-.social__media--wrap {
-    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    display: flex;
-
-    /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
-    justify-content: space-between;
-
-    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    align-items: center;
-
-    /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
-    width: 100%;
-
-    /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
-    max-width: 1000px;
-
-    /* Añade un margen superior de 40 píxeles y centra el contenedor horizontalmente / Adds a top margin of 40 pixels and centers the container horizontally */
-    margin: 40px auto 0 auto;
+.social__media--wrap { /* Envoltura de medios sociales / Social media wrap */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    justify-content: space-between; /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
+    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+    max-width: 1000px; /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
+    margin: 40px auto 0 auto; /* Añade un margen superior de 40 píxeles y centra el contenedor horizontalmente / Adds a top margin of 40 pixels and centers the container horizontally */
 }
 
-/* Iconos sociales / Social icons */
-.social__icons {
-    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    display: flex;
-
-    /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
-    justify-content: space-between;
-
-    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    align-items: center;
-
-    /* Establece el ancho del contenedor a 240 píxeles / Sets the container width to 240 pixels */
-    width: 240px;
+.social__icons { /* Iconos sociales / Social icons */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    justify-content: space-between; /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
+    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    width: 240px; /* Establece el ancho del contenedor a 240 píxeles / Sets the container width to 240 pixels */
 }
 
-/* Logo de redes sociales / Social logo */
-.social__logo {
-    /* Establece el color del texto a blanco / Sets the text color to white */
-    color: #fff;
-
-    /* Alinea el logo al inicio del contenedor flex / Aligns the logo to the start of the flex container */
-    justify-self: flex-start;
-
-    /* Añade un margen izquierdo de 20 píxeles / Adds a left margin of 20 pixels */
-    margin-left: 20px;
-
-    /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
-    cursor: pointer;
-
-    /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
-    text-decoration: none;
-
-    /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-    font-size: 2rem;
-
-    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    display: flex;
-
-    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    align-items: center;
-
-    /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
-    margin-bottom: 16px;
+.social__logo { /* Logo de redes sociales / Social logo */
+    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
+    justify-self: flex-start; /* Alinea el logo al inicio del contenedor flex / Aligns the logo to the start of the flex container */
+    margin-left: 20px; /* Añade un margen izquierdo de 20 píxeles / Adds a left margin of 20 pixels */
+    cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
+    text-decoration: none; /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+    font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    margin-bottom: 16px; /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
 }
 
-/* Derechos del sitio web / Website rights */
-.website__rights {
-    /* Establece el color del texto a blanco / Sets the text color to white */
-    color: #fff;
+.website__rights { /* Derechos del sitio web / Website rights */
+    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
 }
 
 /* Estilos responsivos para pantallas con un ancho máximo de 820 píxeles / Responsive styles for screens with a maximum width of 820 pixels */
@@ -550,7 +442,7 @@ body {
     display: block;
     position: relative;
     cursor: pointer;
-    font-size: 30px;
+    /*font-size: 30px;*/
     user-select: none;
     -webkit-tap-highlight-color: transparent;
   }
@@ -561,7 +453,7 @@ body {
     left: 0;
     height: 1.3em;
     width: 1.3em;
-    background-color: rgb(255, 255, 255);
+    background-color: #5d18dc;
     border-radius: 0.3em;
     transition: all 0.25s;
     --spread: 50px;
@@ -569,13 +461,13 @@ body {
   
   .checkbox-container input:checked ~ .checkmark {
     background-color: #000000;
-    box-shadow: -10px -10px var(--spread) 0px rgb(17, 0, 248),
-      0 -10px var(--spread) 0px rgb(243, 11, 243),
-      10px -10px var(--spread) 0px rgb(253, 228, 0),
-      10px 0 var(--spread) 0px rgb(107, 255, 21),
-      10px 10px var(--spread) 0px rgb(76, 0, 255),
-      0 10px var(--spread) 0px rgb(255, 196, 0),
-      -10px 10px var(--spread) 0px rgb(90, 105, 240);
+    box-shadow: -10px -10px var(--spread) 0px #1100f8,
+      0 -10px var(--spread) 0px #f30bf3,
+      10px -10px var(--spread) 0px #5d18dc,
+      10px 0 var(--spread) 0px #5d18dc,
+      10px 10px var(--spread) 0px #4c00ff,
+      0 10px var(--spread) 0px #5d18dc,
+      -10px 10px var(--spread) 0px #5a69f0;
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */
@@ -624,15 +516,15 @@ body {
 
 .button:hover {
     letter-spacing: 3px;
-    background-color: hsl(261deg 80% 48%);
+    background-color: #5d18dc;
     color: hsl(0, 0%, 100%);
-    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+    box-shadow: #5d18dc 0px 7px 29px 0px;
 }
 .button:active {
     letter-spacing: 3px;
-    background-color: hsl(261deg 80% 48%);
+    background-color: #5d18dc;
     color: hsl(0, 0%, 100%);
-    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    box-shadow: #5d18dc 0px 0px 0px 0px;
     transform: translateY(10px);
     transition: 100ms;
 }

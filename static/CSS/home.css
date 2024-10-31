@@ -1,115 +1,31 @@
-/*HERO SECTION*/
-/* Seccion main / main section */
-.main {
-    /* Establece el color de fondo a blanco / Sets the background color to white */
-    background-color: #000000;
-}
 
-/* Contenedor principal del héroe / Hero main container */
-.main__container {
-    /* Utiliza un diseño de cuadrícula para el contenedor / Uses a grid layout for the container */
-    display: grid;
-
-    /* Define dos columnas iguales en la cuadrícula / Defines two equal columns in the grid */
-    grid-template-columns: 1fr 1fr;
-
-    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    align-items: center;
-
-    /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
-    justify-content: center;
-
-    /* Centra el contenedor horizontalmente / Centers the container horizontally */
-    margin: 0 auto;
-
-    /* Establece la altura del contenedor al 90% de la altura de la ventana / Sets the container height to 90% of the viewport height */
-    height: 90vh;
-
-    /* Establece el color de fondo a blanco / Sets the background color to white */
-    /*background-color: #000000;
-
-    /* Establece el índice z para asegurar que el contenedor esté en el frente / Sets the z-index to ensure the container is in the front */
-    z-index: 1;
-
-    /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
-    width: 100%;
-
-    /* Establece el ancho máximo del contenedor a 1300 píxeles / Sets the maximum width of the container to 1300 pixels */
-    max-width: 1300px;
-
-    /* Añade padding horizontal de 50 píxeles / Adds horizontal padding of 50 pixels */
-    padding: 0 50px;
-}
-
-/* Estilo del encabezado h1 dentro del contenido principal / Style for the h1 header within the main content */
-.main__content h1 {
-    /* Establece el tamaño de la fuente a 4 rem / Sets the font size to 4 rem */
-    font-size: 5rem;
-
-    /* Aplica un degradado de color al fondo / Applies a color gradient to the background */
-    background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%);
-
-    /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
-    background-size: 100%;
-
-    /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
-    -webkit-background-clip: text;
-
-    /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
-    -moz-background-clip: text;
-
-    /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
-    -webkit-text-fill-color: transparent;
-
-    /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
-    -moz-text-fill-color: transparent;
-}
-
-/* Estilo del encabezado h2 dentro del contenido principal / Style for the h2 header within the main content */
-.main__content h2 {
-    /* Establece el tamaño de la fuente a 4 rem / Sets the font size to 4 rem */
-    font-size: 2rem;
-
-    /* Establece el color de fondo a un tono rosado / Sets the background color to a pinkish tone */
-    background-color: #ffffff;
-
-    /* Aplica un degradado de color al fondo / Applies a color gradient to the background */
-    /*background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%);
-
-    /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
-    background-size: 100%;
-
-    /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
-    -webkit-background-clip: text;
-
-    /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
-    -moz-background-clip: text;
-
-    /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
-    -webkit-text-fill-color: transparent;
-
-    /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
-    -moz-text-fill-color: transparent;
-}
-
-/* Estilo del párrafo dentro del contenido principal / Style for the paragraph within the main content */
-.main__content p {
-    /* Añade un margen superior de 1 rem / Adds a top margin of 1 rem */
-    margin-top: 1rem;
-
-    /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-    font-size: 2rem;
-
-    /* Establece el peso de la fuente a 700 (negrita) / Sets the font weight to 700 (bold) */
-    font-weight: 700;
-
-    /* Establece el color del texto a blanco / Sets the text color to white */
-    color: #ffffff;
-}
+/* css QUICKR SVG DENTRO DEL CLASS "WRAPPER" */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew&display=swap"); 
+    svg {
+        font-family: "Noto Sans Hebrew", sans-serif;
+        width: 100%; height: 100%;
+    }
+    svg text {
+        animation: stroke 4s infinite alternate;
+        stroke-width: 2;
+        stroke: #5d18dc;
+        font-size: 100px;
+    }
+    @keyframes stroke { /*linear-gradient(to top, #b721ff 0%, #21d4fd 100%) */
+        0%   {
+            fill: #0dd8d600; stroke: #5d18dc;
+            stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+        }
+        70%  {fill: rgba(13,216,214,0); stroke: #4684ff; }
+        80%  {fill: rgba(13,216,214,0); stroke: #4684ff; stroke-width: 3; }
+        100% {
+            fill: #5d18dc; stroke: rgba(29,159,160,0);
+            stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+        }
+    }
 
 /*ESTILOS RESPONSIVOS PARA DIFERENTES TAMANOS DE PAGINA*/
-/* Estilos responsivos para pantallas con un ancho máximo de 768 píxeles / Responsive styles for screens with a maximum width of 768 pixels */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) { /* Estilos responsivos para pantallas con un ancho máximo de 768 píxeles / Responsive styles for screens with a maximum width of 768 pixels */
     .main__container {
         /* Utiliza un diseño de cuadrícula para el contenedor / Uses a grid layout for the container */
         display: grid;
@@ -163,46 +79,74 @@
     }
 }
 
-/* Estilos responsivos para pantallas con un ancho máximo de 480 píxeles / Responsive styles for screens with a maximum width of 480 pixels */
-@media screen and (max-width: 480px) {
-    .main__content h1 {
-        /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-        font-size: 2rem;
-
-        /* Añade un margen superior de 3 rem / Adds a top margin of 3 rem */
-        margin-top: 3rem;
+@media screen and (max-width: 480px) { /* Estilos responsivos para pantallas con un ancho máximo de 480 píxeles / Responsive styles for screens with a maximum width of 480 pixels */
+    .main__content h1 { 
+        font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
+        margin-top: 3rem; /* Añade un margen superior de 3 rem / Adds a top margin of 3 rem */
     }
 
     .main__content h2 {
-        /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-        font-size: 2rem;
+        font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
     }
 
     .main__content p {
-        /* Añade un margen superior de 2 rem / Adds a top margin of 2 rem */
-        margin-top: 2rem;
-
-        /* Establece el tamaño de la fuente a 1.5 rem / Sets the font size to 1.5 rem */
-        font-size: 1.5rem;
+        margin-top: 2rem; /* Añade un margen superior de 2 rem / Adds a top margin of 2 rem */
+        font-size: 1.5rem; /* Establece el tamaño de la fuente a 1.5 rem / Sets the font size to 1.5 rem */
     }
 
     .main__btn {
-        /* Añade padding de 12 píxeles vertical y 36 píxeles horizontal / Adds 12 pixels vertical and 36 pixels horizontal padding */
-        padding: 12px 36px;
-
-        /* Añade un margen de 2.5 rem / Adds a margin of 2.5 rem */
-        margin: 2.5rem;
+        padding: 12px 36px; /* Añade padding de 12 píxeles vertical y 36 píxeles horizontal / Adds 12 pixels vertical and 36 pixels horizontal padding */
+        margin: 2.5rem; /* Añade un margen de 2.5 rem / Adds a margin of 2.5 rem */
     }
 }
 
-/*ABOUT SECTION*/
-/* Sección About / About section */
-.About {
-    /* Establece el color de fondo a blanco / Sets the background color to white */
-    background: #ffffff;
+.main { /*HERO SECTION*/ /* Seccion main / main section */
+    /*background-color: #000000; /* Establece el color de fondo a blanco / Sets the background color to white */
+}
 
-    /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
-    flex-direction: column;
+.main__container { /* Contenedor principal del héroe / Hero main container */
+    display: grid; /* Utiliza un diseño de cuadrícula para el contenedor / Uses a grid layout for the container */
+    grid-template-columns: 1fr 1fr; /* Define dos columnas iguales en la cuadrícula / Defines two equal columns in the grid */
+    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    justify-content: center; /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
+    margin: 0 auto; /* Centra el contenedor horizontalmente / Centers the container horizontally */
+    height: 90vh; /* Establece la altura del contenedor al 90% de la altura de la ventana / Sets the container height to 90% of the viewport height */
+    z-index: 1; /* Establece el índice z para asegurar que el contenedor esté en el frente / Sets the z-index to ensure the container is in the front */
+    width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+    max-width: 1300px; /* Establece el ancho máximo del contenedor a 1300 píxeles / Sets the maximum width of the container to 1300 pixels */
+    padding: 0 50px; /* Añade padding horizontal de 50 píxeles / Adds horizontal padding of 50 pixels */
+}
+
+.main__content h1 { /* Estilo del encabezado h1 dentro del contenido principal / Style for the h1 header within the main content */
+    font-size: 6rem; /* Establece el tamaño de la fuente a 4 rem / Sets the font size to 4 rem */
+    background-image: linear-gradient(to top, #5d18dc 0%, #21d4fd 100%); /* Aplica un degradado de color al fondo / Applies a color gradient to the background */
+    background-size: 100%; /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
+    -webkit-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
+    -moz-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
+    -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
+    -moz-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
+}
+
+.main__content h2 { /* Estilo del encabezado h2 dentro del contenido principal / Style for the h2 header within the main content */
+    /*font-size: 2rem; /* Establece el tamaño de la fuente a 4 rem / Sets the font size to 4 rem */
+    background-color: #ffffff; /* Establece el color de fondo a un tono rosado / Sets the background color to a pinkish tone */
+    /*background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%); /* Aplica un degradado de color al fondo / Applies a color gradient to the background */
+    background-size: 100%; /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
+    -webkit-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
+    -moz-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
+    -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
+    -moz-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
+}
+
+.main__content p { /* Estilo del párrafo dentro del contenido principal / Style for the paragraph within the main content */
+    margin-top: 1rem; /* Añade un margen superior de 1 rem / Adds a top margin of 1 rem */
+    font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
+    font-weight: 700; /* Establece el peso de la fuente a 700 (negrita) / Sets the font weight to 700 (bold) */
+    color: #ffffff; /* Establece el color del texto a blanco / Sets the text color to white */
+}
+
+.About { /* Sección About / About section */
+    flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
 
     /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
     align-items: center;
@@ -211,179 +155,48 @@
     height: 100vh;
 }
 
-/* css QUICKR SVG DENTRO DEL CLASS "WRAPPER" */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew&display=swap");
-svg {
-	font-family: "Noto Sans Hebrew", sans-serif;
-	width: 100%; height: 100%;
-}
-svg text {
-	animation: stroke 4s infinite alternate;
-	stroke-width: 2;
-	stroke: #1D9FA0;
-	font-size: 100px;
-}
-@keyframes stroke {
-	0%   {
-		fill: rgba(13,216,214,0); stroke: rgba(29,159,160,1);
-		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
-	}
-	70%  {fill: rgba(13,216,214,0); stroke: rgba(29,159,160,1); }
-	80%  {fill: rgba(13,216,214,0); stroke: rgba(29,159,160,1); stroke-width: 3; }
-	100% {
-		fill: rgba(13,216,214,1); stroke: rgba(29,159,160,0);
-		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
-	}
+.About h1 { /* Estilo del encabezado h1 dentro de la sección About / Style for the h1 header within the About section */
+    background-size: 100%; /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
+    margin-bottom: 5rem; /* Añade un margen inferior de 5 rem / Adds a bottom margin of 5 rem */
+    /*font-size: 2.5rem; /* Establece el tamaño de la fuente a 2.5 rem / Sets the font size to 2.5 rem */
+    -webkit-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
+    -moz-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
+    -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
+    -moz-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
 }
 
-/* Estilo del encabezado h1 dentro de la sección About / Style for the h1 header within the About section */
-.About h1 {
-    /* Establece el color de fondo a un tono rosado / Sets the background color to a pinkish tone */
-    background-color: #ff8177;
-
-    /* Aplica un degradado de color al fondo / Applies a color gradient to the background */
-    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
-
-    /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
-    background-size: 100%;
-
-    /* Añade un margen inferior de 5 rem / Adds a bottom margin of 5 rem */
-    margin-bottom: 5rem;
-
-    /* Establece el tamaño de la fuente a 2.5 rem / Sets the font size to 2.5 rem */
-    font-size: 2.5rem;
-
-    /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
-    -webkit-background-clip: text;
-
-    /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
-    -moz-background-clip: text;
-
-    /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
-    -webkit-text-fill-color: transparent;
-
-    /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
-    -moz-text-fill-color: transparent;
+.About__container { /* Contenedor de la sección About / About section container */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    justify-content: center; /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
+    flex-wrap: wrap; /* Permite que los elementos hijos se envuelvan en múltiples líneas / Allows child elements to wrap into multiple lines */
+    background-color: #000000;
 }
 
-/* Contenedor de la sección About / About section container */
-.About__container {
-    /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    display: flex;
-
-    /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
-    justify-content: center;
-
-    /* Permite que los elementos hijos se envuelvan en múltiples líneas / Allows child elements to wrap into multiple lines */
-    flex-wrap: wrap;
-}
-
-/* Tarjeta de la sección About / About section card */
-.About__card {
-    /* Añade un margen de 1 rem alrededor de la tarjeta / Adds a margin of 1 rem around the card */
-    margin: 1rem;
-
-    /* Establece la altura de la tarjeta a 525 píxeles / Sets the card height to 525 pixels */
-    height: 525px;
-
-    /* Establece el ancho de la tarjeta a 400 píxeles / Sets the card width to 400 pixels */
-    width: 400px;
-
-    /* Redondea las esquinas de la tarjeta / Rounds the card corners */
-    border-radius: 4px;
-
-    /* Aplica un degradado de color y una imagen de fondo a la tarjeta / Applies a color gradient and a background image to the card */
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%), url('images/cocina1.png');
-
-    /* Ajusta el tamaño del fondo para cubrir todo el contenedor / Sets the background size to cover the entire container */
-    background-size: cover;
-
-    /* Posiciona la tarjeta de manera relativa / Positions the card relatively */
-    position: relative;
-
-    /* Establece el color del texto a blanco / Sets the text color to white */
-    color: #fff;
+.About__card { /* Tarjeta de la sección About / About section card */
+    margin: 1.3rem; /* Añade un margen de 1 rem alrededor de la tarjeta / Adds a margin of 1 rem around the card */
+    height: 525px; /* Establece la altura de la tarjeta a 525 píxeles / Sets the card height to 525 pixels */
+    width: 400px; /* Establece el ancho de la tarjeta a 400 píxeles / Sets the card width to 400 pixels */
+    border-radius: 4px; /* Redondea las esquinas de la tarjeta / Rounds the card corners */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%), url('images/LB.png'); /* Aplica un degradado de color y una imagen de fondo a la tarjeta / Applies a color gradient and a background image to the card */
+    background-size: cover; /* Ajusta el tamaño del fondo para cubrir todo el contenedor / Sets the background size to cover the entire container */
+    position: relative; /* Posiciona la tarjeta de manera relativa / Positions the card relatively */
+    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
+    padding: 20px; /* Añade padding dentro de la tarjeta */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    flex-direction: row; /* Establece la dirección del eje principal a fila / Sets the main axis direction to row */
+    align-items: flex-end; /* Alinea los elementos hijos en el centro / Aligns child elements in the center */
 }
 
 /* Tarjeta de la sección About (segunda tarjeta) / About section card (second card) */
 .About__card:nth-child(2) {
-    /* Aplica un degradado de color y una imagen de fondo diferente a la segunda tarjeta / Applies a different color gradient and background image to the second card */
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%), url('images/cocina2.png');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%), url('images/cocina2.png');  /* Aplica un degradado de color y una imagen de fondo diferente a la segunda tarjeta / Applies a different color gradient and background image to the second card */
 }
 
 /* Encabezado h2 dentro de la sección About / h2 header within the About section */
 .About h2 {
-    /* Posiciona el encabezado de manera absoluta / Positions the header absolutely */
-    position: absolute;
-
-    /* Establece la posición superior del encabezado a 350 píxeles / Sets the top position of the header to 350 pixels */
-    top: 350px;
-
-    /* Establece la posición izquierda del encabezado a 30 píxeles / Sets the left position of the header to 30 pixels */
-    left: 30px;
-}
-
-/* Párrafo dentro de la tarjeta de la sección About / Paragraph within the About section card */
-.About__card p {
-    /* Posiciona el párrafo de manera absoluta / Positions the paragraph absolutely */
-    position: absolute;
-
-    /* Establece la posición superior del párrafo a 400 píxeles / Sets the top position of the paragraph to 400 pixels */
-    top: 400px;
-
-    /* Establece la posición izquierda del párrafo a 30 píxeles / Sets the left position of the paragraph to 30 pixels */
-    left: 30px;
-}
-
-/* Botón dentro de la tarjeta de la sección About / Button within the About section card */
-.About__card button {
-    /* Establece el color del texto a blanco / Sets the text color to white */
-    color: #fff;
-
-    /* Añade padding de 10 píxeles vertical y 20 píxeles horizontal / Adds 10 pixels vertical and 20 pixels horizontal padding */
-    padding: 10px 20px;
-
-    /* Elimina el borde del botón / Removes the button border */
-    border: none;
-
-    /* Elimina el contorno del botón / Removes the button outline */
-    outline: none;
-
-    /* Redondea las esquinas del botón / Rounds the button corners */
-    border-radius: 4px;
-
-    /* Establece el color de fondo del botón a un tono rosado / Sets the button background color to a pinkish tone */
-    background: #f77062;
-
-    /* Posiciona el botón de manera absoluta / Positions the button absolutely */
-    position: absolute;
-
-    /* Establece la posición superior del botón a 440 píxeles / Sets the top position of the button to 440 pixels */
-    top: 440px;
-
-    /* Establece la posición izquierda del botón a 30 píxeles / Sets the left position of the button to 30 pixels */
-    left: 30px;
-
-    /* Establece el tamaño de la fuente a 1 rem / Sets the font size to 1 rem */
-    font-size: 1rem;
-
-    /* Cambia el cursor a un puntero cuando se pasa sobre el botón / Changes the cursor to a pointer when hovering over the button */
-    cursor: pointer;
-}
-
-/* Estilo del botón al pasar el ratón / Button hover style */
-.About__card button:hover {
-    /* Escala el botón al 107.5% de su tamaño original al pasar el ratón / Scales the button to 107.5% of its original size on hover */
-    transform: scale(1.075);
-
-    /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */
-    transition: 0.2s ease-in;
-
-    /* Cambia el color de fondo del botón a un tono azul al pasar el ratón / Changes the button background color to a blue tone on hover */
-    background: #0f12cf;
-
-    /* Cambia el cursor a un puntero cuando se pasa sobre el botón / Changes the cursor to a pointer when hovering over the button */
-    cursor: pointer;
+    position: absolute; /* Posiciona el encabezado de manera absoluta / Positions the header absolutely */
+    top: 350px; /* Establece la posición superior del encabezado a 350 píxeles / Sets the top position of the header to 350 pixels */
+    left: 30px; /* Establece la posición izquierda del encabezado a 30 píxeles / Sets the left position of the header to 30 pixels */
 }
 
 /* Estilos responsivos para pantallas con un ancho máximo de 960 píxeles / Responsive styles for screens with a maximum width of 960 pixels */
