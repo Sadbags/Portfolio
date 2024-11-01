@@ -14,8 +14,8 @@
 
 body {
     background-color: #000000; /* Establece el color de fondo del cuerpo / Sets the background color of the body */
-    /*font-family: 'Kumbh Sans', sans-serif; /* Establece la fuente por defecto como 'Kumbh Sans' / Sets the default font to 'Kumbh Sans' */
-    /*font-size: 3rem; /* Establece el tamaño de la fuente a 1 rem / Sets the font size to 1 rem */
+    font-family: 'Kumbh Sans', sans-serif; /* Establece la fuente por defecto como 'Kumbh Sans' / Sets the default font to 'Kumbh Sans' */
+    font-size: 1rem; /* Establece el tamaño de la fuente a 1 rem / Sets the font size to 1 rem */
 }
 
 /* ESTILO de la BARRA DE NAVEGACIÓN / NAVBAR */
@@ -288,108 +288,158 @@ body {
     }
 }
 
+/* MAIN SECTION CSS */
+.main { /*HERO SECTION*/ /* Seccion main / main section */
+    height: 90vh; /* Establece la altura del contenedor al 90% de la altura de la ventana / Sets the container height to 90% of the viewport height */
+}
+
+.main__container { /* Contenedor principal del héroe / Hero main container */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /
+    align-items: center; 
+    justify-content: center; 
+    margin: 50 auto; 
+    z-index: 1; 
+    width: 100%; 
+    max-width: 1300px;
+    padding: 0 50px; 
+}
+
+.main__content {
+    margin-top: 20rem;
+}
+    .main__content h1 { /* Estilo del encabezado h1 dentro del contenido principal / Style for the h1 header within the main content */
+        font-size: 6rem; /* Establece el tamaño de la fuente a 4 rem / Sets the font size to 4 rem */
+        background-image: linear-gradient(to top, #5d18dc 0%, #21d4fd 100%); /* Aplica un degradado de color al fondo / Applies a color gradient to the background */
+        background-size: 100%; /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
+        -webkit-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
+        -moz-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
+        -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
+        -moz-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
+    }
+    
+    .main__content h2 { /* Estilo del encabezado h2 dentro del contenido principal / Style for the h2 header within the main content */
+        /*font-size: 2rem; /* Establece el tamaño de la fuente a 4 rem / Sets the font size to 4 rem */
+        background-color: #ffffff; /* Establece el color de fondo a un tono rosado / Sets the background color to a pinkish tone */
+        /*background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%); /* Aplica un degradado de color al fondo / Applies a color gradient to the background */
+        background-size: 100%; /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
+        -webkit-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
+        -moz-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
+        -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
+        -moz-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
+    }
+    
+    .main__content p { /* Estilo del párrafo dentro del contenido principal / Style for the paragraph within the main content */
+        margin-top: 1rem; /* Añade un margen superior de 1 rem / Adds a top margin of 1 rem */
+        font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
+        font-weight: 700; /* Establece el peso de la fuente a 700 (negrita) / Sets the font weight to 700 (bold) */
+        color: #ffffff; /* Establece el color del texto a blanco / Sets the text color to white */
+    }
+/* FIN MAIN SECTION CSS */
+
 /*FOOTER CSS*/
-.footer__container { /* Estilos del pie de página / Footer css */
-    padding: 1rem 0; /* Añade padding vertical de 1 rem / Adds vertical padding of 1 rem */
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
-    align-items: center; /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
-    justify-content: center; /* Centra los elementos hijos verticalmente / Centers child elements vertically */
-}
+    .footer__container { /* Estilos del pie de página / Footer css */
+        padding: 1rem 0; /* Añade padding vertical de 1 rem / Adds vertical padding of 1 rem */
+        display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
+        align-items: center; /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
+        justify-content: center; /* Centra los elementos hijos verticalmente / Centers child elements vertically */
+    }
 
-#footer__logo {
-    color: #fff; /* Establece el color / Sets the text color */
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
-    text-decoration: none; /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
-    /*font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-}
+    #footer__logo {
+        color: #fff; /* Establece el color / Sets the text color */
+        display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+        cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
+        text-decoration: none; /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+        /*font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
+    }
 
-.footer__links {
-    width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
-    max-width: 1000px; /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    justify-content: center; /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
-}
+    .footer__links {
+        width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+        max-width: 1000px; /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
+        display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        justify-content: center; /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
+    }
 
-.footer__link--wrapper {
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    flex-direction: row; /* Establece la dirección del eje principal a fila / Sets the main axis direction to row */
-    justify-content: space-between; /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
-}
+    .footer__link--wrapper {
+        display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        flex-direction: row; /* Establece la dirección del eje principal a fila / Sets the main axis direction to row */
+        justify-content: space-between; /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
+    }
 
-/* Elementos de enlace del pie de página / Footer link items */
-.footer__link--items {
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
-    align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor / Aligns child elements to the start of the container */
-    margin: 16px; /* Añade un margen de 16 píxeles alrededor del contenedor / Adds a margin of 16 pixels around the container */
-    text-align: left; /* Alinea el texto a la izquierda / Aligns text to the left */
-    width: 160px; /* Establece el ancho del contenedor a 160 píxeles / Sets the container width to 160 pixels */
-    box-sizing: border-box; /* Utiliza el modelo de caja border-box / Uses the border-box box model */
-}
+    /* Elementos de enlace del pie de página / Footer link items */
+    .footer__link--items {
+        display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
+        align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor / Aligns child elements to the start of the container */
+        margin: 16px; /* Añade un margen de 16 píxeles alrededor del contenedor / Adds a margin of 16 pixels around the container */
+        text-align: left; /* Alinea el texto a la izquierda / Aligns text to the left */
+        width: 160px; /* Establece el ancho del contenedor a 160 píxeles / Sets the container width to 160 pixels */
+        box-sizing: border-box; /* Utiliza el modelo de caja border-box / Uses the border-box box model */
+    }
 
-.footer__link--items h2 { /* Encabezado h2 dentro de los elementos de enlace del pie de página / h2 header within the footer link items */
-    margin-bottom: 16px; /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
-}
+    .footer__link--items h2 { /* Encabezado h2 dentro de los elementos de enlace del pie de página / h2 header within the footer link items */
+        margin-bottom: 16px; /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
+    }
 
-.footer__link--items>h2 { /* Color del encabezado h2 dentro de los elementos de enlace del pie de página / Color of the h2 header within the footer link items */
-    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
-}
+    .footer__link--items>h2 { /* Color del encabezado h2 dentro de los elementos de enlace del pie de página / Color of the h2 header within the footer link items */
+        color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
+    }
 
-.footer__link--items a { /* Enlaces dentro de los elementos de enlace del pie de página / Links within the footer link items */
-    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
-    text-decoration: none; /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
-    margin-bottom: 0.5rem; /* Añade un margen inferior de 0.5 rem / Adds a bottom margin of 0.5 rem */
-}
+    .footer__link--items a { /* Enlaces dentro de los elementos de enlace del pie de página / Links within the footer link items */
+        color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
+        text-decoration: none; /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+        margin-bottom: 0.5rem; /* Añade un margen inferior de 0.5 rem / Adds a bottom margin of 0.5 rem */
+    }
 
-.footer__link--items a:hover { /* Estilo de los enlaces al pasar el ratón / Link hover style */
-    color: #e9e9e9; /* Cambia el color del texto al pasar el ratón / Changes the text color on hover */
-    transition: 0.3s ease-out; /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */ /* Corrige el valor de la transición */
-}
+    .footer__link--items a:hover { /* Estilo de los enlaces al pasar el ratón / Link hover style */
+        color: #e9e9e9; /* Cambia el color del texto al pasar el ratón / Changes the text color on hover */
+        transition: 0.3s ease-out; /* Añade una transición suave para todos los cambios / Adds a smooth transition for all changes */ /* Corrige el valor de la transición */
+    }
 
-.social__icon--link { /* Iconos sociales / Social icons */
-    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
-    font-size: 24px; /* Establece el tamaño de la fuente a 24 píxeles / Sets the font size to 24 pixels */
-}
+    .social__icon--link { /* Iconos sociales / Social icons */
+        color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
+        font-size: 24px; /* Establece el tamaño de la fuente a 24 píxeles / Sets the font size to 24 pixels */
+    }
 
-.social__media { /* Contenedor de medios sociales / Social media container */
-    max-width: 1000px; /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
-    width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
-}
+    .social__media { /* Contenedor de medios sociales / Social media container */
+        max-width: 1000px; /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
+        width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+    }
 
-.social__media--wrap { /* Envoltura de medios sociales / Social media wrap */
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    justify-content: space-between; /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
-    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
-    max-width: 1000px; /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
-    margin: 40px auto 0 auto; /* Añade un margen superior de 40 píxeles y centra el contenedor horizontalmente / Adds a top margin of 40 pixels and centers the container horizontally */
-}
+    .social__media--wrap { /* Envoltura de medios sociales / Social media wrap */
+        display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        justify-content: space-between; /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
+        align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+        width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+        max-width: 1000px; /* Establece el ancho máximo del contenedor a 1000 píxeles / Sets the maximum width of the container to 1000 pixels */
+        margin: 40px auto 0 auto; /* Añade un margen superior de 40 píxeles y centra el contenedor horizontalmente / Adds a top margin of 40 pixels and centers the container horizontally */
+    }
 
-.social__icons { /* Iconos sociales / Social icons */
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    justify-content: space-between; /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
-    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    width: 240px; /* Establece el ancho del contenedor a 240 píxeles / Sets the container width to 240 pixels */
-}
+    .social__icons { /* Iconos sociales / Social icons */
+        display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        justify-content: space-between; /* Distribuye los elementos hijos a lo largo de la línea / Distributes child elements along the line */
+        align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+        width: 240px; /* Establece el ancho del contenedor a 240 píxeles / Sets the container width to 240 pixels */
+    }
 
-.social__logo { /* Logo de redes sociales / Social logo */
-    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
-    justify-self: flex-start; /* Alinea el logo al inicio del contenedor flex / Aligns the logo to the start of the flex container */
-    margin-left: 20px; /* Añade un margen izquierdo de 20 píxeles / Adds a left margin of 20 pixels */
-    cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
-    text-decoration: none; /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
-    font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    margin-bottom: 16px; /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
-}
+    .social__logo { /* Logo de redes sociales / Social logo */
+        color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
+        justify-self: flex-start; /* Alinea el logo al inicio del contenedor flex / Aligns the logo to the start of the flex container */
+        margin-left: 20px; /* Añade un margen izquierdo de 20 píxeles / Adds a left margin of 20 pixels */
+        cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre el logo / Changes the cursor to a pointer when hovering over the logo */
+        text-decoration: none; /* Elimina la decoración del texto (subrayado) / Removes text decoration (underline) */
+        font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
+        display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+        align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+        margin-bottom: 16px; /* Añade un margen inferior de 16 píxeles / Adds a bottom margin of 16 pixels */
+    }
 
-.website__rights { /* Derechos del sitio web / Website rights */
-    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
-}
+    .website__rights { /* Derechos del sitio web / Website rights */
+        color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
+    }
+/* FIN FOOTER CSS */
 
 /* Estilos responsivos para pantallas con un ancho máximo de 820 píxeles / Responsive styles for screens with a maximum width of 820 pixels */
 @media screen and (max-width: 820px) {
@@ -434,98 +484,184 @@ body {
 }
 
 /* CHECKBOXES CSS */
-.checkbox-container input {
-    display: none;
-  }
-  
-  .checkbox-container {
-    display: block;
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-top: auto;
+    margin-bottom: 2rem;
+}
+
+.checkbox-container p {
+    margin-right: 1rem;
+}
+
+.checkbox-wrapper-12 {
     position: relative;
-    cursor: pointer;
-    /*font-size: 30px;*/
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
+    /*padding: 2rem;*/
+    /*align-items: end;*/
   }
   
-  .checkmark {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 1.3em;
-    width: 1.3em;
-    background-color: #5d18dc;
-    border-radius: 0.3em;
-    transition: all 0.25s;
-    --spread: 50px;
-  }
-  
-  .checkbox-container input:checked ~ .checkmark {
-    background-color: #000000;
-    box-shadow: -10px -10px var(--spread) 0px #1100f8,
-      0 -10px var(--spread) 0px #f30bf3,
-      10px -10px var(--spread) 0px #5d18dc,
-      10px 0 var(--spread) 0px #5d18dc,
-      10px 10px var(--spread) 0px #4c00ff,
-      0 10px var(--spread) 0px #5d18dc,
-      -10px 10px var(--spread) 0px #5a69f0;
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
+  .checkbox-wrapper-12 > svg {
     position: absolute;
-    transform: rotate(0deg);
-    border: 0.1em solid rgba(0, 0, 0, 0.863);
-    left: 0;
-    top: 0;
-    width: 1.1em;
-    height: 1.1em;
-    border-radius: 0.25em;
-    transition: all 0.25s, border-width 0.1s;
+    top: -130%;
+    left: -170%;
+    width: 110px;
+    pointer-events: none;
   }
   
-  /* Show the checkmark when checked */
-  .checkbox-container input:checked ~ .checkmark:after {
-    left: 0.45em;
-    top: 0.25em;
-    width: 0.25em;
-    height: 0.5em;
-    border-color: rgba(238, 238, 238, 0) white white #fff0;
-    border-width: 0 0.15em 0.15em 0;
-    border-radius: 0em;
-    transform: rotate(45deg);
+  .checkbox-wrapper-12 * {
+    box-sizing: border-box;
+  }
+  
+  .checkbox-wrapper-12 input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    margin: 0;
+  }
+  
+  .checkbox-wrapper-12 input[type="checkbox"]:focus {
+    outline: 0;
+  }
+  
+  .checkbox-wrapper-12 .cbx {
+    width: 24px;
+    height: 24px;
+    top: calc(100px - 12px);
+    left: calc(100px - 12px);
+  }
+  
+  .checkbox-wrapper-12 .cbx input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #bfbfc0;
+    border-radius: 50%;
+  }
+  
+  .checkbox-wrapper-12 .cbx label {
+    width: 24px;
+    height: 24px;
+    background: none;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: trasnlate3d(0, 0, 0);
+    pointer-events: none;
+  }
+  
+  .checkbox-wrapper-12 .cbx svg {
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .checkbox-wrapper-12 .cbx svg path {
+    stroke: #fff;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 19;
+    stroke-dashoffset: 19;
+    transition: stroke-dashoffset 0.3s ease;
+    transition-delay: 0.2s;
+  }
+  
+  .checkbox-wrapper-12 .cbx input:checked + label {
+    animation: splash-12 0.6s ease forwards;
+  }
+  
+  .checkbox-wrapper-12 .cbx input:checked + label + svg path {
+    stroke-dashoffset: 0;
+  }
+  
+  @-moz-keyframes splash-12 {
+    40% {
+      background: #5d18dc;
+      box-shadow: 0 -18px 0 -8px #5d18dc, 16px -8px 0 -8px #5d18dc, 16px 8px 0 -8px #5d18dc, 0 18px 0 -8px #5d18dc, -16px 8px 0 -8px #5d18dc, -16px -8px 0 -8px #5d18dc;
+    }
+  
+    100% {
+      background: #5d18dc;
+      box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent, 0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+    }
+  }
+  
+  @-webkit-keyframes splash-12 {
+    40% {
+      background: #5d18dc;
+      box-shadow: 0 -18px 0 -8px #5d18dc, 16px -8px 0 -8px #5d18dc, 16px 8px 0 -8px #5d18dc, 0 18px 0 -8px #5d18dc, -16px 8px 0 -8px #5d18dc, -16px -8px 0 -8px #5d18dc;
+    }
+  
+    100% {
+      background: #5d18dc;
+      box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent, 0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+    }
+  }
+  
+  @-o-keyframes splash-12 {
+    40% {
+      background: #5d18dc;
+      box-shadow: 0 -18px 0 -8px #5d18dc, 16px -8px 0 -8px #5d18dc, 16px 8px 0 -8px #5d18dc, 0 18px 0 -8px #5d18dc, -16px 8px 0 -8px #5d18dc, -16px -8px 0 -8px #5d18dc;
+    }
+  
+    100% {
+      background: #5d18dc;
+      box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent, 0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+    }
+  }
+  
+  @keyframes splash-12 {
+    40% {
+      background: #5d18dc;
+      box-shadow: 0 -18px 0 -8px #5d18dc, 16px -8px 0 -8px #5d18dc, 16px 8px 0 -8px #5d18dc, 0 18px 0 -8px #5d18dc, -16px 8px 0 -8px #5d18dc, -16px -8px 0 -8px #5d18dc;
+    }
+  
+    100% {
+      background: #5d18dc;
+      box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent, 0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+    }
   }
 /* FIN checkbox CSS */
 
+
 /* Botones css */
-.button {
-    padding: 17px 40px;
-    border-radius: 50px;
-    cursor: pointer;
-    border: 0;
-    background-color: white;
-    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: all 0.5s ease;
-    margin-top: 1rem;
-    text-decoration: none;
-    font-size: 1rem; /* Establece el tamaño de la fuente a 1 rem / Sets the font size to 1 rem */
+    .button {
+        padding: 7px 33px;
+        border-radius: 50px;
+        cursor: pointer;
+        border: 0;
+        background-color: white;
+        box-shadow: #5d18dc 0 0 8px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: all 0.5s ease;
+        margin-top: 1rem;
+        text-decoration: none;
+        font-size: 1rem; /* Establece el tamaño de la fuente a 1 rem / Sets the font size to 1 rem */
 
-}
+    }
 
-.button:hover {
-    letter-spacing: 3px;
-    background-color: #5d18dc;
-    color: hsl(0, 0%, 100%);
-    box-shadow: #5d18dc 0px 7px 29px 0px;
-}
-.button:active {
-    letter-spacing: 3px;
-    background-color: #5d18dc;
-    color: hsl(0, 0%, 100%);
-    box-shadow: #5d18dc 0px 0px 0px 0px;
-    transform: translateY(10px);
-    transition: 100ms;
-}
+    .button:hover {
+        letter-spacing: 3px;
+        background-color: #5d18dc;
+        color: hsl(0, 0%, 100%);
+        box-shadow: #5d18dc 0px 7px 29px 0px;
+    }
+    .button:active {
+        letter-spacing: 3px;
+        background-color: #5d18dc;
+        color: hsl(0, 0%, 100%);
+        box-shadow: #5d18dc 0px 0px 0px 0px;
+        transform: translateY(10px);
+        transition: 100ms;
+    }
 /* FIN - Botones css */

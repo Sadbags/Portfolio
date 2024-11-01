@@ -21,19 +21,31 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" id="password" name="password" required class="input-field">
                 </div>
-                <div class="checkbox-container">
-                    <!-- Checkbox con etiqueta asociada / Checkbox with associated label -->
-                    <input type="checkbox" id="rememberme">
-                    <label for="rememberme">Remember me</label>
-                    
-                    <!-- Checkbox adicional con estilo personalizado / Additional checkbox with custom styling -->
-                    <label class="checkbox-container">
-                        <input checked="checked" type="checkbox" />
-                        <div class="checkmark"></div>
-                    </label>
+                <div class="checkbox-container"> <!-- Remember me checkbox -->
+                    <p>Remember me</p>
+                    <div class="checkbox-wrapper-12">
+                        <div class="cbx">
+                          <input checked="" type="checkbox" id="cbx-12">
+                          <label for="cbx-12"></label>
+                          <svg fill="none" viewBox="0 0 15 14" height="14" width="15">
+                            <path d="M2 8.36364L6.23077 12L13 2"></path>
+                          </svg>
+                        </div>
+                        
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                          <defs>
+                            <filter id="goo-12">
+                              <feGaussianBlur result="blur" stdDeviation="4" in="SourceGraphic"></feGaussianBlur>
+                              <feColorMatrix result="goo-12" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" mode="matrix" in="blur"></feColorMatrix>
+                              <feBlend in2="goo-12" in="SourceGraphic"></feBlend>
+                            </filter>
+                          </defs>
+                        </svg>
+                      </div>
                 </div>
-                <button type="submit" class="submit-button">Log In</button>
- 
+
+                <a href="{{ url_for('get_services') }}" class="button">Log in</a> <!-- pasa a dashboard.html -->
+
                 <div class="flex flex-space-between">
                     <a href="{{ url_for('show_register') }}" class="link">Create Account</a>
                     <a href="{{ url_for('forgot') }}" class="link">Forgot Password?</a>

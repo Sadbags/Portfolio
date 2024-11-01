@@ -1,92 +1,68 @@
-/* Global styles */
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #F9FAFB; /* bg-gray-50 */
-}
-
-/* Main container */
 .main-container {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    /*display: flex;*/ /* Muestra los elementos en línea / Displays items inline */
+    height: 60vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 /* Inner container */
 .login-container {
-    max-width: 28rem; /* max-w-md */
+    max-width: 30rem;
     margin-left: auto;
     margin-right: auto;
 }
 
 /* Card */
 .login-card {
+    width: 100%; /* Ancho completo del contenedor padre / Full width of the parent container */
+    max-width: 500px; /* Ancho máximo de 500 píxeles / Maximum width of 500 pixels */
+    border: 5px solid #5d18dc; /* Borde de 1 píxel sólido con color primario / 1 pixel solid border with primary color */
     background-color: white;
-    padding: 2rem; /* p-8 */
+    padding: 6rem;
     border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */;
 }
 
-/* Heading */
-.card h2 {
-    font-size: 1.875rem; /* text-3xl */
+.login-card h2 {
+    font-size: 2rem; /* text-2xl */
     font-weight: 700; /* font-bold */
     margin-bottom: 1rem; /* mb-4 */
+    color: #000000; /* text-color-primary */
 }
 
 /* Form labels */
 .form-label {
     display: block;
-    font-size: 0.875rem; /* text-sm */
+    font-size: 1rem; /* text-sm */
     font-weight: 500; /* font-medium */
     margin-bottom: 0.5rem; /* mb-2 */
+    margin-top: 2rem;
 }
 
 /* Input fields */
 .input-field {
     width: 100%; /* w-full */
     padding: 0.5rem; /* p-2 */
-    border: 1px solid #D1D5DB; /* border-gray-300 */
+    border: 1px solid #5d18dc; /* border-gray-300 */
     border-radius: 0.25rem; /* rounded */
 }
 
-/* Checkbox */
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem; /* mb-6 */
-}
+/* Links create account & forgot*/
+    .link {
+        margin-top: 2rem;
+        color: #5d18dc; /* text-color-primary */
+        text-decoration: none;
+    }
 
-.checkbox-container input[type="checkbox"] {
-    margin-right: 0.5rem; /* mr-2 */
-}
-
-/* Button */
-/*.submit-button {
-    width: 100%; /* w-full */
-    background-color: #3B82F6; /* bg-blue-500 */
-    /*color: white;
-    padding: 0.5rem 0; /* py-2 */
-    /*border-radius: 0.25rem; /* rounded */
-    /*text-align: center;
-    /*transition: background-color 0.2s ease;
-}
-
-.submit-button:hover {
-    background-color: #2563EB; /* hover:bg-blue-600 */
-}
-
-/* Links */
-.link {
-    color: #ffffff; /* text-blue-500 */
-    text-decoration: underline;
-}
-
-.link:hover {
-    text-decoration: underline;
-}
+    .link:hover {
+        text-decoration: underline;
+    }
 
 /* Flex utilities */
 .flex {
     display: flex;
+    align-items: center; /* Alinea los elementos verticalmente en el centro / Aligns items vertically in the center */
 }
 
 .flex-space-between {

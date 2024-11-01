@@ -100,59 +100,10 @@
     }
 }
 
-.main { /*HERO SECTION*/ /* Seccion main / main section */
-    /*background-color: #000000; /* Establece el color de fondo a blanco / Sets the background color to white */
-}
-
-.main__container { /* Contenedor principal del héroe / Hero main container */
-    display: grid; /* Utiliza un diseño de cuadrícula para el contenedor / Uses a grid layout for the container */
-    grid-template-columns: 1fr 1fr; /* Define dos columnas iguales en la cuadrícula / Defines two equal columns in the grid */
-    align-items: center; /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-    justify-content: center; /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
-    margin: 0 auto; /* Centra el contenedor horizontalmente / Centers the container horizontally */
-    height: 90vh; /* Establece la altura del contenedor al 90% de la altura de la ventana / Sets the container height to 90% of the viewport height */
-    z-index: 1; /* Establece el índice z para asegurar que el contenedor esté en el frente / Sets the z-index to ensure the container is in the front */
-    width: 100%; /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
-    max-width: 1300px; /* Establece el ancho máximo del contenedor a 1300 píxeles / Sets the maximum width of the container to 1300 pixels */
-    padding: 0 50px; /* Añade padding horizontal de 50 píxeles / Adds horizontal padding of 50 pixels */
-}
-
-.main__content h1 { /* Estilo del encabezado h1 dentro del contenido principal / Style for the h1 header within the main content */
-    font-size: 6rem; /* Establece el tamaño de la fuente a 4 rem / Sets the font size to 4 rem */
-    background-image: linear-gradient(to top, #5d18dc 0%, #21d4fd 100%); /* Aplica un degradado de color al fondo / Applies a color gradient to the background */
-    background-size: 100%; /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
-    -webkit-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
-    -moz-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
-    -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
-    -moz-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
-}
-
-.main__content h2 { /* Estilo del encabezado h2 dentro del contenido principal / Style for the h2 header within the main content */
-    /*font-size: 2rem; /* Establece el tamaño de la fuente a 4 rem / Sets the font size to 4 rem */
-    background-color: #ffffff; /* Establece el color de fondo a un tono rosado / Sets the background color to a pinkish tone */
-    /*background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%); /* Aplica un degradado de color al fondo / Applies a color gradient to the background */
-    background-size: 100%; /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
-    -webkit-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
-    -moz-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
-    -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
-    -moz-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
-}
-
-.main__content p { /* Estilo del párrafo dentro del contenido principal / Style for the paragraph within the main content */
-    margin-top: 1rem; /* Añade un margen superior de 1 rem / Adds a top margin of 1 rem */
-    font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-    font-weight: 700; /* Establece el peso de la fuente a 700 (negrita) / Sets the font weight to 700 (bold) */
-    color: #ffffff; /* Establece el color del texto a blanco / Sets the text color to white */
-}
-
 .About { /* Sección About / About section */
     flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
-
-    /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
-    align-items: center;
-
-    /* Establece la altura del contenedor al 100% de la altura de la ventana / Sets the container height to 100% of the viewport height */
-    height: 100vh;
+    align-items: center; /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
+    height: 100vh; /* Establece la altura del contenedor al 100% de la altura de la ventana / Sets the container height to 100% of the viewport height */
 }
 
 .About h1 { /* Estilo del encabezado h1 dentro de la sección About / Style for the h1 header within the About section */
