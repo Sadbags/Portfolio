@@ -9,10 +9,21 @@
 {% block content %}
 <div class="service-detail">
     <h1>{{ service.name }}</h1>
-    <p><strong>Description:</strong> {{ service.description }}</p>
-    <p><strong>Approx Price:</strong> ${{ service.aprox_price }}</p>
-    <p><strong>Category:</strong> {{ service.category }}</p>
+
+    <!-- Div separado para la imagen -->
+    <div class="service-image">
+        <img src="data:image/jpeg;base64,{{ service.picture }}" alt="{{ service.name }}">
+    </div>
+
+    <!-- Información del servicio -->
+    <div class="service-info">
+        <p><strong>Description:</strong> {{ service.description }}</p>
+        <p><strong>Approx Price:</strong> ${{ service.aprox_price }}</p>
+        <p><strong>Category:</strong> {{ service.category }}</p>
+    </div>
 </div>
+
+
 
 <!-- Formulario para crear una nueva cita -->
 <div class="container">

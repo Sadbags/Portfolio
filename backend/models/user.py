@@ -2,6 +2,8 @@ import uuid
 from backend.database import db
 from backend.models.basemodel import BaseModel
 from flask_bcrypt import Bcrypt
+import os
+import base64
 
 
 bcrypt = Bcrypt()
@@ -16,6 +18,7 @@ class User(BaseModel):
     password = db.Column(db.String(128), nullable=False)  # Encriptado con bcrypt
     password_hash = db.Column(db.String(128))
     is_admin = db.Column(db.Boolean, default=False)
+    profile_picture = db.Column(db.Text, nullable=True)
 
     addresses = db.relationship('Address', back_populates='user', lazy=True)
     appointments = db.relationship('Appointment', back_populates='user', lazy=True)  # esto es lo nuevo
@@ -26,13 +29,14 @@ class User(BaseModel):
 
 
 
-    def __init__(self, email, password, is_admin, first_name="", last_name="", **kwargs):
+    def __init__(self, email, password, is_admin, profile_picture=None, first_name="", last_name="", **kwargs):
         super().__init__(**kwargs)
         self.email = email
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
         self.is_admin = is_admin
+        self.profile_picture = profile_picture
         self.set_password(password)
 
     def check_password(self, password):
@@ -68,6 +72,7 @@ class User(BaseModel):
             'password': self.password,
             'is_admin': self.is_admin,
             'password_hash': self.password_hash,
+            'profile_picture': self.profile_picture,
             'addresses': [address.to_dict() for address in self.addresses],
             'appointments': [appointment.to_dict() for appointment in self.appointments], # esto es lo nuevo
             'services': [service.to_dict() for service in self.services], # esto es lo nuevo
@@ -75,6 +80,27 @@ class User(BaseModel):
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat()
 		}
+
+
+    @staticmethod
+    def convert_image(image_path):
+        """Convierte un archivo de imagen a una cadena base64."""
+        if os.path.exists(image_path):
+            with open(image_path, "rb") as image_file:
+                encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+                return encoded_string
+        else:
+            print("The image path is not valid.")
+            return None
+
+    def set_profile_picture(self, file):
+        """Convierte un archivo de imagen a base64 y lo guarda en el atributo profile_picture."""
+        if file:
+            # Leer el archivo y convertirlo a base64
+            self.profile_picture = base64.b64encode(file.read()).decode('utf-8')
+        else:
+            print("No file provided")
+            self.profile_picture = None
 
 
 # codigo que tenia hasta las 1:03 8 sept

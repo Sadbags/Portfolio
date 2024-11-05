@@ -1,4 +1,4 @@
-{% extends 'base.html' %} <!-- Extiende de la plantilla base.html -->
+{% extends 'base.html' %}
 
 <title>{% block title %}Services{% endblock %}</title>
 
@@ -8,21 +8,36 @@
 
 {% block content %}
 <div class="cards-container">
-    {% for service in services %}
+    {% for service in services.items %}
         <div class="card">
             <div class="image-container">
-                <img src="data:image/jpeg;base64,{{ service.picture }}" alt="{{ service.name }}">
+                <img src="{% if service.picture %}data:image/jpeg;base64,{{ service.picture }}{% else %}{{ url_for('static', filename='images/no_service.jpg') }}{% endif %}"
+                     alt="{{ service.name }}"
+                     onerror="this.src='{{ url_for('static', filename='images/no_service.jpg') }}'">
             </div>
             <div class="card-content">
                 <h2>{{ service.name }}</h2>
-                <p><strong>Description:</strong> {{ service.description }}</p>
+                <p><strong>Description:</strong> {{ service.description or 'No description available' }}</p>
                 <p><strong>Category:</strong> {{ service.category }}</p>
                 <p><strong>Approx. Price:</strong> {{ service.aprox_price }}</p>
-                <p><strong>Fee:</strong> {{ service.fee }}</p>
-                <button onclick="window.location.href='{{ url_for('review_page', service_id=service.id) }}'">View Service</button>
+                <p><strong>Fee:</strong> {{ service.fee }}%</p>
+                <button class="btn btn-primary" onclick="window.location.href='{{ url_for('review_page', service_id=service.id) }}'">View Service</button>
             </div>
         </div>
     {% endfor %}
+</div>
+
+<!-- Paginación -->
+<div class="pagination">
+    {% if services.has_prev %}
+        <a href="{{ url_for('get_services', page=services.prev_num, per_page=services.per_page) }}">Anterior</a>
+    {% endif %}
+
+    <span>Página {{ services.page }} de {{ services.pages }}</span>
+
+    {% if services.has_next %}
+        <a href="{{ url_for('get_services', page=services.next_num, per_page=services.per_page) }}">Siguiente</a>
+    {% endif %}
 </div>
 {% endblock %}
 

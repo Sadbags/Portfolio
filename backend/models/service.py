@@ -50,14 +50,6 @@ class Service(BaseModel):
             'updated_at': self.updated_at.isoformat()
         }
 
-    def set_image(self, image_path):
-        """Converts an image file to base64 and saves it in the picture attribute."""
-        if os.path.exists(image_path):
-            with open(image_path, "rb") as image_file:
-                self.picture = base64.b64encode(image_file.read()).decode('utf-8')  # Save to picture
-        else:
-            print("The image path is not valid.")
-            self.picture = None
 
     @staticmethod
     def convert_image(image_path):
@@ -67,5 +59,14 @@ class Service(BaseModel):
                 encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
                 return encoded_string
         else:
-            print("La ruta de la imagen no es válida.")
+            print("The image path is not valid.")
             return None
+
+    def set_image(self, image_path):
+        """Converts an image file to base64 and saves it in the picture attribute."""
+        if os.path.exists(image_path):
+            with open(image_path, "rb") as image_file:
+                self.picture = base64.b64encode(image_file.read()).decode('utf-8')  # Save to picture
+        else:
+            print("The image path is not valid.")
+            self.picture = None

@@ -1,10 +1,10 @@
 from flask import Flask, flash, render_template, request, redirect, url_for, jsonify
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_current_user, get_jwt_identity, verify_jwt_in_request
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_current_user, get_jwt_identity, verify_jwt_in_request, create_refresh_token
 from werkzeug.security import generate_password_hash
 from flask_cors import CORS
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 import os
 
@@ -42,12 +42,16 @@ app.config['UPLOAD_FOLDER'] = 'static/images'    # new
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'} #new
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB  #new
 
+
+
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
 class Config(object):
-    app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:////Users/bags/Portfolio/instance/Quickr.db'
-    app.config['JWT_SECRET_KEY'] = 'Quickr-app'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:////Users/bags/Portfolio/instance/Quickr.db'
+    JWT_SECRET_KEY = 'Quickr-app'
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=15)  # Access token expiration time
+    JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
 
 
 class DevelopmentConfig(Config):
@@ -124,8 +128,8 @@ def forgot():
     return render_template('forgot.html')
 
 
-# Profile
 
+# Profile
 @app.route('/profile')
 @login_required
 def profile():
@@ -140,11 +144,14 @@ def profile():
     # Formatear las reseñas para pasarlas a la plantilla
     reviews_data = []
     for review in reviews:
+        # Verificar si review.service no es None
+        service_name = review.service.name if review.service else "Service not found"
         reviews_data.append({
             'id': review.id,
             'service_id': review.service_id,
             'comment': review.comment,
             'rating': review.rating,
+            'service_name': service_name,  # Asignar el nombre del servicio o mensaje de error
             'user': {
                 'first_name': review.user.first_name,
                 'last_name': review.user.last_name
@@ -153,6 +160,7 @@ def profile():
 
     # Pasar las direcciones y reseñas a la plantilla
     return render_template('profile.html', current_user=current_user, reviews=reviews_data, addresses=addresses)
+
 
 
 
@@ -185,8 +193,7 @@ def edit_profile():
 
 
 
-# Login and
-
+# Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -209,21 +216,31 @@ def login():
         # Generar el token JWT
         additional_claims = {"is_admin": user.is_admin}
         access_token = create_access_token(identity=user.id, additional_claims=additional_claims)  # Asegúrate de que esto sea un diccionario
+        refresh_token = create_refresh_token(identity=user.id)  # Create refresh token
 
         print("Generated JWT Token:", access_token)
 
-
-        # Devolver el token en la respuesta JSON
-        return jsonify(access_token=access_token, is_admin=user.is_admin), 200
+        return jsonify(access_token=access_token, refresh_token=refresh_token, is_admin=user.is_admin), 200
 
     return render_template('login.html')
+
+
+# hace refresh al token
+@app.route('/token/refresh', methods=['POST'])
+@jwt_required(refresh=True)  # Verifica que sea un refresh token
+def refresh_token():
+    current_user_id = get_jwt_identity()  # Obtener la identidad del usuario actual
+    access_token = create_access_token(identity=current_user_id)  # Crear un nuevo token de acceso
+    return jsonify(access_token=access_token), 200
+
+
 
 
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
 
-
+#logout session
 @app.route('/logout', methods=['GET'])
 @login_required
 def logout():
@@ -238,7 +255,7 @@ def logout():
 def show_register():
     return render_template('register.html')
 
-
+# create user account
 @app.route('/register', methods=['POST'])
 def register_user():
     if request.method == 'POST':
@@ -259,8 +276,6 @@ def register_user():
 
         if password != confirm_password:
             return jsonify({"error": "Passwords do not match"}), 400
-
-        # Hash de la contraseña
 
         # Crear el usuario con is_admin como False por defecto
         user = User(
@@ -307,8 +322,8 @@ def register_user():
     return render_template('register.html')
 
 
-#address
 
+# address
 @app.route('/addresses/<address_id>', methods=['GET'])
 @jwt_required()
 def get_address(address_id):
@@ -330,11 +345,6 @@ def get_address(address_id):
         return jsonify(address_data), 200
     else:
         return jsonify({'message': 'Address not found'}), 404
-
-
-
-
-
 
 
 
@@ -367,7 +377,13 @@ def edit_service(service_id):
 # este es para ver todos los servicios en el tab de services.
 @app.route('/services/service_id', methods=['GET'])
 def get_services():
-    services = Service.query.all()
+    # Obtener los parámetros de la consulta
+    page = request.args.get('page', 1, type=int)  # Página actual, predeterminada a 1
+    per_page = request.args.get('per_page', 10, type=int)  # Servicios por página, predeterminado a 10
+
+    # Obtener los servicios con paginación
+    services = Service.query.paginate(page=page, per_page=per_page, error_out=False)
+
     return render_template('services.html', services=services)
 
 

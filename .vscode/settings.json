@@ -291,5 +291,6 @@
 		"Recogemos",
 		"Relacionamos",
 		"servicio"
-	]
+	],
+	"sqltools.connections": []
 }
