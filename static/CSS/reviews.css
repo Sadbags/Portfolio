@@ -1,5 +1,7 @@
 /* Estilo general para el cuerpo de la página */
 
+/* body {
+	background-color: #040404; */
 
 /* Estilo para los detalles del servicio */
 .service-detail {
@@ -340,4 +342,22 @@ input[type="number"] {
     /* Sin contorno */
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
     /* Sombra azul suave */
+}
+
+.service-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.service-image img {
+    max-width: 100%;
+    height: auto;
+	border: 3px solid #040404; /* Cambia el color a lo que prefieras */
+    border-radius: 8px; /* Bordes redondeados opcionales */
+}
+
+.service-info {
+    text-align: center;
 }

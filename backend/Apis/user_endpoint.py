@@ -64,7 +64,28 @@ user_blueprint = Blueprint('user_blueprint', __name__)
 
   #  return jsonify({"msg": "User and address created successfully", "user_id": user.id}), 201
 
+@user_blueprint.route('/users/<user_id>/profile_picture', methods=['POST'])
+def upload_profile_picture(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
 
+    if 'profile_picture' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+
+    file = request.files['profile_picture']
+
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    if file:
+        user.set_profile_picture(file)  # Método para guardar la imagen en la base de datos
+        db.session.commit()  # Guarda los cambios en la base de datos
+
+        # Devuelve un mensaje y la nueva imagen en base64
+        return jsonify({"message": "Profile picture uploaded successfully", "profile_picture": user.profile_picture}), 200
+
+    return jsonify({"error": "File upload failed"}), 500
 
 @user_blueprint.route('/protected', methods=['POST'])
 @jwt_required()

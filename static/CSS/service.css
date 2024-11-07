@@ -42,6 +42,31 @@
     margin: 5px 0; /* Espacio entre párrafos */
 }
 
+.cards-container button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al estilo de mano */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+.cards-container button:hover {
+    background-color: #007bff; /* Color al pasar el cursor */
+    transform: translateY(-3px); /* Efecto de elevación */
+}
+
+.cards-container button:active {
+    transform: translateY(1px); /* Efecto al hacer clic */
+}
+
+.cards-container button:focus {
+    outline: none; /* Sin borde de enfoque */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra al enfoque */
+}
+
 
 
 
@@ -49,6 +74,44 @@
     .card {
         width: 100%; /* Hace que las tarjetas ocupen todo el ancho en dispositivos más pequeños */
         margin: 10px 0; /* Ajusta el margen para móviles */
+    }
+}
+
+/* Estilo de la paginación */
+.pagination {
+    display: flex;
+    justify-content: center; /* Centra el contenido de la paginación */
+    align-items: center; /* Centra verticalmente */
+    margin: 20px 0; /* Espacio arriba y abajo de la paginación */
+}
+
+.pagination a {
+    padding: 10px 15px; /* Espaciado interno para los enlaces */
+    margin: 0 5px; /* Margen lateral entre enlaces */
+    text-decoration: none; /* Sin subrayado en los enlaces */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.pagination a:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el cursor */
+}
+
+.pagination span {
+    margin: 0 10px; /* Espaciado entre el texto de la página actual y los enlaces */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .pagination {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    }
+
+    .pagination a {
+        margin: 5px 0; /* Ajusta el margen para enlaces en columna */
     }
 }
 

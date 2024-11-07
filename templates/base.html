@@ -5,17 +5,17 @@
     <meta charset="UTF-8" /> <!-- Define la codificación de caracteres como UTF-8 / Defines the character encoding as UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Configura la ventana gráfica para que sea responsiva / Sets the viewport to be responsive -->
     <title>{% block title %}Quickr{% endblock %}</title> <!-- Define el título de la página, que puede ser sobrescrito por bloques específicos de cada página / Defines the page title, which can be overridden by specific page blocks -->
-    
+
     <!-- Incluye un favicon para la página / Includes a favicon for the page -->
     <link
       rel="shortcut icon"
       href="{{ url_for('static', filename='LB.png') }}"
       type="image/png"
     />
-    
+
     <!-- Incluye una hoja de estilos común / Includes a common stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}"/>
-    
+
     {% block stylesheets %}
         <!-- Bloque para incluir hojas de estilos específicas de cada página / Block to include specific stylesheets for each page -->
     {% endblock %}
@@ -137,6 +137,7 @@
     {% block scripts %}
     <!-- Incluye un script de JavaScript / Includes a JavaScript script -->
     <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
+	<script src="{{ url_for('static', filename='JS/authentication.js') }}"></script> <!-- supuestamente hace refresh al token -->
     {% endblock %}
   </body>
 </html>

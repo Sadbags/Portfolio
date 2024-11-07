@@ -12,13 +12,13 @@ service_blueprint = Blueprint('service_blueprint', __name__)
 
 
 @service_blueprint.route('/api/services', methods=['POST'])
-@jwt_required()  # Este decorador asegura que solo los usuarios autenticados pueden acceder a este endpoint
+@jwt_required()
 def create_service():
-    # Obtener el ID del usuario desde el token JWT
     current_user_id = get_jwt_identity()
 
     # Validar que el cuerpo de la solicitud JSON tenga todos los campos requeridos
-    if not request.json or not all(key in request.json for key in ['name', 'description', 'aprox_price', 'category', 'fee']):
+    required_fields = ['name', 'description', 'aprox_price', 'category', 'fee', 'picture']
+    if not request.json or not all(key in request.json for key in required_fields):
         abort(400, description="Missing required fields")
 
     # Obtener datos de la solicitud
@@ -27,7 +27,7 @@ def create_service():
     aprox_price = request.json['aprox_price']
     category = request.json['category']
     fee = request.json['fee']
-    picture_path = request.json.get('picture')  # Obtener la imagen del servicio
+    picture_data = request.json['picture']  # Obtener la imagen del servicio
 
     # Crear la instancia de Service
     service = Service(
@@ -36,11 +36,11 @@ def create_service():
         aprox_price=aprox_price,
         category=category,
         fee=fee,
-        user_id=current_user_id  # Asociar el servicio al usuario actual
+        user_id=current_user_id
     )
 
-    if picture_path:  # Ensure there's a valid path before setting the image
-        service.set_image(picture_path)
+    # Asignar la imagen directamente desde el string base64
+    service.picture = picture_data
 
     # Agregar el servicio a la sesión de la base de datos y hacer commit
     db.session.add(service)
