@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+
 {% block title %} Home - Quickr {% endblock %}
+
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/home.css') }}" /> {% endblock %}
 
@@ -28,14 +30,16 @@
 		<div class="About__container">
 			<div class="About__card">
 				<h2>What's Quickr?</h2>
-				<p> <!-- opcional rellenar --> </p>
-				<button>Learn more</button>
+				<a href="{{ url_for('get_services') }}" class="button">learn more</a> <!-- pasa a services.html -->
 			</div>
 			<div class="About__card">
 				<h2>Services</h2>
-				<p> <!-- opcional rellenar --> </p>
-				<button>Learn more</button>
+				<a href="{{ url_for('get_services') }}" class="button">Get Started</a> <!-- pasa a services.html -->
 			</div>
 		</div>
 </main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}

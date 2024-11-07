@@ -1,0 +1,64 @@
+{% extends 'base.html' %} <!-- Extiende de la plantilla base.html -->
+
+<title>{% block title %} Dashboard {% endblock %}</title> <!-- Título de la página -->
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard_container">
+    <section class="aside">
+        <div class="asideWrapper">
+            <div class="asideTop">
+                <hr class="lineBreak">
+            </div>
+            <div class="asideFeatures">
+                <a href="#" class="atag">
+                    <span class="featureIcon"><i class="fa-solid fa-gauge-simple-high"></i></span>
+                    <span class="featureTitle">home</span>
+                </a>
+                <a href="#" class="atag">
+                    <span class="featureIcon"><i class="fa-solid fa-gauge-simple-high"></i></span>
+                    <span class="featureTitle">Dashboard</span>
+                </a>
+                <a href="#" class="atag">
+                    <span class="featureIcon"><i class="fa-solid fa-gauge-simple-high"></i></span>
+                    <span class="featureTitle">profile</span>
+                </a>
+                <a href="#" class="atag">
+                    <span class="featureIcon"><i class="fa-solid fa-gauge-simple-high"></i></span>
+                    <span class="featureTitle">appoiments</span>
+                </a>
+                <a href="#" class="atag">
+                    <span class="featureIcon"><i class="fa-solid fa-gauge-simple-high"></i></span>
+                    <span class="featureTitle">Dashboard</span>
+                </a>
+                <a href="#" class="atag active" >
+                    <span class="featureIcon"><i class="fa-solid fa-gauge-simple-high"></i></span>
+                    <span class="featureTitle">Dashboard</span>
+                </a>
+                <a href="#" class="atag">
+                    <span class="featureIcon"><i class="fa-solid fa-gauge-simple-high"></i></span>
+                    <span class="featureTitle">Dashboard</span>
+                </a>
+                <a href="#" class="atag logout" >
+                    <span class="featureIcon"><i class="fa-solid fa-gauge-simple-high"></i></span>
+                    <span class="featureTitle">Logout</span>
+                </a>
+            </div>
+        </div>
+       
+    </section>
+    <section class="dashboard"></section>
+    <section class="rightBar"></section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/abfb08943c.js" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='JS/dashboard.js') }}"></script>
+{% endblock %}
+
+</body>
+</html>

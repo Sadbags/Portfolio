@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* dashboard.css */
 
 /* Estilos generales */
@@ -26,6 +27,25 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+=======
+.dashboard-container { /* Dashboard container */
+    display: flex;
+}
+
+/*.sidebar { /* Sidebar styles
+    width: 250px;
+    background-color: #5d18dc;
+    color: #fff;
+    padding: 20px;
+    height: 100vh; 
+    position: fixed; 
+    overflow-y: auto; 
+} */
+
+/*.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+>>>>>>> front-end
 }
 
 .sidebar-header h2 {
@@ -104,10 +124,46 @@ header {
     padding: 0;
 }
 
+<<<<<<< HEAD
 .service-list li {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #dee2e6;
+=======
+.sidebar-nav li {
+    margin: 15px 0;
+}
+
+.sidebar-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    display: block; 
+    padding: 10px; 
+}
+
+.sidebar-nav a.active,
+.sidebar-nav a:hover {
+    color: #007bff; 
+    background-color: rgba(0, 123, 255, 0.1); 
+} */
+
+.main-content { /* Main content styles */
+    /*margin-left: 260px; /* Deja espacio para el sidebar */
+    padding: 20px;
+    flex-grow: 1; /* Permite que el contenido principal ocupe el resto del espacio */
+}
+
+/*.appointment-list h1, h2, h3, h4 {
+    color: #333;
+} */
+
+/* Section styles */
+.section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+>>>>>>> front-end
     border-radius: 5px;
 }
 

@@ -1,4 +1,4 @@
-{% extends 'base.html' %} <!-- Extiende de la plantilla base.html -->
+{% extends "base.html" %}
 
 <title>{% block title %} Profile {% endblock %}</title> <!-- Título de la página -->
 
@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
 <div class="profile-container">
     <div class="profile-header">
 		<!-- Imagen de perfil dinámica: Usa la imagen del usuario o una imagen por defecto -->
@@ -26,6 +27,72 @@
                     <p><strong>Service Name:</strong> {{ review.service_name }}</p>
                     <p><strong>Rating:</strong> {{ review.rating }}</p>
                     <p><strong>Comment:</strong> {{ review.comment }}</p>
+=======
+    <div class="profile-container">
+        <div class="profile-header">
+            <!-- Imagen de perfil dinámica: Usa la imagen del usuario o una imagen por defecto -->
+            <img src="{{ current_user.profile_pic_url or url_for('static', filename='images/default-pic.jpg') }}"
+                alt="Profile Picture" class="profile-pic">
+            <!-- Nombre del usuario dinámico -->
+            <h1 class="profile-name">{{ current_user.first_name }} {{ current_user.last_name }}</h1>
+        
+            <!-- Botón para editar el perfil -->
+            <a href="{{ url_for('edit_profile') }}" class="button">Edit Profile</a>
+
+            <!-- Botón para compartir perfil -->
+            <button class="share-profile-btn">Share Profile</button>
+        </div>
+
+        <div class="reviews-section">
+			<h2>Reviews</h2>
+			{% if reviews %}
+				{% for review in reviews %}
+					<div class="review">
+						<h4>Review by {{ review.user.first_name }} {{ review.user.last_name }}</h4>
+						<p><strong> Service Name:</strong> {{ review.name }} </p>
+						<p><strong>Rating:</strong> {{ review.rating }}</p>
+						<p><strong>Comment:</strong> {{ review.comment }}</p>
+					</div>
+				{% endfor %}
+			{% else %}
+				<p>No reviews yet. Be the first to leave a review!</p>
+			{% endif %}
+		</div>
+
+            <!-- Sección de contacto dinámica -->
+			<div class="contact-section">
+				<h2>Contact</h2>
+				<p>Email: {{ current_user.email }}</p>
+
+				{% if addresses %}
+					{% for address in addresses %}
+						<p><strong>Phone:</strong> {{ address.phone or 'No phone available' }}</p>
+						<p><strong>Address:</strong> {{ address.street }}, {{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
+						<hr>
+					{% endfor %}
+				{% else %}
+					<p>No addresses available</p>
+				{% endif %}
+			</div>
+            <!-- Sección de servicios dinámicos -->
+            <div class="photo-feed-section">
+                <h2>Services</h2>
+                <div class="cards-container">
+                    {% for service in current_user.services %}
+                    <div class="card">
+                        <!-- Imagen del servicio dinámica -->
+                        <img src="{{ service.img_url }}" alt="{{ service.name }}">
+                        <div class="card-content">
+                            <h3>{{ service.name }}</h3>
+                            <p><strong>Descreiption:</strong> {{ service.description or 'No description available' }}</p>
+							<p><strong>Price:</strong> ${{ service.aprox_price }}</p>
+							<p><strong>Fee:</strong> {{ service.fee }}%</p>
+							<p><strong>Category:</strong> {{ service.category }}</p>
+							<a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Edit</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+>>>>>>> front-end
                 </div>
             {% endfor %}
         {% else %}
@@ -76,3 +143,9 @@
 <script src="{{ url_for('static', filename='JS/profile_picture.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/authentication.js') }}"></script>
 {% endblock %}
+
+{% block scripts %} 
+<script src="{{ url_for('static', filename='JS/shareprofile.js') }}"></script> 
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
+
+{% endblock %}    

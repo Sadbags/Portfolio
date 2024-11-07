@@ -1,18 +1,20 @@
 /* Estilos generales del contenedor del perfil */
 .profile-container {
-    max-width: 800px; /* Ancho máximo del contenedor */
+    max-width: 90vh; /* Ancho máximo del contenedor */
     margin: 20px auto; /* Centrado y espaciado vertical */
-    padding: 20px; /* Espaciado interno */
-    background-color: #f9f9f9; /* Fondo claro */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-top: 3rem; /* Espaciado superior */
+    padding: 2.5rem; /* Espaciado interno */   
+    border-radius: 2rem; /* Bordes redondeados */
+    box-shadow: 0 1px 1000px #5d18dc;
 }
 
 /* Estilos para el encabezado del perfil */
 .profile-header {
     display: flex; /* Usar flexbox para el layout */
-    align-items: center; /* Centrar verticalmente */
     margin-bottom: 20px; /* Espaciado inferior */
+    /*background-color: #ffffff; /* Fondo claro */
+    flex-direction: column;
+    align-items: baseline;
 }
 
 .profile-pic {
@@ -20,30 +22,13 @@
     height: 100px; /* Altura de la imagen del perfil */
     border-radius: 50%; /* Redondear la imagen */
     margin-right: 20px; /* Espaciado a la derecha */
-    border: 3px solid #4CAF50; /* Borde verde alrededor de la imagen */
+    border: 3px solid #ffffff; /* Borde verde alrededor de la imagen */
 }
 
 .profile-name {
-    font-size: 24px; /* Tamaño de la fuente */
-    color: #333; /* Color del texto */
+    font-size: 2.5rem; /* Tamaño de la fuente */
+    color: #ffffff; /* Color del texto */
     margin: 0; /* Sin margen */
-}
-
-/* Estilo de botones */
-.button, .button-logout {
-    background-color: #4CAF50; /* Color de fondo verde */
-    color: white; /* Color del texto */
-    padding: 10px 15px; /* Espaciado interno */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar el cursor al pasar */
-    text-decoration: none; /* Sin subrayado en los enlaces */
-    display: inline-block; /* Asegurar que los enlaces se comporten como botones */
-    transition: background-color 0.3s; /* Transición suave para el cambio de color */
-}
-
-.button:hover, .button-logout:hover {
-    background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
 }
 
 /* Estilo para las secciones del perfil */

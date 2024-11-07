@@ -7,7 +7,7 @@
 }
 
 .card {
-    background-color: #fff; /* Fondo blanco para las tarjetas */
+    background-color: #ffffff; /* Fondo blanco para las tarjetas */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
     width: 300px; /* Ancho fijo para las tarjetas */
@@ -18,7 +18,7 @@
 .image-container {
     padding: 10px; /* Espacio alrededor de la imagen */
     margin-bottom: 15px; /* Espacio adicional en la parte inferior */
-    background-color: #f0f0f0; /* Color de fondo opcional */
+    background-color: #ffffff; /* Color de fondo opcional */
     border-radius: 8px; /* Bordes redondeados opcionales */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra */
 }
@@ -36,10 +36,12 @@
 
 .card-content h2 {
     margin: 0 0 10px; /* Espacio entre el título y el siguiente elemento */
+    color:#000000
 }
 
 .card-content p {
     margin: 5px 0; /* Espacio entre párrafos */
+    color: #000000;
 }
 
 .cards-container button {

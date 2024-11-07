@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Register - Quickr
-{% endblock %}
+{% block title %} Register - Quickr {% endblock %}
 
 {% block stylesheets %}
 
@@ -83,5 +81,9 @@ Register - Quickr
     <a href="{{ url_for('login') }}">Already have an account? Log in</a><br>
     <a href="{{ url_for('forgot') }}">Forgot your password?</a>
 </div>
+
+{% endblock %}
+
+{% block scripts %}
 <script src="{{ url_for('static', filename='JS/create_user_address.js') }}"></script>
 {% endblock %}
