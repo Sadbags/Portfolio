@@ -1,34 +1,31 @@
-.main-container {
-    /*display: flex;*/ /* Muestra los elementos en línea / Displays items inline */
-    height: 60vh;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-}
-
-/* Inner container */
-.login-container {
+.login-container { /* Inner container */
     max-width: 30rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Card */
-.login-card {
-    width: 100%; /* Ancho completo del contenedor padre / Full width of the parent container */
-    max-width: 500px; /* Ancho máximo de 500 píxeles / Maximum width of 500 pixels */
-    border: 5px solid #5d18dc; /* Borde de 1 píxel sólido con color primario / 1 pixel solid border with primary color */
-    background-color: white;
-    padding: 6rem;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2rem;
     border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */}
+
+.login-card { /* Card */
+    max-width: 500px; /* Ancho máximo de 500 píxeles / Maximum width of 500 pixels */
+    border: 1px solid #5d18dc; /* Borde de 1 píxel sólido con color primario / 1 pixel solid border with primary color */
+    /*background-color: white;*/
+    padding: 4rem;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 1px 1000px #5d18dc;
 }
 
-.login-card h2 {
-    font-size: 2rem; /* text-2xl */
+.login-card h2 { /* Card title */
+    font-size: 2.5rem; /* text-2xl */
     font-weight: 700; /* font-bold */
     margin-bottom: 1rem; /* mb-4 */
-    color: #000000; /* text-color-primary */
+    color: #ffffff; /* text-color-primary */
+}
+
+.checkbox-container p { /* Checkbox label */
+    font-size: 1rem; /* text-sm */
+    color: #ffffff; /* text-color-primary */
+   
 }
 
 /* Form labels */
@@ -38,14 +35,15 @@
     font-weight: 500; /* font-medium */
     margin-bottom: 0.5rem; /* mb-2 */
     margin-top: 2rem;
+    color: #ffffff; /* text-color-primary */
 }
 
 /* Input fields */
 .input-field {
     width: 100%; /* w-full */
     padding: 0.5rem; /* p-2 */
-    border: 1px solid #5d18dc; /* border-gray-300 */
-    border-radius: 0.25rem; /* rounded */
+    border: .20rem solid #5d18dc; 
+    border-radius: .50rem; /* rounded */
 }
 
 /* Links create account & forgot*/

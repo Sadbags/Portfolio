@@ -1,4 +1,4 @@
-{% extends 'base.html' %} <!-- Extiende de la plantilla base.html -->
+{% extends "base.html" %}
 
 <title>{% block title %} Profile {% endblock %}</title> <!-- Título de la página -->
 
@@ -12,18 +12,14 @@
             <!-- Imagen de perfil dinámica: Usa la imagen del usuario o una imagen por defecto -->
             <img src="{{ current_user.profile_pic_url or url_for('static', filename='images/default-pic.jpg') }}"
                 alt="Profile Picture" class="profile-pic">
-
             <!-- Nombre del usuario dinámico -->
             <h1 class="profile-name">{{ current_user.first_name }} {{ current_user.last_name }}</h1>
-
+        
             <!-- Botón para editar el perfil -->
             <a href="{{ url_for('edit_profile') }}" class="button">Edit Profile</a>
 
             <!-- Botón para compartir perfil -->
             <button class="share-profile-btn">Share Profile</button>
-
-            <!-- Botón de Logout -->
-            <a href="{{ url_for('logout') }}" class="button-logout">Log Out</a>
         </div>
 
         <div class="reviews-section">
@@ -80,3 +76,9 @@
         </div>
     </div>
 {% endblock %}
+
+{% block scripts %} 
+<script src="{{ url_for('static', filename='JS/shareprofile.js') }}"></script> 
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
+
+{% endblock %}    

@@ -23,9 +23,7 @@
       <nav class="navbar">
         <div class="navbar__container">
           <!-- Logo y enlace a la página principal / Logo and link to the homepage -->
-          <a href="{{ url_for('home') }}" id="navbar__logo"
-            ><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a
-          >
+          <a href="{{ url_for('home') }}" id="navbar__logo"><i class="fa-solid fa-bolt"></i> Quickr</a>
           <!-- Botón para el menú móvil / Button for mobile menu -->
           <div class="navbar__toggle" id="mobile-menu">
             <span class="bar"></span>
@@ -33,7 +31,7 @@
             <span class="bar"></span>
           </div>
           <!-- Lista de enlaces de navegación / Navigation links list -->
-          <ul class="navbar__menu">
+          <ul class="navbar__menu" id="navbar__menu">
             <li class="navbar__item">
               <!-- Enlace a la página principal / Link to the homepage -->
               <a href="{{ url_for('home') }}" class="navbar__links">Home</a>
@@ -53,6 +51,10 @@
             <li class="navbar__item">
               <!-- Enlace para iniciar sesión / Link to login -->
               <a href="{{ url_for('login') }}" class="navbar__links">Login</a>
+            </li>
+            <li class="navbar__item">              
+              <!-- Botón de Logout -->
+              <a href="{{ url_for('logout') }}" class="button">Log Out</a>
             </li>
           </ul>
         </div>
@@ -133,6 +135,7 @@
     {% block scripts %}
     <!-- Incluye un script de JavaScript / Includes a JavaScript script -->
     <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
     {% endblock %}
   </body>
 </html>

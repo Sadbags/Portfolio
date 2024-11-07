@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block content %}
-<main class="main-container">
     <div class="login-container">
         <div class="login-card">
             <h2>Login</h2>
@@ -21,7 +20,7 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" id="password" name="password" required class="input-field">
                 </div>
-                <div class="checkbox-container"> <!-- Remember me checkbox -->
+                <div class="checkbox-container"> <!-- Remember me checkbox-->
                     <p>Remember me</p>
                     <div class="checkbox-wrapper-12">
                         <div class="cbx">
@@ -53,7 +52,8 @@
             </form>
         </div>
     </div>
- </main>
 {% endblock %}
 
-{% block scripts %} <script src="{{ url_for('static', filename='JS/login.js') }}"></script> {% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='JS/login.js') }}"></script> 
+{% endblock %}

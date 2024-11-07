@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+
 {% block title %} Home - Quickr {% endblock %}
+
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/home.css') }}" /> {% endblock %}
 
@@ -36,4 +38,8 @@
 			</div>
 		</div>
 </main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}

@@ -9,7 +9,7 @@
 {% block content %}
 <div class="dashboard-container">
     <!-- Sidebar de navegación -->
-	<nav class="sidebar">
+	<!-- <nav class="sidebar">
 		<div class="sidebar-header">
 			<h2>Quickr</h2>
 		</div>
@@ -17,11 +17,11 @@
 			<li><a href="#profile" class="active">Profile</a></li>
 			<li><a href="#services">My Services</a></li>
 			<li><a href="#create-service">Create Service</a></li>
-			<li><a href="#calendar">Calendar</a></li> <!-- Añadido enlace al calendario -->
+			<li><a href="#calendar">Calendar</a></li> 
 			<li><a href="#settings">Settings</a></li>
 			<li><a href="{{ url_for('logout') }}">Logout</a></li>
 		</ul>
-	</nav>
+	</nav> -->
 
     <!-- Contenedor principal -->
     <div class="main-content">
@@ -55,7 +55,7 @@
 			<ul class="service-list">
 				{% for service in current_user.services %}
 				<li>
-					<p><strong>Name:</strong> {{ service.name }}</p
+					<p><strong>Name:</strong> {{ service.name }}</p>
 					<p><strong>Description:</strong> {{ service.description }}</p>
 					<p><strong>Price:</strong> ${{ service.aprox_price }}</p>
 					<p><strong>Fee:</strong> {{ service.fee }}%</p>
