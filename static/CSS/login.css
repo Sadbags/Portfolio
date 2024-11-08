@@ -1,0 +1,69 @@
+.login-container { /* Inner container */
+    max-width: 30rem;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */}
+
+.login-card { /* Card */
+    max-width: 500px; /* Ancho máximo de 500 píxeles / Maximum width of 500 pixels */
+    border: 1px solid #5d18dc; /* Borde de 1 píxel sólido con color primario / 1 pixel solid border with primary color */
+    /*background-color: white;*/
+    padding: 4rem;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 1px 1000px #5d18dc;
+}
+
+.login-card h2 { /* Card title */
+    font-size: 2.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1rem; /* mb-4 */
+    color: #ffffff; /* text-color-primary */
+}
+
+.checkbox-container p { /* Checkbox label */
+    font-size: 1rem; /* text-sm */
+    color: #ffffff; /* text-color-primary */
+   
+}
+
+/* Form labels */
+.form-label {
+    display: block;
+    font-size: 1rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    margin-bottom: 0.5rem; /* mb-2 */
+    margin-top: 2rem;
+    color: #ffffff; /* text-color-primary */
+}
+
+/* Input fields */
+.input-field {
+    width: 100%; /* w-full */
+    padding: 0.5rem; /* p-2 */
+    border: .20rem solid #5d18dc; 
+    border-radius: .50rem; /* rounded */
+}
+
+/* Links create account & forgot*/
+    .link {
+        margin-top: 2rem;
+        color: #5d18dc; /* text-color-primary */
+        text-decoration: none;
+    }
+
+    .link:hover {
+        text-decoration: underline;
+    }
+
+/* Flex utilities */
+.flex {
+    display: flex;
+    align-items: center; /* Alinea los elementos verticalmente en el centro / Aligns items vertically in the center */
+}
+
+.flex-space-between {
+    justify-content: space-between;
+    margin-top: 1.5rem; /* mt-6 */
+}

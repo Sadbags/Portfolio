@@ -1,4 +1,4 @@
-from flask import Flask, flash, render_template, request, redirect, url_for, jsonify
+from flask import Flask, flash, render_template, request, redirect, url_for, jsonify, abort
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_current_user, get_jwt_identity, verify_jwt_in_request, create_refresh_token
 from werkzeug.security import generate_password_hash
 from flask_cors import CORS
@@ -50,8 +50,6 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 class Config(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite://///Users/alexguadalupe/Documents/GitHub/Portfolio/instance/Quickr.db'   #sqlite:////Users/bags/Portfolio/instance/Quickr.db'
     JWT_SECRET_KEY = 'Quickr-app'
-    JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=15)  # Access token expiration time
-    JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
 
 
 class DevelopmentConfig(Config):
