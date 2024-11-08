@@ -20,20 +20,6 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" id="password" name="password" required class="input-field">
                 </div>
-<<<<<<< HEAD
-                <div class="checkbox-container">
-                    <!-- Checkbox con etiqueta asociada / Checkbox with associated label -->
-                    <input type="checkbox" id="rememberme">
-                    <label for="rememberme">Remember me</label>
-
-                    <!-- Checkbox adicional con estilo personalizado / Additional checkbox with custom styling -->
-                    <label class="checkbox-container">
-                        <input checked="checked" type="checkbox" />
-                        <div class="checkmark"></div>
-                    </label>
-                </div>
-                <button type="submit" class="submit-button">Log In</button>
-=======
                 <div class="checkbox-container"> <!-- Remember me checkbox-->
                     <p>Remember me</p>
                     <div class="checkbox-wrapper-12">
@@ -58,7 +44,6 @@
                 </div>
 
                 <a href="{{ url_for('get_services') }}" class="button">Log in</a> <!-- pasa a dashboard.html -->
->>>>>>> front-end
 
                 <div class="flex flex-space-between">
                     <a href="{{ url_for('show_register') }}" class="link">Create Account</a>
@@ -71,4 +56,5 @@
 
 {% block scripts %}
 <script src="{{ url_for('static', filename='JS/login.js') }}"></script> 
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}

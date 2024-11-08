@@ -106,49 +106,7 @@
     height: 100vh; /* Establece la altura del contenedor al 100% de la altura de la ventana / Sets the container height to 100% of the viewport height */
 }
 
-.About h1 { /* Estilo del encabezado h1 dentro de la sección About / Style for the h1 header within the About section */
-    background-size: 100%; /* Ajusta el tamaño del fondo al 100% del contenedor / Sets the background size to 100% of the container */
-    margin-bottom: 5rem; /* Añade un margen inferior de 5 rem / Adds a bottom margin of 5 rem */
-    /*font-size: 2.5rem; /* Establece el tamaño de la fuente a 2.5 rem / Sets the font size to 2.5 rem */
-    -webkit-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores WebKit / Uses the background as text fill in WebKit browsers */
-    -moz-background-clip: text; /* Utiliza el fondo como relleno del texto en navegadores Mozilla / Uses the background as text fill in Mozilla browsers */
-    -webkit-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores WebKit / Makes the text color transparent in WebKit browsers */
-    -moz-text-fill-color: transparent; /* Hace que el color del texto sea transparente en navegadores Mozilla / Makes the text color transparent in Mozilla browsers */
-}
 
-.About__container { /* Contenedor de la sección About / About section container */
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    justify-content: center; /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
-    flex-wrap: wrap; /* Permite que los elementos hijos se envuelvan en múltiples líneas / Allows child elements to wrap into multiple lines */
-    background-color: #000000;
-}
-
-.About__card { /* Tarjeta de la sección About / About section card */
-    margin: 1.3rem; /* Añade un margen de 1 rem alrededor de la tarjeta / Adds a margin of 1 rem around the card */
-    height: 525px; /* Establece la altura de la tarjeta a 525 píxeles / Sets the card height to 525 pixels */
-    width: 400px; /* Establece el ancho de la tarjeta a 400 píxeles / Sets the card width to 400 pixels */
-    border-radius: 4px; /* Redondea las esquinas de la tarjeta / Rounds the card corners */
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%), url('images/LB.png'); /* Aplica un degradado de color y una imagen de fondo a la tarjeta / Applies a color gradient and a background image to the card */
-    background-size: cover; /* Ajusta el tamaño del fondo para cubrir todo el contenedor / Sets the background size to cover the entire container */
-    position: relative; /* Posiciona la tarjeta de manera relativa / Positions the card relatively */
-    color: #fff; /* Establece el color del texto a blanco / Sets the text color to white */
-    padding: 20px; /* Añade padding dentro de la tarjeta */
-    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-    flex-direction: row; /* Establece la dirección del eje principal a fila / Sets the main axis direction to row */
-    align-items: flex-end; /* Alinea los elementos hijos en el centro / Aligns child elements in the center */
-}
-
-/* Tarjeta de la sección About (segunda tarjeta) / About section card (second card) */
-.About__card:nth-child(2) {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%), url('images/cocina2.png');  /* Aplica un degradado de color y una imagen de fondo diferente a la segunda tarjeta / Applies a different color gradient and background image to the second card */
-}
-
-/* Encabezado h2 dentro de la sección About / h2 header within the About section */
-.About h2 {
-    position: absolute; /* Posiciona el encabezado de manera absoluta / Positions the header absolutely */
-    top: 350px; /* Establece la posición superior del encabezado a 350 píxeles / Sets the top position of the header to 350 pixels */
-    left: 30px; /* Establece la posición izquierda del encabezado a 30 píxeles / Sets the left position of the header to 30 pixels */
-}
 
 /* Estilos responsivos para pantallas con un ancho máximo de 960 píxeles / Responsive styles for screens with a maximum width of 960 pixels */
 @media screen and (max-width: 960px) {

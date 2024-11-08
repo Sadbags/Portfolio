@@ -22,7 +22,6 @@ body {
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    font-size: 1.5rem; 
     position: sticky; 
     top: 0; 
     z-index: 999; 
@@ -74,12 +73,10 @@ body {
 /* Estilos para el menú de navegación / Styles for the navigation menu */
 .navbar__menu {
     display: none;
-    flex-direction: column;
     width: 100%;
     position: absolute;
     top: 80px;
     left: 0;
-    background-color: #333;
     z-index: 1;
   }
   
@@ -88,7 +85,8 @@ body {
   }
 
   .navbar__item {
-    width: 100%;
+    flex: 1;
+    text-align: center;
   }
   
   .navbar__links {
@@ -107,21 +105,6 @@ body {
     height: 100%; 
     text-decoration: none;
 }
-
-/*.navbar__btn { /* Botón de la barra de navegación / Navbar button 
-    display: flex; 
-    align-items: center; 
-    justify-content: flex-end; 
-    padding: 1rem; 
-    width: 20%; 
-}*/
-
-/*.navbar__links:hover { /* Estilo del enlace de la barra de navegación al pasar el ratón / Navbar link hover style 
-    color: #5d18dc; 
-    transition: all 0.3s ease; 
-}*/
-
-
 
 /* MAIN SECTION CSS */
 .main { /*HERO SECTION*/ /* Seccion main / main section */
@@ -173,13 +156,14 @@ body {
 /* FIN MAIN SECTION CSS */
 
 /*FOOTER CSS*/
-    .footer__container { /* Estilos del pie de página / Footer css */
-        padding: 1rem 0; /* Añade padding vertical de 1 rem / Adds vertical padding of 1 rem */
-        display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
-        flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
-        align-items: center; /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
-        justify-content: center; /* Centra los elementos hijos verticalmente / Centers child elements vertically */
-    }
+.footer__container { /* Estilos del pie de página / Footer css */
+    padding: 1rem 0; /* Añade padding vertical de 1 rem / Adds vertical padding of 1 rem */
+    display: flex; /* Utiliza Flexbox para el diseño del contenedor / Uses Flexbox for container layout */
+    flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
+    align-items: center; /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
+    justify-content: center; /* Centra los elementos hijos verticalmente / Centers child elements vertically */
+    position: bottom;
+  }
 
     #footer__logo {
         color: #fff; /* Establece el color / Sets the text color */
@@ -499,3 +483,12 @@ body {
         transition: 100ms;
     }
 /* FIN - Botones css */
+
+/* CARDS CSS */
+.card {
+  background-color: #ffffff; /* Fondo blanco para las tarjetas */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 1px 50px #5d18dc;
+  width: 300px; /* Ancho fijo para las tarjetas */
+  overflow: hidden; /* Oculta cualquier contenido desbordante */
+}

@@ -8,23 +8,6 @@
 
 {% block content %}
 <div class="dashboard-container">
-<<<<<<< HEAD
-    <!-- Sidebar -->
-    <div id="sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <h2>Quickr</h2>
-            <button class="close-btn" onclick="toggleSidebar()">&#10005;</button>
-        </div>
-        <ul class="sidebar-nav">
-            <li><a href="#profile" class="nav-link">Profile</a></li>
-            <li><a href="#services" class="nav-link">My Services</a></li>
-            <li><a href="#create-service" class="nav-link">Create Service</a></li>
-            <li><a href="#calendar" class="nav-link">Calendar</a></li>
-            <li><a href="#settings" class="nav-link">Settings</a></li>
-            <li><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
-        </ul>
-    </div>
-=======
     <!-- Sidebar de navegación -->
 	<!-- <nav class="sidebar">
 		<div class="sidebar-header">
@@ -39,13 +22,8 @@
 			<li><a href="{{ url_for('logout') }}">Logout</a></li>
 		</ul>
 	</nav> -->
->>>>>>> front-end
 
-    <!-- Botón para abrir el sidebar -->
-    <button class="open-btn" onclick="toggleSidebar()">&#9776;</button>
-
-
-    <!-- Contenido principal -->
+    <!-- Contenedor principal -->
     <div class="main-content">
         <header>
             <h1>Welcome to your Dashboard, {{ current_user.first_name }}</h1>
@@ -53,42 +31,41 @@
 
         <!-- Sección de Perfil -->
         <section id="profile" class="section active">
-            <h2>My Profile</h2>
-            <p><strong>Name:</strong> {{ current_user.first_name }} {{ current_user.last_name }}</p>
-            <p><strong>Email:</strong> {{ current_user.email }}</p>
+			<h2>My profile</h2>
+			<p><strong>Name:</strong> {{ current_user.first_name }} {{ current_user.last_name }}</p>
+			<p><strong>Email:</strong> {{ current_user.email }}</p>
 
-            {% if addresses %}
-                <h4>Addresses</h4>
-                {% for address in addresses %}
-                    <p><strong>Phone:</strong> {{ address.phone }}</p>
-                    <p><strong>Address:</strong> {{ address.street }}, {{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
-                    <hr>
-                {% endfor %}
-            {% else %}
-                <p>No address available</p>
-            {% endif %}
+			{% if addresses %}
+				<h4>Addresses</h4>
+				{% for address in addresses %}
+					<p><strong>Phone:</strong> {{ address.phone }}</p>
+					<p><strong>Address:</strong> {{ address.street }}, {{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
+					<hr>
+				{% endfor %}
+			{% else %}
+				<p>No address available</p>
+			{% endif %}
 
-            <a href="{{ url_for('profile') }}" class="btn btn-primary">View Profile</a>
-        </section>
-
+			<a href="{{ url_for('profile') }}" class="btn btn-primary">View Profile</a>
+		</section>
 
         <!-- Sección de Mis Servicios -->
         <section id="services" class="section">
 			<h2>My Services</h2>
-            <ul class="service-list">
+			<ul class="service-list">
 				{% for service in current_user.services %}
 				<li>
 					<p><strong>Name:</strong> {{ service.name }}</p>
 					<p><strong>Description:</strong> {{ service.description }}</p>
 					<p><strong>Price:</strong> ${{ service.aprox_price }}</p>
 					<p><strong>Fee:</strong> {{ service.fee }}%</p>
-					<a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Edit</a>
+					<a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Editar</a>
 				</li>
-                {% else %}
+				{% else %}
 				<p>No service has been created</p>
-                {% endfor %}
-            </ul>
-        </section>
+				{% endfor %}
+			</ul>
+		</section>
 
 		<!-- Sección de Mis Citas (Appointments) -->
 		<section id="appointments" class="section">
@@ -108,57 +85,36 @@
 			</ul>
 		</section>
 
-        <!-- Sección de Crear Servicio -->
-        <section id="create-service" class="section">
-            <form id="create-service-form">
-                <h2>Create a New Service</h2>
-                <div class="form-group">
-                    <label for="service_name">Service Name</label>
-                    <input type="text" id="service_name" name="name" required class="form-control" placeholder="Enter service name">
-                </div>
-                <div class="form-group">
-                    <label for="service_description">Description</label>
-                    <textarea id="service_description" name="description" required class="form-control" placeholder="Enter service description"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="service_price">Approximate Price</label>
-                    <input type="number" id="service_price" name="aprox_price" required class="form-control" placeholder="Enter approximate price">
-                </div>
-                <div class="form-group">
-                    <label for="service_category">Category</label>
-                    <select id="service_category" name="category" required class="form-control">
-                        <option value="" disabled selected>Select a category</option>
-                        <option value="Plumbing">Plumbing</option>
-                        <option value="Electrical">Electrical</option>
-                        <option value="Mechanic">Mechanic</option>
-                        <option value="Cleaning">Cleaning Services</option>
-                        <option value="Landscaping">Landscaping</option>
-                        <option value="Painting">Painting</option>
-                        <option value="Carpentry">Carpentry</option>
-                        <option value="Furniture">Movers</option>
-						<option value="Gardening">Gardening</option>
-						<option value="Babysitter">Babysitter</option>
-						<option value="Tutor">Tutor</option>
-						<option value="Software Engeneer">Software Engeneer</option>
-						<option value="Pest Control">Pest Control</option>
-						<option value="Photography">Photography</option>
-						<option value="Personal Chef">Personal Chef</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="service_fee">Fee</label>
-                    <input type="number" id="service_fee" name="fee" required class="form-control" placeholder="Enter fee">
-                </div>
-                <div class="form-group">
-                    <label for="service_picture">Picture</label>
-                    <input type="file" id="service_picture" name="picture" accept="image/*" required class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Create Service</button>
-            </form>
-        </section>
+		    <!-- Sección para Crear Servicio -->
+
+				<form id="create-service-form">
+					<h2>Create a new service</h2>
+				<div class="form-group">
+					<label for="service_name">Service Name</label>
+					<input type="text" id="service_name" name="name" required class="form-control" placeholder="Enter service name">
+				</div>
+				<div class="form-group">
+					<label for="service_description">Description</label>
+					<textarea id="service_description" name="description" required class="form-control" placeholder="Enter service description"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="service_price">Approximate Price</label>
+					<input type="number" id="service_price" name="aprox_price" required class="form-control" placeholder="Enter approximate price">
+				</div>
+				<div class="form-group">
+					<label for="service_category">Category</label>
+					<input type="text" id="service_category" name="category" required class="form-control" placeholder="Enter category">
+				</div>
+				<div class="form-group">
+					<label for="service_fee">Fee</label>
+					<input type="number" id="service_fee" name="fee" required class="form-control" placeholder="Enter fee">
+				</div>
+				<button type="submit" class="btn btn-primary">Create Service</button>
+			</form>
+
 
         <!-- Sección de Calendario -->
-		<section id="calendar" class="section">
+        <section id="calendar" class="section">
             <h2>Calendar</h2>
             <div class="calendar__container">
                 <div class="calendar">
@@ -191,14 +147,19 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sección de Ajustes -->
+        <section id="settings" class="section">
+            <h2>Settings</h2>
+            <p>Here you can costumize your account.</p>
+        </section>
     </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
-    <script src="{{ url_for('static', filename='JS/calendar.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/dashboard.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/create_service.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/address.js') }}"></script>
-	<script src="{{ url_for('static', filename='JS/authentication.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/calendar.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/create_service.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/address.js') }}"></script>
 {% endblock %}
