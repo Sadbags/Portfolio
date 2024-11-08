@@ -91,8 +91,11 @@
         <button class="submit-review" onclick="submitReview('{{ service.id }}')">Submit Review</button>
     </div>
 </div>
+{% endblock %}
 
+{% block scripts %}
 <script src="{{ url_for('static', filename='JS/reviews.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/login.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/appointments.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}

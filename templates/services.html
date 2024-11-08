@@ -21,7 +21,7 @@
                 <p><strong>Category:</strong> {{ service.category }}</p>
                 <p><strong>Approx. Price:</strong> {{ service.aprox_price }}</p>
                 <p><strong>Fee:</strong> {{ service.fee }}%</p>
-                <button class="btn btn-primary" onclick="window.location.href='{{ url_for('review_page', service_id=service.id) }}'">View Service</button>
+                <button class="button" onclick="window.location.href='{{ url_for('review_page', service_id=service.id) }}'">View Service</button>
             </div>
         </div>
     {% endfor %}
@@ -30,18 +30,18 @@
 <!-- Paginación -->
 <div class="pagination">
     {% if services.has_prev %}
-        <a href="{{ url_for('get_services', page=services.prev_num, per_page=services.per_page) }}">Anterior</a>
+        <a href="{{ url_for('get_services', page=services.prev_num, per_page=services.per_page) }}" class="button">Anterior</a>
     {% endif %}
 
     <span>Página {{ services.page }} de {{ services.pages }}</span>
 
     {% if services.has_next %}
-        <a href="{{ url_for('get_services', page=services.next_num, per_page=services.per_page) }}">Siguiente</a>
+        <a href="{{ url_for('get_services', page=services.next_num, per_page=services.per_page) }}" class="button">Siguiente</a>
     {% endif %}
 </div>
 {% endblock %}
 
 {% block script %}
-    <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
     <script src="{{ url_for('static', filename='JS/reviews.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}

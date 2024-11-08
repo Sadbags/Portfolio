@@ -7,18 +7,14 @@
 }
 
 .card {
-    background-color: #fff; /* Fondo blanco para las tarjetas */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    width: 300px; /* Ancho fijo para las tarjetas */
-    overflow: hidden; /* Oculta cualquier contenido desbordante */
-    margin-bottom: 20px; /* Espacio entre tarjetas */
+    margin-bottom: 30px; /* Espacio entre tarjetas */
+    margin-right: 15px; /* Espacio entre tarjetas */
 }
 
 .image-container {
     padding: 10px; /* Espacio alrededor de la imagen */
     margin-bottom: 15px; /* Espacio adicional en la parte inferior */
-    background-color: #f0f0f0; /* Color de fondo opcional */
+    background-color: #ffffff; /* Color de fondo opcional */
     border-radius: 8px; /* Bordes redondeados opcionales */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra */
 }
@@ -35,38 +31,8 @@
 }
 
 .card-content h2 {
-    margin: 0 0 10px; /* Espacio entre el título y el siguiente elemento */
+    margin: 0 0 10px; /* Espacio inferior */
 }
-
-.card-content p {
-    margin: 5px 0; /* Espacio entre párrafos */
-}
-
-.cards-container button {
-    background-color: #007bff; /* Color de fondo del botón */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    padding: 10px 20px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al estilo de mano */
-    font-size: 16px; /* Tamaño de fuente */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
-}
-
-.cards-container button:hover {
-    background-color: #007bff; /* Color al pasar el cursor */
-    transform: translateY(-3px); /* Efecto de elevación */
-}
-
-.cards-container button:active {
-    transform: translateY(1px); /* Efecto al hacer clic */
-}
-
-.cards-container button:focus {
-    outline: none; /* Sin borde de enfoque */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra al enfoque */
-}
-
 
 
 
@@ -89,14 +55,13 @@
     padding: 10px 15px; /* Espaciado interno para los enlaces */
     margin: 0 5px; /* Margen lateral entre enlaces */
     text-decoration: none; /* Sin subrayado en los enlaces */
-    background-color: #007bff; /* Color de fondo */
-    color: white; /* Color del texto */
-    border-radius: 5px; /* Bordes redondeados */
+    background-color: #ffffff; /* Color de fondo */
+    color: #5d18dc; /* Color del texto */
     transition: background-color 0.3s ease; /* Transición suave */
 }
 
 .pagination a:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el cursor */
+    background-color: #5d18dc; /* Color de fondo al pasar el cursor */
 }
 
 .pagination span {
@@ -114,4 +79,3 @@
         margin: 5px 0; /* Ajusta el margen para enlaces en columna */
     }
 }
-

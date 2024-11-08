@@ -1,143 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-  <!-- Define el tipo de documento como HTML5 / Defines the document type as HTML5 -->
-  <head>
-    <meta charset="UTF-8" /> <!-- Define la codificación de caracteres como UTF-8 / Defines the character encoding as UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Configura la ventana gráfica para que sea responsiva / Sets the viewport to be responsive -->
-    <title>{% block title %}Quickr{% endblock %}</title> <!-- Define el título de la página, que puede ser sobrescrito por bloques específicos de cada página / Defines the page title, which can be overridden by specific page blocks -->
-
-    <!-- Incluye un favicon para la página / Includes a favicon for the page -->
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='LB.png') }}"
-      type="image/png"
-    />
-
-    <!-- Incluye una hoja de estilos común / Includes a common stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}"/>
-
-    {% block stylesheets %}
-        <!-- Bloque para incluir hojas de estilos específicas de cada página / Block to include specific stylesheets for each page -->
-    {% endblock %}
-  </head>
-
-  <body> <!-- Cuerpo de la página / Page body -->
-    <header> <!-- Contenido de encabezado común / Common header content -->
-      <nav class="navbar">
-        <div class="navbar__container">
-          <!-- Logo y enlace a la página principal / Logo and link to the homepage -->
-          <a href="{{ url_for('home') }}" id="navbar__logo"
-            ><i class=""><i class="fa-solid fa-bolt"></i></i> Quickr</a
-          >
-          <!-- Botón para el menú móvil / Button for mobile menu -->
-          <div class="navbar__toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </div>
-          <!-- Lista de enlaces de navegación / Navigation links list -->
-          <ul class="navbar__menu">
-            <li class="navbar__item">
-              <!-- Enlace a la página principal / Link to the homepage -->
-              <a href="{{ url_for('home') }}" class="navbar__links">Home</a>
-            </li>
-            <li class="navbar__item">
-              <!-- Enlace al panel de control / Link to the dashboard -->
-              <a href="{{ url_for('dashboard') }}" class="navbar__links">Dashboard</a>
-            </li>
-            <li class="navbar__item">
-              <!-- Enlace a los servicios / Link to the services -->
-              <a href="{{ url_for('get_services') }}" class="navbar__links">Services</a>
-            </li>
-            <li class="navbar__btn">
-              <!-- Enlace al perfil / Link to the profile -->
-              <a href="{{ url_for('profile') }}" class="navbar__links">Profile</a>
-            </li>
-            <li class="navbar__btn">
-              <!-- Enlace para iniciar sesión / Link to login -->
-              <a href="{{ url_for('login') }}" class="navbar__links">Login</a>
-            </li>
-          </ul>
+  <title>{% block title %}Quickr{% endblock %}</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='LB.png') }}" type="image/png"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}"/>
+  {% block stylesheets %}{% endblock %}
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="{{ url_for('home') }}" id="navbar__logo"><i class="fa-solid fa-bolt"></i> Quickr</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Bloque para contenido específico de cada página / Block for specific content for each page -->
-      {% block content %}
-      {% endblock %}
-    </main>
-
-    <footer>
-      <!-- Contenido de pie de página común / Common footer content -->
-      <div class="footer__container">
-        <div class="footer__links">
-          <div class="footer__link--wrapper">
-            <div class="footer__link--items"></div>
-            <div class="footer__link--items">
-              <h2>Contact Us</h2>
-              <!-- Enlaces a soporte al cliente y FAQ / Links to customer support and FAQ -->
-              <a href="{{ url_for('support') }}">Customer Support</a>
-              <a href="{{ url_for('FAQ') }}">FAQ</a>
-            </div>
-            <div class="footer__link--items">
-              <h2>Social Media</h2>
-              <!-- Enlaces a redes sociales / Links to social media -->
-              <a href="https://www.facebook.com" target="_blank">Facebook</a>
-              <a href="https://www.instagram.com" target="_blank">Instagram</a>
-              <a href="https://www.twitter.com" target="_blank">Twitter</a>
-            </div>
+        <ul class="navbar__menu" id="navbar__menu">
+          <li class="navbar__item"><a href="{{ url_for('home') }}" class="button">Home</a></li>
+          <li class="navbar__item"><a href="{{ url_for('dashboard') }}" class="button">Dashboard</a></li>
+          <li class="navbar__item"><a href="{{ url_for('get_services') }}" class="button">Services</a></li>
+          <li class="navbar__item"><a href="{{ url_for('profile') }}" class="button">Profile</a></li>
+          <li class="navbar__item"><a href="{{ url_for('login') }}" class="button">Login</a></li>
+          <li class="navbar__item"><a href="{{ url_for('logout') }}" class="button">Log Out</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>
+    <div class="footer__container">
+      <div class="footer__links">
+        <div class="footer__link--wrapper">
+          <div class="footer__link--items">
+            <h2>Contact Us</h2>
+            <a href="{{ url_for('support') }}">Customer Support</a>
+            <a href="{{ url_for('FAQ') }}">FAQ</a>
           </div>
-        </div>
-        <div class="social__media">
-          <div class="social__media--wrap">
-            <div class="footer__logo">
-              <!-- Logo y enlace a la página principal / Logo and link to the homepage -->
-              <a href="{{ url_for('home') }}" id="footer__logo"
-                ><i class="fa-solid fa-bolt"></i> Quickr</a
-              >
-            </div>
-            <!-- Derechos de autor / Copyright -->
-            <p class="website__rights">©️ Quickr 2024. All Rights reserved.</p>
-            <p>
-              <!-- Enlaces a términos y políticas de privacidad / Links to terms and privacy policy -->
-              <a href="{{ url_for('terms') }}">Terms</a> |
-              <a href="{{ url_for('privacypolicy') }}">Privacy Policy</a>
-            </p>
-            <div class="social__icons">
-              <!-- Iconos y enlaces a redes sociales / Icons and links to social media -->
-              <a
-                href="https://www.facebook.com"
-                class="social__icon--link"
-                target="_blank"
-              >
-                <i class="fab fa-facebook"></i>
-              </a>
-              <a
-                href="https://www.instagram.com"
-                class="social__icon--link"
-                target="_blank"
-              >
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a
-                href="https://www.twitter.com"
-                class="social__icon--link"
-                target="_blank"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-            </div>
+          <div class="footer__link--items">
+            <h2>Social Media</h2>
+            <a href="https://www.facebook.com" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com" target="_blank">Instagram</a>
+            <a href="https://www.twitter.com" target="_blank">Twitter</a>
           </div>
         </div>
       </div>
-    </footer>
-
-    <!-- Bloque para scripts específicos de cada página / Block for specific scripts for each page -->
-    {% block scripts %}
-    <!-- Incluye un script de JavaScript / Includes a JavaScript script -->
-    <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
-	<script src="{{ url_for('static', filename='JS/authentication.js') }}"></script> <!-- supuestamente hace refresh al token -->
-    {% endblock %}
-  </body>
+      <div class="social__media">
+        <div class="social__media--wrap">
+          <div class="footer__logo">
+            <a href="{{ url_for('home') }}" id="footer__logo"><i class="fa-solid fa-bolt"></i> Quickr</a>
+          </div>
+          <p class="website__rights">©️ Quickr 2024. All Rights reserved.</p>
+          <p>
+            <a href="{{ url_for('terms') }}">Terms</a> |
+            <a href="{{ url_for('privacypolicy') }}">Privacy Policy</a>
+          </p>
+          <div class="social__icons">
+            <a href="https://www.facebook.com" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com" class="social__icon--link" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.twitter.com" class="social__icon--link" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer> 
+  {% block scripts %}
+  <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
+  <script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
+  {% endblock %}
+</body>
 </html>
