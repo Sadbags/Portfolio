@@ -24,3 +24,12 @@ fetch('/dashboard', {
 .catch(error => {
     console.error('There was a problem with your fetch operation:', error);
 });
+
+
+//sidebar
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+    sidebar.classList.toggle('open');
+    mainContent.classList.toggle('open');
+}
