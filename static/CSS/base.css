@@ -487,8 +487,9 @@ body {
 /* CARDS CSS */
 .card {
   background-color: #ffffff; /* Fondo blanco para las tarjetas */
+  border: #5d18dc 3px solid; /* Borde de color púrpura */
   border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 1px 50px #5d18dc;
+  box-shadow: 0 1px 20px #5d18dc;
   width: 300px; /* Ancho fijo para las tarjetas */
   overflow: hidden; /* Oculta cualquier contenido desbordante */
 }

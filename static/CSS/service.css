@@ -16,7 +16,7 @@
     margin-bottom: 15px; /* Espacio adicional en la parte inferior */
     background-color: #ffffff; /* Color de fondo opcional */
     border-radius: 8px; /* Bordes redondeados opcionales */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    box-shadow: 0 2px 8px #0000007b; /* Sombra */
 }
 
 .image-container img {

@@ -14,7 +14,7 @@
 		<!-- Nombre del usuario dinámico -->
         <h1 class="profile-name">{{ current_user.first_name }} {{ current_user.last_name }}</h1>
         <a href="{{ url_for('edit_profile') }}" class="button">Edit Profile</a>
-        <a href="{{ url_for('logout') }}" class="button-logout">Log Out</a>
+        <a href="{{ url_for('logout') }}" class="button">Log Out</a>
     </div>
 
     <div class="reviews-section">

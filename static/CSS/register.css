@@ -1,0 +1,64 @@
+
+/* Contenedor del formulario */
+.register-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Título del formulario */
+.register-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Mensaje de error */
+.error-message {
+    color: red;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Estilos de los campos del formulario */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Enlaces */
+.link {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #b4c2d0;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
