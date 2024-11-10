@@ -18,7 +18,8 @@
     </div>
 
     <div class="reviews-section">
-        <h2>Reviews</h2>
+    <div class="card">
+        <div class="card-content"> <h2>Reviews</h2>
         {% if reviews %}
             {% for review in reviews %}
                 <div class="review">
@@ -30,15 +31,14 @@
             {% endfor %}
         {% else %}
             <p>No reviews yet. Be the first to leave a review!</p>
-        {% endif %}
+            {% endif %}
     </div>
+</div>
 
     <!-- Sección de contacto dinámica -->
     <div class="contact-section">
         <h2>Contact</h2>
         <p><strong>Email:</strong> {{ current_user.email }}</p>
-
-
         {% if addresses %}
             {% for address in addresses %}
                 <p><strong>Phone:</strong> {{ address.phone or 'No phone available' }}</p>
@@ -75,4 +75,5 @@
 <script src="{{ url_for('static', filename='JS/profile.js') }}"></script> <!-- Script para la sección de contacto -->
 <script src="{{ url_for('static', filename='JS/profile_picture.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/authentication.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}

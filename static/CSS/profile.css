@@ -5,6 +5,7 @@
     margin-top: 3rem; /* Espaciado superior */
     padding: 2.5rem; /* Espaciado interno */   
     border-radius: 2rem; /* Bordes redondeados */
+    border: 2px solid #5d18dc; /* Borde verde alrededor de la imagen */
     box-shadow: 0 1px 1000px #5d18dc;
 }
 
@@ -12,7 +13,6 @@
 .profile-header {
     display: flex; /* Usar flexbox para el layout */
     margin-bottom: 20px; /* Espaciado inferior */
-    /*background-color: #ffffff; /* Fondo claro */
     flex-direction: column;
     align-items: baseline;
 }
@@ -22,13 +22,13 @@
     height: 100px; /* Altura de la imagen del perfil */
     border-radius: 50%; /* Redondear la imagen */
     margin-right: 20px; /* Espaciado a la derecha */
-    border: 3px solid #ffffff; /* Borde verde alrededor de la imagen */
+    border: 3px solid #5d18dc; /* Borde verde alrededor de la imagen */
 }
 
 .profile-name {
     font-size: 2.5rem; /* Tamaño de la fuente */
     color: #ffffff; /* Color del texto */
-    margin: 0; /* Sin margen */
+    margin: 1; /* Sin margen */
 }
 
 /* Estilo para las secciones del perfil */
@@ -41,13 +41,13 @@
     background-color: #fff; /* Fondo blanco */
     border-radius: 8px; /* Bordes redondeados */
     padding: 20px; /* Espaciado interno */
-    margin-bottom: 20px; /* Espaciado inferior */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 25px; /* Espaciado inferior */
+    border: 4px solid #5d18dc; /* Borde violeta alrededor de la imagen */
 }
 
 /* Títulos de sección */
 h2 {
-    color: #4CAF50; /* Color verde para los títulos */
+    color: #000; /* Color verde para los títulos */
     margin-top: 0; /* Sin margen superior */
 }
 
@@ -67,19 +67,20 @@ h2 {
     margin-bottom: 10px; /* Espaciado inferior */
 }
 
-/* Estilo para el contenedor de tarjetas de servicios */
+/* Estilo para el contenedor de tarjetas de servicios & reviews*/
 .cards-container {
     display: grid; /* Usar grid para la disposición de tarjetas */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Columna flexible */
     gap: 20px; /* Espaciado entre tarjetas */
 }
 
-/* Estilos para cada tarjeta de servicio */
+/* Estilos para cada tarjeta de servicio & reviews */
 .card {
+    margin-bottom: 20px; /* Espaciado inferior */
     background-color: #f1f1f1; /* Fondo de la tarjeta */
     border-radius: 8px; /* Bordes redondeados */
     overflow: hidden; /* Ocultar el desbordamiento */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 1px 10px #5d18dc;
 }
 
 .card img {
