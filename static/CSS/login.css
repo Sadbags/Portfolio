@@ -1,10 +1,14 @@
+.main-container { /* Outer container */
+    height: 70vh; /* h-screen */
+}
+
 .login-container { /* Inner container */
     max-width: 30rem;
     align-items: center;
     margin: 0 auto;
     padding: 2rem;
     border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */}
+}
 
 .login-card { /* Card */
     max-width: 500px; /* Ancho máximo de 500 píxeles / Maximum width of 500 pixels */

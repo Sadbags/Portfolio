@@ -52,6 +52,7 @@ class Config(object):
     JWT_SECRET_KEY = 'Quickr-app'
 
 
+
 class DevelopmentConfig(Config):
 	DEBUG = True
 

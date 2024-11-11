@@ -8,7 +8,7 @@
         animation: stroke 4s infinite alternate;
         stroke-width: 2;
         stroke: #5d18dc;
-        font-size: 150px;
+        font-size: 135px;
     }
     @keyframes stroke { /*linear gradient*/
         0%   {
@@ -23,104 +23,51 @@
         }
     }
 
-/*ESTILOS RESPONSIVOS PARA DIFERENTES TAMANOS DE PAGINA*/
-@media screen and (max-width: 768px) { /* Estilos responsivos para pantallas con un ancho máximo de 768 píxeles / Responsive styles for screens with a maximum width of 768 pixels */
-    .main__container {
-        /* Utiliza un diseño de cuadrícula para el contenedor / Uses a grid layout for the container */
-        display: grid;
+.main__container {
+    /* Utiliza un diseño de cuadrícula para el contenedor / Uses a grid layout for the container */
+    display: grid;
+    /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
+    align-items: center;
 
-        /* Define una sola columna en la cuadrícula / Defines a single column in the grid */
-        grid-template-columns: auto;
+    /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
+    justify-content: center;
 
-        /* Alinea los elementos hijos verticalmente en el centro / Aligns child elements vertically in the center */
-        align-items: center;
+    /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
+    width: 100%;
 
-        /* Centra los elementos hijos horizontalmente / Centers child elements horizontally */
-        justify-content: center;
+    /* Centra el contenedor horizontalmente / Centers the container horizontally */
+    margin: 0 auto;
 
-        /* Establece el ancho del contenedor al 100% del contenedor padre / Sets the container width to 100% of the parent container */
-        width: 100%;
-
-        /* Centra el contenedor horizontalmente / Centers the container horizontally */
-        margin: 0 auto;
-
-        /* Establece la altura del contenedor al 90% de la altura de la ventana / Sets the container height to 90% of the viewport height */
-        height: 90vh;
-    }
-
-    .main__content {
-        /* Centra el texto dentro del contenido principal / Centers the text within the main content */
-        text-align: center;
-
-        /* Añade un margen inferior de 4 rem / Adds a bottom margin of 4 rem */
-        margin-bottom: 4rem;
-    }
-
-    .main__content h1 {
-        /* Establece el tamaño de la fuente a 2.5 rem / Sets the font size to 2.5 rem */
-        font-size: 2.5rem;
-
-        /* Añade un margen superior de 2 rem / Adds a top margin of 2 rem */
-        margin-top: 2rem;
-    }
-
-    .main__content h2 {
-        /* Establece el tamaño de la fuente a 3 rem / Sets the font size to 3 rem */
-        font-size: 3rem;
-    }
-
-    .main__content p {
-        /* Añade un margen superior de 1 rem / Adds a top margin of 1 rem */
-        margin-top: 1rem;
-
-        /* Establece el tamaño de la fuente a 1.5 rem / Sets the font size to 1.5 rem */
-        font-size: 1.5rem;
-    }
+    /* Establece la altura del contenedor al 90% de la altura de la ventana / Sets the container height to 90% of the viewport height */
+    height: 70vh;
 }
 
-@media screen and (max-width: 480px) { /* Estilos responsivos para pantallas con un ancho máximo de 480 píxeles / Responsive styles for screens with a maximum width of 480 pixels */
-    .main__content h1 { 
-        font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-        margin-top: 3rem; /* Añade un margen superior de 3 rem / Adds a top margin of 3 rem */
-    }
+.main__content {
+    /* Centra el texto dentro del contenido principal / Centers the text within the main content */
+    text-align: left;
+    margin-top: 3rem;
 
-    .main__content h2 {
-        font-size: 2rem; /* Establece el tamaño de la fuente a 2 rem / Sets the font size to 2 rem */
-    }
-
-    .main__content p {
-        margin-top: 2rem; /* Añade un margen superior de 2 rem / Adds a top margin of 2 rem */
-        font-size: 1.5rem; /* Establece el tamaño de la fuente a 1.5 rem / Sets the font size to 1.5 rem */
-    }
-
-    .main__btn {
-        padding: 12px 36px; /* Añade padding de 12 píxeles vertical y 36 píxeles horizontal / Adds 12 pixels vertical and 36 pixels horizontal padding */
-        margin: 2.5rem; /* Añade un margen de 2.5 rem / Adds a margin of 2.5 rem */
-    }
+    /* Añade un margen inferior de 4 rem / Adds a bottom margin of 4 rem */
+    margin-bottom: 3rem;
 }
 
-.About { /* Sección About / About section */
-    flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
-    align-items: center; /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
-    height: 100vh; /* Establece la altura del contenedor al 100% de la altura de la ventana / Sets the container height to 100% of the viewport height */
+.main__content h1 {
+    /* Establece el tamaño de la fuente a 2.5 rem / Sets the font size to 2.5 rem */
+    font-size: 2.5rem;
+
+    /* Añade un margen superior de 2 rem / Adds a top margin of 2 rem */
+    margin-top: 2rem;
 }
 
+.main__content h2 {
+    /* Establece el tamaño de la fuente a 3 rem / Sets the font size to 3 rem */
+    font-size: 3rem;
+}
 
+.main__content p {
+    /* Añade un margen superior de 1 rem / Adds a top margin of 1 rem */
+    margin-top: 1rem;
 
-/* Estilos responsivos para pantallas con un ancho máximo de 960 píxeles / Responsive styles for screens with a maximum width of 960 pixels */
-@media screen and (max-width: 960px) {
-    .About {
-        /* Establece la altura del contenedor a 1600 píxeles / Sets the container height to 1600 pixels */
-        height: 1600px;
-    }
-
-    .About h1 {
-        /* Establece el tamaño de la fuente a 1.2 rem / Sets the font size to 1.2 rem */
-        font-size: 1.2rem;
-    }
-
-    .About__card {
-        /* Establece el ancho de la tarjeta a 400 píxeles / Sets the card width to 400 pixels */
-        width: 400px;
-    }
+    /* Establece el tamaño de la fuente a 1.5 rem / Sets the font size to 1.5 rem */
+    font-size: 1.5rem;
 }

@@ -1,19 +1,40 @@
 .dashboard-container { /* Dashboard container */
     display: flex;
+    border: 1px solid #5d18dc;
+    box-shadow: 0 1px 1000px #5d18dc;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;  
+    color: #fff;
 }
 
 .main-content { /* Main content styles */
-    padding: 20px;
-    flex-grow: 1; /* Permite que el contenido principal ocupe el resto del espacio */
+  align-items: center;
+  padding: 20px;
+  width: 90%;
+}
+
+.main-content h1 { /* Main content title */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 /* Section styles */
 .section {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 3px solid #5d18dc;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #fff;
 }
 
 /* Form styles */
@@ -25,50 +46,20 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #333;
+
 }
 
 .form-control {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ced4da;
+    border: 3px solid #5d18dc;
     border-radius: 4px;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s, box-shadow 0.3s;
+    color: #000;
+    background-color: #fff;
 }
 
 .form-control:focus {
-    border-color: #007bff; /* Color del borde en foco */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-/* Button styles */
-.btn {
-    display: inline-block;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.btn-secondary {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.btn-secondary:hover {
-    background-color: #5a6268;
+    border-color: #5d18dc; /* Color del borde en foco */
 }
 
 /* Appointment list styles */
@@ -80,150 +71,13 @@
 .appointment-list li {
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid #dee2e6;
     border-radius: 4px;
-}
-
-/* CALENDAR css*/
-:root {
-	--primary-color: #f90a39;
-	--text-color: #1d1d1d;
-	--bg-color: #f1f1fb;
-  }
-
-  * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "poppins", sans-serif;
-  }
-
-  .calendar__container {
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-  }
-
-  .calendar {
-	width: 100%;
-	max-width: 600px;
-	padding: 30px 20px;
-	border-radius: 10px;
-	background-color: var(--bg-color);
-  }
-
-  .calendar .calendar__header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-	border-bottom: 2px solid #ccc;
-  }
-
-  .calendar .calendar__header .month {
-	display: flex;
-	align-items: center;
-	font-size: 25px;
-	font-weight: 600;
-	color: var(--text-color);
-  }
-
-  .calendar .calendar__header .calendar__btns {
-	display: flex;
-	gap: 10px;
-  }
-
-  .calendar .calendar__header .calendar__btns .btn {
-	width: 50px;
-	height: 40px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 5px;
-	color: #fff;
-	background-color: var(--primary-color);
-	font-size: 16px;
-	cursor: pointer;
-	transition: all 0.3s;
-  }
-
-  .calendar .calendar__header .calendar__btns .btn:hover {
-	background-color: #db0933;
-	transform: scale(1.05);
-  }
-
-  .weekdays {
-	display: flex;
-	gap: 10px;
-	margin-bottom: 10px;
-  }
-
-  .weekdays .day {
-	width: calc(100% /7 - 10px);
-	text-align: center;
-	font-size: 16px;
-	font-weight: 600;
-  }
-
-  .days {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-  }
-
-  .days .day {
-	width: calc(100% / 7 - 10px);
-	height: 50px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 5px;
-	font-size: 16px;
-	font-weight: 400;
-	color: var(--text-color);
-	background-color: #fff;
-  }
-
-  .days .day:not(.next):not:hover {
-	color: #fff;
-	background-color: var(--primary-color);
-	transform: scale(1.05);
-  }
-
-  .days .day.today {
-	color: #fff;
-	background-color: var(--primary-color);
-  }
-
-  .days .day.next,
-  .days .day.prev {
-	color: #ccc;
-  }
-/* FIN CALENDAR CSS */
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
 }
 
 /* Create Service Form Styles */
 #create-service-form {
-    margin-top: 20px;
-	margin-bottom: 20px;
+    margin-top: 2rem;
+	  margin-bottom: 20px;
     padding: 20px;
-    background-color: #fff;
     border-radius: 5px;
-	border: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

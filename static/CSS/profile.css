@@ -1,8 +1,8 @@
 /* Estilos generales del contenedor del perfil */
 .profile-container {
-    max-width: 90vh; /* Ancho máximo del contenedor */
+    max-width: 70vh; /* Ancho máximo del contenedor */
     margin: 20px auto; /* Centrado y espaciado vertical */
-    margin-top: 3rem; /* Espaciado superior */
+    margin-top: 4rem; /* Espaciado superior */
     padding: 2.5rem; /* Espaciado interno */   
     border-radius: 2rem; /* Bordes redondeados */
     border: 2px solid #5d18dc; /* Borde verde alrededor de la imagen */
@@ -38,33 +38,20 @@
 
 /* Estilos para las secciones */
 .reviews-section, .contact-section, .direct-message-section, .photo-feed-section {
-    background-color: #fff; /* Fondo blanco */
+    background-color: #000; /* Fondo blanco */
     border-radius: 8px; /* Bordes redondeados */
     padding: 20px; /* Espaciado interno */
     margin-bottom: 25px; /* Espaciado inferior */
     border: 4px solid #5d18dc; /* Borde violeta alrededor de la imagen */
+    color: #ffffff; /* Color del texto */
 }
 
 /* Títulos de sección */
 h2 {
-    color: #000; /* Color verde para los títulos */
+    color: #fff; /* Color verde para los títulos */
     margin-top: 0; /* Sin margen superior */
-}
+    font-size: 2rem; /* Tamaño de fuente */
 
-/* Estilos para el formulario de mensajes directos */
-#message-form {
-    display: flex; /* Usar flexbox para el layout */
-    flex-direction: column; /* Apilar elementos verticalmente */
-}
-
-#message-input {
-    width: 100%; /* Ancho completo */
-    height: 100px; /* Altura fija */
-    padding: 10px; /* Espaciado interno */
-    border: 1px solid #ccc; /* Borde ligero */
-    border-radius: 5px; /* Bordes redondeados */
-    resize: none; /* Sin opción de redimensionar */
-    margin-bottom: 10px; /* Espaciado inferior */
 }
 
 /* Estilo para el contenedor de tarjetas de servicios & reviews*/
@@ -72,6 +59,8 @@ h2 {
     display: grid; /* Usar grid para la disposición de tarjetas */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Columna flexible */
     gap: 20px; /* Espaciado entre tarjetas */
+    font-size: 1rem; /* Tamaño de fuente */
+
 }
 
 /* Estilos para cada tarjeta de servicio & reviews */
@@ -90,15 +79,19 @@ h2 {
 
 .card-content {
     padding: 15px; /* Espaciado interno */
+    background-color: #000;
+    font-size: 1rem; /* Tamaño de fuente */
+
 }
 
 .card-content h3 {
     margin: 0; /* Sin margen */
-    font-size: 18px; /* Tamaño de fuente */
-    color: #333; /* Color del texto */
+    font-size: 1rem; /* Tamaño de fuente */
+    color: #fff; /* Color del texto */
 }
 
 .card-content p {
-    color: #555; /* Color gris para el texto */
-    line-height: 1.5; /* Espaciado entre líneas */
+    color: #fff; /* Color gris para el texto */
+    font-size: 1rem; /* Tamaño de fuente */
+
 }

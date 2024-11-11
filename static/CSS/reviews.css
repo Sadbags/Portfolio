@@ -1,17 +1,16 @@
-/* Estilo general para el cuerpo de la página */
-
-
+.content-container {
+    border-radius: 10px; /* Borde redondeado */
+    box-shadow: 0 1px 1000px #5d18dc;
+    padding: 20px; /* Espaciado interno */
+    background-color: #000; /* Fondo blanco */
+    margin: 10px; /* Espaciado externo */
+    margin-top: 4rem; /* Espaciado superior */
+}
 /* Estilo para los detalles del servicio */
 .service-detail {
-    background-color: #ffffff;
     /* Fondo blanco para el detalle */
     border-radius: 8px;
-    /* Bordes redondeados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Sombra suave */
-    padding: 20px;
-    /* Espaciado interno */
-    margin: 20px auto;
+    margin: 30px auto;
     /* Centrado automático */
     max-width: 600px;
     /* Ancho máximo */
@@ -19,27 +18,23 @@
 
 /* Estilo para los títulos en detalles del servicio */
 .service-detail h1 {
-    color: #333;
+    color: #fff;
     /* Color oscuro para el título */
-    margin-bottom: 15px;
+    margin-bottom: 2rem;
     /* Espaciado debajo del título */
 }
 
 /* Estilo para los párrafos en detalles del servicio */
 .service-detail p {
-    color: #555;
+    color: #fff;
     /* Color gris para el texto */
-    line-height: 1.6;
-    /* Espaciado entre líneas */
+    
 }
 
 /* Estilo para el contenedor del formulario */
 .container {
-    background-color: #ffffff;
-    /* Fondo blanco para el formulario */
     border-radius: 8px;
     /* Bordes redondeados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     /* Sombra suave */
     padding: 20px;
     /* Espaciado interno */
@@ -47,11 +42,13 @@
     /* Centrado automático */
     max-width: 600px;
     /* Ancho máximo */
+    border: 3px solid #5d18dc;
+
 }
 
 /* Estilo para el título del formulario */
 .container h1 {
-    color: #333;
+    color: #fff;
     /* Color oscuro para el título del formulario */
     text-align: center;
     /* Centrado */
@@ -63,7 +60,7 @@
 .form-group label {
     display: block;
     /* Etiquetas en bloque */
-    color: #555;
+    color: #fff;
     /* Color gris oscuro */
     margin-bottom: 5px;
     /* Espaciado debajo de las etiquetas */
@@ -76,11 +73,11 @@ input[type="text"],
 input[type="date"],
 input[type="time"],
 select {
-    width: 100%;
+    width: 95%;
     /* Ancho completo */
     padding: 10px;
     /* Espaciado interno */
-    border: 1px solid #ccc;
+    border: 3px solid #5d18dc;
     /* Borde ligero */
     border-radius: 5px;
     /* Bordes redondeados */
@@ -97,57 +94,29 @@ select:focus {
     /* Color azul al enfocar */
     outline: none;
     /* Sin contorno */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-    /* Sombra azul suave */
-}
 
-/* Estilo para el botón del formulario */
-button {
-    background-color: #007bff;
-    /* Color de fondo azul */
-    color: white;
-    /* Color del texto */
-    padding: 10px 15px;
-    /* Espaciado interno */
-    border: none;
-    /* Sin borde */
-    border-radius: 5px;
-    /* Bordes redondeados */
-    cursor: pointer;
-    /* Cambia el cursor al pasar */
-    margin-top: 10px;
-    /* Espacio arriba */
-    width: 100%;
-    /* Ancho completo */
-    transition: background-color 0.3s;
-    /* Transición de color */
-}
-
-/* Cambiar el color del botón al pasar el mouse */
-button:hover {
-    background-color: #0056b3;
-    /* Azul más oscuro */
 }
 
 /* Estilo para la sección de reseñas */
 .reviews-section {
-    background-color: #ffffff;
+    background-color: #000;
     /* Fondo blanco para las reseñas */
     border-radius: 8px;
     /* Bordes redondeados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     /* Sombra suave */
+    border: 3px solid #5d18dc;
     padding: 20px;
     /* Espaciado interno */
     margin: 20px auto;
     /* Centrado automático */
     max-width: 600px;
     /* Ancho máximo */
+    color: #fff;
 }
 
 /* Estilo para los títulos de la sección de reseñas */
 .reviews-section h2 {
-    color: #333;
+    color: #fff;
     /* Color oscuro para el título de reseñas */
     margin-bottom: 15px;
     /* Espaciado debajo del título */
@@ -155,7 +124,6 @@ button:hover {
 
 /* Estilo para cada reseña */
 .review {
-    border-bottom: 1px solid #eee;
     /* Línea separadora entre reseñas */
     padding: 10px 0;
     /* Espaciado interno */
@@ -168,13 +136,13 @@ button:hover {
 
 /* Estilo para el área de texto del formulario de reseñas */
 textarea {
-    width: 100%;
+    width: 95%;
     /* Ancho completo */
     height: 100px;
     /* Altura fija */
     padding: 10px;
     /* Espaciado interno */
-    border: 1px solid #ccc;
+    border: 1px solid #5d18dc;
     /* Borde ligero */
     border-radius: 5px;
     /* Bordes redondeados */
@@ -190,8 +158,7 @@ input[type="number"] {
     /* Ancho completo */
     padding: 10px;
     /* Espaciado interno */
-    border: 1px solid #ccc;
-    /* Borde ligero */
+    border: 1px solid #5d18dc;    /* Borde ligero */
     border-radius: 5px;
     /* Bordes redondeados */
     margin-bottom: 15px;
@@ -212,23 +179,22 @@ input[type="number"] {
 
 /* Estilo para la sección de dejar reseñas */
 .leave-reviews {
-    background-color: #ffffff;
+    background-color: #000;
     /* Fondo blanco */
     border-radius: 8px;
     /* Bordes redondeados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Sombra suave */
     padding: 20px;
     /* Espaciado interno */
     margin: 20px auto;
     /* Centrado automático */
     max-width: 600px;
     /* Ancho máximo */
+    border: 3px solid #5d18dc;
 }
 
 /* Estilo para el título de dejar reseñas */
 .leave-reviews h2 {
-    color: #333;
+    color: #fff;
     /* Color oscuro para el título */
     margin-bottom: 15px;
     /* Espaciado debajo del título */
@@ -292,7 +258,7 @@ input[type="number"] {
 .rating-info {
     font-size: 16px;
     /* Tamaño de fuente */
-    color: #555;
+    color: #fff;
     /* Color gris */
 }
 

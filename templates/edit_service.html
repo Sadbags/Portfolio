@@ -3,45 +3,46 @@
 {% block title %}Edit Service - Quickr{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/edit_service.css') }}">
 {% endblock %}
 
 {% block content %}
 <!-- Edit Service Form -->
-<div class="edit-service-container">
-    <form id="edit-service-form">
-        <div class="form-group">
-            <label for="service_name">Service Name</label>
-            <input type="text" id="service_name" name="name" required class="form-control"
-                   placeholder="Enter service name" value="{{ service.name }}">
-        </div>
-        <div class="form-group">
-            <label for="service_description">Description</label>
-            <textarea id="service_description" name="description" required class="form-control"
-                      placeholder="Enter service description">{{ service.description }}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="service_price">Approximate Price</label>
-            <input type="number" id="service_price" name="aprox_price" required class="form-control"
-                   placeholder="Enter approximate price" value="{{ service.aprox_price }}">
-        </div>
-        <div class="form-group">
-            <label for="service_category">Category</label>
-            <input type="text" id="service_category" name="category" required class="form-control"
-                   placeholder="Enter category" value="{{ service.category }}">
-        </div>
-        <div class="form-group">
-            <label for="service_fee">Fee</label>
-            <input type="number" id="service_fee" name="fee" required class="form-control"
-                   placeholder="Enter fee" value="{{ service.fee }}">
-        </div>
-        <button type="submit" id="submit-service-btn" class="btn btn-primary">Update Service</button>
-    </form>
+<div class="main-container">
+    <div class="edit-service-container">
+        <form id="edit-service-form">
+            <div class="form-group">
+                <label for="service_name">Service Name</label>
+                <input type="text" id="service_name" name="name" required class="form-control"
+                    placeholder="Enter service name" value="{{ service.name }}">
+            </div>
+            <div class="form-group">
+                <label for="service_description">Description</label>
+                <textarea id="service_description" name="description" required class="form-control"
+                        placeholder="Enter service description">{{ service.description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="service_price">Approximate Price</label>
+                <input type="number" id="service_price" name="aprox_price" required class="form-control"
+                    placeholder="Enter approximate price" value="{{ service.aprox_price }}">
+            </div>
+            <div class="form-group">
+                <label for="service_category">Category</label>
+                <input type="text" id="service_category" name="category" required class="form-control"
+                    placeholder="Enter category" value="{{ service.category }}">
+            </div>
+            <div class="form-group">
+                <label for="service_fee">Fee</label>
+                <input type="number" id="service_fee" name="fee" required class="form-control"
+                    placeholder="Enter fee" value="{{ service.fee }}">
+            </div>
+            <button type="submit" id="submit-service-btn" class="button">Update Service</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}
 
 {% block scripts %}
-
 <script src="{{ url_for('static', filename='JS/edit_service.js') }}"></script>
 {% endblock %}

@@ -18,15 +18,14 @@
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
-        <ul class="navbar__menu" id="navbar__menu">
-          <li class="navbar__item"><a href="{{ url_for('home') }}" class="button">Home</a></li>
-          <li class="navbar__item"><a href="{{ url_for('dashboard') }}" class="button">Dashboard</a></li>
-          <li class="navbar__item"><a href="{{ url_for('get_services') }}" class="button">Services</a></li>
-          <li class="navbar__item"><a href="{{ url_for('profile') }}" class="button">Profile</a></li>
-          <li class="navbar__item"><a href="{{ url_for('login') }}" class="button">Login</a></li>
-          <li class="navbar__item"><a href="{{ url_for('logout') }}" class="button">Log Out</a></li>
-        </ul>
-      </div>
+        <div class="navbar__menu" id="navbar__menu">
+          <class="navbar__item"><a href="{{ url_for('home') }}" class="button">Home</a>
+          <class="navbar__item"><a href="{{ url_for('dashboard') }}" class="button">Dashboard</a>
+          <class="navbar__item"><a href="{{ url_for('get_services') }}" class="button">Services</a>
+          <class="navbar__item"><a href="{{ url_for('profile') }}" class="button">Profile</a>
+          <class="navbar__item"><a href="{{ url_for('login') }}" class="button">Login</a>
+          <class="navbar__item"><a href="{{ url_for('logout') }}" class="button">Log Out</a>
+        </div>
     </nav>
   </header>
   <main>{% block content %}{% endblock %}</main>

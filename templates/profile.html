@@ -15,11 +15,11 @@
         <h1 class="profile-name">{{ current_user.first_name }} {{ current_user.last_name }}</h1>
         <a href="{{ url_for('edit_profile') }}" class="button">Edit Profile</a>
         <a href="{{ url_for('logout') }}" class="button">Log Out</a>
+        <a href="{{ url_for('logout') }}" class="button">Leave review</a>
     </div>
 
     <div class="reviews-section">
-    <div class="card">
-        <div class="card-content"> <h2>Reviews</h2>
+        <h2>Reviews</h2>
         {% if reviews %}
             {% for review in reviews %}
                 <div class="review">
@@ -31,14 +31,15 @@
             {% endfor %}
         {% else %}
             <p>No reviews yet. Be the first to leave a review!</p>
-            {% endif %}
+        {% endif %}
     </div>
-</div>
 
     <!-- Sección de contacto dinámica -->
     <div class="contact-section">
         <h2>Contact</h2>
         <p><strong>Email:</strong> {{ current_user.email }}</p>
+
+
         {% if addresses %}
             {% for address in addresses %}
                 <p><strong>Phone:</strong> {{ address.phone or 'No phone available' }}</p>
@@ -62,7 +63,7 @@
                         <p><strong>Price:</strong> ${{ service.aprox_price }}</p>
                         <p><strong>Fee:</strong> {{ service.fee }}%</p>
                         <p><strong>Category:</strong> {{ service.category }}</p>
-                        <a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Edit</a>
+                        <a href="{{ url_for('edit_service', service_id=service.id) }}" class="button">Edit</a>
                     </div>
                 </div>
             {% endfor %}

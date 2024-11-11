@@ -30,8 +30,7 @@
             {% else %}
                 <p>No address available</p>
             {% endif %}
-
-            <a href="{{ url_for('profile') }}" class="btn btn-primary">View Profile</a>
+            <a href="{{ url_for('profile') }}" class="button">View Profile</a>
         </section>
 
 
@@ -40,13 +39,11 @@
 			<h2>My Services</h2>
             <ul class="service-list">
 				{% for service in current_user.services %}
-				<li>
 					<p><strong>Name:</strong> {{ service.name }}</p>
 					<p><strong>Description:</strong> {{ service.description }}</p>
 					<p><strong>Price:</strong> ${{ service.aprox_price }}</p>
 					<p><strong>Fee:</strong> {{ service.fee }}%</p>
-					<a href="{{ url_for('edit_service', service_id=service.id) }}" class="btn btn-secondary">Edit</a>
-				</li>
+					<a href="{{ url_for('edit_service', service_id=service.id) }}" class="button">Edit</a>
                 {% else %}
 				<p>No service has been created</p>
                 {% endfor %}
@@ -116,43 +113,8 @@
                     <label for="service_picture">Picture</label>
                     <input type="file" id="service_picture" name="picture" accept="image/*" required class="form-control">
                 </div>
-                <button type="submit" class="btn btn-primary">Create Service</button>
+                <button type="submit" class="button">Create Service</button>
             </form>
-        </section>
-
-        <!-- Sección de Calendario -->
-		<section id="calendar" class="section">
-            <h2>Calendar</h2>
-            <div class="calendar__container">
-                <div class="calendar">
-                    <div class="calendar__header">
-                        <div class="month"></div>
-                        <div class="calendar__btns">
-                            <div class="btn today-btn">
-                                <i class="fas fa-calendar-day"></i>
-                            </div>
-                            <div class="btn prev-btn">
-                                <i class="fas fa-chevron-left"></i>
-                            </div>
-                            <div class="btn next-btn">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="weekdays">
-                        <div class="day">Sun</div>
-                        <div class="day">Mon</div>
-                        <div class="day">Tue</div>
-                        <div class="day">Wed</div>
-                        <div class="day">Thu</div>
-                        <div class="day">Fri</div>
-                        <div class="day">Sat</div>
-                    </div>
-                    <div class="days">
-                        <!-- Los días se agregarán usando JavaScript -->
-                    </div>
-                </div>
-            </div>
         </section>
     </div>
 </div>
