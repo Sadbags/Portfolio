@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
+from backend.config import DevelopmentConfig, ProductionConfig
 import os
 
 # Blueprint imports
@@ -42,7 +43,9 @@ app.config['UPLOAD_FOLDER'] = 'static/images'    # new
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'} #new
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB  #new
 
+environment_config = DevelopmentConfig
 
+app.config.from_object(environment_config)
 
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
