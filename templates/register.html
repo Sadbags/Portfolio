@@ -66,12 +66,9 @@
             <input type="text" id="country" name="country" required>
         </div>
 
-        <!-- Botones para seleccionar el tipo de usuario -->
-        <button type="submit" name="user_type" value="provider" class="animated-button">
-            <span class="text">P R O V I D E R</span>
         </button>
-        <button type="submit" name="user_type" value="client" class="animated-button">
-            <span class="text">C L I E N T</span>
+        <button type="submit" name="user_type" value="client" class="button">
+            <span class="text">REGISTER</span>
         </button>
     </form>
 </div>
@@ -85,4 +82,5 @@
 
 {% block scripts %}
 <script src="{{ url_for('static', filename='JS/create_user_address.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}
