@@ -60,9 +60,7 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     DEBUG = False
 
-environment_config = DevelopmentConfig if os.environ.get(
-	'ENV') == 'Quickr' else ProductionConfig
-app.config.from_object(environment_config)
+environment_config = DevelopmentConfig if os.environ.get('ENV') == 'development' else ProductionConfig
 
 db.init_app(app)
 jwt = JWTManager(app)
@@ -222,16 +220,6 @@ def login():
         return jsonify(access_token=access_token, refresh_token=refresh_token, is_admin=user.is_admin), 200
 
     return render_template('login.html')
-
-
-# hace refresh al token
-@app.route('/token/refresh', methods=['POST'])
-@jwt_required(refresh=True)  # Verifica que sea un refresh token
-def refresh_token():
-    current_user_id = get_jwt_identity()  # Obtener la identidad del usuario actual
-    access_token = create_access_token(identity=current_user_id)  # Crear un nuevo token de acceso
-    return jsonify(access_token=access_token), 200
-
 
 
 
