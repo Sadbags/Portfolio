@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
-
-{% block title %}Support - Quickr{% endblock %}
+{% block title %}Quickr{% endblock %}</title>
+{% block stylesheets %} <link rel="stylesheet" href="{{ url_for('static', filename='CSS/support.css') }}" /> {% endblock %}
 
 {% block content %}
     <div class="centered-box">
         <h1>Contact Us</h1>
+            
         <form id="contact-form">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -18,7 +19,7 @@
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="5" required></textarea>
             
-            <button type="submit">Send Message</button>
-        </form>
+            <button type="submit" class="button">Send Message</button>
+        </form> 
     </div>
 {% endblock %}

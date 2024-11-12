@@ -1,0 +1,35 @@
+.faq__container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 1000px #5d18dc;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #5d18dc;
+    font-size: 3rem;
+}
+
+.faq__questions {
+    margin-top: 20px;
+    color: #5d18dc;
+}
+
+.faq__question {
+    margin-bottom: 20px;
+}
+
+.faq__question h2 {
+    font-size: 1.5rem;
+    color: #5d18dc;
+    margin-bottom: 10px;
+}
+
+.faq__question p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+}

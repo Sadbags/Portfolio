@@ -1,0 +1,54 @@
+.centered-box {
+    width: 50%;
+    margin: 50px auto;
+    margin-top: 4rems;
+    padding: 20px;
+    border: 1px solid #5d18dc; /* Borde de 1 píxel sólido con color primario / 1 pixel solid border with primary color */
+    border-radius: 8px;
+    box-shadow: 0 1px 1000px #5d18dc;
+
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+label {
+    margin-top: 10px;
+    color: #fff;
+    margin-left: 25px;
+}
+
+#contact-form {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+input, textarea {
+    margin-top: 5px;
+    padding: 15px;
+    border: 3px solid #5d18dc; /* Borde de 1 píxel sólido con color primario / 1 pixel solid border with primary color */
+    border-radius: 4px;
+    font-size: 16px;
+    width: 80%;
+    margin-left: 25px;
+}
+
+input:focus, textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.button {
+    margin-left: 25px;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

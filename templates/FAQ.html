@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}
-FAQ - Quickr
+{% block title %} FAQ - Quickr {% endblock %}
+
+{% block stylesheets %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/FAQ.css') }}">
 {% endblock %}
 
 {% block content %}
