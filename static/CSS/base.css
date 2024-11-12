@@ -164,7 +164,9 @@ body {
   flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
   align-items: center; /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
   justify-content: center; /* Centra los elementos hijos verticalmente / Centers child elements vertically */
-  position: bottom;
+  position: fixed;
+  bottom: 0; /* Coloca el contenedor en la parte inferior de la página / Places the container at the bottom of the page */
+  width: 100%; 
 }
 
 #footer__logo {
