@@ -1,73 +1,72 @@
-.main-container { /* Outer container */
-    height: 70vh; /* h-screen */
+.main-container { /* Outer container / Contenedor exterior */
+    height: 70vh; /* h-screen / Altura de la pantalla */
 }
 
-.login-container { /* Inner container */
-    max-width: 30rem;
-    align-items: center;
-    margin: 0 auto;
-    padding: 2rem;
-    border-radius: 0.5rem; /* rounded-lg */
+.login-container { /* Inner container / Contenedor interior */
+    max-width: 30rem; /* Ancho máximo de 30 rem */
+    align-items: center; /* Alinear elementos al centro */
+    margin: 0 auto; /* Margen automático para centrar */
+    padding: 2rem; /* Relleno de 2 rem */
+    border-radius: 0.5rem; /* rounded-lg / Radio de borde de 0.5 rem */
 }
 
-.login-card { /* Card */
+.login-card { /* Card / Tarjeta */
     max-width: 500px; /* Ancho máximo de 500 píxeles / Maximum width of 500 pixels */
     border: 1px solid #5d18dc; /* Borde de 1 píxel sólido con color primario / 1 pixel solid border with primary color */
-    /*background-color: white;*/
-    padding: 4rem;
-    border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0 1px 1000px #5d18dc;
+    /*background-color: white;*/ /* Color de fondo blanco */
+    padding: 4rem; /* Relleno de 4 rem */
+    border-radius: 0.5rem; /* rounded-lg / Radio de borde de 0.5 rem */
+    box-shadow: 0 1px 1000px #5d18dc; /* Sombra de caja con color primario */
 }
 
-.login-card h2 { /* Card title */
-    font-size: 2.5rem; /* text-2xl */
-    font-weight: 700; /* font-bold */
-    margin-bottom: 1rem; /* mb-4 */
-    color: #ffffff; /* text-color-primary */
+.login-card h2 { /* Card title / Título de la tarjeta */
+    font-size: 2.5rem; /* text-2xl / Tamaño de fuente de 2.5 rem */
+    font-weight: 700; /* font-bold / Peso de fuente 700 (negrita) */
+    margin-bottom: 1rem; /* mb-4 / Margen inferior de 1 rem */
+    color: #ffffff; /* text-color-primary / Color de texto primario */
 }
 
-.checkbox-container p { /* Checkbox label */
-    font-size: 1rem; /* text-sm */
-    color: #ffffff; /* text-color-primary */
-   
+.checkbox-container p { /* Checkbox label / Etiqueta del checkbox */
+    font-size: 1rem; /* text-sm / Tamaño de fuente de 1 rem */
+    color: #ffffff; /* text-color-primary / Color de texto primario */
 }
 
-/* Form labels */
+/* Form labels / Etiquetas del formulario */
 .form-label {
-    display: block;
-    font-size: 1rem; /* text-sm */
-    font-weight: 500; /* font-medium */
-    margin-bottom: 0.5rem; /* mb-2 */
-    margin-top: 2rem;
-    color: #ffffff; /* text-color-primary */
+    display: block; /* Mostrar como bloque */
+    font-size: 1rem; /* text-sm / Tamaño de fuente de 1 rem */
+    font-weight: 500; /* font-medium / Peso de fuente 500 (medio) */
+    margin-bottom: 0.5rem; /* mb-2 / Margen inferior de 0.5 rem */
+    margin-top: 2rem; /* Margen superior de 2 rem */
+    color: #ffffff; /* text-color-primary / Color de texto primario */
 }
 
-/* Input fields */
+/* Input fields / Campos de entrada */
 .input-field {
-    width: 100%; /* w-full */
-    padding: 0.5rem; /* p-2 */
-    border: .20rem solid #5d18dc; 
-    border-radius: .50rem; /* rounded */
+    width: 100%; /* w-full / Ancho completo */
+    padding: 0.5rem; /* p-2 / Relleno de 0.5 rem */
+    border: .20rem solid #5d18dc; /* Borde de 0.20 rem sólido con color primario */
+    border-radius: .50rem; /* rounded / Radio de borde de 0.50 rem */
 }
 
-/* Links create account & forgot*/
-    .link {
-        margin-top: 2rem;
-        color: #ffffff; /* text-color-primary */
-        text-decoration: none;
-    }
+/* Links create account & forgot / Enlaces crear cuenta y olvidado */
+.link {
+    margin-top: 2rem; /* Margen superior de 2 rem */
+    color: #ffffff; /* text-color-primary / Color de texto primario */
+    text-decoration: none; /* Sin subrayado */
+}
 
-    .link:hover {
-        text-decoration: underline;
-    }
+.link:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
 
-/* Flex utilities */
+/* Flex utilities / Utilidades flexibles */
 .flex {
-    display: flex;
+    display: flex; /* Mostrar como flex */
     align-items: center; /* Alinea los elementos verticalmente en el centro / Aligns items vertically in the center */
 }
 
 .flex-space-between {
-    justify-content: space-between;
-    margin-top: 1.5rem; /* mt-6 */
+    justify-content: space-between; /* Justificar contenido con espacio entre elementos */
+    margin-top: 1.5rem; /* mt-6 / Margen superior de 1.5 rem */
 }
