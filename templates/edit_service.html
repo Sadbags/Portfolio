@@ -3,39 +3,46 @@
 {% block title %}Edit Service - Quickr{% endblock %}
 
 {% block stylesheets %}
+<!-- Link to the edit service stylesheet / Enlace a la hoja de estilos de editar servicio -->
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/edit_service.css') }}">
 {% endblock %}
 
 {% block content %}
-<!-- Edit Service Form -->
+<!-- Edit Service Form / Formulario para editar servicio -->
 <div class="main-container">
     <div class="edit-service-container">
         <form id="edit-service-form">
+            <!-- Service name field with required validation / Campo de nombre del servicio con validación requerida -->
             <div class="form-group">
                 <label for="service_name">Service Name</label>
                 <input type="text" id="service_name" name="name" required class="form-control"
                     placeholder="Enter service name" value="{{ service.name }}">
             </div>
+            <!-- Description field with required validation / Campo de descripción con validación requerida -->
             <div class="form-group">
                 <label for="service_description">Description</label>
                 <textarea id="service_description" name="description" required class="form-control"
                         placeholder="Enter service description">{{ service.description }}</textarea>
             </div>
+            <!-- Approximate price field with required validation / Campo de precio aproximado con validación requerida -->
             <div class="form-group">
                 <label for="service_price">Approximate Price</label>
                 <input type="number" id="service_price" name="aprox_price" required class="form-control"
                     placeholder="Enter approximate price" value="{{ service.aprox_price }}">
             </div>
+            <!-- Category field with required validation / Campo de categoría con validación requerida -->
             <div class="form-group">
                 <label for="service_category">Category</label>
                 <input type="text" id="service_category" name="category" required class="form-control"
                     placeholder="Enter category" value="{{ service.category }}">
             </div>
+            <!-- Fee field with required validation / Campo de tarifa con validación requerida -->
             <div class="form-group">
                 <label for="service_fee">Fee</label>
                 <input type="number" id="service_fee" name="fee" required class="form-control"
                     placeholder="Enter fee" value="{{ service.fee }}">
             </div>
+            <!-- Submit button for updating the service / Botón para actualizar el servicio -->
             <button type="submit" id="submit-service-btn" class="button">Update Service</button>
         </form>
     </div>
@@ -44,5 +51,6 @@
 {% endblock %}
 
 {% block scripts %}
+<!-- Script for handling the edit service form / Script para manejar el formulario de editar servicio -->
 <script src="{{ url_for('static', filename='JS/edit_service.js') }}"></script>
 {% endblock %}
