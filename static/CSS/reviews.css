@@ -1,10 +1,11 @@
 .content-container {
-    border-radius: 10px; /* Borde redondeado */
+    max-width: 70vh;
+    margin: 20px auto;
+    margin-top: 4rem;
+    padding: 2.5rem;
+    border-radius: 2rem;
+    border: 2px solid #5d18dc;
     box-shadow: 0 1px 1000px #5d18dc;
-    padding: 20px; /* Espaciado interno */
-    background-color: #000; /* Fondo blanco */
-    margin: 10px; /* Espaciado externo */
-    margin-top: 4rem; /* Espaciado superior */
 }
 /* Estilo para los detalles del servicio */
 .service-detail {
@@ -14,6 +15,19 @@
     /* Centrado automático */
     max-width: 600px;
     /* Ancho máximo */
+}
+
+.service-image {
+	/* Tamaño de la imagen */
+    width: 100%;
+	height: auto;
+}
+
+.service-image img {
+    /* Ajustar la imagen al contenedor */
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 
 /* Estilo para los títulos en detalles del servicio */
@@ -28,7 +42,7 @@
 .service-detail p {
     color: #fff;
     /* Color gris para el texto */
-    
+
 }
 
 /* Estilo para el contenedor del formulario */

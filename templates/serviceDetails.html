@@ -9,21 +9,24 @@
 
 {% block content %}
 <div class="content-container">
-    <div class="service-detail">
-        <h1>{{ service.name }}</h1>
+	<div class="container">
+		<div class="service-detail">
+			<h1>{{ service.name }}</h1>
 
-        <!-- Separate div for the image / Div separado para la imagen -->
-        <div class="service-image">
-            <img src="data:image/jpeg;base64,{{ service.picture }}" alt="{{ service.name }}">
-        </div>
+			<!-- Separate div for the image / Div separado para la imagen -->
+			<div class="service-image">
+				<img src="data:image/jpeg;base64,{{ service.picture }}" alt="{{ service.name }}">
+			</div>
 
-        <!-- Service information / Información del servicio -->
-        <div class="service-info">
-            <p><strong>Description:</strong> {{ service.description }}</p>
-            <p><strong>Approx Price:</strong> ${{ service.aprox_price }}</p>
-            <p><strong>Category:</strong> {{ service.category }}</p>
-        </div>
-    </div>
+			<!-- Service information / Información del servicio -->
+			<div class="service-info">
+				<p><strong>Description:</strong> {{ service.description }}</p>
+				<p><strong>Approx Price:</strong> ${{ service.aprox_price }}</p>
+				<p><strong>Category:</strong> {{ service.category }}</p>
+				<p><strong>Appointment Fee:</strong> {{ service.fee }}%</p>
+			</div>
+		</div>
+	</div>
 
     <!-- Form to create a new appointment / Formulario para crear una nueva cita -->
     <div class="container">
@@ -64,17 +67,18 @@
     <!-- Reviews section / Sección de reseñas -->
     <div class="reviews-section">
         <h2>Reviews</h2>
-        {% if reviews %}
-            {% for review in reviews %}
-                <div class="review">
-                    <h4>Review by {{ review.user.first_name }} {{ review.user.last_name }}</h4>
-                    <p><strong>Rating:</strong> {{ review.rating }}</p>
-                    <p><strong>Comment:</strong> {{ review.comment }}</p>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No reviews yet. Be the first to leave a review!</p>
-        {% endif %}
+		{% if reviews %}
+			{% for review in reviews %}
+				<div class="container"
+					<div class="review">
+						<h4>Review by {{ review.user.first_name }} {{ review.user.last_name }}</h4>
+						<p><strong>Rating:</strong> {{ review.rating }}</p>
+						<p><strong>Comment:</strong> {{ review.comment }}</p>
+					</div>
+			{% endfor %}
+			{% else %}
+				<p>No reviews yet. Be the first to leave a review!</p>
+			{% endif %}
     </div>
 
     <!-- Form to leave a review / Formulario para dejar una reseña -->

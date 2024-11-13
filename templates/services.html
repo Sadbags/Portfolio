@@ -22,7 +22,7 @@
                 <p><strong>Description:</strong> {{ service.description or 'No description available' }}</p>
                 <p><strong>Category:</strong> {{ service.category }}</p>
                 <p><strong>Approx. Price:</strong> {{ service.aprox_price }}</p>
-                <p><strong>Fee:</strong> {{ service.fee }}%</p>
+                <p><strong> Appointment Fee:</strong> {{ service.fee }}%</p>
                 <!-- Button to view service details / Botón para ver detalles del servicio -->
                 <button class="button" onclick="window.location.href='{{ url_for('review_page', service_id=service.id) }}'">View Service</button>
             </div>
