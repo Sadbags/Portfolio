@@ -3,7 +3,8 @@
 <title>{% block title %}Services{% endblock %}</title>
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/service.css') }}">
+<!-- Link to the services stylesheet / Enlace a la hoja de estilos de servicios -->
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/service.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -11,6 +12,7 @@
     {% for service in services.items %}
         <div class="card">
             <div class="image-container">
+                <!-- Display service picture or a default image if not available / Mostrar imagen del servicio o una imagen por defecto si no está disponible -->
                 <img src="{% if service.picture %}data:image/jpeg;base64,{{ service.picture }}{% else %}{{ url_for('static', filename='images/no_service.jpg') }}{% endif %}"
                      alt="{{ service.name }}"
                      onerror="this.src='{{ url_for('static', filename='images/no_service.jpg') }}'">
@@ -21,13 +23,14 @@
                 <p><strong>Category:</strong> {{ service.category }}</p>
                 <p><strong>Approx. Price:</strong> {{ service.aprox_price }}</p>
                 <p><strong>Fee:</strong> {{ service.fee }}%</p>
+                <!-- Button to view service details / Botón para ver detalles del servicio -->
                 <button class="button" onclick="window.location.href='{{ url_for('review_page', service_id=service.id) }}'">View Service</button>
             </div>
         </div>
     {% endfor %}
 </div>
 
-<!-- Paginación -->
+<!-- Pagination / Paginación -->
 <div class="pagination">
     {% if services.has_prev %}
         <a href="{{ url_for('get_services', page=services.prev_num, per_page=services.per_page) }}" class="button">Anterior</a>
@@ -42,6 +45,7 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{{ url_for('static', filename='JS/reviews.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
+<!-- Scripts for reviews and mobile menu / Scripts para reseñas y menú móvil -->
+<script src="{{ url_for('static', filename='JS/reviews.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}

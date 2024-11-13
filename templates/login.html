@@ -2,7 +2,8 @@
 
 <title>{% block title %} Login - Quickr {% endblock %}</title>
 
-{% block stylesheets %} <!-- Bloque para incluir hojas de estilos específicas de cada página / Block to include specific stylesheets for each page -->
+{% block stylesheets %}
+<!-- Block to include specific stylesheets for each page / Bloque para incluir hojas de estilos específicas de cada página -->
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/login.css') }}" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 {% endblock %}
@@ -12,16 +13,20 @@
     <div class="login-container">
         <div class="login-card">
             <h2>Login</h2>
-            <div class="error-message"></div> <!-- Aquí se mostrarán los errores -->
+            <!-- Here errors will be displayed / Aquí se mostrarán los errores -->
+            <div class="error-message"></div>
             <form id="login-form" method="POST">
+                <!-- Email field with required validation / Campo de correo electrónico con validación requerida -->
                 <div class="mb-6">
                     <label for="email" class="form-label">Email</label>
                     <input type="text" id="email" name="email" required class="input-field">
                 </div>
+                <!-- Password field with required validation / Campo de contraseña con validación requerida -->
                 <div class="mb-6">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" id="password" name="password" required class="input-field">
                 </div>
+                <!-- Remember me checkbox / Casilla de verificación de "Recuérdame" -->
                 <div class="checkbox-container">
                     <label for="rememberme">Remember me</label>
                     <p>Remember me</p>
@@ -44,8 +49,10 @@
                         </svg>
                       </div>
                 </div>
+                <!-- Submit button for logging in / Botón para iniciar sesión -->
                 <button type="submit" class="button">Log In</button>
 
+                <!-- Links to create account and forgot password / Enlaces para crear cuenta y olvidar contraseña -->
                 <div class="flex flex-space-between">
                     <a href="{{ url_for('show_register') }}" class="link">Create Account</a>
                     <a href="{{ url_for('forgot') }}" class="link">Forgot Password?</a>
@@ -56,7 +63,8 @@
  </main>
 {% endblock %}
 
-{% block scripts %} 
-<script src="{{ url_for('static', filename='JS/login.js') }}"></script> 
+{% block scripts %}
+<!-- Scripts for login and mobile menu / Scripts para iniciar sesión y menú móvil -->
+<script src="{{ url_for('static', filename='JS/login.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}

@@ -4,19 +4,22 @@
 
 {% block content %}
 <div class="forgot-password-container">
-    <h2>Forgot Your Password?</h2>
-    <p>Enter your email address below and we'll send you instructions on how to reset your password.</p>
+    <h2>Forgot Your Password? / ¿Olvidaste tu contraseña?</h2>
+    <p>Enter your email address below and we'll send you instructions on how to reset your password. / Ingresa tu dirección de correo electrónico a continuación y te enviaremos instrucciones sobre cómo restablecer tu contraseña.</p>
     
     <form action="/send-reset-link" method="POST">
+        <!-- Email address field with required validation / Campo de dirección de correo electrónico con validación requerida -->
         <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
         </div>
+        <!-- Submit button for sending the reset link / Botón para enviar el enlace de restablecimiento -->
         <div class="form-group">
             <button type="submit">Send Reset Link</button>
         </div>
     </form>
     
+    <!-- Link to go back to login page / Enlace para volver a la página de inicio de sesión -->
     <div class="links">
         <a href="{{ url_for('login') }}">Back to Login</a>
     </div>
