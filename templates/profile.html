@@ -1,21 +1,21 @@
-{% extends 'base.html' %} <!-- Extiende de la plantilla base.html -->
+{% extends 'base.html' %} <!-- Extends from the base.html template / Extiende de la plantilla base.html -->
 
-<title>{% block title %} Profile {% endblock %}</title> <!-- Título de la página -->
+<title>{% block title %} Profile {% endblock %}</title> <!-- Page title / Título de la página -->
 
 {% block stylesheets %}
+<!-- Link to the profile stylesheet / Enlace a la hoja de estilos de perfil -->
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/profile.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="profile-container">
     <div class="profile-header">
-		<!-- Imagen de perfil dinámica: Usa la imagen del usuario o una imagen por defecto -->
-		<img src="data:image/jpeg;base64,{{ current_user.profile_picture }}" alt="Profile Picture" class="profile-pic" onerror="this.src='{{ url_for('static', filename='images/user.jpeg') }}'">  <!-- aqui si la foto no sale de la db va a usar la foto por default -->
-		<!-- Nombre del usuario dinámico -->
+        <!-- Dynamic profile picture: Uses the user's picture or a default picture / Imagen de perfil dinámica: Usa la imagen del usuario o una imagen por defecto -->
+        <img src="data:image/jpeg;base64,{{ current_user.profile_picture }}" alt="Profile Picture" class="profile-pic" onerror="this.src='{{ url_for('static', filename='images/user.jpeg') }}'"> <!-- If the picture doesn't load from the DB, it will use the default picture / Si la foto no sale de la DB, va a usar la foto por defecto -->
+        <!-- Dynamic user name / Nombre del usuario dinámico -->
         <h1 class="profile-name">{{ current_user.first_name }} {{ current_user.last_name }}</h1>
         <a href="{{ url_for('edit_profile') }}" class="button">Edit Profile</a>
         <a href="{{ url_for('logout') }}" class="button">Log Out</a>
-        <a href="{{ url_for('logout') }}" class="button">Leave review</a>
     </div>
 
     <div class="reviews-section">
@@ -34,11 +34,10 @@
         {% endif %}
     </div>
 
-    <!-- Sección de contacto dinámica -->
+    <!-- Dynamic contact section / Sección de contacto dinámica -->
     <div class="contact-section">
         <h2>Contact</h2>
         <p><strong>Email:</strong> {{ current_user.email }}</p>
-
 
         {% if addresses %}
             {% for address in addresses %}
@@ -51,7 +50,7 @@
         {% endif %}
     </div>
 
-    <!-- Sección de servicios dinámicos -->
+    <!-- Dynamic services section / Sección de servicios dinámicos -->
     <div class="photo-feed-section">
         <h2>Services</h2>
         <div class="cards-container">
@@ -73,7 +72,8 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='JS/profile.js') }}"></script> <!-- Script para la sección de contacto -->
+<!-- Scripts for the profile page / Scripts para la página de perfil -->
+<script src="{{ url_for('static', filename='JS/profile.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/profile_picture.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/authentication.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>

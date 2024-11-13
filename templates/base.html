@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>  
+  <!-- Title block to set page title dynamically / Bloque de título para establecer el título de la página dinámicamente -->
   <title>{% block title %}Quickr{% endblock %}</title>
+  
+  <!-- Favicon link, pointing to an image in the static folder / Enlace al favicon, que apunta a una imagen en la carpeta estática -->
   <link rel="shortcut icon" href="{{ url_for('static', filename='images/LB.png') }}" type="image/png"/>
+  
+  <!-- Link to the main CSS stylesheet / Enlace a la hoja de estilos CSS principal -->
   <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}"/>
+  
+  <!-- Stylesheets block for adding additional styles on other pages / Bloque de estilos para agregar estilos adicionales en otras páginas -->
   {% block stylesheets %}
   {% endblock %}
-
 </head>
 <body>
   <header>
     <nav class="navbar">
       <div class="navbar__container">
+        <!-- Home link with logo / Enlace a inicio con el logo -->
         <a href="{{ url_for('home') }}" id="navbar__logo"><i class="fa-solid fa-bolt"></i> Quickr</a>
+        
+        <!-- Mobile menu toggle button / Botón para activar el menú móvil -->
         <div class="navbar__toggle" id="mobile-menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
+        
+        <!-- Navigation menu items for different sections / Elementos del menú de navegación para diferentes secciones -->
         <div class="navbar__menu" id="navbar__menu">
           <class="navbar__item"><a href="{{ url_for('home') }}" class="button">Home</a>
           <class="navbar__item"><a href="{{ url_for('dashboard') }}" class="button">Dashboard</a>
@@ -28,16 +39,21 @@
         </div>
     </nav>
   </header>
+  
+  <!-- Main content block where page-specific content is injected / Bloque de contenido principal donde se inyecta contenido específico de cada página -->
   <main>{% block content %}{% endblock %}</main>
+  
   <footer>
     <div class="footer__container">
       <div class="footer__links">
         <div class="footer__link--wrapper">
+          <!-- Links for contact and FAQ / Enlaces para contacto y preguntas frecuentes -->
           <div class="footer__link--items">
             <h2>Contact Us</h2>
             <a href="{{ url_for('support') }}">Customer Support</a>
             <a href="{{ url_for('FAQ') }}">FAQ</a>
           </div>
+          <!-- Social media links section / Sección de enlaces a redes sociales -->
           <div class="footer__link--items">
             <h2>Social Media</h2>
             <a href="https://www.facebook.com" target="_blank">Facebook</a>
@@ -46,6 +62,8 @@
           </div>
         </div>
       </div>
+      
+      <!-- Social media icons and footer links / Iconos de redes sociales y enlaces de pie de página -->
       <div class="social__media">
         <div class="social__media--wrap">
           <div class="footer__logo">
@@ -56,6 +74,7 @@
             <a href="{{ url_for('terms') }}">Terms</a> |
             <a href="{{ url_for('privacypolicy') }}">Privacy Policy</a>
           </p>
+          <!-- Icons linking to social media pages / Iconos que enlazan a las páginas de redes sociales -->
           <div class="social__icons">
             <a href="https://www.facebook.com" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com" class="social__icon--link" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -65,6 +84,8 @@
       </div>
     </div>
   </footer> 
+  
+  <!-- Block for including additional JavaScript files on specific pages / Bloque para incluir archivos JavaScript adicionales en páginas específicas -->
   {% block scripts %}
   <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
   <script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>

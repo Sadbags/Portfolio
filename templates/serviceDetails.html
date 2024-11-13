@@ -3,6 +3,7 @@
 {% block title %}Service Detail{% endblock %}
 
 {% block stylesheets %}
+<!-- Link to the reviews stylesheet / Enlace a la hoja de estilos de reseñas -->
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/reviews.css') }}">
 {% endblock %}
 
@@ -11,12 +12,12 @@
     <div class="service-detail">
         <h1>{{ service.name }}</h1>
 
-        <!-- Div separado para la imagen -->
+        <!-- Separate div for the image / Div separado para la imagen -->
         <div class="service-image">
             <img src="data:image/jpeg;base64,{{ service.picture }}" alt="{{ service.name }}">
         </div>
 
-        <!-- Información del servicio -->
+        <!-- Service information / Información del servicio -->
         <div class="service-info">
             <p><strong>Description:</strong> {{ service.description }}</p>
             <p><strong>Approx Price:</strong> ${{ service.aprox_price }}</p>
@@ -24,14 +25,14 @@
         </div>
     </div>
 
-    <!-- Formulario para crear una nueva cita -->
+    <!-- Form to create a new appointment / Formulario para crear una nueva cita -->
     <div class="container">
         <h1>Create Appointment</h1>
         <form id="create-appointment-form">
             <div class="form-group">
                 <label for="service_id">Service Name</label>
                 <input type="hidden" id="service_id" name="service_id" value="{{ service.id }}">
-                <input type="text" value="{{ service.name }}" readonly> <!-- Mostrar solo el nombre al usuario -->
+                <input type="text" value="{{ service.name }}" readonly> <!-- Show only the name to the user / Mostrar solo el nombre al usuario -->
             </div>
             <div class="form-group">
                 <label for="appointment_date">Appointment Date</label>
@@ -60,7 +61,7 @@
         </form>
     </div>
 
-    <!-- Sección de reviews -->
+    <!-- Reviews section / Sección de reseñas -->
     <div class="reviews-section">
         <h2>Reviews</h2>
         {% if reviews %}
@@ -76,21 +77,21 @@
         {% endif %}
     </div>
 
-    <!-- Formulario para dejar una reseña -->
+    <!-- Form to leave a review / Formulario para dejar una reseña -->
     <div class="leave-reviews">
         <h2>Leave a Review</h2>
-            <textarea id="comment-{{ service.id }}" placeholder="Leave a comment" required></textarea>
-            <div class="rating-input">
-                <input type="number" id="rating-{{ service.id }}" min="1" max="5" placeholder="Rating" required>
-                <span class="rating-info"></span>
-            </div>
-            <button class="button" onclick="submitReview('{{ service.id }}')">Submit Review</button>
+        <textarea id="comment-{{ service.id }}" placeholder="Leave a comment" required></textarea>
+        <div class="rating-input">
+            <input type="number" id="rating-{{ service.id }}" min="1" max="5" placeholder="Rating" required>
+            <span class="rating-info"></span>
         </div>
+        <button class="button" onclick="submitReview('{{ service.id }}')">Submit Review</button>
     </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
+<!-- Scripts for reviews, login, appointments, and mobile menu / Scripts para reseñas, inicio de sesión, citas y menú móvil -->
 <script src="{{ url_for('static', filename='JS/reviews.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/login.js') }}"></script>
 <script src="{{ url_for('static', filename='JS/appointments.js') }}"></script>

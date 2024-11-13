@@ -3,17 +3,18 @@
 {% block title %} Register - Quickr {% endblock %}
 
 {% block stylesheets %}
+<!-- Link to the register stylesheet / Enlace a la hoja de estilos de registro -->
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/register.css') }}" />
 {% endblock %}
 
 {% block content %}
 <div class="register-container">
-    <h2>Create Account</h2>
+    <h2>Create Account / Crear Cuenta</h2>
     <div class="error-message"></div>
 
-    <!-- Formulario combinado -->
+    <!-- Combined form / Formulario combinado -->
     <form id="register-form" action="{{ url_for('register_user') }}" method="POST">
-        <!-- Campos de usuario -->
+        <!-- User fields / Campos de usuario -->
         <div class="form-group">
             <label for="first_name">First Name</label>
             <input type="text" id="first_name" name="first_name" required>
@@ -35,48 +36,45 @@
             <input type="password" id="confirm_password" name="confirm-password" required>
         </div>
 
-        <!-- Campos de dirección -->
-        <h1>Address</h1>
+        <!-- Address fields / Campos de dirección -->
+        <h1>Address / Dirección</h1>
         <div class="form-group">
             <label for="address">Address</label>
             <input type="text" id="address" name="address" required>
         </div>
         <div class="form-group">
-            <label for="street">Street:</label>
+            <label for="street">Street</label>
             <input type="text" id="street" name="street" required>
         </div>
         <div class="form-group">
-            <label for="phone">Phone:</label>
+            <label for="phone">Phone</label>
             <input type="text" id="phone" name="phone" required>
         </div>
         <div class="form-group">
-            <label for="city">City:</label>
+            <label for="city">City</label>
             <input type="text" id="city" name="city" required>
         </div>
         <div class="form-group">
-            <label for="state">State:</label>
+            <label for="state">State</label>
             <input type="text" id="state" name="state" required>
         </div>
         <div class="form-group">
-            <label for="zip_code">Zip Code:</label>
+            <label for="zip_code">Zip Code</label>
             <input type="text" id="zip_code" name="zip_code" required>
         </div>
         <div class="form-group">
-            <label for="country">Country:</label>
+            <label for="country">Country</label>
             <input type="text" id="country" name="country" required>
         </div>
 
-        <!-- Botones para seleccionar el tipo de usuario -->
-        <button type="submit" name="user_type" value="provider" class="animated-button">
-            <span class="text">P R O V I D E R</span>
-        </button>
-        <button type="submit" name="user_type" value="client" class="animated-button">
-            <span class="text">C L I E N T</span>
+        <!-- Submit button / Botón de enviar -->
+        <button type="submit" name="user_type" value="client" class="button">
+            <span class="text">REGISTER</span>
         </button>
     </form>
 </div>
 
-<!-- Enlaces adicionales -->
+<!-- Additional links / Enlaces adicionales -->
 <div class="links">
     <a href="{{ url_for('login') }}">Already have an account? Log in</a><br>
     <a href="{{ url_for('forgot') }}">Forgot your password?</a>
@@ -84,5 +82,7 @@
 {% endblock %}
 
 {% block scripts %}
+<!-- Scripts for creating user address and mobile menu / Scripts para crear dirección de usuario y menú móvil -->
 <script src="{{ url_for('static', filename='JS/create_user_address.js') }}"></script>
+<script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
 {% endblock %}

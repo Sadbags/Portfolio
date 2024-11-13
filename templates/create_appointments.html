@@ -3,45 +3,61 @@
 {% block title %}Create Appointment - Quickr{% endblock %}
 
 {% block stylesheets %}
+    <!-- Link to dashboard-specific stylesheet / Enlace a la hoja de estilos específica del panel -->
     <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <h1>Crear Nueva Cita</h1>
+    <!-- Page header for creating a new appointment / Encabezado de la página para crear una nueva cita -->
+    <h1>Create New Appointment</h1>
+    
+    <!-- Form for creating a new appointment with POST method / Formulario para crear una nueva cita con el método POST -->
     <form action="{{ url_for('appointments.create') }}" method="POST">
+        <!-- Service ID field with required validation / Campo de ID de servicio con validación requerida -->
         <div class="form-group">
-            <label for="service_id">ID del Servicio</label>
+            <label for="service_id">Service ID</label>
             <input type="text" id="service_id" name="service_id" required>
         </div>
+        
+        <!-- Appointment date field with required validation / Campo de fecha de la cita con validación requerida -->
         <div class="form-group">
-            <label for="appointment_date">Fecha de la Cita</label>
+            <label for="appointment_date">Appointment Date</label>
             <input type="date" id="appointment_date" name="appointment_date" required>
         </div>
+        
+        <!-- Appointment time field with required validation / Campo de hora de la cita con validación requerida -->
         <div class="form-group">
-            <label for="appointment_time">Hora de la Cita</label>
+            <label for="appointment_time">Appointment Time</label>
             <input type="time" id="appointment_time" name="appointment_time" required>
         </div>
+        
+        <!-- Status selection with predefined options / Selección de estado con opciones predefinidas -->
         <div class="form-group">
-            <label for="status">Estado</label>
+            <label for="status">Status</label>
             <select id="status" name="status" required>
-                <option value="pending">Pendiente</option>
-                <option value="confirmed">Confirmada</option>
-                <option value="canceled">Cancelada</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="canceled">Canceled</option>
             </select>
         </div>
+        
+        <!-- Payment status selection with predefined options / Selección de estado de pago con opciones predefinidas -->
         <div class="form-group">
-            <label for="payment_status">Estado del Pago</label>
+            <label for="payment_status">Payment Status</label>
             <select id="payment_status" name="payment_status" required>
-                <option value="unpaid">No Pagado</option>
-                <option value="paid">Pagado</option>
+                <option value="unpaid">Unpaid</option>
+                <option value="paid">Paid</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Crear Cita</button>
+        
+        <!-- Submit button for creating the appointment / Botón para enviar y crear la cita -->
+        <button type="submit" class="btn btn-primary">Create Appointment</button>
     </form>
 </div>
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='JS/dashboard.js') }}"></script>
+    <!-- Dashboard-specific JavaScript file / Archivo JavaScript específico del panel -->
+    <script src="{{ url_for('static', filename='JS/dashboard.js') }}"></script>
 {% endblock %}

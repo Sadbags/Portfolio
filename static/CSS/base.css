@@ -78,6 +78,9 @@ body {
     top: 80px;
     left: 0;
     z-index: 1;
+    margin-left: 25%;
+    margin-top: 2rem;
+
   }
   
   .navbar__menu.active {
@@ -161,7 +164,9 @@ body {
   flex-direction: column; /* Establece la dirección del eje principal a columna / Sets the main axis direction to column */
   align-items: center; /* Alinea los elementos hijos en el centro horizontalmente / Aligns child elements horizontally in the center */
   justify-content: center; /* Centra los elementos hijos verticalmente / Centers child elements vertically */
-  position: bottom;
+  position: bottom; /* Establece la posición del pie de página en la parte inferior / Sets the footer position to bottom */
+  margin-top: 4rem; /* Añade un margen superior de 3 rem / Adds a top margin of 3 rem */
+
 }
 
 #footer__logo {

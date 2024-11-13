@@ -4,39 +4,39 @@
 
 {% block content %}
     <div class="upload-container">
-        <h1>Subir Documentos</h1>
+        <h1>Upload Documents / Subir Documentos</h1>
         <form action="/dashboard" method="post" enctype="multipart/form-data">
-            <!-- Campo obligatorio: Id (del estado) -->
+            <!-- Required field: State ID / Campo obligatorio: Id (del estado) -->
             <div class="form-group">
                 <label for="id_estado">Id (del estado) <span class="required">*</span></label>
                 <input type="file" id="id_estado" name="id_estado" required>
             </div>
 
-            <!-- Campo obligatorio: Certificado de antecedentes penales -->
+            <!-- Required field: Criminal record certificate / Campo obligatorio: Certificado de antecedentes penales -->
             <div class="form-group">
                 <label for="certificado_antecedentes">Certificado de Antecedentes Penales <span class="required">*</span></label>
                 <input type="file" id="certificado_antecedentes" name="certificado_antecedentes" required>
             </div>
 
-            <!-- Campo opcional: Certificaciones -->
+            <!-- Optional field: Certifications / Campo opcional: Certificaciones -->
             <div class="form-group">
                 <label for="certificaciones">Certificaciones</label>
                 <input type="file" id="certificaciones" name="certificaciones">
             </div>
 
-            <!-- Campo opcional: Resume -->
+            <!-- Optional field: Resume / Campo opcional: Resume -->
             <div class="form-group">
                 <label for="resume">Resume</label>
                 <input type="file" id="resume" name="resume">
             </div>
 
-            <!-- Campo opcional: Otros -->
+            <!-- Optional field: Others / Campo opcional: Otros -->
             <div class="form-group">
                 <label for="otros">Otros</label>
                 <input type="file" id="otros" name="otros">
             </div>
 
-            <!-- Botón upload CUSTOMIZADO -->
+            <!-- Custom submit button / Botón upload CUSTOMIZADO -->
             <button type="submit" name="user_type" value="Submit" class="animated-button">
                 <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                     <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
@@ -50,4 +50,3 @@
         </form>
     </div>
 {% endblock %}
-

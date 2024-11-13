@@ -4,28 +4,42 @@
 
 {% block content %}
 <div class="container">
+    <!-- Header for the create service page / Encabezado para la página de creación de servicio -->
     <h1>Create Service</h1>
+    
+    <!-- Form for creating a new service / Formulario para crear un nuevo servicio -->
     <form id="create-service-form">
+        <!-- Service name field with required validation / Campo de nombre del servicio con validación requerida -->
         <div class="form-group">
             <label for="name">Service Name</label>
             <input type="text" id="name" name="name" required>
         </div>
+        
+        <!-- Description field with required validation / Campo de descripción con validación requerida -->
         <div class="form-group">
             <label for="description">Description</label>
             <textarea id="description" name="description" required></textarea>
         </div>
+        
+        <!-- Approximate price field with required validation / Campo de precio aproximado con validación requerida -->
         <div class="form-group">
             <label for="aprox_price">Approximate Price</label>
             <input type="number" id="aprox_price" name="aprox_price" required>
         </div>
+        
+        <!-- Category field with required validation / Campo de categoría con validación requerida -->
         <div class="form-group">
             <label for="category">Category</label>
             <input type="text" id="category" name="category" required>
         </div>
+        
+        <!-- Fee field with required validation / Campo de tarifa con validación requerida -->
         <div class="form-group">
             <label for="fee">Fee</label>
             <input type="number" id="fee" name="fee" required>
         </div>
+        
+        <!-- Submit button for creating the service / Botón para crear el servicio -->
         <button type="submit" class="btn btn-primary">Create Service</button>
     </form>
 </div>
@@ -33,5 +47,6 @@
 {% endblock %}
 
 {% block scripts %}
+<!-- Script for handling the create service form / Script para manejar el formulario de creación de servicio -->
 <script src="{{ url_for('static', filename='js/create_service.js') }}"></script>
 {% endblock %}
