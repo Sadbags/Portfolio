@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head>
   <!-- Title block to set page title dynamically / Bloque de título para establecer el título de la página dinámicamente -->
   <title>{% block title %}Quickr{% endblock %}</title>
-  
+
   <!-- Favicon link, pointing to an image in the static folder / Enlace al favicon, que apunta a una imagen en la carpeta estática -->
   <link rel="shortcut icon" href="{{ url_for('static', filename='images/LB.png') }}" type="image/png"/>
-  
+
   <!-- Link to the main CSS stylesheet / Enlace a la hoja de estilos CSS principal -->
   <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}"/>
-  
+
   <!-- Stylesheets block for adding additional styles on other pages / Bloque de estilos para agregar estilos adicionales en otras páginas -->
   {% block stylesheets %}
   {% endblock %}
@@ -20,14 +20,14 @@
       <div class="navbar__container">
         <!-- Home link with logo / Enlace a inicio con el logo -->
         <a href="{{ url_for('home') }}" id="navbar__logo"><i class="fa-solid fa-bolt"></i> Quickr</a>
-        
+
         <!-- Mobile menu toggle button / Botón para activar el menú móvil -->
         <div class="navbar__toggle" id="mobile-menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
-        
+
         <!-- Navigation menu items for different sections / Elementos del menú de navegación para diferentes secciones -->
         <div class="navbar__menu" id="navbar__menu">
           <class="navbar__item"><a href="{{ url_for('home') }}" class="button">Home</a>
@@ -39,10 +39,10 @@
         </div>
     </nav>
   </header>
-  
+
   <!-- Main content block where page-specific content is injected / Bloque de contenido principal donde se inyecta contenido específico de cada página -->
   <main>{% block content %}{% endblock %}</main>
-  
+
   <footer>
     <div class="footer__container">
       <div class="footer__links">
@@ -62,7 +62,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Social media icons and footer links / Iconos de redes sociales y enlaces de pie de página -->
       <div class="social__media">
         <div class="social__media--wrap">
@@ -83,11 +83,10 @@
         </div>
       </div>
     </div>
-  </footer> 
-  
+  </footer>
+
   <!-- Block for including additional JavaScript files on specific pages / Bloque para incluir archivos JavaScript adicionales en páginas específicas -->
   {% block scripts %}
-  <script src="{{ url_for('static', filename='JS/search.js') }}"></script>
   <script src="{{ url_for('static', filename='JS/mobile-menu.js') }}"></script>
   {% endblock %}
 </body>
