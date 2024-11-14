@@ -250,6 +250,16 @@ def login():
 
     return render_template('login.html')
 
+
+@app.route('/api/refresh-token', methods=['POST'])
+@jwt_required(refresh=True)  # Específicamente requiere un refresh token para acceder
+def refresh_token():
+    user_id = get_jwt_identity()  # Obtén el id del usuario desde el refresh token
+    new_access_token = create_access_token(identity=user_id)  # Genera un nuevo access token
+
+    return jsonify(access_token=new_access_token), 200
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, user_id)
@@ -522,5 +532,5 @@ with app.app_context():
     db.create_all()
 
 # Runs the application
-#if __name__ == '__main__':
-#	app.run(debug=True)
+if __name__ == '__main__':
+	app.run(debug=True)

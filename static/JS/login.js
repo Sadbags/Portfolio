@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('login-form'); // Asegúrate de que este ID exista
+    const form = document.getElementById('login-form');  // Verificar si el formulario existe
 
     if (form) { // Verifica que el formulario existe antes de añadir el event listener
         form.addEventListener('submit', async function(event) {
@@ -21,10 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     const data = await response.json();  // Parsear la respuesta JSON
                     console.log(data);
 
-                    // Guarda el token JWT en localStorage para futuras solicitudes
-                    localStorage.setItem('token', data.access_token);
+                    // Guarda el access_token y el refresh_token en localStorage
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('refresh_token', data.refresh_token);
 
-                    // Redirige al usuario a la página de perfil u otra página de éxito
+                    // Redirige al usuario a la página de éxito
                     window.location.href = '/dashboard';  // Cambia '/dashboard' por la URL deseada
                 } else {
                     const error = await response.json();

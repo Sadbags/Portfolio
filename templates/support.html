@@ -8,28 +8,28 @@
 
 {% block content %}
 <div class="centered-box">
-    <h1>Contact Us / Contáctenos</h1>
-    
+    <h1>Contact Us</h1>
+
     <!-- Contact form / Formulario de contacto -->
     <form id="contact-form">
         <!-- Name field with required validation / Campo de nombre con validación requerida -->
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
-        
+
         <!-- Email field with required validation / Campo de correo electrónico con validación requerida -->
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
-        
+
         <!-- Subject field with required validation / Campo de asunto con validación requerida -->
         <label for="subject">Subject:</label>
         <input type="text" id="subject" name="subject" required>
-        
+
         <!-- Message field with required validation / Campo de mensaje con validación requerida -->
         <label for="message">Message:</label>
         <textarea id="message" name="message" rows="5" required></textarea>
-        
+
         <!-- Submit button for sending the message / Botón para enviar el mensaje -->
         <button type="submit" class="button">Send Message</button>
-    </form> 
+    </form>
 </div>
 {% endblock %}

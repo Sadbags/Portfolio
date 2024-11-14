@@ -30,3 +30,4 @@ async function submitReview(serviceId) {
         console.error('Error al enviar la reseña:', error);
     }
 }
+
